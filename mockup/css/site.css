@@ -690,10 +690,6 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .feedback.bad{color:var(--red-ink)}
 .feedback svg{width:34px;height:34px;flex:none}
 .game.done .bins,.game.done .dots{opacity:.55;pointer-events:none}
-.diploma{margin-top:10px;padding:26px 24px;border:2px dashed var(--ink);border-radius:18px;background:var(--hl-soft);text-align:center;display:grid;justify-items:center;gap:8px}
-.diploma h3{font-size:clamp(1.5rem,3vw,2rem)}
-.dip-name{font-size:clamp(2rem,5vw,3rem);line-height:1.1;color:var(--pen);margin:0;border-bottom:2px solid var(--pen);padding:0 18px 4px}
-.dip-score{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;font-size:1.1rem;margin:4px 0 10px}
 .stars{display:inline-flex;gap:4px}
 .stars svg{width:30px;height:30px;fill:var(--hl)}
 .stars svg.off{fill:#fff;opacity:.6}
@@ -734,3 +730,37 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .name-field{min-width:0;max-width:100%}
 .name-field input{width:100%}
 @media (max-width:760px){.paleta-toggle{padding:5px}.paleta-toggle span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+
+/* ============ DIPLOMA DE AMIGO DO MARTIM ============ */
+.diploma{margin-top:6px;display:grid;justify-items:center;gap:18px}
+.dip-paper{position:relative;width:min(100%,760px);background:#FFFDF7;color:var(--ink);text-align:center;padding:clamp(28px,5vw,52px) clamp(20px,5vw,56px) clamp(24px,4vw,40px);border:6px double var(--cover);outline:2px solid var(--cover);outline-offset:-16px;box-shadow:0 26px 40px -26px rgba(20,30,80,.55),0 2px 6px rgba(20,30,80,.12);transform:rotate(-.6deg)}
+.dip-paper::before{content:"";position:absolute;inset:22px;pointer-events:none;background:
+  radial-gradient(circle at 50% 0,color-mix(in srgb,var(--hl) 22%,transparent),transparent 60%),
+  repeating-linear-gradient(45deg,color-mix(in srgb,var(--cover) 4%,transparent) 0 2px,transparent 2px 9px)}
+.dip-paper>*{position:relative}
+.dip-corner{position:absolute;width:26px;height:26px;border-radius:50%;background:var(--hl);border:2px solid var(--ink);z-index:1}
+.dip-corner.c1{top:8px;left:8px}.dip-corner.c2{top:8px;right:8px}.dip-corner.c3{bottom:8px;left:8px}.dip-corner.c4{bottom:8px;right:8px}
+.dip-head{display:flex;flex-direction:column;align-items:center;gap:8px;margin:0 0 10px;font:700 .78rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--pen)}
+.dip-mark{height:46px;width:auto;aspect-ratio:318.33/113.92}
+.dip-title{font-size:clamp(1.8rem,4.6vw,3rem);line-height:1.02;margin:0 auto 12px;max-width:16ch}
+.dip-certify{font:400 1.35rem/1 var(--hand);color:var(--pen);margin:0 0 4px}
+.dip-name-wrap{display:block;margin:0 auto 12px;max-width:520px}
+.dip-name{width:100%;text-align:center;font:400 clamp(2.2rem,6vw,3.4rem)/1.1 var(--hand);color:var(--logo-1);background:transparent;border:0;border-bottom:2px solid var(--pen);padding:0 8px 4px;border-radius:0}
+.dip-name::placeholder{color:color-mix(in srgb,var(--pen) 40%,transparent);font-size:.6em}
+.dip-name:focus{outline:none;background:var(--hl-soft)}
+.dip-body{font-size:1.08rem;line-height:1.6;max-width:52ch;margin:0 auto 12px}
+.dip-stars{display:flex;flex-direction:column;align-items:center;gap:6px;margin:0 0 20px;font:400 1.3rem/1.2 var(--hand);color:var(--pen)}
+.stars{display:inline-flex;gap:6px}
+.stars svg{width:34px;height:34px;fill:var(--hl)}
+.stars svg.off{fill:#fff;opacity:.7}
+.dip-foot{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:16px}
+.dip-sig{display:grid;gap:4px;justify-items:center}
+.dip-sig .hand{font-size:1.9rem;line-height:1;color:var(--pen);padding:0 16px 6px;border-bottom:1.5px solid var(--ink);min-width:140px}
+.dip-sig small{font:700 .72rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.dip-seal{width:118px;height:118px;border-radius:50%;border:4px solid var(--red);color:var(--red);display:grid;place-content:center;gap:2px;transform:rotate(-12deg);background:rgba(224,48,30,.05);position:relative}
+.dip-seal::before{content:"";position:absolute;inset:7px;border:2px dashed var(--red);border-radius:50%}
+.dip-seal span{font:800 .8rem/1.05 var(--display);text-transform:uppercase}
+.dip-seal b{font:800 1.5rem/1 var(--display)}
+.dip-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+@media (max-width:560px){.dip-paper{transform:none;outline-offset:-12px}.dip-foot{grid-template-columns:1fr 1fr}.dip-seal{grid-column:1/-1;grid-row:1;justify-self:center;width:96px;height:96px}.dip-sig .hand{font-size:1.5rem;min-width:0;padding:0 6px 4px}}
+@media (max-width:1180px) and (min-width:901px){.hero .label{width:calc(100% - 175px)}.hero .label .row{flex-direction:column;gap:0}.hero .label small{width:auto}}

@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css?v=202609251752">
+<link rel="stylesheet" href="../css/site.css?v=202609251800">
 </head>
 <body>
 
@@ -144,7 +144,7 @@
         </ol>
         <div style="display:flex;flex-wrap:wrap;gap:10px">
           <a class="btn btn-red" href="#entregar">See collection points <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-line" href="#ficha">Take the challenge</a>
+          <a class="btn btn-line" href="#ficha">Earn your Friend of Martim diploma</a>
         </div>
       </article>
       <div class="team">
@@ -205,7 +205,7 @@
   <div class="inner">
     <div class="sec-head">
       <h2 id="h-ficha">The bottle-cap challenge.</h2>
-      <p>Sort like my dad: write your name, put each item in the right bag and earn the official sorter diploma. If you get it wrong, I'll correct it in red.</p>
+      <p>Sort like my dad: write your name, put each item in the right bag and earn your Friend of Martim diploma. If you get it wrong, I'll correct it in red.</p>
     </div>
     <div class="worksheet game" id="game">
       <div class="stamp" id="stamp" aria-hidden="true"><div>Well<br>done!<small>signed: Martim</small></div></div>
@@ -227,9 +227,21 @@
       </div>
       <div class="feedback" id="feedback" aria-live="polite">Tap the right bag for the item on top.</div>
       <div class="diploma" id="diploma" hidden>
-        <h3>Official sorter diploma</h3>
-        <p class="dip-name hand" id="dip-name"></p>
-        <p class="dip-score"><span class="stars" id="stars" aria-hidden="true"></span><span id="dip-text"></span></p>
+        <div class="dip-paper" id="dip-paper">
+          <span class="dip-corner c1" aria-hidden="true"></span><span class="dip-corner c2" aria-hidden="true"></span><span class="dip-corner c3" aria-hidden="true"></span><span class="dip-corner c4" aria-hidden="true"></span>
+          <p class="dip-head"><svg class="dip-mark" viewBox="0 0 318.33 113.92" aria-hidden="true"><use href="#marca"/></svg><span>Case no. 167 · Boliqueime</span></p>
+          <h3 class="dip-title">Friend of Martim Diploma</h3>
+          <p class="dip-certify">This certifies that</p>
+          <label class="dip-name-wrap" for="dip-name"><span class="visually-hidden">Your name on the diploma</span><input class="dip-name" id="dip-name" type="text" maxlength="24" autocomplete="given-name" placeholder="write your name here"></label>
+          <p class="dip-body" id="dip-body"></p>
+          <p class="dip-stars"><span class="stars" id="stars" aria-hidden="true"></span><span id="dip-text"></span></p>
+          <div class="dip-foot">
+            <div class="dip-sig"><span class="hand">Martim</span><small>Martim Silva Cruz</small></div>
+            <div class="dip-seal" aria-hidden="true"><span>Friend<br>of Martim</span><b>167</b></div>
+            <div class="dip-sig"><span class="hand" id="dip-date"></span><small id="dip-date-label">Date</small></div>
+          </div>
+        </div>
+        <div class="dip-actions"><button class="btn btn-red" type="button" id="dip-save"><svg aria-hidden="true"><use href="#i-down"/></svg>Save diploma</button><button class="btn btn-line" type="button" id="again">Play again</button></div>
         <div class="share" id="game-share" data-share-url="#ficha" data-share-text="">
           <span class="share-label">Challenge your friends:</span>
           <button class="btn btn-red share-native" type="button" data-share="native" hidden><svg aria-hidden="true"><use href="#i-share"/></svg>Share</button>
@@ -238,7 +250,6 @@
           <button class="share-btn" type="button" data-share="x" aria-label="Share on X"><svg aria-hidden="true"><use href="#i-xs"/></svg>X</button>
           <button class="share-btn" type="button" data-share="copy"><svg aria-hidden="true"><use href="#i-link"/></svg><span>Copy link</span></button>
         </div>
-        <button class="btn btn-line" type="button" id="again">Play again</button>
       </div>
     </div>
   </div>
@@ -637,19 +648,63 @@ function pick(bin){
   setTimeout(()=>{G.bins.forEach(b=>b.classList.remove('right','wrong'));G.card.classList.remove('fly','shake');pos++;busy=false;
     if(pos<deck.length)show();else finish()},good?900:1700);
 }
+function dipName(){return (document.getElementById('dip-name').value||G.name.value||'').trim()}
+function shareTxt(){const n=dipName()||(LNG?'A friend of Martim':'Um amigo do Martim');
+  return LNG?`${n} scored ${right}/8 in Martim’s bottle-cap challenge and earned the Friend of Martim diploma! Can you beat that?`:`${n} fez ${right}/8 no desafio das tampinhas e ganhou o diploma de amigo do Martim! Consegues fazer melhor?`}
 function finish(){
-  const n=(G.name.value||'').trim()||(LNG?'Friend of Martim':'Amigo do Martim');
   G.stage.hidden=true;G.game.classList.add('done');G.dip.hidden=false;
-  document.getElementById('dip-name').textContent=n;
+  const dn=document.getElementById('dip-name');dn.value=(G.name.value||'').trim();
   const stars=right===8?3:right>=6?2:1;
   document.getElementById('stars').innerHTML='<svg><use href="#i-star"/></svg>'.repeat(stars)+'<svg class="off"><use href="#i-star"/></svg>'.repeat(3-stars);
-  document.getElementById('dip-text').textContent=LNG?(right===8?'8 out of 8. You sort like my dad!':`${right} out of 8. You already know more than most people!`):(right===8?'8 em 8. Já separas como o meu pai!':`${right} em 8. Já sabes mais do que muita gente!`);
+  document.getElementById('dip-body').innerHTML=LNG?`sorted <b>${right} out of 8</b> items into the right bag in the Bottle-Cap Challenge and is, from today, an official <b>Friend of Martim</b> and bottle-cap sorter.`:`separou <b>${right} de 8</b> peças no saco certo no Desafio das Tampinhas e é, a partir de hoje, <b>Amigo do Martim</b> e separador oficial de tampinhas.`;
+  document.getElementById('dip-text').textContent=LNG?(right===8?'Perfect score. You sort like my dad!':'You already know more than most people!'):(right===8?'Tudo certo. Já separas como o meu pai!':'Já sabes mais do que muita gente!');
+  const d=new Date(),m=LNG?['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']:['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  document.getElementById('dip-date').textContent=d.getDate()+' '+m[d.getMonth()]+' '+d.getFullYear();
+  document.getElementById('dip-date-label').textContent=LNG?'Date':'Data';
   if(right>=6)G.stamp.classList.add('on');
   G.fb.className='feedback';G.fb.textContent='';
-  const txt=LNG?`${n} scored ${right}/8 in Martim’s bottle-cap challenge and now knows how to sort caps! Can you beat that?`:`${n} fez ${right}/8 no desafio das tampinhas do Martim e já sabe separar tampas! Consegues fazer melhor?`;
-  document.getElementById('game-share').dataset.shareText=txt;
-  G.dip.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'center'});
+  document.getElementById('game-share').dataset.shareText=shareTxt();
+  if(!dn.value)setTimeout(()=>dn.focus({preventScroll:true}),600);
+  G.dip.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
 }
+document.getElementById('dip-name').addEventListener('input',e=>{G.name.value=e.target.value;try{localStorage.setItem('ficha-nome',e.target.value.trim())}catch(x){}document.getElementById('game-share').dataset.shareText=shareTxt()});
+
+/* diploma como imagem (PNG) para guardar ou partilhar */
+async function diplomaPNG(){
+  await document.fonts.ready;
+  const W=1600,H=1130,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
+  const css=getComputedStyle(document.documentElement),v=k=>css.getPropertyValue(k).trim()||'#1E2B45';
+  const cover=v('--cover'),pen=v('--pen'),hl=v('--hl'),act=v('--logo-1'),ink='#1B1D2A';
+  x.fillStyle='#FFFDF7';x.fillRect(0,0,W,H);
+  x.strokeStyle=cover;x.lineWidth=14;x.strokeRect(40,40,W-80,H-80);x.lineWidth=3;x.strokeRect(70,70,W-140,H-140);
+  [[70,70],[W-70,70],[70,H-70],[W-70,H-70]].forEach(([a,b])=>{x.fillStyle=hl;x.beginPath();x.arc(a,b,22,0,7);x.fill();x.strokeStyle=ink;x.lineWidth=3;x.stroke()});
+  x.textAlign='center';x.fillStyle=pen;
+  x.font='700 26px "Atkinson Hyperlegible", sans-serif';x.fillText((LNG?'LET’S HELP MARTIM · CASE NO. 167 · BOLIQUEIME':'VAMOS AJUDAR O MARTIM · PROCESSO Nº 167 · BOLIQUEIME'),W/2,170);
+  x.fillStyle=ink;x.font='800 96px "Bricolage Grotesque", sans-serif';x.fillText(LNG?'Friend of Martim Diploma':'Diploma de Amigo do Martim',W/2,290);
+  x.fillStyle=pen;x.font='400 44px "Gochi Hand", cursive';x.fillText(LNG?'This certifies that':'Certifica-se que',W/2,380);
+  const nm=dipName()||(LNG?'A friend of Martim':'Um amigo do Martim');
+  x.fillStyle=act;x.font='400 110px "Gochi Hand", cursive';x.fillText(nm,W/2,510);
+  x.strokeStyle=pen;x.lineWidth=3;x.beginPath();x.moveTo(W/2-460,540);x.lineTo(W/2+460,540);x.stroke();
+  x.fillStyle=ink;x.font='400 36px "Atkinson Hyperlegible", sans-serif';
+  const body=LNG?[`sorted ${right} out of 8 items into the right bag in the Bottle-Cap Challenge`,'and is, from today, an official Friend of Martim and bottle-cap sorter.']:[`separou ${right} de 8 peças no saco certo no Desafio das Tampinhas`,'e é, a partir de hoje, Amigo do Martim e separador oficial de tampinhas.'];
+  body.forEach((l,i)=>x.fillText(l,W/2,620+i*52));
+  const st=right===8?3:right>=6?2:1;
+  for(let i=0;i<3;i++){const cx=W/2-90+i*90,cy=780;x.beginPath();for(let k=0;k<10;k++){const r=k%2?18:40,a=-Math.PI/2+k*Math.PI/5;x.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a))}x.closePath();x.fillStyle=i<st?hl:'#fff';x.fill();x.strokeStyle=ink;x.lineWidth=3;x.stroke()}
+  x.fillStyle=pen;x.font='400 64px "Gochi Hand", cursive';x.fillText('Martim',360,960);
+  x.strokeStyle=ink;x.lineWidth=2;x.beginPath();x.moveTo(210,985);x.lineTo(510,985);x.stroke();
+  x.fillStyle=ink;x.font='700 24px "Atkinson Hyperlegible", sans-serif';x.fillText('Martim Silva Cruz',360,1022);
+  x.fillStyle=pen;x.font='400 54px "Gochi Hand", cursive';x.fillText(document.getElementById('dip-date').textContent,W-360,960);
+  x.beginPath();x.moveTo(W-510,985);x.lineTo(W-210,985);x.stroke();x.fillStyle=ink;x.font='700 24px "Atkinson Hyperlegible", sans-serif';x.fillText(LNG?'Date':'Data',W-360,1022);
+  x.save();x.translate(W/2,960);x.rotate(-.18);x.strokeStyle='#E0301E';x.fillStyle='rgba(224,48,30,.06)';x.lineWidth=7;x.beginPath();x.arc(0,0,104,0,7);x.fill();x.stroke();
+  x.setLineDash([10,8]);x.lineWidth=3;x.beginPath();x.arc(0,0,86,0,7);x.stroke();x.setLineDash([]);x.fillStyle='#E0301E';
+  x.font='800 30px "Bricolage Grotesque", sans-serif';x.fillText(LNG?'FRIEND OF':'AMIGO DO',0,-18);x.fillText('MARTIM',0,16);x.font='800 40px "Bricolage Grotesque", sans-serif';x.fillText('167',0,62);x.restore();
+  return new Promise(r=>c.toBlob(r,'image/png'));
+}
+document.getElementById('dip-save').addEventListener('click',async()=>{
+  const blob=await diplomaPNG(),name=(LNG?'friend-of-martim-diploma':'diploma-amigo-do-martim')+'.png',file=new File([blob],name,{type:'image/png'});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:LNG?'Friend of Martim Diploma':'Diploma de Amigo do Martim',text:shareTxt()});return}catch(e){if(e.name==='AbortError')return}}
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);
+});
 G.bins.forEach(b=>b.addEventListener('click',()=>pick(b)));
 document.getElementById('again').addEventListener('click',()=>{start();G.game.scrollIntoView({behavior:'smooth',block:'start'})});
 start();
@@ -676,6 +731,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 }));
 updCount();
 </script>
-<script src="../js/site.js?v=202609251752"></script>
+<script src="../js/site.js?v=202609251800"></script>
 </body>
 </html>
