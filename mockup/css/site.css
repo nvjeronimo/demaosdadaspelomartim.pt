@@ -740,7 +740,7 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .dip-paper>*{position:relative}
 .dip-corner{position:absolute;width:26px;height:26px;border-radius:50%;background:var(--hl);border:2px solid var(--ink);z-index:1}
 .dip-corner.c1{top:8px;left:8px}.dip-corner.c2{top:8px;right:8px}.dip-corner.c3{bottom:8px;left:8px}.dip-corner.c4{bottom:8px;right:8px}
-.dip-head{display:flex;flex-direction:column;align-items:center;gap:8px;margin:0 0 10px;font:700 .78rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--pen)}
+.dip-head{display:flex;flex-direction:column;align-items:center;gap:8px;max-width:none;margin:0 0 10px;font:700 .78rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--pen)}
 .dip-mark{height:46px;width:auto;aspect-ratio:318.33/113.92}
 .dip-title{font-size:clamp(1.8rem,4.6vw,3rem);line-height:1.02;margin:0 auto 12px;max-width:16ch}
 .dip-certify{font:400 1.35rem/1 var(--hand);color:var(--pen);margin:0 0 4px}
