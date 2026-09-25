@@ -1137,3 +1137,9 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 footer a{text-decoration:none}
 footer a:hover,footer a:focus-visible{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
 .hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+/* desafio em destaque: folha com um tom suave da capa escolhida; peça e categorias ficam brancas por cima */
+.worksheet.game{background:color-mix(in srgb,var(--cover) 50%,#fff);border-width:2.5px;box-shadow:0 22px 40px -28px color-mix(in srgb,var(--cover) 70%,transparent),0 0 0 6px color-mix(in srgb,var(--cover) 5%,transparent)}
+.worksheet.game .ws-head{border-bottom-color:color-mix(in srgb,var(--cover) 45%,var(--ink))}
+.worksheet.game .name-field input{background:transparent}
+.worksheet.game .levels button:not([aria-pressed="true"]){background:#fff}
+[data-dark] .worksheet.game{background:color-mix(in srgb,var(--cover) 12%,#E9F0FF)}

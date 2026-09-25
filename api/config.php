@@ -12,6 +12,7 @@ function db(): PDO {
   if (!is_dir(DADOS)) mkdir(DADOS, 0700, true);
   $pdo = new PDO('sqlite:' . DADOS . '/site.sqlite');
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   $pdo->exec('PRAGMA busy_timeout=4000');
   $pdo->exec('CREATE TABLE IF NOT EXISTS mural(id TEXT PRIMARY KEY, n TEXT, terra TEXT, lv INT, r INT, t INT, s INT, d TEXT, criado TEXT, oculto INT DEFAULT 0)');
   $pdo->exec('CREATE TABLE IF NOT EXISTS limites(chave TEXT, t INT)');
