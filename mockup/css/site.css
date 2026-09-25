@@ -670,3 +670,14 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .logo-chip.sm{height:44px;min-width:92px;padding:6px 10px}
 .logo-chip.sm .logo-img,.logo-chip.sm .logo-img.sq{height:100%;max-height:32px;width:auto;max-width:120px;object-fit:contain}
 .logo-chip.xs{width:86px;height:40px;padding:3px 6px}
+/* logótipos mais discretos */
+.partner{grid-template-columns:120px minmax(0,1fr);gap:20px}
+.partner-logos{gap:6px}
+.logo-chip.lg{width:120px;height:56px;padding:7px 9px;border-width:1.5px;border-color:var(--rule);border-radius:10px}
+.logo-chip.sm{height:30px;min-width:0;padding:4px 7px;border-radius:7px}
+.logo-chip.sm .logo-img,.logo-chip.sm .logo-img.sq{max-height:20px;max-width:78px}
+.logo-chip.xs{width:56px;height:24px;padding:2px 4px;border-radius:5px}
+.foot-logos{gap:6px!important}
+.foot-logos .logo-chip{width:58px;height:30px;padding:4px 5px;border-radius:6px}
+.label-logo{width:20px;height:20px}
+.volta-logo{margin-bottom:6px}
