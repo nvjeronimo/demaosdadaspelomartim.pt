@@ -127,3 +127,54 @@ addEventListener('load',()=>{
 
 /* ano do rodapé sempre atual */
 document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().getFullYear()});
+
+/* ---------- movimento: coisas que entram ao fazer scroll (nunca escondidas por defeito) ---------- */
+(()=>{
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window)||!Element.prototype.animate)return;
+  const ease='cubic-bezier(.16,1,.3,1)';
+  const RISE='.sec-head,.way,.team,.bin,.regra,.passos li,.evrow,.next,.person,.boletim,.rates,.warn,.volta,.nobody,.faq details,.board-tabs,.mini-dip,.bk-ctrl,.mapa-frame,.mapa-list,.cartaz-ctrl,.logo-chip,.where-links,.ideias li,.storyside > *,.essay p';
+  const PIN='.page .photo:not(.stack-card),.slide,.mini-photo';
+  const base=el=>{const t=getComputedStyle(el).transform;return t==='none'?'':t};
+  const idx=el=>{const p=el.parentElement;if(!p)return 0;const sib=[...p.children].filter(c=>c.matches(RISE+','+PIN));return Math.min(sib.indexOf(el),6)};
+  const run=el=>{const m=base(el),d=idx(el)*70;
+    if(el.matches(PIN))el.animate([{opacity:0,transform:`${m} translateY(-22px) rotate(-5deg) scale(1.03)`},{opacity:1,transform:m||'none'}],{duration:800,delay:d,easing:ease,fill:'backwards'});
+    else el.animate([{opacity:0,transform:`${m} translateY(22px)`},{opacity:1,transform:m||'none'}],{duration:700,delay:d,easing:ease,fill:'backwards'})};
+  let first=true;
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting&&!first)return;io.unobserve(e.target);if(!first&&e.isIntersecting)run(e.target)});first=false},{rootMargin:'0px 0px -6% 0px'});
+  /* o que já está visível ao abrir fica quieto; o resto anima quando entra */
+  document.querySelectorAll(RISE+','+PIN).forEach(el=>{if(!el.closest('.hero,.paleta,.a4,.diploma'))io.observe(el)});
+  /* números que contam até ao valor quando aparecem */
+  const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,txt=el.textContent,m=txt.match(/\d[\d\s.]*/);if(!m)return;
+    const n=parseInt(m[0].replace(/\D/g,''),10),t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1100),v=Math.round(n*(1-Math.pow(1-k,3)));el.textContent=txt.replace(m[0],v.toLocaleString(EN?'en':'pt-PT').replace(/ |\./g,' ')+(m[0].endsWith(' ')?' ':''));if(k<1)requestAnimationFrame(f);else el.textContent=txt};requestAnimationFrame(f)}),{threshold:.6});
+  document.querySelectorAll('.boletim .big,.bk-figs b,.tally b').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight)cio.observe(el)});
+})();
+
+/* ---------- monte de fotos: a de trás sai para o lado e volta para a frente ---------- */
+(()=>{
+  const st=document.getElementById('stack');if(!st)return;
+  const cards=[...st.querySelectorAll('.stack-card')],btn=document.getElementById('stack-next'),num=document.getElementById('stack-n');
+  const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let order=cards.slice(),busy=false,paused=false,visible=false,timer=null,shown=0;
+  const restack=()=>{order.forEach((c,i)=>{c.style.zIndex=order.length-i;c.classList.toggle('front',i===0);c.setAttribute('aria-hidden',i===0?'false':'true')});
+    shown=cards.indexOf(order[0]);if(num)num.textContent=(shown+1)+' / '+cards.length};
+  restack();
+  async function next(){
+    if(busy)return;busy=true;
+    const c=order[order.length-1],r=getComputedStyle(c).getPropertyValue('--r').trim()||'0deg';
+    const side=window.innerWidth<600?'34%':'46%';
+    if(!still){await c.animate([{transform:`rotate(${r})`},{transform:`translate(${side},-10%) rotate(calc(${r} + 12deg))`}],{duration:420,easing:'cubic-bezier(.3,.7,.4,1)',fill:'forwards'}).finished}
+    order.pop();order.unshift(c);restack();
+    if(!still){const a=c.animate([{transform:`translate(${side},-10%) rotate(calc(${r} + 12deg))`},{transform:`translate(0,-3%) rotate(calc(${r} - 2deg))`,offset:.7},{transform:`rotate(${r})`}],{duration:560,easing:'cubic-bezier(.16,1,.3,1)'});
+      c.getAnimations().forEach(x=>{if(x!==a)x.cancel()});await a.finished}
+    busy=false;
+  }
+  const tick=()=>{clearTimeout(timer);if(!still&&!paused&&visible&&!document.hidden)timer=setTimeout(async()=>{await next();tick()},3600)};
+  btn.addEventListener('click',()=>{next();tick()});
+  cards.forEach(c=>c.addEventListener('click',()=>{next();tick()}));
+  st.addEventListener('pointerenter',()=>{paused=true;clearTimeout(timer)});
+  st.addEventListener('pointerleave',()=>{paused=false;tick()});
+  st.addEventListener('focusin',()=>{paused=true;clearTimeout(timer)});
+  st.addEventListener('focusout',()=>{paused=false;tick()});
+  document.addEventListener('visibilitychange',tick);
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>{visible=es[0].isIntersecting;tick()},{threshold:.3}).observe(st);else{visible=true;tick()}
+})();

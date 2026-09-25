@@ -1143,3 +1143,38 @@ footer a:hover,footer a:focus-visible{text-decoration:underline;text-decoration-
 .worksheet.game .name-field input{background:transparent}
 .worksheet.game .levels button:not([aria-pressed="true"]){background:#fff}
 [data-dark] .worksheet.game{background:color-mix(in srgb,var(--cover) 12%,#E9F0FF)}
+
+/* ================= monte de fotos (contactos): a foto de trás sai e passa para a frente ================= */
+.stack{position:relative;display:grid;width:min(100%,360px);margin:30px auto 0;padding-bottom:44px}
+.stack-card.photo{position:relative;grid-area:1/1;width:100%;transform:rotate(var(--r));transition:filter .4s;cursor:pointer}
+.stack-card.photo img{aspect-ratio:4/3}
+.stack-card:not(.front){filter:brightness(.97)}
+.stack-next{position:absolute;left:0;right:0;bottom:0;background:none;border:0;padding:6px;font-size:1.2rem;color:var(--pen);cursor:pointer;display:flex;justify-content:center;gap:10px;align-items:baseline}
+.stack-next .num{font:700 .85rem/1 var(--body);color:var(--pencil)}
+.stack-next:focus-visible{outline:3px solid var(--pen);outline-offset:2px;border-radius:8px}
+body{overflow-x:clip}
+
+/* ================= movimento geral ================= */
+@media (prefers-reduced-motion:no-preference){
+  /* tampinhas soltas da capa flutuam devagar */
+  .caps svg{animation:capFloat 7s ease-in-out infinite}
+  .caps svg:nth-child(2n){animation-duration:8.5s;animation-delay:-2s}
+  .caps svg:nth-child(3n){animation-duration:6s;animation-delay:-4s}
+  @keyframes capFloat{0%,100%{transform:rotate(var(--r)) translateY(0)}50%{transform:rotate(calc(var(--r) + 8deg)) translateY(-7px)}}
+  /* título do hero escreve-se linha a linha ao abrir */
+  .cover h1{animation:heroIn .8s var(--ease) both}
+  .cover .lede{animation:heroIn .8s .15s var(--ease) both}
+  .cover .ctas{animation:heroIn .8s .28s var(--ease) both}
+  .hero .photo{animation:pinIn .9s .2s var(--ease) both}
+  @keyframes heroIn{from{opacity:0;transform:translateY(16px)}}
+  @keyframes pinIn{from{opacity:0;transform:translateY(-26px) rotate(-6deg) scale(1.04)}}
+  /* botões afundam ao carregar */
+  .btn:active,.chip:active,.bin:active,.levels button:active{transform:translateY(1px) scale(.98)}
+  /* mudança de página suave (navegadores que suportam) */
+  @view-transition{navigation:auto}
+  ::view-transition-old(root){animation:vtOut .22s ease both}
+  ::view-transition-new(root){animation:vtIn .32s var(--ease) both}
+  @keyframes vtOut{to{opacity:0;transform:translateY(-6px)}}
+  @keyframes vtIn{from{opacity:0;transform:translateY(10px)}}
+  .nav{view-transition-name:nav}
+}
