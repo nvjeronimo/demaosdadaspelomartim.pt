@@ -983,3 +983,8 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
   .board li.empty{grid-template-areas:"rk who"}
   .board-tabs button{flex:1;padding:.8em .4em .7em;font-size:1.1rem}
 }
+.regra-lista{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:7px}
+.regra-lista li{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:start;font-size:1rem;line-height:1.35;color:var(--ink)}
+.regra-lista li::before{font:400 1.35rem/1 var(--hand);text-align:center}
+.regra-lista li.sim::before{content:"✓";color:var(--green)}
+.regra-lista li.nao::before{content:"✗";color:var(--red-ink)}
