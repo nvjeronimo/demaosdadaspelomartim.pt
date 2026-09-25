@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202609251813">
+<link rel="stylesheet" href="css/site.css?v=202609251819">
 </head>
 <body>
 
@@ -244,6 +244,7 @@
           </div>
         </div>
         <div class="dip-actions"><button class="btn btn-red" type="button" id="dip-save"><svg aria-hidden="true"><use href="#i-down"/></svg>Guardar diploma</button><button class="btn btn-line" type="button" id="again">Jogar outra vez</button></div>
+        <p class="dip-tip hand">Dica: o diploma muda de cor com a capa. <button type="button" class="dip-tip-btn" id="dip-cover">Escolhe outra capa</button> e guarda-o na tua cor preferida.</p>
         <div class="share" id="game-share" data-share-url="#ficha" data-share-text="">
           <span class="share-label">Desafia os teus amigos:</span>
           <button class="btn btn-red share-native" type="button" data-share="native" hidden><svg aria-hidden="true"><use href="#i-share"/></svg>Partilhar</button>
@@ -721,6 +722,7 @@ async function diplomaPNG(){
   x.font='800 30px "Bricolage Grotesque", sans-serif';x.fillText(LNG?'FRIEND OF':'AMIGO DO',0,-18);x.fillText('MARTIM',0,16);x.font='800 40px "Bricolage Grotesque", sans-serif';x.fillText('167',0,62);x.restore();
   return new Promise(r=>c.toBlob(r,'image/png'));
 }
+document.getElementById('dip-cover').addEventListener('click',e=>{e.stopPropagation();const t=document.querySelector('.paleta-toggle');if(t&&t.getAttribute('aria-expanded')!=='true')t.click()});
 document.getElementById('dip-save').addEventListener('click',async()=>{
   const blob=await diplomaPNG(),name=(LNG?'friend-of-martim-diploma':'diploma-amigo-do-martim')+'.png',file=new File([blob],name,{type:'image/png'});
   if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:LNG?'Friend of Martim Diploma':'Diploma de Amigo do Martim',text:shareTxt()});return}catch(e){if(e.name==='AbortError')return}}
@@ -752,6 +754,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 }));
 updCount();
 </script>
-<script src="js/site.js?v=202609251813"></script>
+<script src="js/site.js?v=202609251819"></script>
 </body>
 </html>
