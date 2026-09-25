@@ -669,6 +669,7 @@ Purposeful and quiet, all off under `prefers-reduced-motion`:
 - **Numbers:** the latest-result figure and booklet figures count up to their value over 1.1s when they come into view.
 - **Ambient:** the loose caps on the cover float and turn slowly (6–8.5s loops, offset).
 - **Touch:** buttons, chips, bins and level pills sink 1px and scale to .98 when pressed.
+- **Smooth scroll:** Lenis 1.3.26 (self-hosted in `js/vendor/`, lerp .1) gives wheel and trackpad scrolling a soft inertial glide on devices with a fine pointer; touch devices keep native scrolling and reduced motion keeps plain scrolling. In-page anchors and the site's own smooth `scrollIntoView` calls go through Lenis with an offset of the sticky nav height + 12px. Areas with their own scroll (map list, map, cover picker, album track, tables, textareas) carry `data-lenis-prevent`.
 - **Between pages:** cross-document view transitions fade and lift the page (the nav stays put) in browsers that support them.
 
 ### Margin Line

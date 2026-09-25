@@ -200,3 +200,16 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
   if('IntersectionObserver' in window)new IntersectionObserver(es=>{visible=es[0].isIntersecting;tick()},{threshold:.4}).observe(sheet);
   show(0);tick();
 })();
+
+/* ---------- scroll suave com inércia (só rato/trackpad; telemóveis usam o scroll nativo) ---------- */
+(()=>{
+  if(!window.Lenis||matchMedia('(prefers-reduced-motion:reduce)').matches||!matchMedia('(pointer:fine)').matches)return;
+  /* zonas com scroll próprio mantêm o scroll normal */
+  document.querySelectorAll('.mapa-list,#map,.paleta-panel,.track,.tablewrap,textarea,.leaflet-container').forEach(e=>e.setAttribute('data-lenis-prevent',''));
+  const nav=document.querySelector('.nav');
+  const lenis=new Lenis({lerp:.1,wheelMultiplier:1,smoothWheel:true,autoRaf:true,anchors:{offset:-((nav?nav.offsetHeight:70)+12)}});
+  window.lenis=lenis;
+  /* scrollIntoView suave do resto do código passa pela Lenis */
+  const orig=Element.prototype.scrollIntoView;
+  Element.prototype.scrollIntoView=function(o){if(o&&typeof o==='object'&&o.behavior==='smooth'){const off=o.block==='center'?-(innerHeight/2-this.getBoundingClientRect().height/2):-((nav?nav.offsetHeight:70)+12);lenis.scrollTo(this,{offset:off});return}return orig.apply(this,arguments)};
+})();

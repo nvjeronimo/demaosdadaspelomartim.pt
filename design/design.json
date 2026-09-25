@@ -822,6 +822,11 @@
         "name": "view-transition",
         "value": "old .22s fade up, new .32s rise; nav fixed",
         "purpose": "Between pages where supported."
+      },
+      {
+        "name": "smooth-scroll",
+        "value": "Lenis 1.3.26 self-hosted, lerp .1, fine pointer only, anchors offset nav+12px",
+        "purpose": "Inertial wheel/trackpad scrolling; native on touch; off under reduced motion."
       }
     ],
     "breakpoints": [
