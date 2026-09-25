@@ -634,9 +634,10 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .ficha-logos{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 
 /* logótipo original: cabeçalho a cores da capa, rodapé na versão branca */
-.brand-logo{display:block;height:48px;width:auto;aspect-ratio:318.33/113.92}
+.brand-logo{display:block;height:56px;width:auto;aspect-ratio:318.33/113.92}
 .foot-logo{display:block;height:72px;width:auto;aspect-ratio:318.33/113.92;margin-bottom:16px}
-@media (max-width:520px){.brand-logo{height:40px}}
+@media (max-width:1180px) and (min-width:521px){.brand-logo{height:48px}}
+@media (max-width:520px){.brand-logo{height:46px}}
 
 /* telemóvel: nada sai do ecrã na agenda e no boletim */
 .agenda>*{min-width:0}

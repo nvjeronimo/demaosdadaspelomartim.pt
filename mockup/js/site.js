@@ -1,6 +1,6 @@
 /* Língua da página: "pt" (por defeito) ou "en" */
 const EN=document.documentElement.lang==="en";
-/* Vamos Ajudar o Martim: comportamento partilhado por todas as páginas */
+/* De mãos dadas pelo Martim: comportamento partilhado por todas as páginas */
 /* ---------- copiar (IBAN, link) ---------- */
 document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{
   const lbl=b.dataset.label||(b.dataset.label=b.textContent);
