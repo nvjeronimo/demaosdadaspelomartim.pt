@@ -168,6 +168,14 @@ figcaption.cap{font-size:.95rem;color:var(--pencil);margin-top:10px}
 .rec{font:700 .72rem/1 var(--body);text-transform:uppercase;letter-spacing:.06em;background:var(--yellow);border:1.5px solid var(--ink);border-radius:999px;padding:.3em .6em;margin-left:6px;color:var(--ink)}
 @media (max-width:860px){.pals-head,.pals-grid{grid-template-columns:1fr}}
 /* mockups */
+.pg-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.pg-card{display:grid;gap:6px;color:var(--ink);text-decoration:none}
+.pg-card img{border:2px solid var(--ink);border-radius:10px;transition:transform .25s}
+.pg-card:hover img{transform:translateY(-3px) rotate(-.6deg)}
+.pg-card b{font:800 1.15rem/1.2 var(--display);margin-top:6px}
+.pg-card span{font-size:.95rem;color:var(--pencil)}
+@media (max-width:860px){.pg-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.pg-grid{grid-template-columns:1fr}}
 .mock{margin:0 0 56px}
 .mock .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px 48px;align-items:end;margin-bottom:18px}
 .mock .head p{margin:0;color:var(--pencil);font-size:1rem}
@@ -343,15 +351,15 @@ footer a{color:var(--on-cover)}
       <thead><tr><th scope="col">#</th><th scope="col">Secção</th><th scope="col">O que resolve</th></tr></thead>
       <tbody>
         <tr><td>1</td><td>Capa + a conta<span class="was">antes: 2 fotos + faixa em loop</span></td><td>A cara do Martim, o que precisa e porque as tampas contam, num só ecrã. Ações "Onde entrego as tampas?" e "Doar por IBAN".</td></tr>
-        <tr><td>2</td><td>Como me podes ajudar?<span class="was">antes: 4 formas em blocos longos</span></td><td>Tampas (em destaque), dinheiro e tempo, com a foto do Martim com os pais: "somos uma equipa". O visitante escolhe o seu caminho, que fica traçado a vermelho na margem das secções que lhe interessam.</td></tr>
+        <tr><td>2</td><td>Como me podes ajudar?<span class="was">antes: 4 formas em blocos longos</span></td><td>Tampas (em destaque), valor e tempo, com a foto do Martim com os pais: "somos uma equipa". O visitante escolhe o seu caminho, que fica traçado a vermelho na margem das secções que lhe interessam.</td></tr>
         <tr><td>3</td><td>Do lixo da cozinha para a clínica<span class="was">antes: contadores vazios</span></td><td>Foto dos BigBags "167 P", tabela de valores por material, aviso sobre misturas.</td></tr>
         <tr><td>4</td><td>Ficha de trabalho<span class="was">antes: FAQ 11 e texto corrido</span></td><td>Aprender a separar em 30 segundos, com correção imediata.</td></tr>
         <tr><td>5</td><td>Onde entregar<span class="was">antes: FAQ 9, um parágrafo</span></td><td>14 pontos filtráveis por localidade, link para o mapa, nota sobre a VOLTA e alternativa "fala com o pai".</td></tr>
         <tr><td>6</td><td>A minha história<span class="was">antes: 6 parágrafos no topo</span></td><td>Redação curta com "Continuar a ler", os números essenciais numa frase e fotos coladas.</td></tr>
         <tr><td>7</td><td>A agenda da aldeia<span class="was">antes: lista de eventos</span></td><td>Próximo evento em destaque, eventos passados e o "boletim" do BFF Solidário.</td></tr>
         <tr><td>8</td><td>O álbum da minha equipa<span class="was">antes: não existia</span></td><td>Slide com 20 fotos e vídeos reais (BFF, padel, bolos, recolhas, a história do Martim em vídeo), filtrável por evento. Liga a cara do Martim às pessoas que o ajudam.</td></tr>
-        <tr><td>9</td><td>Índice de dúvidas<span class="was">antes: 13 perguntas em acordeão</span></td><td>Um índice remissivo por palavra-chave (Beja, cortiça, IBAN, VOLTA…).</td></tr>
-        <tr><td>10</td><td>Junta-te à minha equipa<span class="was">antes: formulário genérico</span></td><td>Contactos por pessoa e por assunto; formulário com "Quero…" para encaminhar pedidos.</td></tr>
+        <tr><td>9</td><td>Dúvidas frequentes<span class="was">antes: 13 perguntas em acordeão</span></td><td>Uma lista simples de 11 perguntas escritas como as pessoas as fazem, cada uma com um botão + / − para abrir a resposta.</td></tr>
+        <tr><td>10</td><td>Junta-te à minha equipa<span class="was">antes: formulário genérico</span></td><td>Contactos por pessoa e por assunto; formulário com "Quero…" (fazer um donativo, ser ponto de recolha, ajudar no transporte, organizar um evento) para encaminhar pedidos.</td></tr>
         <tr><td>11</td><td>Obrigado<span class="was">antes: não existia</span></td><td>Uma fotografia de multidão a toda a largura: "Sozinho não chegava lá. Convosco, sim."</td></tr>
       </tbody>
     </table>
@@ -425,7 +433,7 @@ footer a{color:var(--on-cover)}
     </div>
 
     <div class="mock">
-      <div class="head"><h3>Como ajudar: escolhe o teu caminho</h3><p>Tampas em destaque; dinheiro e tempo ao lado. Por baixo, o Martim com os pais: "O meu pai recolhe, a minha mãe leva-me aos tratamentos, tu guardas as tampas". Ao escolher, o cartão acende e a margem vermelha das secções relevantes passa de tracejada a contínua.</p></div>
+      <div class="head"><h3>Como ajudar: escolhe o teu caminho</h3><p>Tampas em destaque; valor e tempo ao lado. Por baixo, o Martim com os pais: "O meu pai recolhe, a minha mãe leva-me aos tratamentos, tu guardas as tampas". Ao escolher, o cartão acende e a margem vermelha das secções relevantes passa de tracejada a contínua.</p></div>
       <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>secção 2</span></div><img src="img/nova-ajudar.jpg" alt="Secção Como me podes ajudar com escolha de caminho, três passos numerados para as tampas, cartão de donativo com IBAN e botão copiar" width="1440" height="1229" loading="lazy"></figure>
     </div>
 
@@ -451,8 +459,8 @@ footer a{color:var(--on-cover)}
     </div>
 
     <div class="mock">
-      <div class="head"><h3>Índice de dúvidas e contactos</h3><p>As 13 perguntas passam a um índice remissivo por palavra-chave. O formulário pergunta primeiro "Quero…" para os pais saberem logo do que se trata.</p></div>
-      <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>secção 8</span></div><img src="img/nova-perguntas.jpg" alt="Índice de dúvidas em duas colunas ordenado por letra" width="1440" height="926" loading="lazy"></figure>
+      <div class="head"><h3>Dúvidas frequentes e contactos</h3><p>As perguntas passam a uma lista simples, com + e − para abrir cada resposta. O formulário pergunta primeiro "Quero…", com a nova opção "fazer um donativo", para os pais saberem logo do que se trata.</p></div>
+      <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>secção 8</span></div><img src="img/nova-perguntas.jpg" alt="Lista de dúvidas frequentes com um botão mais em cada pergunta" width="1440" height="926" loading="lazy"></figure>
       <figure class="frame" style="margin-top:24px"><div class="bar"><i></i><i></i><i></i><span>secção 9</span></div><img src="img/nova-contactos.jpg" alt="Contactos do pai, da mãe e da Clínica Kinésio e formulário com opções Quero" width="1440" height="1153" loading="lazy"></figure>
     </div>
 
@@ -465,6 +473,18 @@ footer a{color:var(--on-cover)}
     <div class="mock">
       <div class="head"><h3>Fecho: obrigado a toda a gente</h3><p>Antes do rodapé, uma fotografia da multidão reunida pelo Martim, para acabar a página nas pessoas e não num formulário.</p></div>
       <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>fecho + rodapé</span></div><img src="img/nova-obrigado.jpg" alt="Faixa com fotografia de multidão e o texto Sozinho não chegava lá. Convosco, sim., seguida do rodapé verde" width="1440" height="955" loading="lazy"></figure>
+    </div>
+
+    <div class="mock">
+      <div class="head"><h3>Páginas secundárias</h3><p>Todas no mesmo caderno, com a capa que o visitante escolheu. Há também uma página para cada evento (caminhada, noite de baile, BFF Solidário, torneio de padel) e uma página 404.</p></div>
+      <div class="pg-grid">
+<a class="pg-card" href="mockup/eventos/"><img src="img/pag-ev-index.jpg" alt="Primeiro ecrã da página Agenda de eventos" width="960" height="600" loading="lazy"><b>Agenda de eventos</b><span>Próximo evento em destaque e lista dos que já foram, com resultado e fotografia.</span></a>
+<a class="pg-card" href="mockup/eventos/caminhada-26-setembro-2026.html"><img src="img/pag-ev-caminhada-26-setembro-2026.jpg" alt="Primeiro ecrã da página Página de evento" width="960" height="600" loading="lazy"><b>Página de evento</b><span>Ficha do evento, programa, como te inscreves, adicionar ao calendário e copiar link.</span></a>
+<a class="pg-card" href="mockup/eventos/bff-solidario-2026.html"><img src="img/pag-ev-bff-solidario-2026.jpg" alt="Primeiro ecrã da página Evento que já foi" width="960" height="600" loading="lazy"><b>Evento que já foi</b><span>Boletim com o resultado, vídeos do antes e depois e fotografias.</span></a>
+<a class="pg-card" href="mockup/historia.html"><img src="img/pag-historia.jpg" alt="Primeiro ecrã da página A minha história" width="960" height="600" loading="lazy"><b>A minha história</b><span>A história completa, com o vídeo e as fotografias da família.</span></a>
+<a class="pg-card" href="mockup/privacidade.html"><img src="img/pag-privacidade.jpg" alt="Primeiro ecrã da página Política de privacidade" width="960" height="600" loading="lazy"><b>Política de privacidade</b><span>Rascunho segundo o RGPD, a validar pela família.</span></a>
+<a class="pg-card" href="mockup/cookies.html"><img src="img/pag-cookies.jpg" alt="Primeiro ecrã da página Cookies" width="960" height="600" loading="lazy"><b>Cookies</b><span>O site não usa cookies; explica a memória da capa escolhida, com botão para a esquecer.</span></a>
+      </div>
     </div>
 
     <div class="mock" style="margin-bottom:0">
@@ -488,7 +508,7 @@ footer a{color:var(--on-cover)}
     <div class="ux">
       <div><span class="k">copiar IBAN</span><p>Um toque copia o IBAN sem espaços, pronto a colar na app do banco. Hoje é preciso abrir uma FAQ e selecionar o texto à mão.</p></div>
       <div><span class="k">barra de ações no telemóvel</span><p>"Onde entregar" e "Doar" fixos em baixo, na zona do polegar, em todas as secções.</p></div>
-      <div><span class="k">caminho escolhido</span><p>"Quero ajudar com tampas / dinheiro / tempo" acende o cartão certo e marca as secções relevantes na margem, sem esconder nada.</p></div>
+      <div><span class="k">caminho escolhido</span><p>"Quero ajudar com tampas / valor / tempo" acende o cartão certo e marca as secções relevantes na margem, sem esconder nada.</p></div>
       <div><span class="k">ficha de trabalho</span><p>Funciona com toque, rato, arrastar e teclado. Cada erro explica a regra ("tem mola de ferro"), que é o que se quer ensinar.</p></div>
       <div><span class="k">filtros por localidade</span><p>Boliqueime (8), Albufeira (3), Paderne (2), Olhos de Água (1). Cada ponto abre no Google Maps.</p></div>
       <div><span class="k">datas relativas</span><p>"Amanhã!" e "já foi" em vez de só a data. Eventos passados descem automaticamente.</p></div>
@@ -508,7 +528,7 @@ footer a{color:var(--on-cover)}
     </div>
     <div class="road">
       <div class="phase"><span class="when">fase 1 · 2 a 3 semanas</span><h3>Homepage nova</h3><ul><li>Tema de blocos com o sistema do caderno (cores, letras, componentes).</li><li>Secções 1 a 5 e barra de ações no telemóvel.</li><li>Ficha de trabalho como bloco independente.</li><li>Pontos de recolha editáveis pelo painel (lista simples).</li></ul></div>
-      <div class="phase"><span class="when">fase 2 · 1 a 2 semanas</span><h3>Conteúdo e confiança</h3><ul><li>História, agenda e boletins de eventos.</li><li>Índice de dúvidas.</li><li>Versão EN revista à mão (essencial apenas).</li><li>Imagens de partilha para WhatsApp e Facebook.</li></ul></div>
+      <div class="phase"><span class="when">fase 2 · 1 a 2 semanas</span><h3>Conteúdo e confiança</h3><ul><li>História, agenda e boletins de eventos.</li><li>Dúvidas frequentes.</li><li>Versão EN revista à mão (essencial apenas).</li><li>Imagens de partilha para WhatsApp e Facebook.</li></ul></div>
       <div class="phase"><span class="when">fase 3 · contínuo</span><h3>Medir e afinar</h3><ul><li>Cliques em "Onde entrego", aberturas de mapa, cópias do IBAN, fichas completas, pedidos no formulário.</li><li>Página de cada evento com cartaz e boletim final.</li></ul></div>
     </div>
     <div class="two">
