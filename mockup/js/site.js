@@ -29,7 +29,7 @@ function applyPal(id){
   const P=PALETTES[id]||PALETTES.noite,st=root.style,mix=(a,b,w)=>`color-mix(in srgb, ${a} ${w}%, ${b})`;
   const dark=!!P.hoc;
   const vars={'--cover':P.cover,'--cover-deep':mix(P.cover,'#000',dark?70:80),'--on-cover':P.on,'--on-cover-soft':mix(P.on,P.cover,86),'--cover-ink':mix(P.on,P.cover,86),
-   '--hl':P.hl,'--hl-soft':mix(P.hl,'#fff',26),'--hl-on-cover':P.hoc||mix(P.on,'#7A3412',55),'--pen':P.pen,'--grid':mix(P.pen,'transparent',14),'--rule':mix(P.pen,'#fff',13),
+   '--hl':P.hl,'--hl-soft':mix(P.hl,'#fff',26),'--hl-on-cover':P.hoc||mix(P.on,'#7A3412',55),'--pen':P.pen,'--grid':mix(P.pen,'transparent',7),'--rule':mix(P.pen,'#fff',13),
    '--ring':mix(P.pen,'transparent',26),'--tape':'rgba(255,255,255,.6)','--action':P.act,'--action-ink':P.ai,'--cap1':P.caps[0],'--cap2':P.caps[1],'--cap3':P.caps[2],'--cap4':P.caps[3]};
   for(const k in vars)st.setProperty(k,vars[k]);
   root.dataset.paleta=id;if(dark)root.dataset.dark='';else delete root.dataset.dark;
