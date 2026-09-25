@@ -611,3 +611,14 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .evrow:hover .mini-photo{transform:rotate(0) scale(1.04)}
 @media (max-width:560px){.next .next-photo{margin:20px 20px 6px;justify-self:center;width:min(78%,300px)}.past li{grid-template-columns:70px 1fr 64px}.mini-photo{width:64px}}
 @media (max-width:700px){.evrow .mini-photo{display:none}}
+
+/* eventos: moldura sem fita-cola */
+.next .next-photo .tape{display:none}
+.mini-photo::before{content:none}
+.report-photos{gap:16px;margin-top:20px;padding:4px}
+.report-photos .mini-photo{width:auto;padding:6px 6px 18px}
+.report-photos .mini-photo img{aspect-ratio:4/3;border:0;border-radius:0}
+.report-photos .mini-photo:nth-child(1){transform:rotate(-2deg)}
+.report-photos .mini-photo:nth-child(2){transform:rotate(2deg)}
+
+.ev .tape{display:none}
