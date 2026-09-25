@@ -1,4 +1,7 @@
 :root{
+  --logo-1:#F2784B;
+  --logo-2:#B2573A;
+  --logo-3:#91482D;
   --paper:#FBFCFF;
   /* capa por defeito: Azul-noite e tampinhas (o JS aplica a escolha do visitante) */
   --cover:#1E2B45;
@@ -690,3 +693,11 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .logo-chip.mini .logo-img{height:100%;width:100%;max-width:none;object-fit:contain}
 .community p{font-size:.92rem;color:var(--pencil);margin:0}
 .ficha-logos{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+
+/* logótipo original, com as cores da capa */
+.brand{gap:0}
+.brand-logo{display:block;height:48px;width:auto;aspect-ratio:318.33/113.92}
+.foot-logo{display:block;height:64px;width:auto;aspect-ratio:318.33/113.92;margin-bottom:16px;background:#fff;border-radius:12px;padding:8px 12px;box-sizing:content-box}
+@media (max-width:520px){.brand-logo{height:40px}}
+.community-logos li{gap:14px}
+.community-logos li .logo-chip{flex:none}
