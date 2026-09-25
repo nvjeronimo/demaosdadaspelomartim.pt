@@ -1,0 +1,34 @@
+# Envia o site (pasta mockup/) para a DreamHost sempre que muda.
+# Precisa dos segredos do repositório: DH_HOST, DH_USER, DH_SSH_KEY (e opcional DH_PATH).
+name: Publicar na DreamHost
+on:
+  push:
+    branches: [main]
+    paths: ['mockup/**', '.github/workflows/deploy-dreamhost.yml']
+  workflow_dispatch:
+concurrency: dreamhost
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar segredos
+        id: check
+        env:
+          DH_HOST: ${{ secrets.DH_HOST }}
+        run: |
+          if [ -z "$DH_HOST" ]; then echo "Segredos da DreamHost ainda não configurados: nada a enviar."; echo "skip=1" >> "$GITHUB_OUTPUT"; fi
+      - name: Enviar por rsync
+        if: steps.check.outputs.skip != '1'
+        env:
+          DH_HOST: ${{ secrets.DH_HOST }}
+          DH_USER: ${{ secrets.DH_USER }}
+          DH_SSH_KEY: ${{ secrets.DH_SSH_KEY }}
+          DH_PATH: ${{ secrets.DH_PATH }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$DH_SSH_KEY" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$DH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          rsync -rlptvz --delete --exclude '.DS_Store' --exclude '.well-known' \
+            -e "ssh -i ~/.ssh/id_ed25519" \
+            mockup/ "$DH_USER@$DH_HOST:${DH_PATH:-demaosdadaspelomartim.pt}/"
