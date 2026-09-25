@@ -124,3 +124,6 @@ addEventListener('load',()=>{
   const go=()=>document.querySelectorAll('img[loading="lazy"]').forEach(i=>{i.loading='eager'});
   ('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2500}):setTimeout(go,1500);
 });
+
+/* ano do rodapé sempre atual */
+document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().getFullYear()});
