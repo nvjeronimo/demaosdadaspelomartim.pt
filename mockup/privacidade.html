@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202609251819">
+<link rel="stylesheet" href="css/site.css?v=202609251858">
 </head>
 <body class="sub">
 
@@ -57,6 +57,11 @@
     <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 002 2h10a2 2 0 002-2v-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4.2 19.8l1.1-4A8.3 8.3 0 1112 20.3a8.3 8.3 0 01-3.9-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.3 8.6c.2-.4.5-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.5c0 .3-.1.6-.4.7-.6.3-1.4.4-2.2.1-2.2-.8-4-2.6-4.8-4.8-.3-.8-.2-1.6 0-2.3z" fill="currentColor"/></symbol>
     <symbol id="i-fb" viewBox="0 0 24 24"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4a21 21 0 00-2.4-.1c-2.4 0-4 1.4-4 4.1v2.1H7.6v3h2.6V21z" fill="currentColor"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-locate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M12 2v3.5M12 18.5V22M2 12h3.5M18.5 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 48 48"><path d="M4 12h24v20H4zM28 19h9l7 7v6H28z" fill="#fff" stroke="#1B1D2A" stroke-width="2.6" stroke-linejoin="round"/><rect x="8" y="16" width="16" height="12" rx="2" fill="#F2F3F6" stroke="#1B1D2A" stroke-width="2"/><circle cx="12" cy="35" r="4.5" fill="#1B1D2A"/><circle cx="36" cy="35" r="4.5" fill="#1B1D2A"/><path d="M31 21h5l4 4h-9z" fill="#BFE6F0" stroke="#1B1D2A" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-tt" viewBox="0 0 24 24"><path d="M13.5 3v11.6a3.6 3.6 0 1 1-3.6-3.6" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 3.2c.5 2.7 2.4 4.5 5.3 4.8" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></symbol>
     <symbol id="i-xs" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -119,7 +124,8 @@
       <h2 id="tempo">Quanto tempo os guardamos</h2>
       <p>Guardamos as mensagens enquanto for preciso para tratar do teu pedido e, no máximo, 12 meses depois do último contacto. Depois apagamo-las.</p>
       <h2 id="partilha">Com quem os partilhamos</h2>
-      <p>Não vendemos nem cedemos os teus dados a ninguém. As mensagens do formulário chegam por email aos pais do Martim através de um serviço de envio de formulários <span class="todo">[serviço a definir]</span>, que só as trata por nossa conta.</p>
+      <p>Não vendemos nem cedemos os teus dados a ninguém. O formulário não envia nada sozinho: abre o teu programa de email com a mensagem pronta, e és tu que a envias para o pai do Martim. O mesmo acontece com os pedidos para o mural dos amigos, que só mostra o primeiro nome e, se quiseres, a terra.</p>
+      <p class="small"><span class="todo">Se a família passar a usar um serviço de formulários (por exemplo Formspree ou Netlify Forms), este parágrafo tem de indicar esse serviço.</span></p>
       <h2 id="donativos">Donativos</h2>
       <p>Os donativos são feitos por transferência bancária diretamente para a conta solidária do Martim, ou diretamente à Clínica Kinésio. O site não recolhe dados bancários. A Clínica Kinésio emite fatura com NIF a quem doar diretamente, segundo as regras dela.</p>
       <h2 id="fotos">Fotografias e vídeos</h2>
@@ -149,7 +155,7 @@
     </div>
     <div>
       <h3>Atalhos</h3>
-      <ul><li><a href="index.html#entregar">Onde entregar</a></li><li><a href="index.html#doar">Doar por IBAN</a></li><li><a href="eventos/">Todos os eventos</a></li><li><a href="index.html#perguntas">Dúvidas frequentes</a></li></ul>
+      <ul><li><a href="index.html#entregar">Onde entregar</a></li><li><a href="mapa.html">Mapa dos pontos</a></li><li><a href="organiza.html">Organiza uma recolha</a></li><li><a href="cartaz.html">Cartaz para imprimir</a></li><li><a href="mural.html">Mural dos amigos</a></li><li><a href="index.html#doar">Doar por IBAN</a></li><li><a href="eventos/">Todos os eventos</a></li><li><a href="index.html#perguntas">Dúvidas frequentes</a></li></ul>
     </div>
     <div class="fine"><span>© 2026 Vamos Ajudar o Martim</span><span><a href="privacidade.html">Política de privacidade</a> · <a href="cookies.html">Cookies</a> · <a href="en/privacidade.html" lang="en" hreflang="en">English</a></span></div>
   </div>
@@ -165,6 +171,6 @@
   <a class="btn btn-red" href="index.html#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
-<script src="js/site.js?v=202609251819"></script>
+<script src="js/site.js?v=202609251858"></script>
 </body>
 </html>

@@ -93,7 +93,7 @@ document.querySelectorAll('[data-copy-url]').forEach(b=>b.addEventListener('clic
   b.lastChild.textContent=ok?(EN?'Link copied':'Link copiado'):location.href;setTimeout(()=>{b.lastChild.textContent=lbl},2400);
 }));
 
-/* ---------- partilhar (jogo e eventos): nativo no telemóvel, WhatsApp, Facebook, X, copiar ---------- */
+/* ---------- partilhar (jogo e eventos): nativo no telemóvel, WhatsApp, Facebook, X, TikTok, copiar ---------- */
 document.querySelectorAll('.share').forEach(box=>{
   const nat=box.querySelector('[data-share="native"]');
   if(nat&&navigator.share)nat.hidden=false;
@@ -105,6 +105,14 @@ document.querySelectorAll('.share').forEach(box=>{
     if(k==='native'){try{await navigator.share({title:document.title,text:t,url:u})}catch(err){}return}
     if(k==='copy'){let ok=true;try{await navigator.clipboard.writeText(t+' '+u)}catch(err){ok=false}
       const s=b.querySelector('span');const old=s.textContent;s.textContent=ok?(EN?'Copied':'Copiado'):u;b.classList.add('done');setTimeout(()=>{s.textContent=old;b.classList.remove('done')},2200);return}
+    if(k==='tiktok'){
+      /* o TikTok não tem link de partilha para a web: copia texto e link e abre o TikTok.
+         No desafio, a página trata primeiro da imagem do diploma (evento share-tiktok). */
+      const s=b.querySelector('span'),old=s.textContent;
+      if(box.id==='game-share'){box.dispatchEvent(new CustomEvent('share-tiktok',{detail:{btn:b}}));return}
+      let ok=true;try{await navigator.clipboard.writeText(t+' '+u)}catch(err){ok=false}
+      s.textContent=ok?(EN?'Text copied, paste it on TikTok':'Texto copiado, cola no TikTok'):u;b.classList.add('done');setTimeout(()=>{s.textContent=old;b.classList.remove('done')},3200);
+      window.open('https://www.tiktok.com/upload','_blank','noopener');return}
     const links={whatsapp:'https://wa.me/?text='+encodeURIComponent(t+' '+u),facebook:'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(u),
       x:'https://twitter.com/intent/tweet?text='+encodeURIComponent(t)+'&url='+encodeURIComponent(u)};
     window.open(links[k],'_blank','noopener,width=640,height=560');
