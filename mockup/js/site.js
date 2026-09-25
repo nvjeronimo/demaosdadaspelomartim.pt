@@ -92,3 +92,27 @@ document.querySelectorAll('[data-copy-url]').forEach(b=>b.addEventListener('clic
   try{await navigator.clipboard.writeText(location.href)}catch(e){ok=false}
   b.lastChild.textContent=ok?(EN?'Link copied':'Link copiado'):location.href;setTimeout(()=>{b.lastChild.textContent=lbl},2400);
 }));
+
+/* ---------- partilhar (jogo e eventos): nativo no telemóvel, WhatsApp, Facebook, X, copiar ---------- */
+document.querySelectorAll('.share').forEach(box=>{
+  const nat=box.querySelector('[data-share="native"]');
+  if(nat&&navigator.share)nat.hidden=false;
+  const url=()=>{const u=new URL(box.dataset.shareUrl||'',location.href);u.search='';return u.href};
+  const text=()=>box.dataset.shareText||document.title;
+  box.addEventListener('click',async e=>{
+    const b=e.target.closest('[data-share]');if(!b)return;
+    const k=b.dataset.share,u=url(),t=text();
+    if(k==='native'){try{await navigator.share({title:document.title,text:t,url:u})}catch(err){}return}
+    if(k==='copy'){let ok=true;try{await navigator.clipboard.writeText(t+' '+u)}catch(err){ok=false}
+      const s=b.querySelector('span');const old=s.textContent;s.textContent=ok?(EN?'Copied':'Copiado'):u;b.classList.add('done');setTimeout(()=>{s.textContent=old;b.classList.remove('done')},2200);return}
+    const links={whatsapp:'https://wa.me/?text='+encodeURIComponent(t+' '+u),facebook:'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(u),
+      x:'https://twitter.com/intent/tweet?text='+encodeURIComponent(t)+'&url='+encodeURIComponent(u)};
+    window.open(links[k],'_blank','noopener,width=640,height=560');
+  });
+});
+
+/* ---------- imagens: depois de abrir, carrega em segundo plano as que ainda esperam (Safari iOS) ---------- */
+addEventListener('load',()=>{
+  const go=()=>document.querySelectorAll('img[loading="lazy"]').forEach(i=>{i.loading='eager'});
+  ('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2500}):setTimeout(go,1500);
+});
