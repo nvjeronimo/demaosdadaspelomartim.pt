@@ -1,13 +1,13 @@
 :root{
-  --logo-1:#F2784B;
-  --logo-2:#B2573A;
-  --logo-3:#91482D;
+  --logo-1:#df6e45;
+  --logo-2:#a14f32;
+  --logo-3:#592c1c;
   --paper:#FBFCFF;
   /* capa por defeito: Azul-noite e tampinhas (o JS aplica a escolha do visitante) */
   --cover:#1E2B45;
   --cover-deep:#151E30;
   --on-cover:#F4F1EA;
-  --on-cover-soft:#D8D9DD;
+  --on-cover-soft:#D6D5D3;
   --cover-ink:var(--on-cover-soft);
   --hl:#FFB86B;
   --hl-soft:#FFEAD3;
@@ -27,10 +27,6 @@
   --pencil:#474C5E;
   --green:#12884A;
   --cap-orange:#FF7A1A;
-  --cap-pink:#F0508C;
-  --cap-sky:#2AA7E8;
-  --metal:#A7ADB8;
-  --cork:#B98552;
   --display:"Bricolage Grotesque", system-ui, sans-serif;
   --hand:"Gochi Hand", cursive;
   --body:"Atkinson Hyperlegible", system-ui, sans-serif;
@@ -82,8 +78,6 @@ p{margin:0 0 1em;max-width:62ch}
 .page[data-path].on::before{opacity:1;width:3px}
 .page[data-path]:not(.on)::before{background:repeating-linear-gradient(var(--red) 0 10px, transparent 10px 18px);opacity:.5}
 .inner{max-width:1180px;margin:0 auto}
-.margin-note{position:absolute;left:0;width:var(--margin);padding-right:10px;text-align:right;font-family:var(--hand);color:var(--red-ink);font-size:1.25rem;line-height:1.1;transform:rotate(-4deg)}
-@media (max-width:760px){.margin-note{display:none}}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:.6em;font:700 1.0625rem/1 var(--body);padding:1em 1.4em;border-radius:10px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .2s}
@@ -99,10 +93,7 @@ p{margin:0 0 1em;max-width:62ch}
 
 /* ============ NAV ============ */
 .nav{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px clamp(16px,3vw,32px);background:rgba(251,252,255,.94);backdrop-filter:saturate(1.2) blur(6px);border-bottom:2px solid var(--ink)}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-.brand-mark{width:38px;height:38px;flex:none}
-.brand b{font:800 1.125rem/1 var(--display);letter-spacing:-.02em}
-.brand span{display:block;font:400 .95rem/1 var(--hand);color:var(--red-ink);margin-top:2px}
+.brand{display:flex;align-items:center;text-decoration:none;color:var(--ink)}
 .tabs{display:flex;gap:4px;list-style:none;margin:0;padding:0}
 .tabs a{display:block;padding:10px 14px 12px;font:700 .95rem/1 var(--body);color:var(--ink);text-decoration:none;border-radius:8px 8px 0 0;position:relative}
 .tabs a::after{content:"";position:absolute;left:14px;right:14px;bottom:4px;height:4px;border-radius:2px;background:var(--tab);transform:scaleX(.35);transform-origin:left;transition:transform .35s var(--ease)}
@@ -114,7 +105,7 @@ p{margin:0 0 1em;max-width:62ch}
 .nav .btn{padding:.75em 1.1em;font-size:.95rem}
 .navlink{font-weight:700;color:var(--ink);padding:8px 6px}
 @media (max-width:1020px){.tabs{display:none}}
-@media (max-width:760px){.nav .btn-red,.navlink{display:none}.brand span{display:none}}
+@media (max-width:760px){.nav .btn-red,.navlink{display:none}}
 
 /* ============ HERO: cover + page ============ */
 .hero{position:relative;display:grid;grid-template-columns:minmax(0,46fr) 28px minmax(0,54fr);min-height:clamp(640px,calc(100svh - 62px),940px);border-bottom:2px solid var(--ink)}
@@ -593,123 +584,79 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 
 /* 404 */
 .s404{grid-template-columns:1fr;min-height:70svh;align-items:center}
-.big404{font:800 clamp(6rem,20vw,14rem)/.85 var(--display);font-stretch:84%;color:var(--hl);margin:0}
+.big404{font:800 clamp(6rem,20vw,14rem)/.85 var(--display);font-stretch:84%;color:var(--on-cover);margin:0;display:inline-block;background:linear-gradient(transparent 62%,var(--hl) 62%,var(--hl) 90%,transparent 90%);padding:0 .06em}
 
 .legal-single{grid-template-columns:minmax(0,1fr)}
 .subhero .label small{width:96px}
 .subhero .label{width:min(100%,370px)}
 
-/* moldura: cartaz do próximo evento e miniaturas dos eventos anteriores */
+/* ============ MOLDURAS DOS EVENTOS (sem fita-cola) ============ */
 .next .next-photo{position:relative;width:auto;margin:26px 8px 26px 26px;transform:rotate(-3deg);padding:10px 10px 36px;align-self:center}
 .next .next-photo img{width:100%;height:auto;min-height:0;aspect-ratio:1/1;object-fit:cover}
 .next .next-photo figcaption{bottom:8px;font-size:1.15rem}
 .next-lg .next-photo{margin:32px 10px 32px 32px}
 .mini-photo{display:block;flex:none;width:84px;background:#fff;padding:5px 5px 14px;box-shadow:0 10px 16px -10px rgba(10,20,50,.55),0 1px 3px rgba(10,20,50,.15);transform:rotate(3deg);position:relative;transition:transform .25s var(--ease)}
-.mini-photo::before{content:"";position:absolute;top:-6px;left:50%;width:34px;height:12px;background:var(--tape);transform:translateX(-50%) rotate(-4deg)}
 .mini-photo img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
 .past li:nth-child(even) .mini-photo,.evlist li:nth-child(even) .mini-photo{transform:rotate(-3deg)}
 .past li{grid-template-columns:86px 1fr 84px;align-items:center}
 .past li:hover .mini-photo{transform:rotate(0) scale(1.05)}
 .evrow .mini-photo{width:130px;padding:7px 7px 20px}
 .evrow:hover .mini-photo{transform:rotate(0) scale(1.04)}
-@media (max-width:560px){.next .next-photo{margin:20px 20px 6px;justify-self:center;width:min(78%,300px)}.past li{grid-template-columns:70px 1fr 64px}.mini-photo{width:64px}}
-@media (max-width:700px){.evrow .mini-photo{display:none}}
-
-/* eventos: moldura sem fita-cola */
-.next .next-photo .tape{display:none}
-.mini-photo::before{content:none}
 .report-photos{gap:16px;margin-top:20px;padding:4px}
 .report-photos .mini-photo{width:auto;padding:6px 6px 18px}
 .report-photos .mini-photo img{aspect-ratio:4/3;border:0;border-radius:0}
 .report-photos .mini-photo:nth-child(1){transform:rotate(-2deg)}
 .report-photos .mini-photo:nth-child(2){transform:rotate(2deg)}
+@media (max-width:560px){.next .next-photo{margin:20px 20px 6px;justify-self:center;width:min(78%,300px)}.past li{grid-template-columns:70px 1fr 64px}.mini-photo{width:64px}}
+@media (max-width:700px){.evrow .mini-photo{display:none}}
 
-.ev .tape{display:none}
-
-/* ============ LOGÓTIPOS DOS PARCEIROS ============ */
+/* ============ LOGÓTIPOS: sempre em caixa branca, tamanho fixo ============ */
 .logo-chip{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1.5px solid var(--rule);border-radius:10px;padding:6px 10px;vertical-align:middle;line-height:0}
-.logo-chip .logo-img{height:26px;width:auto;max-width:130px;object-fit:contain}
-.logo-chip .logo-img.sq{height:34px}
-.logo-chip.xs{padding:2px 6px;border-radius:6px;margin-right:4px}
-.logo-chip.xs .logo-img{height:14px;max-width:76px}
-.logo-chip.sm .logo-img{height:24px;max-width:110px}
-.logo-chip.sm .logo-img.sq{height:30px}
-.logo-chip.lg{padding:14px 18px;border:2px solid var(--ink);border-radius:14px}
-.logo-chip.lg .logo-img{height:48px;max-width:170px}
-.logo-chip.lg .logo-img.sq{height:62px}
+.logo-chip .logo-img{height:100%;width:100%;max-width:none;object-fit:contain}
+.logo-chip.xs{width:56px;height:24px;padding:2px 4px;border-radius:5px;margin-right:4px}
+.logo-chip.sm{height:30px;padding:4px 7px;border-radius:7px}
+.logo-chip.sm .logo-img{width:auto;max-height:20px;max-width:78px}
+.logo-chip.lg{width:120px;height:56px;padding:7px 9px}
+.logo-chip.mini{width:96px;height:58px;padding:5px 8px;border-radius:8px}
+.ficha-logos .logo-chip.mini{width:84px;height:42px}
+.foot-logos{display:flex!important;flex-wrap:wrap;gap:6px!important}
+.foot-logos .logo-chip{width:58px;height:30px;padding:4px 5px;border-radius:6px;border-color:transparent}
 .rates .mat small{display:flex;align-items:center;gap:2px;margin-top:3px}
 .with-logo .logo-chip{float:right;margin:2px 0 8px 14px}
 .logos-inline{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px!important}
 .label .row{position:relative}
-.label-logo{width:26px;height:26px;margin-left:auto;align-self:center;flex:none}
-.volta-logo{float:right;margin:0 0 10px 12px;border-color:transparent}
+.label-logo{width:20px;height:20px;margin-left:auto;align-self:center;flex:none}
+.volta-logo{float:right;margin:0 0 6px 12px;border-color:transparent}
 .who-logo{background:#fff!important;padding:6px}
 .who-logo img{width:100%;height:100%;object-fit:contain}
+
+/* parceiros */
 .partners{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:2px solid var(--ink)}
-.partner{display:grid;grid-template-columns:minmax(150px,210px) minmax(0,1fr);gap:24px;align-items:start;padding:28px 24px 28px 0;border-bottom:1.5px solid var(--rule)}
+.partner{display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;align-items:start;padding:28px 24px 28px 0;border-bottom:1.5px solid var(--rule)}
 .partner:nth-child(odd){border-right:1.5px solid var(--rule)}
 .partner:nth-child(even){padding-left:28px}
-.partner-logos{display:flex;flex-wrap:wrap;gap:10px}
+.partner-logos{display:grid;gap:6px}
 .partner h3{margin-bottom:2px}
 .partner .where{font:400 1.2rem/1.2 var(--hand);color:var(--pen);margin:0 0 10px}
 .partner p{font-size:1.02rem;margin-bottom:10px}
 .partner a{font-weight:700}
-.community{margin-top:26px;font-size:1.02rem;color:var(--pencil);max-width:80ch}
-.community b{color:var(--ink)}
-.foot-logos{display:flex!important;flex-wrap:wrap;gap:10px!important}
-.foot-logos .logo-chip{border-color:transparent}
-.foot-logos .logo-chip .logo-img{height:28px;max-width:120px}
-.foot-logos .logo-chip .logo-img.sq{height:36px}
-@media (max-width:900px){.partners{grid-template-columns:1fr}.partner,.partner:nth-child(even){border-right:0;padding-left:0;padding-right:0}}
+@media (max-width:900px){.partners{grid-template-columns:1fr}.partner,.partner:nth-child(odd),.partner:nth-child(even){border-right:0;padding-left:0;padding-right:0}}
 @media (max-width:520px){.partner{grid-template-columns:1fr;gap:14px}}
-/* afinação: caixas de tamanho fixo para logótipos quadrados e horizontais */
-.logo-chip.xs{width:64px;height:28px;padding:2px 4px}
-.logo-chip.xs .logo-img{height:100%;width:100%;max-width:none;object-fit:contain}
-.logo-chip.lg{width:100%;height:104px;padding:12px}
-.logo-chip.lg .logo-img,.logo-chip.lg .logo-img.sq{height:100%;width:100%;max-width:none;object-fit:contain}
-.partner-logos{display:grid;gap:10px}
-.foot-logos .logo-chip{width:112px;height:58px;padding:8px}
-.foot-logos .logo-chip .logo-img,.foot-logos .logo-chip .logo-img.sq{height:100%;width:100%;max-width:none;object-fit:contain}
-.logo-chip.sm{height:44px;min-width:92px;padding:6px 10px}
-.logo-chip.sm .logo-img,.logo-chip.sm .logo-img.sq{height:100%;max-height:32px;width:auto;max-width:120px;object-fit:contain}
-.logo-chip.xs{width:86px;height:40px;padding:3px 6px}
-/* logótipos mais discretos */
-.partner{grid-template-columns:120px minmax(0,1fr);gap:20px}
-.partner-logos{gap:6px}
-.logo-chip.lg{width:120px;height:56px;padding:7px 9px;border-width:1.5px;border-color:var(--rule);border-radius:10px}
-.logo-chip.sm{height:30px;min-width:0;padding:4px 7px;border-radius:7px}
-.logo-chip.sm .logo-img,.logo-chip.sm .logo-img.sq{max-height:20px;max-width:78px}
-.logo-chip.xs{width:56px;height:24px;padding:2px 4px;border-radius:5px}
-.foot-logos{gap:6px!important}
-.foot-logos .logo-chip{width:58px;height:30px;padding:4px 5px;border-radius:6px}
-.label-logo{width:20px;height:20px}
-.volta-logo{margin-bottom:6px}
+
 /* apoios da comunidade: separados e em escala menor */
-.community{margin-top:34px;padding-top:22px;border-top:1.5px dashed var(--rule);max-width:none}
+.community{margin-top:34px;padding-top:22px;border-top:1.5px dashed var(--rule);font-size:1.02rem;color:var(--pencil)}
+.community b{color:var(--ink)}
 .community-h{font:700 .78rem/1 var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--pencil);margin:0 0 14px}
-.community-logos{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px}
-.community-logos li{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--pencil)}
-.logo-chip.mini{width:52px;height:26px;padding:3px 4px;border-radius:5px;border-color:var(--rule)}
-.logo-chip.mini .logo-img{height:100%;width:100%;max-width:none;object-fit:contain}
+.community-logos{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-wrap:wrap;gap:14px 28px}
+.community-logos li{display:flex;align-items:center;gap:14px;font-size:.95rem;color:var(--pencil)}
+.community-logos li .logo-chip{flex:none}
 .community p{font-size:.92rem;color:var(--pencil);margin:0}
 .ficha-logos{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 
-/* logótipo original, com as cores da capa */
-.brand{gap:0}
+/* logótipo original: cabeçalho a cores da capa, rodapé na versão branca */
 .brand-logo{display:block;height:48px;width:auto;aspect-ratio:318.33/113.92}
-.foot-logo{display:block;height:64px;width:auto;aspect-ratio:318.33/113.92;margin-bottom:16px;background:#fff;border-radius:12px;padding:8px 12px;box-sizing:content-box}
+.foot-logo{display:block;height:72px;width:auto;aspect-ratio:318.33/113.92;margin-bottom:16px}
 @media (max-width:520px){.brand-logo{height:40px}}
-.community-logos li{gap:14px}
-.community-logos li .logo-chip{flex:none}
-
-/* rodapé: versão branca do logótipo (em capas claras, a mesma versão numa cor escura) */
-.foot-logo{background:none;padding:0;border-radius:0;height:72px}
-/* apoios da comunidade: logótipos maiores e legíveis */
-.logo-chip.mini{width:92px;height:46px;padding:5px 7px;border-radius:8px}
-.community-logos{gap:14px 28px}
-.community-logos li{font-size:.95rem}
-.ficha-logos .logo-chip.mini{width:84px;height:42px}
-.logo-chip.mini{width:96px;height:58px;padding:5px 8px}
 
 /* telemóvel: nada sai do ecrã na agenda e no boletim */
 .agenda>*{min-width:0}
@@ -724,7 +671,6 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
   .community-logos{gap:12px}
   .community-logos li{width:100%}
 }
-@media (max-width:900px){.partner:nth-child(odd){border-right:0}}
 @media (max-width:560px){
   .evposter .photo,.storyside .photo,.gallery .photo{width:92%;margin-inline:auto}
   .evposter .photo,.storyside .photo:nth-of-type(odd),.storyside .photo:nth-of-type(even){transform:rotate(-1.2deg)}
