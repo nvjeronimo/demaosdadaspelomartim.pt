@@ -1,0 +1,1865 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-26T00:30:00Z",
+  "title": "Design System: De mãos dadas pelo Martim",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Squared Paper",
+        "canonical": "#FBFCFF",
+        "tonalRamp": [
+          "#0A0B0D",
+          "#232426",
+          "#3F4042",
+          "#5D5D60",
+          "#7C7D80",
+          "#9D9EA1",
+          "#C3C4C7",
+          "#EDEEF1"
+        ]
+      },
+      "sheet-white": {
+        "role": "neutral",
+        "displayName": "Sheet White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#404040",
+          "#5D5D5D",
+          "#7D7D7D",
+          "#9E9E9E",
+          "#C4C4C4",
+          "#EEEEEE"
+        ]
+      },
+      "cover": {
+        "role": "primary",
+        "displayName": "Night-Blue Cover",
+        "canonical": "#1E2B45",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#020920",
+          "#17233D",
+          "#32405B",
+          "#4F5E7B",
+          "#6D7E9C",
+          "#8E9FBF",
+          "#B3C5E6",
+          "#E7EFFE"
+        ]
+      },
+      "cover-deep": {
+        "role": "primary",
+        "displayName": "Night Binding",
+        "canonical": "#151E30",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#040A1B",
+          "#1B2436",
+          "#354054",
+          "#535E73",
+          "#727E94",
+          "#929FB6",
+          "#B8C5DD",
+          "#E7EFFE"
+        ]
+      },
+      "on-cover": {
+        "role": "primary",
+        "displayName": "Cover Text",
+        "canonical": "#F4F1EA",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#0D0B07",
+          "#26241F",
+          "#423F3A",
+          "#605D57",
+          "#807D77",
+          "#A19E98",
+          "#C7C4BD",
+          "#F1EEE7"
+        ]
+      },
+      "on-cover-soft": {
+        "role": "primary",
+        "displayName": "Soft Cover Text",
+        "canonical": "#D6D5D3",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#0A0B0E",
+          "#232427",
+          "#3F3F43",
+          "#5C5D61",
+          "#7C7D81",
+          "#9D9EA2",
+          "#C3C4C8",
+          "#EDEEF2"
+        ]
+      },
+      "hl": {
+        "role": "primary",
+        "displayName": "Apricot Highlighter",
+        "canonical": "#FFB86B",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#140800",
+          "#351E03",
+          "#5C3600",
+          "#83500C",
+          "#AE6C12",
+          "#D28E3F",
+          "#FAB467",
+          "#FEEBD9"
+        ]
+      },
+      "hl-soft": {
+        "role": "primary",
+        "displayName": "Highlighter Wash",
+        "canonical": "#FFEAD3",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#130900",
+          "#30210E",
+          "#4D3C29",
+          "#6C5A46",
+          "#8C7A65",
+          "#AE9B85",
+          "#D5C0AA",
+          "#FEEBD6"
+        ]
+      },
+      "hl-on-cover": {
+        "role": "primary",
+        "displayName": "Highlighter Ink",
+        "canonical": "#FFB86B",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#140800",
+          "#351E03",
+          "#5C3600",
+          "#83500C",
+          "#AE6C12",
+          "#D28E3F",
+          "#FAB467",
+          "#FEEBD9"
+        ]
+      },
+      "pen": {
+        "role": "tertiary",
+        "displayName": "Dark Pen",
+        "canonical": "#1E2B45",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#020920",
+          "#17233D",
+          "#32405B",
+          "#4F5E7B",
+          "#6D7E9C",
+          "#8E9FBF",
+          "#B3C5E6",
+          "#E7EFFE"
+        ]
+      },
+      "grid": {
+        "role": "neutral",
+        "displayName": "Grid",
+        "canonical": "rgba(30,43,69,.07)",
+        "note": "Translucent; ramp built from its base colour #1E2B45. Default (noite) value; overridden per cover by applyPal().",
+        "coverSlot": true,
+        "tonalRamp": [
+          "#020920",
+          "#17233D",
+          "#32405B",
+          "#4F5E7B",
+          "#6D7E9C",
+          "#8E9FBF",
+          "#B3C5E6",
+          "#E7EFFE"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Ruled Line",
+        "canonical": "#DFE1E6",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#0A0B0E",
+          "#222428",
+          "#3E4044",
+          "#5C5D62",
+          "#7B7D82",
+          "#9C9EA3",
+          "#C2C4C9",
+          "#ECEEF3"
+        ]
+      },
+      "ring": {
+        "role": "neutral",
+        "displayName": "Focus Ring",
+        "canonical": "rgba(30,43,69,.26)",
+        "note": "Translucent; ramp built from its base colour #1E2B45. Default (noite) value; overridden per cover by applyPal().",
+        "coverSlot": true,
+        "tonalRamp": [
+          "#020920",
+          "#17233D",
+          "#32405B",
+          "#4F5E7B",
+          "#6D7E9C",
+          "#8E9FBF",
+          "#B3C5E6",
+          "#E7EFFE"
+        ]
+      },
+      "tape": {
+        "role": "neutral",
+        "displayName": "Tape",
+        "canonical": "rgba(255,255,255,.6)",
+        "note": "Translucent; ramp built from its base colour #FFFFFF. Default (noite) value; overridden per cover by applyPal().",
+        "coverSlot": true,
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#404040",
+          "#5D5D5D",
+          "#7D7D7D",
+          "#9E9E9E",
+          "#C4C4C4",
+          "#EEEEEE"
+        ]
+      },
+      "action": {
+        "role": "secondary",
+        "displayName": "Action",
+        "canonical": "#F2784B",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#1A0400",
+          "#411302",
+          "#6C2709",
+          "#9E3707",
+          "#C95324",
+          "#F07649",
+          "#FAAF95",
+          "#FEEAE2"
+        ]
+      },
+      "action-ink": {
+        "role": "secondary",
+        "displayName": "Action Text",
+        "canonical": "#1B1D2A",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#090A16",
+          "#212330",
+          "#3C3F4D",
+          "#5A5D6C",
+          "#797C8D",
+          "#9A9DAE",
+          "#C0C3D5",
+          "#EAEDFE"
+        ]
+      },
+      "cap1": {
+        "role": "tertiary",
+        "displayName": "Cover Cap Orange",
+        "canonical": "#FF9A4D",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#170600",
+          "#391B04",
+          "#623002",
+          "#8C4A10",
+          "#B96418",
+          "#E48131",
+          "#FCB17D",
+          "#FEEADD"
+        ]
+      },
+      "cap2": {
+        "role": "tertiary",
+        "displayName": "Cover Cap Pink",
+        "canonical": "#F28AB3",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#1C010C",
+          "#450526",
+          "#711242",
+          "#953660",
+          "#B95780",
+          "#DF79A1",
+          "#FDA6C7",
+          "#FFE7EF"
+        ]
+      },
+      "cap3": {
+        "role": "tertiary",
+        "displayName": "Cover Cap Sky",
+        "canonical": "#6EC1EA",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#000D16",
+          "#052837",
+          "#04465F",
+          "#156687",
+          "#3187AE",
+          "#56A9D2",
+          "#7DD0FA",
+          "#DDF2FE"
+        ]
+      },
+      "cap4": {
+        "role": "tertiary",
+        "displayName": "Cover Cap Green",
+        "canonical": "#79C98A",
+        "coverSlot": true,
+        "note": "Default (noite) value; overridden per cover by applyPal().",
+        "tonalRamp": [
+          "#001003",
+          "#012D10",
+          "#094D21",
+          "#1A7036",
+          "#419155",
+          "#64B375",
+          "#8ADA9A",
+          "#CAFED3"
+        ]
+      },
+      "red": {
+        "role": "secondary",
+        "displayName": "Correction-Pen Red",
+        "canonical": "#E0301E",
+        "tonalRamp": [
+          "#1F0000",
+          "#4A0301",
+          "#790F06",
+          "#A92214",
+          "#E0301E",
+          "#F76D5A",
+          "#FAAEA1",
+          "#FEE9E5"
+        ]
+      },
+      "red-ink": {
+        "role": "secondary",
+        "displayName": "Red Ink",
+        "canonical": "#C21F0E",
+        "tonalRamp": [
+          "#1F0000",
+          "#480803",
+          "#7A0A02",
+          "#AB1E0F",
+          "#DA3B29",
+          "#F96B57",
+          "#FBAD9F",
+          "#FEE9E5"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "School Ink",
+        "canonical": "#1B1D2A",
+        "tonalRamp": [
+          "#090A16",
+          "#212330",
+          "#3C3F4D",
+          "#5A5D6C",
+          "#797C8D",
+          "#9A9DAE",
+          "#C0C3D5",
+          "#EAEDFE"
+        ]
+      },
+      "pencil": {
+        "role": "neutral",
+        "displayName": "Pencil Grey",
+        "canonical": "#474C5E",
+        "tonalRamp": [
+          "#070A18",
+          "#1F2333",
+          "#3A3F50",
+          "#585D6F",
+          "#777C90",
+          "#989EB2",
+          "#BDC3D9",
+          "#E9EEFE"
+        ]
+      },
+      "correction-wash": {
+        "role": "neutral",
+        "displayName": "Correction Wash",
+        "canonical": "#FFF4F2",
+        "tonalRamp": [
+          "#100908",
+          "#2A2221",
+          "#463D3C",
+          "#645B5A",
+          "#847B79",
+          "#A69C9A",
+          "#CCC1BF",
+          "#F7ECEA"
+        ]
+      },
+      "green": {
+        "role": "neutral",
+        "displayName": "Stamp Green",
+        "canonical": "#12884A",
+        "tonalRamp": [
+          "#001004",
+          "#012D14",
+          "#094D28",
+          "#02713B",
+          "#269455",
+          "#50B675",
+          "#78DE9A",
+          "#C6FFD6"
+        ]
+      },
+      "cap-orange": {
+        "role": "data",
+        "displayName": "Cap Orange",
+        "canonical": "#FF7A1A",
+        "tonalRamp": [
+          "#180600",
+          "#3C1803",
+          "#682C00",
+          "#93440C",
+          "#C25C13",
+          "#F77205",
+          "#FFAE84",
+          "#FEEAE0"
+        ]
+      },
+      "cap-sky": {
+        "role": "data",
+        "displayName": "Cap Sky",
+        "canonical": "#2AA7E8",
+        "tonalRamp": [
+          "#000D17",
+          "#03273B",
+          "#0C4562",
+          "#0A6590",
+          "#1086BF",
+          "#2EA9EB",
+          "#81CEFF",
+          "#DFF2FE"
+        ]
+      },
+      "cap-pink": {
+        "role": "data",
+        "displayName": "Cap Pink",
+        "canonical": "#F0508C",
+        "tonalRamp": [
+          "#1C010A",
+          "#460521",
+          "#77043B",
+          "#A71657",
+          "#D53576",
+          "#FC5C96",
+          "#FEA7C0",
+          "#FEE8ED"
+        ]
+      },
+      "cork": {
+        "role": "data",
+        "displayName": "Cork",
+        "canonical": "#C9955E",
+        "tonalRamp": [
+          "#140800",
+          "#361E01",
+          "#5A3607",
+          "#815116",
+          "#A3713A",
+          "#C6935C",
+          "#EEB880",
+          "#FEEBD8"
+        ]
+      },
+      "metal": {
+        "role": "data",
+        "displayName": "Carica Metal",
+        "canonical": "#C3C8D2",
+        "tonalRamp": [
+          "#080B12",
+          "#20242B",
+          "#3C4048",
+          "#595E66",
+          "#797D86",
+          "#9A9EA8",
+          "#BFC4CE",
+          "#E9EFF9"
+        ]
+      },
+      "logo-1": {
+        "role": "secondary",
+        "displayName": "Logo Front and Lettering",
+        "canonical": "#F2784B",
+        "coverSlot": true,
+        "note": "Equals --action; default (noite) value.",
+        "tonalRamp": [
+          "#1A0400",
+          "#411302",
+          "#6C2709",
+          "#9E3707",
+          "#C95324",
+          "#F07649",
+          "#FAAF95",
+          "#FEEAE2"
+        ]
+      },
+      "logo-2": {
+        "role": "secondary",
+        "displayName": "Logo Shade",
+        "canonical": "#A14F32",
+        "coverSlot": true,
+        "note": "color-mix(in srgb, action 72%, #000); default (noite) value.",
+        "tonalRamp": [
+          "#1A0400",
+          "#411302",
+          "#6C2709",
+          "#9E3707",
+          "#C95324",
+          "#F07649",
+          "#FAAF95",
+          "#FEEAE2"
+        ]
+      },
+      "logo-3": {
+        "role": "secondary",
+        "displayName": "Logo Deep Shade",
+        "canonical": "#592C1C",
+        "coverSlot": true,
+        "note": "pen on light covers; color-mix(in srgb, action 40%, #000) on dark covers; default (noite) value.",
+        "tonalRamp": [
+          "#1A0400",
+          "#411302",
+          "#6C2709",
+          "#9E3707",
+          "#C95324",
+          "#F07649",
+          "#FAAF95",
+          "#FEEAE2"
+        ]
+      },
+      "diploma-paper": {
+        "role": "neutral",
+        "displayName": "Diploma Paper",
+        "canonical": "#FFFDF7",
+        "note": "Only on the friendship diploma (screen and PNG).",
+        "tonalRamp": [
+          "#2A2822",
+          "#3F3C33",
+          "#565147",
+          "#6E685C",
+          "#878072",
+          "#A29A8A",
+          "#C2BBAA",
+          "#FFFDF7"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline on the cover in on-cover, three fixed lines; key phrase highlighted."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles written as short sentences."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card and panel titles."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Euro rates, facts strip, report totals, dates."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All running copy, 62ch max."
+      },
+      "body-small": {
+        "displayName": "Body small",
+        "purpose": "Secondary copy; floor for reading text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase table headers, footer heads, name-label fields, slide-caption labels."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Buttons, chips, tabs."
+      },
+      "hand": {
+        "displayName": "Hand",
+        "purpose": "The worked sum and team note: Martim writing."
+      },
+      "hand-note": {
+        "displayName": "Hand note",
+        "purpose": "Captions, marginalia, handwritten values, feedback, album counter, picker prompt and heading, signature."
+      }
+    },
+    "coverPicker": {
+      "status": "shipped visitor feature",
+      "label": "Escolhe a capa",
+      "pattern": "popover: pill toggle (aria-expanded, aria-controls) opening a 3-column panel of 12 named covers",
+      "attribute": "html[data-paleta] plus inline custom properties",
+      "default": "noite",
+      "persistence": "localStorage key \"paleta\"; ?paleta= URL parameter overrides; unknown values fall back to noite",
+      "keyboard": "focus moves to the current cover on open; Escape closes and returns focus to the toggle; outside click closes; cookies page offers \"forget my cover\" (removes localStorage key)",
+      "reviewParams": "?picker= (subset), ?semseletor (hide), ?abrircapas (open on load) are review aids, not part of the visitor feature"
+    },
+    "shadows": [
+      {
+        "name": "button-rest",
+        "value": "0 6px 14px -8px rgba(15,17,28,.45)",
+        "purpose": "Highlighter and action buttons at rest."
+      },
+      {
+        "name": "button-hover",
+        "value": "0 12px 20px -10px rgba(15,17,28,.5)",
+        "purpose": "Button lifted 2px on hover."
+      },
+      {
+        "name": "taped-photo",
+        "value": "0 18px 30px -18px rgba(10,20,50,.55), 0 2px 6px rgba(10,20,50,.12)",
+        "purpose": "Photos taped onto the page."
+      },
+      {
+        "name": "lifted-item",
+        "value": "0 10px 18px -12px rgba(20,30,80,.6)",
+        "purpose": "Hovered challenge bin."
+      },
+      {
+        "name": "challenge-card",
+        "value": "0 14px 24px -16px rgba(20,30,80,.55)",
+        "purpose": "Item card in the bottle-cap challenge."
+      },
+      {
+        "name": "diploma",
+        "value": "0 26px 40px -26px rgba(20,30,80,.55), 0 2px 6px rgba(20,30,80,.12)",
+        "purpose": "Friendship diploma lying on the page (rotate -0.6deg)."
+      },
+      {
+        "name": "mini-photo",
+        "value": "0 10px 16px -10px rgba(10,20,50,.55), 0 1px 3px rgba(10,20,50,.15)",
+        "purpose": "Framed event thumbnails (no tape)."
+      },
+      {
+        "name": "slide",
+        "value": "0 18px 30px -20px rgba(10,20,50,.55), 0 2px 6px rgba(10,20,50,.1)",
+        "purpose": "Album polaroids."
+      },
+      {
+        "name": "loose-cap",
+        "value": "filter: drop-shadow(0 3px 3px rgba(40,25,10,.25))",
+        "purpose": "Caps lying on the cover."
+      },
+      {
+        "name": "label",
+        "value": "0 10px 22px -12px rgba(8,10,20,.55)",
+        "purpose": "Name label on the cover."
+      },
+      {
+        "name": "lit-card",
+        "value": "0 18px 40px -26px rgba(20,30,80,.55)",
+        "purpose": "Path card matching the chosen path."
+      },
+      {
+        "name": "action-bar",
+        "value": "0 12px 30px -10px rgba(0,0,0,.5)",
+        "purpose": "Fixed mobile action bar."
+      },
+      {
+        "name": "picker-toggle",
+        "value": "0 10px 24px -14px rgba(8,10,20,.6)",
+        "purpose": "Floating cover-picker toggle."
+      },
+      {
+        "name": "picker-panel",
+        "value": "0 22px 40px -20px rgba(8,10,20,.6)",
+        "purpose": "Open cover-picker panel."
+      },
+      {
+        "name": "focus-field",
+        "value": "0 0 0 4px var(--ring)",
+        "purpose": "Cover-tinted halo on focused fields."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Single easing for all transitions and draw-ins."
+      },
+      {
+        "name": "ink-in",
+        "value": ".7s fade + 6px rise, staggered .2s to 2.2s",
+        "purpose": "Worked-sum lines appearing as if written."
+      },
+      {
+        "name": "rule-draw",
+        "value": ".6s scaleX 0 to 1 from left",
+        "purpose": "Sum underline drawn across."
+      },
+      {
+        "name": "circle-stroke",
+        "value": "1s stroke-dashoffset 420 to 0, delay 2.4s",
+        "purpose": "Red-pen circle around the answer."
+      },
+      {
+        "name": "stamp-land",
+        "value": ".5s scale 1.6 to 1, opacity 0 to .92, rotate -14deg",
+        "purpose": "Stamp lands once when the worksheet is complete."
+      },
+      {
+        "name": "play-hover",
+        "value": ".25s scale 1 to 1.08",
+        "purpose": "Video play disc on hover."
+      },
+      {
+        "name": "album-snap",
+        "value": "scroll-snap-type x mandatory, align start",
+        "purpose": "Album track paging."
+      },
+      {
+        "name": "picker-open",
+        "value": "opacity .2s, transform .25s from scale(.96) translateY(6px), origin bottom right",
+        "purpose": "Cover-picker panel open and close."
+      },
+      {
+        "name": "card-in",
+        "value": ".45s from translateY(-14px) rotate(-4deg) scale(.96), opacity 0",
+        "purpose": "Next challenge item arrives."
+      },
+      {
+        "name": "card-fly",
+        "value": ".6s to translateY(40px) scale(.7) rotate(8deg), opacity 0",
+        "purpose": "Correctly sorted item leaves."
+      },
+      {
+        "name": "card-shake",
+        "value": ".45s ±8px / ±2deg",
+        "purpose": "Wrong answer on the card and the chosen bin."
+      },
+      {
+        "name": "way-pulse",
+        "value": ".9s box-shadow 0 -> 14px ring in action at 55%",
+        "purpose": "Marks the way card chosen by \"Quero ajudar com\"."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "all animation and transition disabled",
+        "purpose": "prefers-reduced-motion: reduce."
+      },
+      {
+        "name": "diploma-in",
+        "value": ".9s ease-out: from translateY(-60px) rotate(-7deg) scale(.86), overshoot, settle at -0.6deg",
+        "purpose": "The diploma lands on the page when the round ends."
+      },
+      {
+        "name": "score-count",
+        "value": "70ms per point, starts at .5s",
+        "purpose": "The score in the diploma sentence counts up."
+      },
+      {
+        "name": "star-pop",
+        "value": ".45s spring, delays .8s / .98s / 1.16s",
+        "purpose": "Stars appear one by one."
+      },
+      {
+        "name": "seal-in",
+        "value": ".5s spring at 1.45s, from scale 2.2 rotate -40deg",
+        "purpose": "The red seal stamps the diploma."
+      },
+      {
+        "name": "cap-fall",
+        "value": "1.4–2.6s, 34 caps at >=75% right, 14 otherwise, cover cap colours",
+        "purpose": "Bottle-cap confetti over the diploma."
+      },
+      {
+        "name": "scroll-reveal",
+        "value": "rise 22px / pinned photos drop 22px with -5deg tilt, .7–.8s, 70ms stagger (max 6)",
+        "purpose": "Content enters as you scroll; never hidden at rest; first on-screen batch stays still."
+      },
+      {
+        "name": "hero-in",
+        "value": "headline, lede, CTAs rise 16px at 0/.15/.28s; hero photo pins in",
+        "purpose": "Page open."
+      },
+      {
+        "name": "count-up",
+        "value": "1.1s ease-out cubic",
+        "purpose": "Latest-result and booklet figures count to their value."
+      },
+      {
+        "name": "cap-float",
+        "value": "6–8.5s loops, ±8deg, -7px",
+        "purpose": "Loose caps on the cover drift."
+      },
+      {
+        "name": "press",
+        "value": "translateY(1px) scale(.98)",
+        "purpose": "Buttons, chips, bins, level pills when pressed."
+      },
+      {
+        "name": "view-transition",
+        "value": "old .22s fade up, new .32s rise; nav fixed",
+        "purpose": "Between pages where supported."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "420px"
+      },
+      {
+        "name": "s",
+        "value": "520px"
+      },
+      {
+        "name": "sm",
+        "value": "560px"
+      },
+      {
+        "name": "md-",
+        "value": "640px"
+      },
+      {
+        "name": "ev",
+        "value": "700px"
+      },
+      {
+        "name": "md",
+        "value": "760px"
+      },
+      {
+        "name": "lg",
+        "value": "900px"
+      },
+      {
+        "name": "lg+",
+        "value": "980px"
+      },
+      {
+        "name": "xl",
+        "value": "1020px"
+      }
+    ],
+    "covers": {
+      "order": [
+        "menta",
+        "ceu",
+        "pessego",
+        "limao",
+        "rosa",
+        "noite",
+        "oceano",
+        "alperce",
+        "algodao",
+        "reciclado",
+        "festa",
+        "lavanda"
+      ],
+      "default": "noite",
+      "source": "PALETTES object in mockup/index.html, applied by applyPal() as inline custom properties on <html>",
+      "derivation": {
+        "cover-deep": "color-mix(in srgb, cover 70% (dark) / 80% (light), #000)",
+        "on-cover-soft": "color-mix(in srgb, on-cover 86%, cover)",
+        "hl-soft": "color-mix(in srgb, hl 26%, #fff)",
+        "hl-on-cover": "hoc on dark covers; color-mix(in srgb, on-cover 55%, #7A3412) on light",
+        "grid": "color-mix(in srgb, pen 7%, transparent)",
+        "rule": "color-mix(in srgb, pen 13%, #fff)",
+        "ring": "color-mix(in srgb, pen 26%, transparent)",
+        "tape": "rgba(255,255,255,.6)",
+        "logo-1": "action",
+        "logo-2": "color-mix(in srgb, action 72%, #000)",
+        "logo-3": "pen (light) / color-mix(in srgb, action 40%, #000) (dark)"
+      },
+      "darkFlag": "Covers with hoc set html[data-dark]; the headline mark becomes a solid hl block with ink text.",
+      "fallback": ":root carries the noite values for no-JS rendering.",
+      "entries": [
+        {
+          "id": "menta",
+          "label": "Menta e tangerina",
+          "default": false,
+          "mode": "light",
+          "values": {
+            "cover": "#BFE6D6",
+            "on-cover": "#173A2E",
+            "hl": "#FFB066",
+            "pen": "#1F4A3E",
+            "action": "#B3471A",
+            "action-ink": "#FFFFFF",
+            "cap1": "#FF8A3D",
+            "cap2": "#F27BA5",
+            "cap3": "#4FA8D8",
+            "cap4": "#2FA36B"
+          },
+          "derived": {
+            "cover-deep": "#99B8AB",
+            "on-cover-soft": "#2F5246",
+            "hl-soft": "#FFEAD7",
+            "hl-on-cover": "#443721",
+            "rule": "#E2E7E6"
+          },
+          "contrast": {
+            "on-cover-on-cover": 9.22,
+            "on-cover-soft-on-cover": 6.42,
+            "hl-on-cover-on-cover": 8.55,
+            "action-ink-on-action": 5.48,
+            "ink-on-hl": 9.28,
+            "pen-on-white": 9.97
+          },
+          "belowAA": []
+        },
+        {
+          "id": "ceu",
+          "label": "Céu e marinho",
+          "default": false,
+          "mode": "light",
+          "values": {
+            "cover": "#C3DFF4",
+            "on-cover": "#14304A",
+            "hl": "#FFD27A",
+            "pen": "#1B3F66",
+            "action": "#1C4F80",
+            "action-ink": "#FFFFFF",
+            "cap1": "#F29A4A",
+            "cap2": "#EE8AB0",
+            "cap3": "#1C4F80",
+            "cap4": "#5DBB8A"
+          },
+          "derived": {
+            "cover-deep": "#9CB2C3",
+            "on-cover-soft": "#2C4862",
+            "hl-soft": "#FFF3DC",
+            "hl-on-cover": "#423231",
+            "rule": "#E1E6EB"
+          },
+          "contrast": {
+            "on-cover-on-cover": 9.79,
+            "on-cover-soft-on-cover": 6.87,
+            "hl-on-cover-on-cover": 8.76,
+            "action-ink-on-action": 8.47,
+            "ink-on-hl": 11.75,
+            "pen-on-white": 10.77
+          },
+          "belowAA": []
+        },
+        {
+          "id": "pessego",
+          "label": "Pêssego e azul",
+          "default": false,
+          "mode": "light",
+          "values": {
+            "cover": "#FFD4BC",
+            "on-cover": "#3A1F12",
+            "hl": "#9FD4F2",
+            "pen": "#264466",
+            "action": "#1F5E8C",
+            "action-ink": "#FFFFFF",
+            "cap1": "#F07F45",
+            "cap2": "#E97BA3",
+            "cap3": "#4B9ED6",
+            "cap4": "#6DBB7C"
+          },
+          "derived": {
+            "cover-deep": "#CCAA96",
+            "on-cover-soft": "#56382A",
+            "hl-soft": "#E6F4FC",
+            "hl-on-cover": "#572812",
+            "rule": "#E3E7EB"
+          },
+          "contrast": {
+            "on-cover-on-cover": 11.12,
+            "on-cover-soft-on-cover": 7.72,
+            "hl-on-cover-on-cover": 8.96,
+            "action-ink-on-action": 6.91,
+            "ink-on-hl": 10.49,
+            "pen-on-white": 9.99
+          },
+          "belowAA": []
+        },
+        {
+          "id": "limao",
+          "label": "Limão e grafite",
+          "default": false,
+          "mode": "light",
+          "values": {
+            "cover": "#F3E98F",
+            "on-cover": "#22221E",
+            "hl": "#A3E2C9",
+            "pen": "#2F3440",
+            "action": "#2B2D33",
+            "action-ink": "#FFFFFF",
+            "cap1": "#FF8A3D",
+            "cap2": "#EE7FA8",
+            "cap3": "#4FA8D8",
+            "cap4": "#2FA36B"
+          },
+          "derived": {
+            "cover-deep": "#C2BA72",
+            "on-cover-soft": "#3F3E2E",
+            "hl-soft": "#E7F7F1",
+            "hl-on-cover": "#4A2A19",
+            "rule": "#E4E5E6"
+          },
+          "contrast": {
+            "on-cover-on-cover": 12.82,
+            "on-cover-soft-on-cover": 8.69,
+            "hl-on-cover-on-cover": 10.31,
+            "action-ink-on-action": 13.76,
+            "ink-on-hl": 11.37,
+            "pen-on-white": 12.45
+          },
+          "belowAA": []
+        },
+        {
+          "id": "rosa",
+          "label": "Rosa e verde",
+          "default": false,
+          "mode": "light",
+          "values": {
+            "cover": "#F6C7D4",
+            "on-cover": "#3A1623",
+            "hl": "#BFE8A9",
+            "pen": "#2E4A3A",
+            "action": "#2F7A4F",
+            "action-ink": "#FFFFFF",
+            "cap1": "#F28A3B",
+            "cap2": "#D94F84",
+            "cap3": "#5FAEDB",
+            "cap4": "#3E9E5E"
+          },
+          "derived": {
+            "cover-deep": "#C59FAA",
+            "on-cover-soft": "#542F3C",
+            "hl-soft": "#EEF9E9",
+            "hl-on-cover": "#57241B",
+            "rule": "#E4E7E5"
+          },
+          "contrast": {
+            "on-cover-on-cover": 10.64,
+            "on-cover-soft-on-cover": 7.59,
+            "hl-on-cover-on-cover": 8.39,
+            "action-ink-on-action": 5.23,
+            "ink-on-hl": 12.21,
+            "pen-on-white": 9.74
+          },
+          "belowAA": []
+        },
+        {
+          "id": "noite",
+          "label": "Azul-noite e tampinhas",
+          "default": true,
+          "mode": "dark",
+          "values": {
+            "cover": "#1E2B45",
+            "on-cover": "#F4F1EA",
+            "hl": "#FFB86B",
+            "pen": "#1E2B45",
+            "action": "#F2784B",
+            "action-ink": "#1B1D2A",
+            "cap1": "#FF9A4D",
+            "cap2": "#F28AB3",
+            "cap3": "#6EC1EA",
+            "cap4": "#79C98A",
+            "hl-on-cover": "#FFB86B"
+          },
+          "derived": {
+            "cover-deep": "#151E30",
+            "on-cover-soft": "#D6D5D3",
+            "hl-soft": "#FFEDD9",
+            "hl-on-cover": "#FFB86B",
+            "rule": "#E2E3E7"
+          },
+          "contrast": {
+            "on-cover-on-cover": 12.52,
+            "on-cover-soft-on-cover": 9.63,
+            "hl-on-cover-on-cover": 8.29,
+            "action-ink-on-action": 6.02,
+            "ink-on-hl": 9.81,
+            "pen-on-white": 14.13
+          },
+          "belowAA": []
+        },
+        {
+          "id": "oceano",
+          "label": "Oceano e areia",
+          "default": false,
+          "mode": "dark",
+          "values": {
+            "cover": "#226873",
+            "on-cover": "#FFFFFF",
+            "hl": "#F5D7A6",
+            "pen": "#1D4F57",
+            "action": "#E3703F",
+            "action-ink": "#1B1D2A",
+            "cap1": "#F5A25D",
+            "cap2": "#F29BB8",
+            "cap3": "#BFE6F0",
+            "cap4": "#F5D7A6",
+            "hl-on-cover": "#F5D7A6"
+          },
+          "derived": {
+            "cover-deep": "#215961",
+            "on-cover-soft": "#E2EDEF",
+            "hl-soft": "#FCF5E8",
+            "hl-on-cover": "#F5D7A6",
+            "rule": "#E2E8E9"
+          },
+          "contrast": {
+            "on-cover-on-cover": 6.37,
+            "on-cover-soft-on-cover": 5.2,
+            "hl-on-cover-on-cover": 4.6,
+            "action-ink-on-action": 5.3,
+            "ink-on-hl": 12.07,
+            "pen-on-white": 9.1
+          },
+          "belowAA": []
+        },
+        {
+          "id": "alperce",
+          "label": "Alperce e ameixa",
+          "default": false,
+          "mode": "light",
+          "values": {
+            "cover": "#F7B774",
+            "on-cover": "#2D1A2E",
+            "hl": "#D8C6F1",
+            "pen": "#4A2C5E",
+            "action": "#6A3B8C",
+            "action-ink": "#FFFFFF",
+            "cap1": "#E0602A",
+            "cap2": "#D96A9A",
+            "cap3": "#5A8FD0",
+            "cap4": "#7A5AA6"
+          },
+          "derived": {
+            "cover-deep": "#C6925D",
+            "on-cover-soft": "#493038",
+            "hl-soft": "#F5F0FB",
+            "hl-on-cover": "#502621",
+            "rule": "#E7E4EA"
+          },
+          "contrast": {
+            "on-cover-on-cover": 9.22,
+            "on-cover-soft-on-cover": 6.79,
+            "hl-on-cover-on-cover": 7.3,
+            "action-ink-on-action": 8.02,
+            "ink-on-hl": 10.57,
+            "pen-on-white": 11.58
+          },
+          "belowAA": []
+        },
+        {
+          "id": "algodao",
+          "label": "Algodão-doce",
+          "default": false,
+          "mode": "light",
+          "values": {
+            "cover": "#CFE3F7",
+            "on-cover": "#1E2F45",
+            "hl": "#FFC4E1",
+            "pen": "#2B3F66",
+            "action": "#B8336F",
+            "action-ink": "#FFFFFF",
+            "cap1": "#FF9C6B",
+            "cap2": "#F07AB2",
+            "cap3": "#6BA7E8",
+            "cap4": "#8AD1B0"
+          },
+          "derived": {
+            "cover-deep": "#A6B6C6",
+            "on-cover-soft": "#37485E",
+            "hl-soft": "#FFF0F7",
+            "hl-on-cover": "#47312E",
+            "rule": "#E3E6EB"
+          },
+          "contrast": {
+            "on-cover-on-cover": 10.33,
+            "on-cover-soft-on-cover": 7.1,
+            "hl-on-cover-on-cover": 9.15,
+            "action-ink-on-action": 5.61,
+            "ink-on-hl": 11.34,
+            "pen-on-white": 10.47
+          },
+          "belowAA": []
+        },
+        {
+          "id": "reciclado",
+          "label": "Papel reciclado e laranja",
+          "default": false,
+          "mode": "light",
+          "values": {
+            "cover": "#D8D5CE",
+            "on-cover": "#262626",
+            "hl": "#FFA25F",
+            "pen": "#2F3A45",
+            "action": "#B24612",
+            "action-ink": "#FFFFFF",
+            "cap1": "#FF8A3D",
+            "cap2": "#EE7FA8",
+            "cap3": "#4FA8D8",
+            "cap4": "#2FA36B"
+          },
+          "derived": {
+            "cover-deep": "#ADAAA5",
+            "on-cover-soft": "#3F3E3E",
+            "hl-soft": "#FFE7D5",
+            "hl-on-cover": "#4C2C1D",
+            "rule": "#E4E5E7"
+          },
+          "contrast": {
+            "on-cover-on-cover": 10.33,
+            "on-cover-soft-on-cover": 7.27,
+            "hl-on-cover-on-cover": 8.5,
+            "action-ink-on-action": 5.56,
+            "ink-on-hl": 8.43,
+            "pen-on-white": 11.59
+          },
+          "belowAA": []
+        },
+        {
+          "id": "festa",
+          "label": "Festa das tampinhas",
+          "default": false,
+          "mode": "light",
+          "values": {
+            "cover": "#FFF3D6",
+            "on-cover": "#1B1D2A",
+            "hl": "#FFD166",
+            "pen": "#1A3E5C",
+            "action": "#C02A55",
+            "action-ink": "#FFFFFF",
+            "cap1": "#EF476F",
+            "cap2": "#FFD166",
+            "cap3": "#06D6A0",
+            "cap4": "#118AB2"
+          },
+          "derived": {
+            "cover-deep": "#CCC2AB",
+            "on-cover-soft": "#3B3B42",
+            "hl-soft": "#FFF3D7",
+            "hl-on-cover": "#46271F",
+            "rule": "#E1E6EA"
+          },
+          "contrast": {
+            "on-cover-on-cover": 15.16,
+            "on-cover-soft-on-cover": 10.07,
+            "hl-on-cover-on-cover": 12.13,
+            "action-ink-on-action": 5.67,
+            "ink-on-hl": 11.6,
+            "pen-on-white": 11.13
+          },
+          "belowAA": []
+        },
+        {
+          "id": "lavanda",
+          "label": "Lavanda e lima",
+          "default": false,
+          "mode": "light",
+          "values": {
+            "cover": "#D8CCF2",
+            "on-cover": "#241A40",
+            "hl": "#D4EE6A",
+            "pen": "#34295E",
+            "action": "#5B3DA6",
+            "action-ink": "#FFFFFF",
+            "cap1": "#FF8A3D",
+            "cap2": "#F27BA5",
+            "cap3": "#4FA8D8",
+            "cap4": "#2FA36B"
+          },
+          "derived": {
+            "cover-deep": "#ADA3C2",
+            "on-cover-soft": "#3D3359",
+            "hl-soft": "#F4FBD8",
+            "hl-on-cover": "#4B262B",
+            "rule": "#E5E3EA"
+          },
+          "contrast": {
+            "on-cover-on-cover": 10.67,
+            "on-cover-soft-on-cover": 7.62,
+            "hl-on-cover-on-cover": 8.59,
+            "action-ink-on-action": 7.89,
+            "ink-on-hl": 12.93,
+            "pen-on-white": 12.92
+          },
+          "belowAA": []
+        }
+      ]
+    },
+    "logo": {
+      "source": "img/marca/ (cores.svg, branco.svg, favicon.svg, icon.svg, icon-branco.svg, letras.svg)",
+      "header": {
+        "symbol": "#marca",
+        "layers": {
+          "--logo-1": "front shape + lettering (= action)",
+          "--logo-2": "action/black 72%",
+          "--logo-3": "pen on light, action/black 40% on dark"
+        },
+        "eyes": "#fff",
+        "height": "48px (40px at <=520px)"
+      },
+      "footer": {
+        "symbol": "#marca-branco",
+        "fill": "on-cover, with shading at on-cover/cover 68%, 88%, 94%",
+        "result": "off-white on dark covers, one-colour dark on light covers",
+        "height": "72px"
+      },
+      "favicon": "setFavicon() rebuilds favicon.svg per cover (disc = hl/white 30%, mark in action layers); static favicon.svg is the no-JS fallback",
+      "language": "lettering stays Portuguese in both languages",
+      "name": "De mãos dadas pelo Martim (renamed Sept 2026 from Vamos Ajudar o Martim)",
+      "wordmark": "small line 'De mãos dadas pelo' in DIN Condensed Bold outlines at 85% width, baseline y 43.3, x 147.3–308.6 (same width as 'Martim'); icon and 'Martim' are the family's original drawing",
+      "headerHeight": {
+        "desktop": "56px",
+        "521-1180px": "48px",
+        "phone": "46px"
+      }
+    },
+    "logoChips": {
+      "base": "white fill, 1.5px rule border, object-fit contain, never cropped or recoloured (except single-colour marks re-inked dark)",
+      "sizes": {
+        "lg": "120x56, 10px radius (partners)",
+        "sm": "30px high, 7px radius (inline mentions, story, contact)",
+        "xs": "56x24, 5px radius (rates table)",
+        "footer": "58x30, borderless (foot-logos)",
+        "mini": "96x58, 8px radius (community, event fichas)",
+        "label": "20px (Dê uma Tampa on name label)"
+      }
+    },
+    "pages": {
+      "generator": "tools/build_pages.py",
+      "english": "tools/make_en.py from tools/i18n/en.py -> /en/",
+      "templates": [
+        "subhero + spiral-h",
+        "agenda (evlist/evrow/evdate)",
+        "event (evgrid, ficha, timeline, howto/checklist, evactions .ics + copy link, tally, vidrow, gallery, evnav)",
+        "historia (storyfull)",
+        "legal (toc, note-todo, todo, cookie table, forget cover)",
+        "404 (s404/big404)",
+        "map (mapa-tools, Leaflet map in mapa-frame, mapa-list with distances)",
+        "collection guide (passos, regras ✓/✗ lists, ideias, carrinha band)",
+        "printable poster + labels (cartaz-ctrl, a4 poster, a4 labels)",
+        "friends wall (board-tabs, board top 10, mini-dip)",
+        "booklet (8 a4 bk pages, bk-ctrl, share)"
+      ],
+      "i18n": "PT/EN switch links the same page; hreflang alternates; <html lang> drives JS strings; EN numbers use € prefix and English separators",
+      "cacheBusting": "site.css, site.js, pontos.js, mural.js and mural-api.js carry ?v=YYYYMMDDHHMM; run sh tools/build.sh (bumps versions, builds subpages and English)",
+      "data": {
+        "collectionPoints": "js/pontos.js (single source for the home table and the map; aprox:true marks approximate locations)",
+        "wallPinned": "js/mural.js (hand-pinned entries used until the live wall is on)",
+        "wallApi": "js/mural-api.js (MURAL_API_URL) + backend/mural-apps-script.gs"
+      }
+    },
+    "challenge": {
+      "name": "O desafio das tampinhas / The bottle-cap challenge",
+      "pool": {
+        "size": 26,
+        "bins": {
+          "plastico": 12,
+          "caricas": 3,
+          "cortica": 1,
+          "nao": 10
+        },
+        "levelsPerItem": "lv 1 obvious, 2 everyday, 3 tricky"
+      },
+      "levels": {
+        "1": {
+          "name": "Fácil",
+          "items": 6,
+          "pool": "lv 1 only"
+        },
+        "2": {
+          "name": "Normal",
+          "items": 10,
+          "pool": "all"
+        },
+        "3": {
+          "name": "Difícil",
+          "items": 10,
+          "pool": "all, at least 6 tricky"
+        }
+      },
+      "rotation": "freshness: items seen longest ago (or never) first, from localStorage ficha-vistos; consecutive rounds share at most the single cork item; all 26 appear within three rounds",
+      "instruction": "centred handwritten line above the bins: 'Clica na categoria que achas correta:' / 'Click the category you think is right:'",
+      "timer": "from the first card to the last answer; shown in the diploma sentence and PNG; breaks ties on the wall",
+      "storage": {
+        "name": "ficha-nome",
+        "level": "ficha-nivel",
+        "seen": "ficha-vistos",
+        "lastResult": "mural-meu",
+        "wallConsent": "mural-ok",
+        "sentIds": "mural-enviados"
+      },
+      "stampThreshold": ">= 75% right",
+      "reveal": "diploma hidden until the round ends (.diploma[hidden] must beat its grid display); drop-in, score count-up, stars pop, seal stamps, cap confetti; none under reduced motion",
+      "reward": "Diploma de Amigo do Martim; PNG 1600x1130 named 'Diploma Amigo do Martim - <nome>.png', navigator.share with file where supported, else download",
+      "wall": "opt-in checkbox on the diploma (unticked by default); saving or sharing sends the result once",
+      "highlight": "worksheet tinted by cover: 50% cover + white on light covers, 12% cover over #E9F0FF on dark covers; cover glow and ring; card, bins and idle level pills stay white",
+      "order": "name, level (in head, above rule), Onde vai isto? + card, instruction, bins, progress dots + score centred, feedback"
+    },
+    "share": {
+      "order": "native (only if navigator.share) first, then WhatsApp, Facebook, X, TikTok, copy link; compact on-cover variant = native + WhatsApp + Facebook + TikTok",
+      "style": "white pills, 2px ink, monochrome ink SVG icons; hover highlighter; never network brand colours",
+      "text": "data-share-text, translated in EN",
+      "tiktok": "no web share link: copies text + link and opens tiktok.com/upload; on the diploma, hands the PNG to the share sheet (or downloads it) with caption and hashtags copied"
+    },
+    "images": {
+      "loading": "lazy by default; revealed album slides, thanks band and padel photo eager; remaining lazy images switched to eager after load in idle time (iOS Safari)"
+    },
+    "printables": {
+      "sheet": ".a4 (210/297), everything inside sized in cqw",
+      "container": "the sheet's <figure> is the size container (container-type:inline-size), never the sheet itself",
+      "printScope": "print rules only on their own page (body:has(.cartaz-page), body.print-book); no global print CSS",
+      "page": "@page sheet{size:A4;margin:0} with .a4{page:sheet}; other pages keep default margins",
+      "fit": "one sheet = one A4 page; re-check overflow in PT, EN and a real PDF after any change",
+      "typeFloor": "poster and label body text in ink, never below 3cqw",
+      "photos": "no drop shadow in print (thin #C9CDD6 border)",
+      "fileNames": {
+        "poster": "Cartaz tampas Martim - <local>",
+        "labels": "Etiquetas garrafões Martim - <local>",
+        "booklet": "Brochura Martim",
+        "bookletPdf": [
+          "docs/brochura-martim.pdf",
+          "docs/martim-booklet.pdf"
+        ]
+      },
+      "bookletPdfBuild": "headless Chrome --print-to-pdf of brochura.html?pdf=1 (and en/)"
+    },
+    "wall": {
+      "ranking": "per level: most right, then fastest time, then earliest date; each first name + town counts once per level with its best result; top 10",
+      "medals": {
+        "1": "#F6C343",
+        "2": "#D5DAE3",
+        "3": "#E3A06A"
+      },
+      "privacy": "first name only (+ optional town); word block-list client and server; parents hide a row with 'x' in the sheet",
+      "backend": "Google Apps Script web app over a family Google Sheet (backend/LEIA-ME.md); rate limit 60/min; cache 60s",
+      "offline": "without MURAL_API_URL: js/mural.js + the visitor's own result, with a note saying so"
+    },
+    "map": {
+      "library": "Leaflet 1.9.4 (cdnjs) over OpenStreetMap tiles, slightly desaturated",
+      "markers": "cap-shaped discs in the point-type colour: school #FF7A1A, community #12884A, health #E0301E, sport #2B5FA8, business #7A4FB0",
+      "nearest": "geolocation only on tap, never leaves the browser; sorts the list and opens the closest"
+    },
+    "domain": {
+      "site": "https://demaosdadaspelomartim.pt/",
+      "shareImage": "img/og.jpg (1200x630)",
+      "retired": "vamosajudaromartim.com",
+      "preview": "https://nvjeronimo.github.io/demaosdadaspelomartim.pt/",
+      "repository": "nvjeronimo/demaosdadaspelomartim.pt (site at root, proposal at /proposta/)",
+      "hosting": "DreamHost ams1-shared-02; GitHub Actions rsync on every push; .htaccess https + no-www + 404 + cache",
+      "publish": "sh tools/publish.sh, then commit and push site/"
+    },
+    "footer": {
+      "fineLine": "© <year> De Mãos Dadas pelo Martim. Todos os direitos reservados.<br>By nelsonjeronimo.pt",
+      "year": "dynamic via [data-year] in site.js",
+      "links": "no underline at rest; underline on hover and focus-visible"
+    },
+    "heroSlides": {
+      "slides": [
+        "A conta (worked sum)",
+        "Próximo evento (relative date, title, time/place/fee, Ver detalhes, Todos os eventos, taped poster on wide screens)"
+      ],
+      "tabs": "handwritten, active underlined red over hl-soft",
+      "timing": "9s sum, 7s event; fade + 28px slide",
+      ".pause": "hover, focus, off-screen, hidden tab",
+      "keyboard": "arrow keys",
+      "reducedMotion": "no auto-advance",
+      "layout": "slides share one grid cell, top-aligned; poster hidden ≤900px",
+      "sheetPadding": "left clamp(44px,4.2vw,72px), margin line clamp(26px,2.6vw,42px)",
+      "note": "next event is hard-coded; update after each event"
+    },
+    "photoStack": {
+      "where": "contacts",
+      "photos": 6,
+      "interval": "3.6s",
+      "motion": "back photo slides out 34% (phone) / 46% (desktop) with 12deg swing, jumps to front, settles with overshoot",
+      "controls": "tap photo or 'toca para ver a próxima foto' with n/6 counter",
+      "pause": "hover, focus, off-screen, hidden tab",
+      "reducedMotion": "tap only, no movement"
+    },
+    "marginLine": {
+      "style": "2px dashed (10px red / 8px gap), 60% opacity",
+      "scope": "every .page and the hero .sheet",
+      "rule": "identical everywhere; no solid/thick variants"
+    },
+    "server": {
+      "stack": "PHP 8.4 on DreamHost",
+      "contact": "api/contacto.php: mail() from ajudar@ to DESTINO (config.php), Reply-To visitor, honeypot, 5/hour per hashed IP, nothing stored",
+      "wall": "api/mural.php: SQLite ~/dados/site.sqlite outside web root and deploy sync; GET top, POST entry, HMAC hide link emailed to MODERACAO",
+      "handover": "change DESTINO in api/config.php",
+      "previewFallback": "GitHub Pages has no PHP: form falls back to mailto, wall to js/mural.js"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button (highlighter)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main delivery action: highlighter fill, ink text and ink border (9.81:1), on the cover and in the action bar.",
+      "html": "<div class=\"ds-cover-bg\"><a class=\"ds-btn ds-btn-hl\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"/><circle cx=\"12\" cy=\"9.5\" r=\"2.4\" fill=\"currentColor\"/></svg>Onde entrego as tampas?</a></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-btn{display:inline-flex;align-items:center;gap:.6em;font:700 1.0625rem/1 var(--body);padding:1em 1.4em;border-radius:10px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s} .ds-btn:focus-visible{outline:3px solid var(--red);outline-offset:3px} .ds-cover-bg{background:var(--cover);color:var(--on-cover);padding:24px;display:flex;gap:12px;flex-wrap:wrap} .ds-btn-hl{background:var(--hl);color:var(--ink);border-color:var(--ink);box-shadow:0 6px 14px -8px rgba(15,17,28,.45)} .ds-btn-hl:hover{transform:translateY(-2px);box-shadow:0 12px 20px -10px rgba(15,17,28,.5)}"
+    },
+    {
+      "name": "Action Button",
+      "kind": "button",
+      "refersTo": "button-action",
+      "description": "Solid button in the cover's action pair: action fill with action-ink text (coral with ink text, 6.02:1, on noite).",
+      "html": "<a class=\"ds-btn ds-btn-action\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"/><circle cx=\"12\" cy=\"9.5\" r=\"2.4\" fill=\"currentColor\"/></svg>Onde entregar</a>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-btn{display:inline-flex;align-items:center;gap:.6em;font:700 1.0625rem/1 var(--body);padding:1em 1.4em;border-radius:10px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s} .ds-btn:focus-visible{outline:3px solid var(--red);outline-offset:3px} .ds-btn-action{background:var(--action);color:var(--action-ink);box-shadow:0 6px 14px -8px rgba(15,17,28,.45)} .ds-btn-action:hover{transform:translateY(-2px)}"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Tertiary action on paper; fills with the highlighter on hover.",
+      "html": "<button class=\"ds-btn ds-btn-line\" type=\"button\">Testa-te na ficha</button>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-btn{display:inline-flex;align-items:center;gap:.6em;font:700 1.0625rem/1 var(--body);padding:1em 1.4em;border-radius:10px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s} .ds-btn:focus-visible{outline:3px solid var(--red);outline-offset:3px} .ds-btn-line{color:var(--ink);border-color:var(--ink);background:var(--paper)} .ds-btn-line:hover{background:var(--hl)}"
+    },
+    {
+      "name": "Ghost Button (on cover)",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action on the cover: on-cover border and text.",
+      "html": "<div class=\"ds-cover-bg\"><a class=\"ds-btn ds-btn-ghost\" href=\"#\">Doar por IBAN</a></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-btn{display:inline-flex;align-items:center;gap:.6em;font:700 1.0625rem/1 var(--body);padding:1em 1.4em;border-radius:10px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s} .ds-btn:focus-visible{outline:3px solid var(--red);outline-offset:3px} .ds-cover-bg{background:var(--cover);color:var(--on-cover);padding:24px;display:flex;gap:12px;flex-wrap:wrap} .ds-btn-ghost{color:var(--on-cover);border-color:var(--on-cover)} .ds-btn-ghost:hover{background:rgba(255,255,255,.35)}"
+    },
+    {
+      "name": "Choice Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Pill toggle with a drawn checkbox; pressed inverts to ink with a highlighter tick.",
+      "html": "<div class=\"ds-row\"><button class=\"ds-chip\" aria-pressed=\"true\"><span class=\"ds-box\"></span>Tampas</button><button class=\"ds-chip\" aria-pressed=\"false\"><span class=\"ds-box\"></span>Dinheiro</button></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-row{display:flex;gap:12px;flex-wrap:wrap} .ds-chip{font:700 1rem/1 var(--body);padding:.8em 1.1em;border-radius:999px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:.5em;transition:background .2s,transform .2s var(--ease)} .ds-chip:hover{transform:translateY(-1px)} .ds-chip:focus-visible{outline:3px solid var(--red);outline-offset:3px} .ds-chip[aria-pressed=\"true\"]{background:var(--ink);color:#fff} .ds-box{width:18px;height:18px;border:2px solid currentColor;border-radius:4px;display:grid;place-items:center} .ds-chip[aria-pressed=\"true\"] .ds-box::after{content:\"\";width:9px;height:5px;border-left:2.5px solid var(--hl);border-bottom:2.5px solid var(--hl);transform:rotate(-45deg) translate(1px,-1px)}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Ink-outlined field on paper fill; cover-colour border and ring halo on focus.",
+      "html": "<label class=\"ds-field\"><span>O teu nome</span><input type=\"text\" placeholder=\"Maria\"></label>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-field{display:grid;gap:6px;font-family:var(--body)} .ds-field span{font-weight:700;font-size:1rem;color:var(--ink)} .ds-field input{font:400 1.05rem/1.4 var(--body);padding:12px 14px;border-radius:10px;border:2px solid var(--ink);background:var(--paper);color:var(--ink)} .ds-field input:focus{outline:none;border-color:var(--cover);box-shadow:0 0 0 4px var(--ring)}"
+    },
+    {
+      "name": "Notebook Tabs",
+      "kind": "nav",
+      "refersTo": "nav-tabs",
+      "description": "Header tabs with cap-coloured underlines that grow from 35% on hover or when current.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" style=\"--tab:var(--cap1)\">Como ajudar</a><a href=\"#\" style=\"--tab:var(--cap2)\" aria-current=\"page\">Onde entregar</a><a href=\"#\" style=\"--tab:var(--cap3)\">A minha história</a><a href=\"#\" style=\"--tab:var(--cap4)\">Eventos</a></nav>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-nav{display:flex;gap:4px;padding:10px 16px;background:rgba(251,252,255,.94);border-bottom:2px solid var(--ink)} .ds-nav a{display:block;padding:10px 14px 12px;font:700 .95rem/1 var(--body);color:var(--ink);text-decoration:none;position:relative} .ds-nav a::after{content:\"\";position:absolute;left:14px;right:14px;bottom:4px;height:4px;border-radius:2px;background:var(--tab);transform:scaleX(.35);transform-origin:left;transition:transform .35s var(--ease)} .ds-nav a:hover::after,.ds-nav a[aria-current]::after{transform:scaleX(1)} .ds-nav a:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}"
+    },
+    {
+      "name": "Cover Picker (Escolhe a capa)",
+      "kind": "custom",
+      "refersTo": "cover-picker-toggle",
+      "description": "Shipped visitor feature: pill toggle showing the current cover opens a 3-column popover of the 12 named covers; remembered in localStorage.",
+      "html": "<div class=\"ds-paleta\"><div class=\"ds-panel\" role=\"group\" aria-label=\"Escolhe a capa do caderno\"><b>Escolhe a capa do meu caderno</b><button type=\"button\" aria-pressed=\"false\" style=\"--a:#BFE6D6;--b:#FFB066;--c1:#FF8A3D;--c2:#4FA8D8\"><span class=\"ds-sw\" aria-hidden=\"true\"></span>Menta e tangerina</button><button type=\"button\" aria-pressed=\"false\" style=\"--a:#C3DFF4;--b:#FFD27A;--c1:#F29A4A;--c2:#1C4F80\"><span class=\"ds-sw\" aria-hidden=\"true\"></span>Céu e marinho</button><button type=\"button\" aria-pressed=\"false\" style=\"--a:#FFD4BC;--b:#9FD4F2;--c1:#F07F45;--c2:#4B9ED6\"><span class=\"ds-sw\" aria-hidden=\"true\"></span>Pêssego e azul</button><button type=\"button\" aria-pressed=\"false\" style=\"--a:#F3E98F;--b:#A3E2C9;--c1:#FF8A3D;--c2:#4FA8D8\"><span class=\"ds-sw\" aria-hidden=\"true\"></span>Limão e grafite</button><button type=\"button\" aria-pressed=\"false\" style=\"--a:#F6C7D4;--b:#BFE8A9;--c1:#F28A3B;--c2:#5FAEDB\"><span class=\"ds-sw\" aria-hidden=\"true\"></span>Rosa e verde</button><button type=\"button\" aria-pressed=\"true\" style=\"--a:#1E2B45;--b:#FFB86B;--c1:#FF9A4D;--c2:#6EC1EA\"><span class=\"ds-sw\" aria-hidden=\"true\"></span>Azul-noite e tampinhas</button><button type=\"button\" aria-pressed=\"false\" style=\"--a:#226873;--b:#F5D7A6;--c1:#F5A25D;--c2:#BFE6F0\"><span class=\"ds-sw\" aria-hidden=\"true\"></span>Oceano e areia</button><button type=\"button\" aria-pressed=\"false\" style=\"--a:#F7B774;--b:#D8C6F1;--c1:#E0602A;--c2:#5A8FD0\"><span class=\"ds-sw\" aria-hidden=\"true\"></span>Alperce e ameixa</button><button type=\"button\" aria-pressed=\"false\" style=\"--a:#CFE3F7;--b:#FFC4E1;--c1:#FF9C6B;--c2:#6BA7E8\"><span class=\"ds-sw\" aria-hidden=\"true\"></span>Algodão-doce</button><button type=\"button\" aria-pressed=\"false\" style=\"--a:#D8D5CE;--b:#FFA25F;--c1:#FF8A3D;--c2:#4FA8D8\"><span class=\"ds-sw\" aria-hidden=\"true\"></span>Papel reciclado e laranja</button><button type=\"button\" aria-pressed=\"false\" style=\"--a:#FFF3D6;--b:#FFD166;--c1:#EF476F;--c2:#06D6A0\"><span class=\"ds-sw\" aria-hidden=\"true\"></span>Festa das tampinhas</button><button type=\"button\" aria-pressed=\"false\" style=\"--a:#A2D9CC;--b:#FFA286;--c1:#FF8660;--c2:#4FA8D8\"><span class=\"ds-sw\" aria-hidden=\"true\"></span>Verde-água e coral</button></div><button class=\"ds-toggle\" type=\"button\" aria-expanded=\"true\"><span>Escolhe a capa</span><i aria-hidden=\"true\"></i></button></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-paleta{display:inline-flex;flex-direction:column;align-items:flex-end;gap:10px} .ds-toggle{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:6px 8px 6px 16px;box-shadow:0 10px 24px -14px rgba(8,10,20,.6);cursor:pointer;font:400 1.15rem/1 var(--hand);color:var(--pen)} .ds-toggle:focus-visible{outline:3px solid var(--red);outline-offset:3px} .ds-toggle i{width:30px;height:30px;border-radius:50%;border:2px solid var(--ink);background:radial-gradient(circle at 70% 30%,var(--hl) 0 26%,transparent 27%),var(--cover)} .ds-panel{width:min(92vw,392px);background:#fff;border:2px solid var(--ink);border-radius:18px;padding:16px;box-shadow:0 22px 40px -20px rgba(8,10,20,.6);display:grid;grid-template-columns:repeat(3,1fr);gap:10px} .ds-panel b{grid-column:1/-1;font:400 1.3rem/1 var(--hand);color:var(--pen);margin-bottom:2px} .ds-panel button{display:flex;flex-direction:column;align-items:flex-start;gap:6px;border:2px solid transparent;background:none;border-radius:12px;padding:6px;cursor:pointer;font:700 .78rem/1.15 var(--body);color:var(--ink);text-align:left} .ds-panel button:hover{background:var(--paper);border-color:var(--rule)} .ds-panel button:focus-visible{outline:3px solid var(--red);outline-offset:2px} .ds-panel button[aria-pressed=\"true\"]{border-color:var(--ink);background:var(--paper)} .ds-sw{width:100%;height:40px;border-radius:8px;border:2px solid var(--ink);background:radial-gradient(circle at 78% 34%,var(--b) 0 13%,transparent 14%),radial-gradient(circle at 60% 70%,var(--c1) 0 9%,transparent 10%),radial-gradient(circle at 88% 74%,var(--c2) 0 8%,transparent 9%),var(--a)}"
+    },
+    {
+      "name": "Cover with Loose Caps and Headline Mark",
+      "kind": "custom",
+      "refersTo": "cover-panel",
+      "description": "Signature: the default night-blue cover with on-cover headline in three fixed lines, the dark-cover highlighter block and scattered cap pictograms.",
+      "html": "<div class=\"ds-cover\"><div class=\"ds-caps\"><svg class=\"ds-cap\" style=\"color:var(--cap1);width:52px;height:52px;left:6%;top:0%;transform:rotate(-10deg)\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><circle cx=\"24\" cy=\"24\" r=\"19\" fill=\"currentColor\" stroke=\"#1B1D2A\" stroke-width=\"2.5\"/><circle cx=\"24\" cy=\"24\" r=\"12\" fill=\"none\" stroke=\"#1B1D2A\" stroke-width=\"2\" opacity=\".35\"/></svg><svg class=\"ds-cap\" style=\"color:var(--cap3);width:40px;height:40px;left:48%;top:8%;transform:rotate(20deg)\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><circle cx=\"24\" cy=\"24\" r=\"19\" fill=\"currentColor\" stroke=\"#1B1D2A\" stroke-width=\"2.5\"/><circle cx=\"24\" cy=\"24\" r=\"12\" fill=\"none\" stroke=\"#1B1D2A\" stroke-width=\"2\" opacity=\".35\"/></svg><svg class=\"ds-cap\" style=\"color:var(--cap2);width:36px;height:36px;left:76%;top:0%;transform:rotate(0deg)\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><circle cx=\"24\" cy=\"24\" r=\"19\" fill=\"currentColor\" stroke=\"#1B1D2A\" stroke-width=\"2.5\"/><circle cx=\"24\" cy=\"24\" r=\"12\" fill=\"none\" stroke=\"#1B1D2A\" stroke-width=\"2\" opacity=\".35\"/></svg><svg class=\"ds-cap\" style=\"color:var(--cap4);width:40px;height:40px;left:24%;top:44%;transform:rotate(15deg)\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><circle cx=\"24\" cy=\"24\" r=\"19\" fill=\"currentColor\" stroke=\"#1B1D2A\" stroke-width=\"2.5\"/><circle cx=\"24\" cy=\"24\" r=\"12\" fill=\"none\" stroke=\"#1B1D2A\" stroke-width=\"2\" opacity=\".35\"/></svg><svg class=\"ds-cap\" style=\"color:var(--cap1);width:46px;height:46px;left:62%;top:48%;transform:rotate(-25deg)\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><circle cx=\"24\" cy=\"24\" r=\"19\" fill=\"currentColor\" stroke=\"#1B1D2A\" stroke-width=\"2.5\"/><circle cx=\"24\" cy=\"24\" r=\"12\" fill=\"none\" stroke=\"#1B1D2A\" stroke-width=\"2\" opacity=\".35\"/></svg></div><h1>Cada tampinha<br> é <em style=\"white-space:nowrap\">um passo</em><br>meu.</h1><p>As tampas que tens na cozinha pagam parte dos meus tratamentos.</p></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-cover{position:relative;overflow:hidden;background:var(--cover);color:var(--on-cover);padding:32px;min-height:300px;background-image:radial-gradient(120% 70% at 0% 0%,rgba(255,255,255,.22),transparent 55%),repeating-linear-gradient(115deg,rgba(60,40,20,.04) 0 1px,transparent 1px 5px)} .ds-caps{position:absolute;right:20px;top:18px;width:190px;height:150px} .ds-cap{position:absolute;filter:drop-shadow(0 3px 3px rgba(40,25,10,.25))} .ds-cover h1{position:relative;font:800 3rem/1.02 var(--display);font-stretch:84%;letter-spacing:-.025em;margin:110px 0 16px;max-width:9ch} .ds-cover em{font-style:normal;color:var(--ink);background:var(--hl);box-shadow:.06em 0 0 var(--hl),-.06em 0 0 var(--hl);border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone} .ds-cover p{position:relative;margin:0;max-width:42ch;color:var(--on-cover-soft);font:400 1.1rem/1.6 var(--body)}"
+    },
+    {
+      "name": "Path Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "White sheet with 2px ink outline; dashed when dimmed, soft lift when it matches the chosen path.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-who\">o mais fácil</div><h3>Guardar tampas, caricas e rolhas</h3><p>Separa logo: plástico, caricas e cortiça. Um BigBag misturado pode ser recusado inteiro.</p></article>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-card{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:clamp(22px,3vw,36px);box-shadow:0 18px 40px -26px rgba(20,30,80,.55);font:400 1rem/1.45 var(--body);color:var(--ink);max-width:420px} .ds-card h3{font:800 1.6rem/1.1 var(--display);font-stretch:84%;letter-spacing:-.015em;margin:0 0 10px} .ds-card p{margin:0;color:var(--pencil)} .ds-who{font:400 1.3rem/1 var(--hand);color:var(--red-ink);margin-bottom:10px}"
+    },
+    {
+      "name": "Worked Sum",
+      "kind": "custom",
+      "refersTo": "hand",
+      "description": "Signature: handwritten pen-colour sum with red-ink operators, highlighter swipe and red-pen answer circle; lines ink in on load.",
+      "html": "<div class=\"ds-sum\"><div class=\"ds-line\"><span class=\"ds-op\"></span>300 kg × 0,41 €/kg</div><div class=\"ds-line\"><span class=\"ds-op\">=</span><span class=\"ds-hl\">123 € por BigBag</span></div><div class=\"ds-rule\"></div><div class=\"ds-line\"><span class=\"ds-op\">≈</span><span class=\"ds-ans\">55 BigBags<svg viewBox=\"0 0 200 70\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M20 38C18 14 96 4 160 12c34 5 40 30 12 44-40 18-128 12-150-6-10-8-6-18 8-24\" fill=\"none\" stroke=\"#E0301E\" stroke-width=\"3.5\" stroke-linecap=\"round\"/></svg></span></div></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-hl{background:linear-gradient(transparent 12%,var(--hl) 12%,var(--hl) 88%,transparent 88%);padding:0 .15em} .ds-sum{font:400 2rem/1.3 var(--hand);color:var(--pen);padding:24px 32px;background-color:var(--paper);background-image:linear-gradient(rgba(30,43,69,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(30,43,69,.07) 1px,transparent 1px);background-size:24px 24px;font-variant-numeric:tabular-nums lining-nums} .ds-line{display:flex;gap:.4em;align-items:baseline;white-space:nowrap} .ds-op{color:var(--red-ink);width:1.1em;text-align:center} .ds-hl{color:var(--ink)} .ds-rule{height:3px;background:var(--pen);margin:6px 0 10px;max-width:420px;border-radius:2px} .ds-ans{position:relative;display:inline-block;color:var(--ink);font-size:2.4rem} .ds-ans svg{position:absolute;inset:-18px -26px -14px -22px;width:calc(100% + 48px);height:calc(100% + 32px);overflow:visible}"
+    },
+    {
+      "name": "Muito bem! Stamp",
+      "kind": "custom",
+      "refersTo": "stamp",
+      "description": "Signature: round red stamp that lands once when the worksheet is right.",
+      "html": "<div class=\"ds-stage\"><div class=\"ds-stamp\"><div>Muito<br>bem!<small>assinado: Martim</small></div></div></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-stage{padding:30px;background:#fff} .ds-stamp{position:relative;width:132px;height:132px;border-radius:50%;border:4px solid var(--red);color:var(--red);display:grid;place-items:center;text-align:center;font:800 1.2rem/1 var(--display);text-transform:uppercase;letter-spacing:.02em;transform:rotate(-14deg);opacity:.92;background:rgba(255,255,255,.7)} .ds-stamp::before{content:\"\";position:absolute;inset:6px;border:2px dashed var(--red);border-radius:50%} .ds-stamp small{display:block;font:400 1rem/1 var(--hand);text-transform:none;margin-top:4px} .ds-stage:hover .ds-stamp{animation:ds-stamp .5s var(--ease)} @keyframes ds-stamp{from{opacity:0;transform:rotate(-14deg) scale(1.6)}to{opacity:.92;transform:rotate(-14deg) scale(1)}}"
+    },
+    {
+      "name": "Album Slide with Video",
+      "kind": "custom",
+      "refersTo": "slide",
+      "description": "Signature: taped polaroid slides in a scroll-snap track; video cards carry a highlighter play disc and a duration tag.",
+      "html": "<div class=\"ds-track\"><figure class=\"ds-slide ds-w\"><span class=\"ds-tape\"></span><div class=\"ds-media\"><button class=\"ds-play\" type=\"button\" aria-label=\"Ver vídeo (0:40)\"><span class=\"ds-poster\"></span><span class=\"ds-disc\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 4l14 8-14 8z\" fill=\"#1B1D2A\"/></svg></span><span class=\"ds-dur\">0:40</span></button></div><figcaption><span class=\"ds-hand\">Um BigBag 167 a partir</span><small>Recolhas</small></figcaption></figure><figure class=\"ds-slide ds-p\"><span class=\"ds-tape\"></span><div class=\"ds-media\"><span class=\"ds-poster ds-alt\"></span></div><figcaption><span class=\"ds-hand\">Entregas na escola</span><small>Boliqueime</small></figcaption></figure></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-tape{position:absolute;width:92px;height:28px;background:var(--tape);box-shadow:0 1px 2px rgba(0,0,0,.08);top:-12px;left:50%;transform:translateX(-50%) rotate(3deg);z-index:2} .ds-track{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding:28px 4px 34px;scrollbar-width:thin;scrollbar-color:var(--cover) transparent} .ds-slide{flex:none;scroll-snap-align:start;height:340px;display:flex;flex-direction:column;background:#fff;padding:10px 10px 0;margin:0;position:relative;box-shadow:0 18px 30px -20px rgba(10,20,50,.55),0 2px 6px rgba(10,20,50,.1)} .ds-slide:nth-child(odd){transform:rotate(-1.2deg)} .ds-slide:nth-child(even){transform:rotate(1deg)} .ds-w{aspect-ratio:16/10.6} .ds-p{aspect-ratio:3/4.4} .ds-media{flex:1;min-height:0;position:relative;overflow:hidden;background:var(--ink)} .ds-poster{position:absolute;inset:0;background:linear-gradient(135deg,#6EC1EA,#1E2B45)} .ds-alt{background:linear-gradient(135deg,#F28A3B,#EB86AD)} .ds-play{position:absolute;inset:0;border:0;padding:0;background:none;cursor:pointer;width:100%;height:100%} .ds-play::after{content:\"\";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(10,12,20,.55))} .ds-play:focus-visible{outline:3px solid var(--red);outline-offset:-3px} .ds-disc{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;background:var(--hl);border:3px solid var(--ink);display:grid;place-items:center;z-index:1;transition:transform .25s var(--ease)} .ds-disc svg{margin-left:4px} .ds-play:hover .ds-disc{transform:translate(-50%,-50%) scale(1.08)} .ds-dur{position:absolute;right:10px;bottom:10px;z-index:1;font:700 .85rem/1 var(--body);color:#fff;background:rgba(10,12,20,.7);padding:.4em .6em;border-radius:6px} .ds-slide figcaption{padding:10px 4px 12px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 10px} .ds-hand{font:400 1.3rem/1.1 var(--hand);color:var(--ink)} .ds-slide small{font:700 .72rem/1 var(--body);text-transform:uppercase;letter-spacing:.06em;color:var(--pencil)}"
+    },
+    {
+      "name": "Album Controls",
+      "kind": "custom",
+      "refersTo": "button-round",
+      "description": "Round previous/next buttons around a handwritten counter.",
+      "html": "<div class=\"ds-navbtns\"><button class=\"ds-round\" type=\"button\" aria-label=\"Anterior\" disabled><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M19 12H6M11 6l-6 6 6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button><span class=\"ds-count\">1 / 20</span><button class=\"ds-round\" type=\"button\" aria-label=\"Seguinte\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h13M13 6l6 6-6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-navbtns{display:flex;align-items:center;gap:10px} .ds-count{font:400 1.4rem/1 var(--hand);color:var(--pen);min-width:4.5ch;text-align:center;font-variant-numeric:tabular-nums} .ds-round{width:52px;height:52px;border-radius:50%;border:2px solid var(--ink);background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background .2s,transform .2s var(--ease)} .ds-round:hover{background:var(--hl);transform:translateY(-1px)} .ds-round:focus-visible{outline:3px solid var(--red);outline-offset:3px} .ds-round:disabled{opacity:.35;cursor:default;transform:none;background:#fff}"
+    },
+    {
+      "name": "Team Row",
+      "kind": "custom",
+      "refersTo": "photo",
+      "description": "Taped portrait beside a handwritten pen-colour note with one highlighted phrase.",
+      "html": "<div class=\"ds-team\"><figure class=\"ds-photo\"><span class=\"ds-tape\"></span><div class=\"ds-img\"></div><figcaption>com o pai e a mãe</figcaption></figure><p>O meu pai recolhe e separa. A minha mãe leva-me aos tratamentos. <span class=\"ds-hl\">Tu guardas as tampas.</span> Somos uma equipa!</p></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-tape{position:absolute;width:92px;height:28px;background:var(--tape);box-shadow:0 1px 2px rgba(0,0,0,.08);top:-12px;left:50%;transform:translateX(-50%) rotate(3deg);z-index:2} .ds-hl{background:linear-gradient(transparent 12%,var(--hl) 12%,var(--hl) 88%,transparent 88%);padding:0 .15em} .ds-team{display:flex;align-items:center;gap:28px;padding:20px} .ds-photo{position:relative;width:170px;flex:none;margin:0;transform:rotate(-3deg);background:#fff;padding:10px 10px 38px;box-shadow:0 18px 30px -18px rgba(10,20,50,.55),0 2px 6px rgba(10,20,50,.12)} .ds-img{aspect-ratio:4/5;background:linear-gradient(160deg,#FFB86B,#1E2B45)} .ds-photo figcaption{position:absolute;left:0;right:0;bottom:8px;text-align:center;font:400 1.1rem/1 var(--hand);color:var(--ink)} .ds-team p{font:400 1.5rem/1.25 var(--hand);color:var(--pen);margin:0;max-width:18ch} .ds-hl{color:var(--ink)}"
+    },
+    {
+      "name": "Thanks Band",
+      "kind": "custom",
+      "refersTo": "thanks",
+      "description": "Closing full-bleed photo with ink scrim, white headline and Martim's handwritten thank-you. Never used as a hero.",
+      "html": "<section class=\"ds-thanks\"><div class=\"ds-bg\"></div><div class=\"ds-copy\"><h2>Sozinho não chegava lá. Convosco, sim.</h2><p>Obrigado a cada pessoa desta fotografia. Martim</p></div></section>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-thanks{position:relative;min-height:360px;display:grid;align-items:end;color:#fff;overflow:hidden;border-top:2px solid var(--ink)} .ds-bg{position:absolute;inset:0;background:linear-gradient(120deg,#8a9a8a,#c9b79c)} .ds-thanks::after{content:\"\";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,20,.30) 0%,rgba(8,10,20,.55) 45%,rgba(8,10,20,.82) 100%)} .ds-copy{position:relative;z-index:1;padding:40px} .ds-copy h2{font:800 3rem/1.02 var(--display);font-stretch:84%;letter-spacing:-.025em;margin:0;max-width:13ch} .ds-copy p{font:400 1.5rem/1.2 var(--hand);margin:12px 0 0}"
+    },
+    {
+      "name": "Logo Chips",
+      "kind": "custom",
+      "refersTo": "logo-chip",
+      "description": "White chips that every partner and supporter logo sits on; lg, sm, xs and mini sizes.",
+      "html": "<div class=\"ds-row\"><span class=\"ds-chip ds-lg\"><span class=\"ds-logo\">Resialentejo</span></span><span class=\"ds-chip ds-sm\"><span class=\"ds-logo\">Amorim</span></span><span class=\"ds-chip ds-xs\"><span class=\"ds-logo\">Kinésio</span></span><span class=\"ds-chip ds-mini\"><span class=\"ds-logo\">CD Boliqueime</span></span></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:16px;background:var(--paper)} .ds-chip{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1.5px solid var(--rule);border-radius:10px;line-height:1} .ds-logo{font:800 .8rem/1 var(--display);color:var(--ink);text-align:center} .ds-lg{width:120px;height:56px;padding:7px 9px} .ds-sm{height:30px;padding:4px 7px;border-radius:7px} .ds-sm .ds-logo{font-size:.7rem} .ds-xs{width:56px;height:24px;padding:2px 4px;border-radius:5px} .ds-xs .ds-logo{font-size:.55rem} .ds-mini{width:96px;height:58px;padding:5px 8px;border-radius:8px}"
+    },
+    {
+      "name": "FAQ Item",
+      "kind": "custom",
+      "refersTo": "faq-toggle",
+      "description": "Plain ruled question list with a round +/− toggle that fills with the highlighter when open.",
+      "html": "<ul class=\"ds-faq\"><li><details open><summary>Posso entregar tampas misturadas?<span class=\"ds-pm\" aria-hidden=\"true\"></span></summary><div class=\"ds-a\"><p>Separa sempre: plástico, caricas e cortiça. Um BigBag misturado pode ser recusado inteiro.</p></div></details></li><li><details><summary>As pegas dos garrafões contam?<span class=\"ds-pm\" aria-hidden=\"true\"></span></summary><div class=\"ds-a\"><p>Sim, são plástico.</p></div></details></li></ul>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-faq{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink);max-width:880px;font-family:var(--body);color:var(--ink)} .ds-faq li{border-bottom:1.5px solid var(--rule)} .ds-faq summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 4px;font:700 1.12rem/1.35 var(--body)} .ds-faq summary::-webkit-details-marker{display:none} .ds-faq summary:hover{color:var(--pen)} .ds-faq summary:focus-visible{outline:3px solid var(--red);outline-offset:3px} .ds-pm{flex:none;width:34px;height:34px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;background:#fff;transition:background .2s} .ds-pm::before,.ds-pm::after{content:\"\";grid-area:1/1;width:14px;height:2.5px;border-radius:2px;background:var(--ink);transition:transform .3s var(--ease)} .ds-pm::after{transform:rotate(90deg)} details[open] .ds-pm{background:var(--hl)} details[open] .ds-pm::after{transform:rotate(0)} .ds-a{padding:0 60px 20px 4px;font-size:1.05rem;max-width:68ch} .ds-a p{margin:0 0 10px}"
+    },
+    {
+      "name": "Agenda Row with Mini Photo",
+      "kind": "custom",
+      "refersTo": "event-row-hover",
+      "description": "Agenda list row: handwritten weekday over a Bricolage day number, event text, framed untaped thumbnail; highlighter-wash hover.",
+      "html": "<ul class=\"ds-evlist\"><li><a class=\"ds-evrow\" href=\"#\"><span class=\"ds-evdate\">Sábado<b>26</b></span><span class=\"ds-evtxt\"><small>Caminhada</small><b>Caminhada solidária</b><span>Boliqueime · 9h00</span><em class=\"ds-res\">Inscrição aberta</em></span><span class=\"ds-mini\"><span class=\"ds-img\"></span></span></a></li></ul>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-evlist{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink);font-family:var(--body)} .ds-evlist li{border-bottom:1.5px solid var(--rule)} .ds-evrow{display:grid;grid-template-columns:110px minmax(0,1fr) 130px;gap:24px;align-items:center;padding:20px 4px;color:var(--ink);text-decoration:none;transition:background .2s} .ds-evrow:hover{background:var(--hl-soft)} .ds-evrow:hover b{text-decoration:underline;text-decoration-color:var(--action);text-decoration-thickness:2px} .ds-evrow:focus-visible{outline:3px solid var(--red);outline-offset:3px} .ds-evdate{font:400 1.25rem/1.1 var(--hand);color:var(--pen)} .ds-evdate b{display:block;font:800 2.2rem/1 var(--display);font-stretch:84%;color:var(--ink)} .ds-evtxt{display:grid;gap:4px} .ds-evtxt small{font:700 .75rem/1 var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--pencil)} .ds-evtxt b{font:800 1.45rem/1.1 var(--display);font-stretch:84%} .ds-evtxt span{color:var(--pencil);font-size:1rem} .ds-res{justify-self:start;margin-top:6px;font:700 .85rem/1 var(--body);font-style:normal;background:var(--hl);border:1.5px solid var(--ink);border-radius:999px;padding:.45em .8em} .ds-mini{display:block;width:130px;background:#fff;padding:7px 7px 20px;box-shadow:0 10px 16px -10px rgba(10,20,50,.55),0 1px 3px rgba(10,20,50,.15);transform:rotate(3deg);transition:transform .25s var(--ease)} .ds-evrow:hover .ds-mini{transform:rotate(0) scale(1.04)} .ds-img{display:block;aspect-ratio:1/1;background:linear-gradient(135deg,#FF9A4D,#1E2B45)}"
+    },
+    {
+      "name": "Bottle-Cap Challenge",
+      "kind": "custom",
+      "refersTo": "challenge-card",
+      "description": "Signature: name field, level pills (Fácil 6 / Normal 10 / Difícil 10), progress dots, one item card at a time, the centred instruction 'Clica na categoria que achas correta:', four big bins with counters, streak note. 26-item pool with freshness rotation; timed; the diploma is revealed with an animation at the end.",
+      "html": "<div class=\"ds-game\"><div class=\"ds-head\"><label class=\"ds-name\"><span>Nome:</span><input type=\"text\" placeholder=\"o teu nome\" value=\"Rita\"></label><div class=\"ds-score\">Pontos: <span>3 / 8</span></div></div><ol class=\"ds-dots\" aria-hidden=\"true\"><li class=\"ok\"></li><li class=\"ok\"></li><li class=\"no\"></li><li class=\"ok\"></li><li></li><li></li><li></li><li></li></ol><div class=\"ds-stage\"><p class=\"ds-q\">Onde vai isto?</p><div class=\"ds-card\"><svg width=\"84\" height=\"84\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><circle cx=\"24\" cy=\"24\" r=\"19\" fill=\"#2AA7E8\" stroke=\"#1B1D2A\" stroke-width=\"2.5\"/><circle cx=\"24\" cy=\"24\" r=\"12\" fill=\"none\" stroke=\"#1B1D2A\" stroke-width=\"2\" opacity=\".35\"/></svg>Tampa de garrafa de água<small>de plástico?</small></div><span class=\"ds-streak\">3 seguidas!</span></div><div class=\"ds-bins\"><button class=\"ds-bin\" type=\"button\" style=\"color:#FF7A1A\"><svg width=\"44\" height=\"44\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path d=\"M8 14h32l-2 28H10z\" fill=\"#F2F1EC\" stroke=\"#1B1D2A\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/><path d=\"M12 14c0-6 4-8 4-8M36 14c0-6-4-8-4-8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><b>Plástico</b><small>tampas e pegas</small><span class=\"ds-count\">3</span></button><button class=\"ds-bin\" type=\"button\"><svg width=\"44\" height=\"44\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path d=\"M8 14h32l-2 28H10z\" fill=\"#F2F1EC\" stroke=\"#1B1D2A\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/><path d=\"M12 14c0-6 4-8 4-8M36 14c0-6-4-8-4-8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><b>Caricas</b><small>metal</small><span class=\"ds-count\">0</span></button><button class=\"ds-bin\" type=\"button\"><svg width=\"44\" height=\"44\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path d=\"M8 14h32l-2 28H10z\" fill=\"#F2F1EC\" stroke=\"#1B1D2A\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/><path d=\"M12 14c0-6 4-8 4-8M36 14c0-6-4-8-4-8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><b>Cortiça</b><small>só 100% cortiça</small><span class=\"ds-count\">0</span></button><button class=\"ds-bin ds-no\" type=\"button\"><svg width=\"44\" height=\"44\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path d=\"M8 14h32l-2 28H10z\" fill=\"#F2F1EC\" stroke=\"#1B1D2A\" stroke-width=\"2.5\" stroke-linejoin=\"round\"/><path d=\"M12 14c0-6 4-8 4-8M36 14c0-6-4-8-4-8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><b>Não aceite</b><small>vai para o ecoponto</small><span class=\"ds-count\">1</span></button></div></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-game{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:24px;font-family:var(--body);color:var(--ink)} .ds-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;align-items:end;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:18px} .ds-name{display:flex;align-items:baseline;gap:10px;flex:1 1 220px;font:400 1.5rem/1 var(--hand);color:var(--pen)} .ds-name input{flex:1;min-width:0;font:400 1.5rem/1.2 var(--hand);color:var(--pen);border:0;border-bottom:2px solid var(--pen);background:transparent;padding:2px 4px} .ds-name input:focus{outline:none;border-bottom-color:var(--action);background:var(--hl-soft)} .ds-score{font:800 1.1rem/1 var(--display)} .ds-score span{font:400 1.8rem/1 var(--hand);color:var(--red-ink)} .ds-dots{list-style:none;display:flex;gap:8px;margin:0 0 20px;padding:0} .ds-dots li{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);background:#fff} .ds-dots li.ok{background:var(--cap4)} .ds-dots li.no{background:var(--red)} .ds-stage{display:grid;justify-items:center;gap:8px;margin-bottom:22px;position:relative} .ds-q{font:400 1.6rem/1 var(--hand);color:var(--pen);margin:0} .ds-card{display:grid;justify-items:center;gap:8px;min-width:260px;padding:20px 26px 16px;background:#fff;border:2px solid var(--ink);border-radius:18px;box-shadow:0 14px 24px -16px rgba(20,30,80,.55);font:800 1.35rem/1.15 var(--display);font-stretch:84%;text-align:center;animation:ds-in .45s var(--ease)} .ds-card small{font:400 1rem/1 var(--hand);color:var(--pencil)} @keyframes ds-in{from{opacity:0;transform:translateY(-14px) rotate(-4deg) scale(.96)}} .ds-streak{position:absolute;right:0;top:36px;font:400 1.35rem/1 var(--hand);color:var(--action);transform:rotate(6deg)} .ds-bins{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px} .ds-bin{position:relative;display:grid;justify-items:start;gap:4px;text-align:left;border:2px solid var(--ink);border-radius:16px;padding:14px 14px 12px;background:#fff;cursor:pointer;font:inherit;color:var(--ink);transition:background .2s,transform .2s var(--ease),box-shadow .2s} .ds-bin:hover{transform:translateY(-2px);box-shadow:0 10px 18px -12px rgba(20,30,80,.6);background:var(--hl-soft)} .ds-bin:focus-visible{outline:3px solid var(--red);outline-offset:3px} .ds-bin b{font:800 1.2rem/1.05 var(--display);font-stretch:84%;color:var(--ink)} .ds-bin small{font-size:.85rem;color:var(--pencil)} .ds-no{background:#FFF4F2} .ds-count{position:absolute;top:10px;right:12px;min-width:30px;height:30px;border-radius:15px;display:grid;place-items:center;font:400 1.2rem/1 var(--hand);color:var(--pen);border:1.5px dashed var(--pen)} @media (max-width:700px){.ds-bins{grid-template-columns:repeat(2,minmax(0,1fr))}} @media (prefers-reduced-motion:reduce){.ds-card{animation:none}}"
+    },
+    {
+      "name": "Friendship Diploma",
+      "kind": "custom",
+      "refersTo": "diploma",
+      "description": "Signature reward: cream certificate with cover-colour double frame, highlighter studs, logo letterhead, handwritten name in logo-1, stars, red seal, signature and date.",
+      "html": "<div class=\"ds-dip\"><span class=\"ds-c ds-c1\"></span><span class=\"ds-c ds-c2\"></span><span class=\"ds-c ds-c3\"></span><span class=\"ds-c ds-c4\"></span><p class=\"ds-head\">Processo nº 167 · Boliqueime</p><h3>Diploma de Amigo do Martim</h3><p class=\"ds-cert\">Certifica-se que</p><input class=\"ds-nm\" type=\"text\" value=\"Rita\" aria-label=\"O teu nome no diploma\"><p class=\"ds-body\">separou 7 de 8 peças como o pai do Martim e ajuda a transformar tampas em tratamentos.</p><p class=\"ds-stars\"><svg width=\"34\" height=\"34\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" class=\"\"><path d=\"M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z\" stroke=\"#1B1D2A\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/></svg><svg width=\"34\" height=\"34\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" class=\"\"><path d=\"M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z\" stroke=\"#1B1D2A\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/></svg><svg width=\"34\" height=\"34\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" class=\"off\"><path d=\"M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z\" stroke=\"#1B1D2A\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/></svg></p><div class=\"ds-foot\"><div class=\"ds-sig\"><span>Martim</span><small>Martim Silva Cruz</small></div><div class=\"ds-seal\"><span>Amigo<br>do Martim</span><b>167</b></div><div class=\"ds-sig\"><span>25/09/2026</span><small>Data</small></div></div></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-dip{position:relative;width:min(100%,640px);background:#FFFDF7;color:var(--ink);text-align:center;padding:44px 40px 32px;border:6px double var(--cover);outline:2px solid var(--cover);outline-offset:-16px;box-shadow:0 26px 40px -26px rgba(20,30,80,.55),0 2px 6px rgba(20,30,80,.12);transform:rotate(-.6deg);font-family:var(--body)} .ds-dip::before{content:\"\";position:absolute;inset:22px;pointer-events:none;background:radial-gradient(circle at 50% 0,color-mix(in srgb,var(--hl) 22%,transparent),transparent 60%),repeating-linear-gradient(45deg,color-mix(in srgb,var(--cover) 4%,transparent) 0 2px,transparent 2px 9px)} .ds-dip>*{position:relative} .ds-c{position:absolute;width:26px;height:26px;border-radius:50%;background:var(--hl);border:2px solid var(--ink);z-index:1} .ds-c1{top:8px;left:8px}.ds-c2{top:8px;right:8px}.ds-c3{bottom:8px;left:8px}.ds-c4{bottom:8px;right:8px} .ds-head{font:700 .78rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--pen);margin:0 0 10px} .ds-dip h3{font:800 2.4rem/1.02 var(--display);font-stretch:84%;letter-spacing:-.025em;margin:0 auto 12px;max-width:16ch} .ds-cert{font:400 1.35rem/1 var(--hand);color:var(--pen);margin:0 0 4px} .ds-nm{width:80%;text-align:center;font:400 2.8rem/1.1 var(--hand);color:var(--logo-1);background:transparent;border:0;border-bottom:2px solid var(--pen);padding:0 8px 4px;margin:0 auto 12px} .ds-nm:focus{outline:none;background:var(--hl-soft)} .ds-body{font-size:1.05rem;line-height:1.6;max-width:48ch;margin:0 auto 10px} .ds-stars{display:flex;justify-content:center;gap:6px;margin:0 0 18px} .ds-stars svg{fill:var(--hl)} .ds-stars svg.off{fill:#fff;opacity:.7} .ds-foot{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:16px} .ds-sig{display:grid;gap:4px;justify-items:center} .ds-sig span{font:400 1.7rem/1 var(--hand);color:var(--pen);padding:0 12px 6px;border-bottom:1.5px solid var(--ink);min-width:120px} .ds-sig small{font:700 .72rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)} .ds-seal{width:108px;height:108px;border-radius:50%;border:4px solid var(--red);color:var(--red);display:grid;place-content:center;gap:2px;transform:rotate(-12deg);background:rgba(224,48,30,.05);position:relative} .ds-seal::before{content:\"\";position:absolute;inset:7px;border:2px dashed var(--red);border-radius:50%} .ds-seal span{font:800 .75rem/1.05 var(--display);text-transform:uppercase} .ds-seal b{font:800 1.4rem/1 var(--display)}"
+    },
+    {
+      "name": "Share Row",
+      "kind": "custom",
+      "refersTo": "share-button",
+      "description": "Native share first (only if navigator.share), then WhatsApp, Facebook, X, TikTok and copy link as white ink-outlined pills with monochrome icons.",
+      "html": "<div class=\"ds-share\"><span class=\"ds-lbl\">Desafia os teus amigos:</span><button class=\"ds-nat\" type=\"button\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 002 2h10a2 2 0 002-2v-6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>Partilhar</button><button class=\"ds-sb\" type=\"button\" aria-label=\"Partilhar no WhatsApp\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4.2 19.8l1.1-4A8.3 8.3 0 1112 20.3a8.3 8.3 0 01-3.9-1z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>WhatsApp</button><button class=\"ds-sb\" type=\"button\" aria-label=\"Partilhar no Facebook\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4a21 21 0 00-2.4-.1c-2.4 0-4 1.4-4 4.1v2.1H7.6v3h2.6V21z\" fill=\"currentColor\"/></svg>Facebook</button><button class=\"ds-sb\" type=\"button\" aria-label=\"Partilhar no X\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 4l16 16M20 4L4 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\"/></svg>X</button><button class=\"ds-sb\" type=\"button\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg>Copiar link</button></div>",
+      "css": ":host{--paper:#FBFCFF;--cover:#1E2B45;--cover-deep:#151E30;--on-cover:#F4F1EA;--on-cover-soft:#D6D5D3;--hl:#FFB86B;--hl-soft:#FFEAD3;--hl-on-cover:#FFB86B;--pen:#1E2B45;--rule:#DFE1E6;--ring:rgba(30,43,69,.26);--tape:rgba(255,255,255,.6);--action:#F2784B;--action-ink:#1B1D2A;--cap1:#FF9A4D;--cap2:#F28AB3;--cap3:#6EC1EA;--cap4:#79C98A;--red:#E0301E;--red-ink:#C21F0E;--ink:#1B1D2A;--pencil:#474C5E;--display:'Bricolage Grotesque',system-ui,sans-serif;--hand:'Gochi Hand',cursive;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)} .ds-share{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;max-width:640px} .ds-lbl{width:100%;text-align:center;font:400 1.25rem/1.2 var(--hand);color:var(--pen)} .ds-sb,.ds-nat{display:inline-flex;align-items:center;gap:7px;font:700 .95rem/1 var(--body);padding:.7em 1em;border-radius:999px;border:2px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;transition:background .2s,transform .2s var(--ease)} .ds-sb:hover{background:var(--hl);transform:translateY(-1px)} .ds-nat{border-radius:10px;border-color:transparent;background:var(--action);color:var(--action-ink);box-shadow:0 6px 14px -8px rgba(15,17,28,.45)} .ds-sb:focus-visible,.ds-nat:focus-visible{outline:3px solid var(--red);outline-offset:3px}"
+    },
+    {
+      "name": "Collection Map",
+      "kind": "custom",
+      "refersTo": "collection-map",
+      "description": "Leaflet map in an ink-bordered 18px frame with cap-shaped markers by point type, a white list with handwritten distances, town chips and 'Mais perto de mim'.",
+      "html": "<div style=\"font:16px system-ui;border:2px solid #1B1D2A;border-radius:18px;padding:14px;background:#fff;display:flex;gap:12px;align-items:center\"><span style=\"width:22px;height:22px;border-radius:50%;background:#FF7A1A;border:3px solid #fff;box-shadow:0 0 0 2px #1B1D2A\"></span><b>EB1 Benfarras</b><small style=\"color:#474C5E\">Escola · Boliqueime</small><span style=\"margin-left:auto;font-family:cursive;color:#1E2B45\">1,2 km</span></div>"
+    },
+    {
+      "name": "Sorting Rule Card",
+      "kind": "custom",
+      "refersTo": "rule-card",
+      "description": "White ink-bordered card with a pictogram and a bullet list: green handwritten ✓ for what goes in, red-ink ✗ for what stays out; the 'Não aceite' card is red-bordered on #FFF6F4.",
+      "html": "<div style=\"font:16px system-ui;border:2px solid #C21F0E;border-radius:14px;padding:16px;background:#FFF6F4;max-width:260px\"><b style=\"color:#C21F0E\">Não aceite</b><ul style=\"list-style:none;padding:0;margin:8px 0 0\"><li><span style=\"color:#C21F0E\">✗</span> Tampas de spray</li><li><span style=\"color:#C21F0E\">✗</span> Doseadores</li></ul></div>"
+    },
+    {
+      "name": "Printable Poster",
+      "kind": "custom",
+      "refersTo": "a4-poster",
+      "description": "A4 sheet: cover band with logo tab and 'Aqui juntamos tampas para o Martim.', the plea, three bins, a dashed red 'Não aceite' strip, and one footer row with the taped photo, the quote and a QR code.",
+      "html": "<div style=\"font:14px system-ui;width:210px;aspect-ratio:210/297;border:1px solid #ccc;background:#fff;overflow:hidden\"><div style=\"background:#1E2B45;color:#F4F1EA;padding:12px;font-weight:800\">Aqui juntamos <span style=\"background:#FFB86B;color:#1B1D2A\">tampas</span> para o Martim.</div><p style=\"padding:0 12px\">Separa, por favor.</p></div>"
+    },
+    {
+      "name": "Friends Wall Top 10",
+      "kind": "custom",
+      "refersTo": "top10-board",
+      "description": "Folder tabs per level over a white board; rows with a rank disc (gold, silver, bronze for 1–3), handwritten first name, town, stars, score, time and date; the visitor's own row washed in hl-soft with a 'tu' pill; dashed empty places.",
+      "html": "<div style=\"font:16px system-ui;border:2px solid #1B1D2A;border-radius:0 0 18px 18px;background:#fff;padding:10px 16px;display:flex;gap:12px;align-items:center\"><span style=\"width:40px;height:40px;border-radius:50%;border:2px solid #1B1D2A;background:#F6C343;display:grid;place-items:center;font-weight:800\">1</span><b style=\"font-family:cursive;color:#B3471A;font-size:22px\">Rita</b><small>Boliqueime</small><b style=\"margin-left:auto\">10/10</b><span>41 s</span></div>"
+    },
+    {
+      "name": "Booklet Page",
+      "kind": "custom",
+      "refersTo": "a4-booklet-page",
+      "description": "A4 page of the 8-page booklet: handwritten kicker, 7.4cqw headline, 2.25cqw body, taped photos, uppercase folio; cover and back cover in the cover colour.",
+      "html": "<div style=\"font:12px system-ui;width:210px;aspect-ratio:210/297;border:1px solid #ccc;background:#fff;padding:14px;display:flex;flex-direction:column;gap:6px\"><span style=\"font-family:cursive;color:#1E2B45\">a minha história</span><b style=\"font-size:20px;line-height:1\">Olá, eu sou o Martim.</b><span style=\"margin-top:auto;font-size:8px;letter-spacing:.12em;color:#474C5E\">DE MÃOS DADAS PELO MARTIM · 2</span></div>"
+    },
+    {
+      "name": "Latest Result Box",
+      "kind": "custom",
+      "refersTo": "result-box",
+      "description": "White ink-bordered box with the last known result in large Bricolage (576 €), a bold title, kilos per material and a pencil note that it is updated by hand.",
+      "html": "<div style=\"font:16px system-ui;border:2px solid #1B1D2A;border-radius:14px;padding:14px;background:#fff;display:flex;gap:14px;align-items:center\"><b style=\"font-size:32px\">576 €</b><span><b>Último resultado: BFF Solidário 2026.</b><br><small style=\"color:#474C5E\">Atualizado à mão pelos meus pais.</small></span></div>"
+    }
+  ],
+  "narrative": {
+    "northStar": "Martim's Exercise Book",
+    "overview": "The site is a Portuguese primary-school squared exercise book that Martim filled in himself. The page is bright white paper with a fine 24px grid tinted by the pen colour, and a red margin line. A cover takes over whole regions (the hero's left half, the VOLTA panel, the next-event card, the footer), with a handful of bottle caps scattered on it. The visitor chooses that cover from twelve, the way a child picks a notebook at the stationery shop. The default is night blue. His story reads as a composition. The BigBag money reads as a worked sum. Sorting caps is a challenge on a worksheet he corrects in red pen, and finishing it earns a friendship diploma. The events live in a photo album. Every visual device comes from the stationery of a Portuguese school desk: taped-in photos and polaroids, a name label on the cover, a spiral binding, highlighter marks, red ticks and circles, and a round \"Muito bem!\" stamp.\n\nDensity is generous and phone-first. Body type is large (18px) in a face built for low vision. Contrast is high: dark ink on white paper, and the cover's own text colour on each cover. Heavy compressed grotesque headings give the book a confident voice. Martim's own handwriting, in a dark pen, runs through the page as marginalia. The mood is cheerful, soft and not pitying: a child showing his homework and his team's photos, fist in the air.\n\nThe world rejects the charity default (full-bleed hero photo, progress bar and a lone Donate button). It also rejects the cream-paper-and-serif \"warm family\" look: the paper is cool white, and the type is sans and handwriting. After review it also rejects a single brand-primary cover, because a blue, yellow and red trio read as supermarket branding. The identity lives in the book's structure and the caps, not in one colour.",
+    "keyCharacteristics": [
+      "Squared paper ground (24px grid tinted by the pen colour) with a red margin line on every paper section.",
+      "A visitor-chosen cover (12 options, night blue by default) as a region-owning surface, carrying its own text colour.",
+      "Bottle caps in four colours per cover, scattered on the cover and used as the nav tab underlines.",
+      "Stationery accents with fixed jobs: red pen marks, the highlighter for actions and marks, dark-pen handwriting.",
+      "One cover slot that everything themed reads from, derived in code from seven values per cover.",
+      "2px ink outlines on every card, table, chip and field, as if drawn with a ruler.",
+      "Objects laid on the page (photos, polaroid slides, label, stamp, caps) sit at slight angles and cast soft shadows.",
+      "Hand-drawn SVG pictograms with 2.5px ink strokes.",
+      "The family's original logo, recoloured per cover from the action colour; partner and supporter logos always sit on white chips.",
+      "The book also leaves the screen: an A4 poster with container labels and an 8-page booklet, drawn in the same world, print exactly as previewed in the chosen cover."
+    ],
+    "rules": [
+      {
+        "name": "The Cover Text Rule",
+        "body": "All text on a cover uses that cover's on-cover (headings, links, ghost buttons) or on-cover-soft (copy). Never hard-code white or ink on a cover. Red and red-ink never set text on a cover (3.1:1 and 2.35:1 on noite).",
+        "section": "colors"
+      },
+      {
+        "name": "The Highlighter Mark Rule",
+        "body": "On light covers and on paper, the highlighter is a background only: button fill, swipe, selection, play disc. It is never text (1.0–1.4:1 against light covers). On dark covers it doubles as hl-on-cover text. On dark covers the headline's marked phrase becomes a solid highlighter block with ink text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Action Pair Rule",
+        "body": "Solid buttons use `--action` with `--action-ink`, never a fixed white. Any cover added to or edited in `PALETTES` must reach 4.5:1 for action-ink on action and for on-cover-soft and hl-on-cover on the cover. Red stays a marking colour and is never a button fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Slot Rule",
+        "body": "Themed colour is always referenced through the cover variables, including inline SVG fills such as the brand mark and the loose caps, so any cover swaps the whole book at once. New themed tokens are derived in `applyPal()` from the seven cover values, never hard-coded per component.",
+        "section": "colors"
+      },
+      {
+        "name": "The Caps Are Caps Rule",
+        "body": "Cap colours (cap1–cap4 and the pictogram colours) only ever appear as caps or cap-shaped marks: the loose caps on the cover, pictograms, the 4px nav tab underlines, timetable dots and the dots on picker swatches. They never fill surfaces or set text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Logo Follows the Action Rule",
+        "body": "The family's logo takes its colours only from `--logo-1/2/3`, which `applyPal()` derives from the cover's action and pen colours. Never recolour it by hand or give it a fixed brand colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dark Lettering Rule",
+        "body": "On a light cover the logo's lettering is never white. The footer mark uses on-cover, so it goes dark on light covers and off-white only on dark ones.",
+        "section": "colors"
+      },
+      {
+        "name": "The White Chip Rule",
+        "body": "Partner and supporter logos always sit on a white chip (sheet white, 1.5px rule border, 5–10px radius), whether on paper, in a table or on a cover. They are never placed on the cover colour or the grid directly, and never recoloured, except for single-colour marks re-inked dark for legibility.",
+        "section": "colors"
+      },
+      {
+        "name": "The Diploma Paper Rule",
+        "body": "The diploma is the only cream surface in the system (#FFFDF7). It is a certificate handed out of the book, not a page in it. Everywhere else the paper stays cool white.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Reds Rule",
+        "body": "Red (#E0301E) is for strokes, fills and large display marks. Red-ink (#C21F0E) is for any text at body size, on paper. Don't swap them.",
+        "section": "colors"
+      },
+      {
+        "name": "The Martim's Pen Rule",
+        "body": "Gochi Hand appears only where Martim is writing: his notes, captions, the sum, filled-in values, corrections, feedback, the thank-you line, his signature, and short first-person prompts beside a control (\"Quero ajudar com…\", \"Onde vai isto?\", \"Escolhe a capa\", \"Desafia os teus amigos:\"), and names the visitor writes into the book (the challenge name field, the diploma name). It never sets headings, buttons' own labels, navigation, form labels or any instruction a reader must parse at length.",
+        "section": "typography"
+      },
+      {
+        "name": "The Heavy Compressed Rule",
+        "body": "Every heading, h1 to h3, and every display figure is Bricolage 800 at 84% width with negative tracking. There is no light or regular display weight in this world.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Sums Rule",
+        "body": "Numbers in sums, rates, totals and the album counter use tabular lining numerals, so columns line up like homework.",
+        "section": "typography"
+      },
+      {
+        "name": "The Taped-In Rule",
+        "body": "Only an object lying on or floating over the page casts a shadow, and it is always soft, low and warm or blue-black. No hard offset shadows, no glows, no shadow on flat panels or tables.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep every paper section on the 24px grid, with the red margin line set at clamp(20px, 6vw, 88px).",
+      "Do set all cover text in on-cover or on-cover-soft, whichever cover is active.",
+      "Do use the highlighter with ink text and an ink border for the primary action, and `--action` with `--action-ink` for solid buttons.",
+      "Do reference every themed colour through the cover variables, and derive new themed tokens in `applyPal()`.",
+      "Do check any cover added to or edited in `PALETTES` against 4.5:1 for on-cover-soft and hl-on-cover on the cover, action-ink on action and ink on hl before it enters the picker.",
+      "Do set every heading in Bricolage Grotesque 800 at font-stretch 84% with negative tracking.",
+      "Do keep reading copy at 1rem or larger in Atkinson Hyperlegible, and body copy at 1.125rem/1.6 with a 62ch measure.",
+      "Do outline cards, tables, chips and fields in 2px ink. Switch to a dashed border for optional or inactive states.",
+      "Do use red-ink (#C21F0E) for any red text at body size, on paper only.",
+      "Do frame photos as white-bordered prints with handwritten captions. Tape them in the book, but never in event contexts.",
+      "Do put every partner or supporter logo on a white logo chip at one of the defined sizes.",
+      "Do let the family's logo take its colours from `--logo-1/2/3`, and keep its lettering in Portuguese in both languages.",
+      "Do draw icons and objects as inline SVG with 2.5px ink strokes, and keep cap colours on caps.",
+      "Do gate every draw-in, stamp, card and pulse animation behind prefers-reduced-motion.",
+      "Do lead with the native share button where `navigator.share` exists, then WhatsApp, Facebook, X and copy link as white ink-outlined pills.",
+      "Do keep the saved diploma PNG in step with the on-screen diploma: same layout, live cover colours, the same fonts.",
+      "Do keep collection points in js/pontos.js and wall entries in js/mural.js, and run sh tools/build.sh after any change.",
+      "Do size everything inside an A4 sheet in cqw against its figure, and re-check that each sheet fits one A4 page in PT, EN and a real PDF.",
+      "Do write sorting rules as ✓/✗ bullet lists, one item per line, never as sentences.",
+      "Do keep the wall opt-in: the diploma checkbox starts unticked and only first names are shown.",
+      "Do keep the red margin line identical everywhere: 2px dashed at 60%.",
+      "Do update the hero's next-event slide after each event."
+    ],
+    "donts": [
+      "Don't hard-code white, ink or red text on a cover.",
+      "Don't use the highlighter or cap colours as text on paper or light covers. The pressed-chip count on ink and hl-on-cover on dark covers are the only highlighter text.",
+      "Don't use red as a button fill, or a fixed white as button text. Red marks; the action pair acts.",
+      "Don't make one saturated primary colour the brand. A blue, yellow and red trio reads as supermarket branding.",
+      "Don't set headings, button labels, nav or instructions in Gochi Hand. It is Martim's pen only.",
+      "Don't use hard offset shadows, glows or drop shadows on flat panels. Only objects taped or laid on the page cast soft shadows.",
+      "Don't use cream or ivory paper or serif display type. The paper is cool white and the voice is grotesque plus handwriting. The diploma's certificate stock is the single exception.",
+      "Don't build the charity default of a full-bleed hero photo, a fundraising progress bar and a lone Donate button. The only full-bleed photo closes the page.",
+      "Don't use the cover colour for text or decorative accents on paper. It owns whole regions.",
+      "Don't use icon fonts or emoji as icons.",
+      "Don't give the logo white lettering on a light cover, or fix it to one brand colour.",
+      "Don't place partner logos directly on the cover colour, the grid or a photo.",
+      "Don't put tape on event posters, event thumbnails, bulletin photos or event pages.",
+      "Don't give share buttons brand colours (WhatsApp green, Facebook blue). Icons are monochrome ink, and the pills are white with ink outlines.",
+      "Don't use the diploma's cream paper, double frame or seal anywhere else.",
+      "Don't write print CSS that is not scoped to its own page, and don't size a sheet in cqw relative to itself.",
+      "Don't let a component's display rule override the hidden attribute (add an explicit [hidden]{display:none})."
+    ]
+  }
+}

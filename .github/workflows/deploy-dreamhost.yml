@@ -4,7 +4,7 @@ name: Publicar na DreamHost
 on:
   push:
     branches: [main]
-    paths-ignore: ['proposta/**', 'README.md']
+    paths-ignore: ['proposta/**', 'design/**', 'README.md']
   workflow_dispatch:
 concurrency: dreamhost
 jobs:
@@ -30,6 +30,6 @@ jobs:
           printf '%s\n' "$DH_SSH_KEY" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
           for i in 1 2 3; do ssh-keyscan -H "$DH_HOST" >> ~/.ssh/known_hosts 2>/dev/null && break; sleep 5; done
           rsync -rlptvz --delete --exclude '.DS_Store' --exclude '.well-known' --exclude '.dh-diag' \
-            --exclude '.git' --exclude '.github' --exclude 'proposta' --exclude 'README.md' --exclude '.nojekyll' \
+            --exclude '.git' --exclude '.github' --exclude 'proposta' --exclude 'design' --exclude 'README.md' --exclude '.nojekyll' \
             -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new -o ConnectTimeout=20" \
             ./ "$DH_USER@$DH_HOST:${DH_PATH:-demaosdadaspelomartim.pt}/"

@@ -6,4 +6,5 @@ Site: https://demaosdadaspelomartim.pt (DreamHost) · pré-visualização: https
   - `eventos/`, `historia.html`, `mapa.html`, `organiza.html`, `cartaz.html`, `mural.html`, `brochura.html`, `privacidade.html`, `cookies.html`, `404.html`, `en/` (versão inglesa).
   - `docs/`: PDFs da brochura (PT e EN).
 - `proposta/`: documento da proposta de redesign.
+- `design/`: DESIGN.md (sistema de design), PRODUCT.md (contexto do projeto) e design.json. Não é enviado para a DreamHost.
 - `.github/workflows/deploy-dreamhost.yml`: cada push envia o site para a DreamHost por rsync (segredos `DH_HOST`, `DH_USER`, `DH_SSH_KEY`, `DH_PATH`).
