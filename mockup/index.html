@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202609252117">
+<link rel="stylesheet" href="css/site.css?v=202609252127">
 </head>
 <body>
 
@@ -233,13 +233,14 @@
         <div class="card-item" id="card" aria-live="polite"></div>
         <span class="streak" id="streak" aria-live="polite"></span>
       </div>
+      <p class="how" id="how"><span class="hand">Clica na categoria certa</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4v15m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
       <div class="bins" id="bins" role="group" aria-label="Sacos">
         <button class="bin" type="button" data-bin="plastico"><svg aria-hidden="true" style="color:var(--cap-orange)"><use href="#bag"/></svg><b>Plástico</b><small>tampas e pegas</small><span class="count num">0</span></button>
         <button class="bin" type="button" data-bin="caricas"><svg aria-hidden="true"><use href="#bag"/></svg><b>Caricas</b><small>metal</small><span class="count num">0</span></button>
         <button class="bin" type="button" data-bin="cortica"><svg aria-hidden="true"><use href="#bag"/></svg><b>Cortiça</b><small>só 100% cortiça</small><span class="count num">0</span></button>
         <button class="bin bin-no" type="button" data-bin="nao"><svg aria-hidden="true"><use href="#nope"/></svg><b>Não aceite</b><small>vai para o ecoponto</small><span class="count num">0</span></button>
       </div>
-      <div class="feedback" id="feedback" aria-live="polite">Toca no saco certo para a peça de cima.</div>
+      <div class="feedback" id="feedback" aria-live="polite"></div>
       <div class="diploma" id="diploma" hidden>
         <div class="dip-paper" id="dip-paper">
           <span class="dip-corner c1" aria-hidden="true"></span><span class="dip-corner c2" aria-hidden="true"></span><span class="dip-corner c3" aria-hidden="true"></span><span class="dip-corner c4" aria-hidden="true"></span>
@@ -330,7 +331,7 @@
         </details>
         <p>Faço <span class="hl">3 a 4 tratamentos intensivos por ano</span> na Clínica Kinésio, em Espinho. Cada um dura um mês, longe de casa com a minha mãe, e custa <span class="hl">6 740 €</span>.</p>
         <p class="sign">Martim</p>
-        <p><a class="btn btn-line" href="historia.html">Ler a história completa <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        <p style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn-line" href="historia.html">Ler a história completa <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="brochura.html"><svg aria-hidden="true"><use href="#i-down"/></svg>Brochura para partilhar</a></p>
       </div>
       <div class="album">
         <figure class="photo p1"><span class="tape" aria-hidden="true"></span><img src="img/martim-relva.jpg" alt="O Martim sentado na relva, com ortóteses azuis nos tornozelos" width="1400" height="1400" loading="lazy"><figcaption>no jardim</figcaption></figure>
@@ -563,7 +564,7 @@
     </div>
     <div>
       <h3>Atalhos</h3>
-      <ul><li><a href="#entregar">Onde entregar</a></li><li><a href="mapa.html">Mapa dos pontos</a></li><li><a href="organiza.html">Organiza uma recolha</a></li><li><a href="cartaz.html">Cartaz para imprimir</a></li><li><a href="mural.html">Mural dos amigos</a></li><li><a href="#doar">Doar por IBAN</a></li><li><a href="eventos/">Todos os eventos</a></li><li><a href="#perguntas">Dúvidas frequentes</a></li></ul>
+      <ul><li><a href="#entregar">Onde entregar</a></li><li><a href="mapa.html">Mapa dos pontos</a></li><li><a href="organiza.html">Organiza uma recolha</a></li><li><a href="cartaz.html">Cartaz para imprimir</a></li><li><a href="mural.html">Mural dos amigos</a></li><li><a href="brochura.html">Brochura para descarregar</a></li><li><a href="#doar">Doar por IBAN</a></li><li><a href="eventos/">Todos os eventos</a></li><li><a href="#perguntas">Dúvidas frequentes</a></li></ul>
     </div>
     <div class="fine"><span>© 2026 Vamos Ajudar o Martim</span><span><a href="privacidade.html">Política de privacidade</a> · <a href="cookies.html">Cookies</a> · <a href="en/index.html" lang="en" hreflang="en">English</a></span></div>
   </div>
@@ -579,8 +580,8 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
-<script src="js/mural-api.js?v=202609252117"></script>
-<script src="js/pontos.js?v=202609252117"></script>
+<script src="js/mural-api.js?v=202609252127"></script>
+<script src="js/pontos.js?v=202609252127"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
 const LNG=document.documentElement.lang==='en';
@@ -668,7 +669,7 @@ function start(){
   G.dots.innerHTML=deck.map(()=>'<li></li>').join('');
   G.bins.forEach(b=>{b.querySelector('.count').textContent='0';b.disabled=false;b.classList.remove('right','wrong')});
   G.dip.hidden=true;G.stage.hidden=false;G.game.classList.remove('done');G.stamp.classList.remove('on');G.streak.textContent='';
-  G.fb.className='feedback';G.fb.textContent=LNG?'Tap the right bag for the item on top.':'Toca no saco certo para a peça de cima.';
+  G.fb.className='feedback';G.fb.textContent='';
   show();upd();
 }
 function show(){
@@ -695,9 +696,21 @@ function pick(bin){
 function dipName(){return (document.getElementById('dip-name').value||G.name.value||'').trim()}
 function shareTxt(){const n=dipName()||(LNG?'A friend of Martim':'Um amigo do Martim');
   return LNG?`${n} scored ${right}/${ROUND} in Martim’s bottle-cap challenge and earned the Friend of Martim diploma! Can you beat that?`:`${n} fez ${right}/${ROUND} no desafio das tampinhas e ganhou o diploma de amigo do Martim! Consegues fazer melhor?`}
+/* resultado: o diploma cai no caderno, as estrelas saltam uma a uma, o selo carimba e chovem tampinhas */
+function reveal(){
+  const d=G.dip;d.classList.remove('reveal');void d.offsetWidth;d.classList.add('reveal');
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const b=document.getElementById('dip-body').querySelector('b');
+  if(b){const tgt=right,txt=b.textContent;let n=0;const tick=()=>{b.textContent=txt.replace(/^\d+/,n);if(n++<tgt)setTimeout(tick,70)};setTimeout(tick,500)}
+  const box=document.createElement('div');box.className='confetti';box.setAttribute('aria-hidden','true');
+  const cols=['var(--cap1)','var(--cap2)','var(--cap3)','var(--cap4)','var(--hl)','#FF7A1A'];
+  for(let i=0;i<(right>=Math.ceil(ROUND*.75)?34:14);i++){const c=document.createElement('i');
+    c.style.cssText=`--x:${Math.random()*100}%;--dx:${(Math.random()-.5)*160}px;--r:${Math.random()*720-360}deg;--d:${1.4+Math.random()*1.2}s;--w:${.9+Math.random()*.9}s;--s:${10+Math.random()*12}px;background:${cols[i%cols.length]}`;box.appendChild(c)}
+  d.appendChild(box);setTimeout(()=>box.remove(),3200);
+}
 function finish(){
   secs=Math.max(1,Math.round((performance.now()-t0)/1000));
-  G.stage.hidden=true;G.game.classList.add('done');G.dip.hidden=false;
+  G.stage.hidden=true;G.game.classList.add('done');G.dip.hidden=false;reveal();
   const dn=document.getElementById('dip-name');dn.value=(G.name.value||'').trim();
   const stars=right===ROUND?3:right>=Math.ceil(ROUND*.75)?2:1;
   document.getElementById('stars').innerHTML='<svg><use href="#i-star"/></svg>'.repeat(stars)+'<svg class="off"><use href="#i-star"/></svg>'.repeat(3-stars);
@@ -802,6 +815,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 }));
 updCount();
 </script>
-<script src="js/site.js?v=202609252117"></script>
+<script src="js/site.js?v=202609252127"></script>
 </body>
 </html>
