@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css?v=202609252057">
+<link rel="stylesheet" href="../css/site.css?v=202609252117">
 </head>
 <body>
 
@@ -579,8 +579,8 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Donate</a>
 </nav>
 
-<script src="../js/mural-api.js?v=202609252057"></script>
-<script src="../js/pontos.js?v=202609252057"></script>
+<script src="../js/mural-api.js?v=202609252117"></script>
+<script src="../js/pontos.js?v=202609252117"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
 const LNG=document.documentElement.lang==='en';
@@ -757,7 +757,7 @@ async function diplomaPNG(){
 document.getElementById('dip-cover').addEventListener('click',e=>{e.stopPropagation();const t=document.querySelector('.paleta-toggle');if(t&&t.getAttribute('aria-expanded')!=='true')t.click()});
 document.getElementById('dip-save').addEventListener('click',async()=>{
   toMural();
-  const blob=await diplomaPNG(),name=(LNG?'friend-of-martim-diploma':'diploma-amigo-do-martim')+'.png',file=new File([blob],name,{type:'image/png'});
+  const blob=await diplomaPNG(),name=(LNG?'Friend of Martim diploma':'Diploma Amigo do Martim')+(dipName()?' - '+dipName().replace(/[\\/:*?"<>|]+/g,''):'')+'.png',file=new File([blob],name,{type:'image/png'});
   if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:LNG?'Friend of Martim Diploma':'Diploma de Amigo do Martim',text:shareTxt()});return}catch(e){if(e.name==='AbortError')return}}
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);
 });
@@ -769,7 +769,7 @@ document.getElementById('game-share').addEventListener('share-tiktok',async e=>{
   toMural();
   const b=e.detail.btn,s=b.querySelector('span'),old=s.textContent,u=new URL('#ficha',location.href).href,cap=shareTxt()+' '+u+' #VamosAjudaroMartim #tampinhas';
   try{await navigator.clipboard.writeText(cap)}catch(x){}
-  const blob=await diplomaPNG(),name=(LNG?'friend-of-martim-diploma':'diploma-amigo-do-martim')+'.png',file=new File([blob],name,{type:'image/png'});
+  const blob=await diplomaPNG(),name=(LNG?'Friend of Martim diploma':'Diploma Amigo do Martim')+(dipName()?' - '+dipName().replace(/[\\/:*?"<>|]+/g,''):'')+'.png',file=new File([blob],name,{type:'image/png'});
   if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],text:cap});return}catch(x){if(x.name==='AbortError')return}}
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);
   s.textContent=LNG?'Diploma saved, caption copied':'Diploma guardado, legenda copiada';b.classList.add('done');setTimeout(()=>{s.textContent=old;b.classList.remove('done')},3600);
@@ -802,6 +802,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 }));
 updCount();
 </script>
-<script src="../js/site.js?v=202609252057"></script>
+<script src="../js/site.js?v=202609252117"></script>
 </body>
 </html>

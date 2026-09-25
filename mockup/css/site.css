@@ -914,6 +914,7 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
   .sheets figure{break-after:page;page-break-after:always}
   .sheets figcaption{display:none}
   .a4{width:210mm;height:297mm;box-shadow:none;aspect-ratio:auto}
+  .poster-bot .pphoto{box-shadow:none;border:.3cqw solid #C9CDD6}
   body.print-cartaz .sheets figure:not(.f-cartaz),body.print-etiquetas .sheets figure:not(.f-etiquetas){display:none}
 }
 

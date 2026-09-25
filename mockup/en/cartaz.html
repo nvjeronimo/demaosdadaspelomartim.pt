@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css?v=202609252057">
+<link rel="stylesheet" href="../css/site.css?v=202609252117">
 </head>
 <body class="sub">
 
@@ -169,8 +169,12 @@ try{local.value=localStorage.getItem('cartaz-local')||''}catch(e){}set();
 local.addEventListener('input',()=>{set();try{localStorage.setItem('cartaz-local',local.value)}catch(e){}});
 document.getElementById('c-tinta').addEventListener('change',e=>sheets.classList.toggle('ink-saver',e.target.checked));
 document.getElementById('c-capa').addEventListener('click',e=>{e.stopPropagation();const t=document.querySelector('.paleta-toggle');if(t&&t.getAttribute('aria-expanded')!=='true')t.click()});
-document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',()=>{document.body.classList.remove('print-cartaz','print-etiquetas');document.body.classList.add('print-'+b.dataset.print);window.print()}));
-addEventListener('afterprint',()=>document.body.classList.remove('print-cartaz','print-etiquetas'));
+/* o nome do PDF vem do título da página: muda-o enquanto imprime (ex.: "Cartaz tampas Martim - Bar do CDB") */
+const T0=document.title;
+const docName=k=>{const v=local.value.trim().replace(/[\/:*?"<>|]+/g,' ').replace(/\s+/g,' ').trim();
+  const base=k==='cartaz'?(LNG?'Martim bottle-cap poster':'Cartaz tampas Martim'):(LNG?'Martim container labels':'Etiquetas garrafões Martim');return v?base+' - '+v:base};
+document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',()=>{document.body.classList.remove('print-cartaz','print-etiquetas');document.body.classList.add('print-'+b.dataset.print);document.title=docName(b.dataset.print);window.print()}));
+addEventListener('afterprint',()=>{document.body.classList.remove('print-cartaz','print-etiquetas');document.title=T0});
 if(window.qrcode){const q=qrcode(0,'M');q.addData('https://vamosajudaromartim.com/');q.make();document.getElementById('qr1').innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true})}
 else{document.getElementById('qr1').innerHTML='<p style="font-size:10px;text-align:center">vamosajudaromartim.com</p>'}
 })();
@@ -207,6 +211,6 @@ else{document.getElementById('qr1').innerHTML='<p style="font-size:10px;text-ali
   <a class="btn btn-red" href="index.html#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Donate</a>
 </nav>
 
-<script src="../js/site.js?v=202609252057"></script>
+<script src="../js/site.js?v=202609252117"></script>
 </body>
 </html>
