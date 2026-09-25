@@ -1204,3 +1204,5 @@ body{overflow-x:clip}
 @media (max-width:1100px) and (min-width:901px){.hs-event{grid-template-columns:1fr}.hs-poster.photo{display:none}}
 @media (max-width:900px){.hs-event{grid-template-columns:1fr}.hs-poster.photo{display:none}}
 @media (prefers-reduced-motion:reduce){.hero-slide{transition:none}}
+/* linha da margem: sempre a mesma, tracejada, em todo o site */
+.page::before,.page[data-path].on::before,.page[data-path]:not(.on)::before,.sheet::before{width:2px;background:repeating-linear-gradient(var(--red) 0 10px,transparent 10px 18px);opacity:.6;transition:none}
