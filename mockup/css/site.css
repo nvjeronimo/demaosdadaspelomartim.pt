@@ -1106,10 +1106,7 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .book figure,.sheets figure{container-type:inline-size}
 
 /* ================= desafio: instrução e revelação do resultado ================= */
-.how{display:flex;align-items:center;justify-content:center;gap:8px;margin:4px 0 12px;color:var(--pen)}
-.how .hand{font-size:1.5rem;line-height:1}
-.how svg{width:22px;height:22px;animation:howBob 1.4s ease-in-out infinite}
-@keyframes howBob{50%{transform:translateY(4px)}}
+.how{max-width:none;margin:4px 0 12px;text-align:center;font-size:1.5rem;line-height:1.2;color:var(--pen)}
 .game.done .how{display:none}
 .diploma{position:relative}
 .diploma.reveal .dip-paper{animation:dipIn .9s var(--ease) both}
@@ -1128,4 +1125,4 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .confetti i{position:absolute;top:0;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;border:2px solid var(--ink);opacity:0;animation:capFall var(--d) var(--w) cubic-bezier(.3,.6,.5,1) both}
 @keyframes capFall{0%{opacity:1;transform:translate(0,-20px) rotate(0)}85%{opacity:1}100%{opacity:0;transform:translate(var(--dx),620px) rotate(var(--r))}}
 @media (max-width:560px){.diploma.reveal .dip-paper{animation-name:dipInFlat}@keyframes dipInFlat{0%{opacity:0;transform:translateY(-40px) scale(.9)}100%{opacity:1;transform:none}}}
-@media (prefers-reduced-motion:reduce){.diploma.reveal *,.how svg{animation:none!important}.confetti{display:none}}
+@media (prefers-reduced-motion:reduce){.diploma.reveal *{animation:none!important}.confetti{display:none}}

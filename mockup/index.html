@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202609252127">
+<link rel="stylesheet" href="css/site.css?v=202609252134">
 </head>
 <body>
 
@@ -233,7 +233,7 @@
         <div class="card-item" id="card" aria-live="polite"></div>
         <span class="streak" id="streak" aria-live="polite"></span>
       </div>
-      <p class="how" id="how"><span class="hand">Clica na categoria certa</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4v15m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+      <p class="how hand" id="how">Clica na categoria que achas correta.</p>
       <div class="bins" id="bins" role="group" aria-label="Sacos">
         <button class="bin" type="button" data-bin="plastico"><svg aria-hidden="true" style="color:var(--cap-orange)"><use href="#bag"/></svg><b>Plástico</b><small>tampas e pegas</small><span class="count num">0</span></button>
         <button class="bin" type="button" data-bin="caricas"><svg aria-hidden="true"><use href="#bag"/></svg><b>Caricas</b><small>metal</small><span class="count num">0</span></button>
@@ -580,8 +580,8 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
-<script src="js/mural-api.js?v=202609252127"></script>
-<script src="js/pontos.js?v=202609252127"></script>
+<script src="js/mural-api.js?v=202609252134"></script>
+<script src="js/pontos.js?v=202609252134"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
 const LNG=document.documentElement.lang==='en';
@@ -644,19 +644,32 @@ const POOL=[
  {id:'rosca',lv:3,icon:'cap',color:'#B0B6C0',bin:'nao',label:['Tampa de plástico com rosca de metal','Plastic cap with a metal thread'],ok:['Muito bem! Plástico com metal não pode ir.','Well done! Plastic mixed with metal can’t go.'],hint:['Qualquer tampa com metal misturado não é aceite.','Any cap with metal mixed in is not accepted.']},
  {id:'seringa',lv:3,icon:'syringe',bin:'nao',label:['Tampa de seringa','Syringe cap'],ok:['Isso! Resíduos de hospital nunca.','Yes! Never hospital waste.'],hint:['Tampas de seringas e resíduos hospitalares não são aceites.','Syringe caps and hospital waste are not accepted.']},
  {id:'jerrican',lv:1,icon:'cap',color:'#E0301E',bin:'nao',label:['Tampa de jerrican','Jerrycan cap'],ok:['Certo! Jerricans ficam de fora.','Right! Jerrycans stay out.'],hint:['As tampas de jerricans não são aceites.','Jerrycan caps are not accepted.']},
+ {id:'gel',lv:2,icon:'cap',color:'#7FC8A9',bin:'plastico',label:['Tampa de gel de banho','Shower gel cap'],ok:['Boa! Tampa de gel de banho é plástico.','Nice! Shower gel caps are plastic.'],hint:['É uma tampa de plástico: vai para o plástico.','It’s a plastic cap: it goes in plastic.']},
+ {id:'lixivia',lv:2,icon:'cap',color:'#F2F3F6',bin:'plastico',label:['Tampa de garrafa de lixívia','Bleach bottle cap'],ok:['Certo! Passa-a por água e vai para o plástico.','Right! Give it a rinse and it goes in plastic.'],hint:['A tampa da lixívia é plástico.','A bleach cap is plastic.']},
+ {id:'iogurte',lv:1,icon:'cap',color:'#F28AB3',bin:'plastico',label:['Tampa de iogurte líquido','Drinking-yoghurt cap'],ok:['Isso! Tampa de iogurte líquido é plástico.','Yes! Drinking-yoghurt caps are plastic.'],hint:['É uma tampa de plástico.','It’s a plastic cap.']},
+ {id:'garrafao',lv:1,icon:'cap',color:'#2B5FA8',bin:'plastico',label:['Tampa de garrafão de água de 5 L','5-litre water jug cap'],ok:['Certo! A tampa do garrafão é plástico.','Right! The jug’s cap is plastic.'],hint:['A tampa vai para o plástico (o garrafão não).','The cap goes in plastic (the jug doesn’t).']},
+ {id:'gas',lv:1,icon:'carica',bin:'caricas',label:['Carica de água com gás','Sparkling water bottle cap'],ok:['Boa! Carica de metal, saco das caricas.','Nice! Metal cap, metal-caps bag.'],hint:['As caricas de metal vão num saco só delas.','Metal caps go in a bag of their own.']},
+ {id:'cafe',lv:3,icon:'cap',color:'#6B4A2B',bin:'nao',label:['Cápsula de café','Coffee capsule'],ok:['Certo! Cápsulas de café não são tampas.','Right! Coffee capsules are not caps.'],hint:['Parece uma tampa, mas não é: fica de fora.','It looks like a cap, but it isn’t: leave it out.']},
 ];
 const LEVELS={1:{n:6,pt:'fácil',en:'easy'},2:{n:10,pt:'normal',en:'normal'},3:{n:10,pt:'difícil',en:'hard'}};
 let LEVEL=2;try{LEVEL=+localStorage.getItem('ficha-nivel')||2}catch(e){}if(!LEVELS[LEVEL])LEVEL=2;
 let ROUND=LEVELS[LEVEL].n;
 const shuffle=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
+/* rotação: dá prioridade às peças que esta pessoa viu há mais tempo (ou nunca viu) */
+let SEEN=[];try{SEEN=JSON.parse(localStorage.getItem('ficha-vistos')||'[]')}catch(e){}
+const age=i=>{const k=SEEN.lastIndexOf(i.id);return k<0?1e9:SEEN.length-k};
+const fresh=list=>shuffle(list).sort((a,b)=>age(b)-age(a));
 function drawDeck(){
   ROUND=LEVELS[LEVEL].n;
   /* fácil: só peças óbvias; difícil: pelo menos 6 rasteiras */
   const pool=LEVEL===1?POOL.filter(i=>i.lv===1):POOL;
-  const pick=['plastico','caricas','cortica','nao'].map(b=>{const c=shuffle(pool.filter(i=>i.bin===b));return (LEVEL===3&&c.find(i=>i.lv===3))||c[0]});
-  let rest=shuffle(pool.filter(i=>!pick.includes(i)));
+  const pick=['plastico','caricas','cortica','nao'].map(b=>{const c=fresh(pool.filter(i=>i.bin===b));return (LEVEL===3&&c.find(i=>i.lv===3))||c[0]});
+  let rest=fresh(pool.filter(i=>!pick.includes(i)));
   if(LEVEL===3)rest=[...rest.filter(i=>i.lv===3),...rest.filter(i=>i.lv!==3)];
-  return shuffle([...pick,...rest.slice(0,ROUND-pick.length)]);
+  const deck=shuffle([...pick,...rest.slice(0,ROUND-pick.length)]);
+  SEEN=SEEN.filter(id=>!deck.some(i=>i.id===id)).concat(deck.map(i=>i.id)).slice(-80);
+  try{localStorage.setItem('ficha-vistos',JSON.stringify(SEEN))}catch(e){}
+  return deck;
 }
 const G={card:document.getElementById('card'),fb:document.getElementById('feedback'),score:document.getElementById('score'),dots:document.getElementById('dots'),
   streak:document.getElementById('streak'),stamp:document.getElementById('stamp'),dip:document.getElementById('diploma'),stage:document.getElementById('stage'),
@@ -815,6 +828,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 }));
 updCount();
 </script>
-<script src="js/site.js?v=202609252127"></script>
+<script src="js/site.js?v=202609252134"></script>
 </body>
 </html>

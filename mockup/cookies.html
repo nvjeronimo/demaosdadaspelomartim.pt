@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202609252127">
+<link rel="stylesheet" href="css/site.css?v=202609252134">
 </head>
 <body class="sub">
 
@@ -113,7 +113,7 @@
         <thead><tr><th scope="col">Nome</th><th scope="col">Para quê</th><th scope="col">Onde</th><th scope="col">Duração</th></tr></thead>
         <tbody>
           <tr><td><code>paleta</code></td><td>Lembrar a capa do caderno que escolheste em "Escolhe a capa".</td><td>Memória local do navegador (localStorage), só neste site</td><td>Até a apagares</td></tr>
-          <tr><td><code>ficha-nome</code>, <code>ficha-nivel</code></td><td>Lembrar o nome e o nível que usaste no desafio das tampinhas.</td><td>Memória local do navegador</td><td>Até a apagares</td></tr>
+          <tr><td><code>ficha-nome</code>, <code>ficha-nivel</code>, <code>ficha-vistos</code></td><td>Lembrar o nome e o nível que usaste no desafio das tampinhas, e que peças já viste, para te mostrar outras no jogo seguinte.</td><td>Memória local do navegador</td><td>Até a apagares</td></tr>
           <tr><td><code>mural-meu</code></td><td>Guardar o teu último diploma (nome, pontos, nível e data) para o poderes enviar para o mural.</td><td>Memória local do navegador</td><td>Até a apagares</td></tr>
           <tr><td><code>mural-ok</code>, <code>mural-enviados</code></td><td>Lembrar se aceitaste pôr o nome no mural e que diplomas já foram enviados, para não os repetir.</td><td>Memória local do navegador</td><td>Até a apagares</td></tr>
           <tr><td><code>cartaz-local</code></td><td>Lembrar o nome do local que escreveste no cartaz para imprimir.</td><td>Memória local do navegador</td><td>Até a apagares</td></tr>
@@ -141,7 +141,7 @@
 </section>
 <script>
 document.getElementById('esquecer').addEventListener('click',()=>{
-  let ok=true;try{['paleta','ficha-nome','ficha-nivel','mural-meu','mural-ok','mural-enviados','cartaz-local'].forEach(k=>localStorage.removeItem(k))}catch(e){ok=false}
+  let ok=true;try{['paleta','ficha-nome','ficha-nivel','ficha-vistos','mural-meu','mural-ok','mural-enviados','cartaz-local'].forEach(k=>localStorage.removeItem(k))}catch(e){ok=false}
   document.getElementById('esquecer-msg').textContent=ok?'Feito. Na próxima visita o site abre com a capa Azul-noite.':'O teu navegador não deixou apagar. Usa as definições do navegador.';
 });
 </script>
@@ -177,6 +177,6 @@ document.getElementById('esquecer').addEventListener('click',()=>{
   <a class="btn btn-red" href="index.html#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
-<script src="js/site.js?v=202609252127"></script>
+<script src="js/site.js?v=202609252134"></script>
 </body>
 </html>
