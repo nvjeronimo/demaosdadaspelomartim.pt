@@ -701,3 +701,12 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 @media (max-width:520px){.brand-logo{height:40px}}
 .community-logos li{gap:14px}
 .community-logos li .logo-chip{flex:none}
+
+/* rodapé: versão branca do logótipo (em capas claras, a mesma versão numa cor escura) */
+.foot-logo{background:none;padding:0;border-radius:0;height:72px}
+/* apoios da comunidade: logótipos maiores e legíveis */
+.logo-chip.mini{width:92px;height:46px;padding:5px 7px;border-radius:8px}
+.community-logos{gap:14px 28px}
+.community-logos li{font-size:.95rem}
+.ficha-logos .logo-chip.mini{width:84px;height:42px}
+.logo-chip.mini{width:96px;height:58px;padding:5px 8px}
