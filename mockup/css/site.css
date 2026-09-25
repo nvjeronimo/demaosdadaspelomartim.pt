@@ -1133,3 +1133,6 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .progress{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 22px;margin:22px 0 4px}
 .progress .dots{margin:0}
 .game.done .progress{opacity:.55}
+/* rodapé: links sem sublinhado; aparece ao passar o rato ou com o teclado */
+footer a{text-decoration:none}
+footer a:hover,footer a:focus-visible{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
