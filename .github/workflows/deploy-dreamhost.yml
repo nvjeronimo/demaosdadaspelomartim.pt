@@ -1,10 +1,10 @@
-# Envia o site (pasta mockup/) para a DreamHost sempre que muda.
+# Envia o site (raiz do repositório, sem a proposta) para a DreamHost sempre que muda.
 # Precisa dos segredos do repositório: DH_HOST, DH_USER, DH_SSH_KEY (e opcional DH_PATH).
 name: Publicar na DreamHost
 on:
   push:
     branches: [main]
-    paths: ['mockup/**', '.github/workflows/deploy-dreamhost.yml']
+    paths-ignore: ['proposta/**', 'README.md']
   workflow_dispatch:
 concurrency: dreamhost
 jobs:
@@ -30,5 +30,6 @@ jobs:
           printf '%s\n' "$DH_SSH_KEY" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "$DH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
           rsync -rlptvz --delete --exclude '.DS_Store' --exclude '.well-known' --exclude '.dh-diag' \
+            --exclude '.git' --exclude '.github' --exclude 'proposta' --exclude 'README.md' --exclude '.nojekyll' \
             -e "ssh -i ~/.ssh/id_ed25519" \
-            mockup/ "$DH_USER@$DH_HOST:${DH_PATH:-demaosdadaspelomartim.pt}/"
+            ./ "$DH_USER@$DH_HOST:${DH_PATH:-demaosdadaspelomartim.pt}/"

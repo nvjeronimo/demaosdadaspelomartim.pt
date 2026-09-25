@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="De mãos dadas pelo Martim">
+<meta property="og:title" content="O caderno do Martim · proposta de redesign">
+<meta property="og:description" content="Análise, nova arquitetura, direção visual e maquetas para o novo site De mãos dadas pelo Martim.">
+<meta property="og:image" content="https://nvjeronimo.github.io/demaosdadaspelomartim.pt/proposta/img/nova-hero.jpg">
+<meta property="og:url" content="https://nvjeronimo.github.io/demaosdadaspelomartim.pt/proposta/">
+<link rel="canonical" href="https://nvjeronimo.github.io/demaosdadaspelomartim.pt/proposta/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta de Redesign · De mãos dadas pelo Martim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Gochi+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFCFF;--grid:rgba(30,43,69,.06);--cover:#1E2B45;--cover-deep:#151E30;--cover-ink:#D8D9DD;--on-cover:#F4F1EA;--pen:#1E2B45;
+  --red:#E0301E;--red-ink:#C21F0E;--yellow:#FFB86B;--ink:#1B1D2A;--pencil:#474C5E;--rule:#DFE1E6;--green:#12884A;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;--hand:"Gochi Hand",cursive;--body:"Atkinson Hyperlegible",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--body);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+::selection{background:var(--yellow)}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+a{color:var(--red-ink);text-underline-offset:.2em;text-decoration-thickness:2px}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.025em;line-height:1.04;margin:0;text-wrap:balance}
+h2{font-size:clamp(2rem,4.2vw,3.2rem);margin-bottom:18px}
+h3{font-size:1.35rem;letter-spacing:-.01em;margin:0 0 8px;line-height:1.15}
+p{margin:0 0 1em;max-width:68ch}
+.hand{font-family:var(--hand)}
+.hl{background:linear-gradient(transparent 14%,var(--yellow) 14%,var(--yellow) 86%,transparent 86%);padding:0 .12em}
+.num{font-variant-numeric:tabular-nums lining-nums}
+
+/* cover */
+.cover{background:var(--cover);color:var(--on-cover);padding:clamp(48px,8vw,110px) clamp(20px,6vw,88px) clamp(40px,6vw,80px);position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(110% 70% at 0 0,rgba(255,255,255,.22),transparent 55%),repeating-linear-gradient(115deg,rgba(255,255,255,.03) 0 1px,transparent 1px 5px)}
+.cover .wrap{max-width:1180px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;align-items:end}
+.cover h1{font-size:clamp(2.8rem,6.4vw,5.6rem);max-width:11ch}
+.cover h1 span{background:var(--yellow);color:var(--ink);box-shadow:.06em 0 0 var(--yellow),-.06em 0 0 var(--yellow)}
+.cover .meta{background:#fff;color:var(--ink);border-radius:14px;padding:14px 18px;border:2px solid var(--cover-deep);box-shadow:0 12px 24px -14px rgba(8,10,20,.55)}
+.cover .meta div{display:flex;gap:12px;align-items:baseline;border-bottom:1.5px solid var(--rule);padding:6px 0}
+.cover .meta div:last-child{border:0}
+.cover .meta small{font:700 .72rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--pencil);width:84px;flex:none}
+.cover .meta span{font:400 1.35rem/1.1 var(--hand);color:var(--pen)}
+.cover .lede{color:var(--cover-ink);font-size:1.2rem;max-width:52ch;margin-top:22px}
+@media (max-width:860px){.cover .wrap{grid-template-columns:1fr}}
+
+/* layout */
+.toc{position:sticky;top:0;z-index:20;background:rgba(251,252,255,.95);backdrop-filter:blur(6px);border-bottom:2px solid var(--ink)}
+.toc ol{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:flex;gap:4px;list-style:none;overflow-x:auto;scrollbar-width:none}
+.toc a{display:block;white-space:nowrap;padding:14px 12px;font:700 .92rem/1 var(--body);color:var(--ink);text-decoration:none;border-bottom:4px solid transparent}
+.toc a:hover{border-bottom-color:var(--yellow)}
+.toc a b{font:400 1.05rem/1 var(--hand);color:var(--red-ink);margin-right:6px}
+section.s{padding:clamp(64px,9vw,112px) clamp(20px,5vw,64px);border-bottom:2px solid var(--ink);position:relative}
+section.s::before{content:"";position:absolute;top:0;bottom:0;left:clamp(12px,3.4vw,48px);width:2px;background:var(--red);opacity:.45}
+.in{max-width:1180px;margin:0 auto;padding-left:clamp(8px,2vw,24px)}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:40px}
+.intro p{color:var(--pencil);font-size:1.12rem;margin:0}
+.mark{font:400 1.3rem/1 var(--hand);color:var(--red-ink);display:block;margin-bottom:10px}
+@media (max-width:860px){.intro{grid-template-columns:1fr}}
+
+/* summary */
+.tldr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:2px solid var(--ink);border-radius:18px;background:#fff;overflow:hidden}
+.tldr div{padding:24px 26px;border-right:1.5px solid var(--rule);border-bottom:1.5px solid var(--rule)}
+.tldr div:nth-child(2n){border-right:0}
+.tldr div:nth-last-child(-n+2){border-bottom:0}
+.tldr b{display:block;font:800 1.25rem/1.15 var(--display);margin-bottom:6px}
+.tldr p{margin:0;color:var(--pencil);font-size:1rem}
+@media (max-width:760px){.tldr{grid-template-columns:1fr}.tldr div{border-right:0!important;border-bottom:1.5px solid var(--rule)!important}.tldr div:last-child{border-bottom:0!important}}
+
+/* before shots */
+.shots{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:24px;align-items:start}
+.frame{margin:0;background:#fff;border:2px solid var(--ink);border-radius:14px;overflow:hidden}
+.frame .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:2px solid var(--ink);background:var(--paper);font:700 .8rem/1 var(--body);color:var(--pencil)}
+.frame .bar i{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--ink);display:inline-block}
+.frame .bar span{margin-left:8px}
+figcaption.cap{font-size:.95rem;color:var(--pencil);margin-top:10px}
+.phone{border-radius:28px;border:2px solid var(--ink);overflow:hidden;background:#fff;box-shadow:0 18px 30px -22px rgba(8,10,20,.6)}
+@media (max-width:760px){.shots{grid-template-columns:1fr}}
+
+/* findings list */
+.findings{list-style:none;margin:40px 0 0;padding:0;border-top:2px solid var(--ink)}
+.findings li{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1fr);gap:24px;padding:22px 0;border-bottom:1.5px solid var(--rule)}
+.sev{font:800 .8rem/1 var(--body);letter-spacing:.06em;text-transform:uppercase;padding:.5em .7em;border-radius:6px;align-self:start;justify-self:start;border:2px solid var(--ink)}
+.sev.hi{background:var(--red);color:#fff;border-color:var(--red)}
+.sev.md{background:var(--yellow)}
+.sev.lo{background:#fff}
+.findings h3{font-size:1.15rem}
+.findings p{margin:0;font-size:1rem;color:var(--pencil)}
+.findings .fix{font-size:1rem}
+.findings .fix b{font:400 1.15rem/1 var(--hand);color:var(--green);display:block;margin-bottom:4px}
+@media (max-width:860px){.findings li{grid-template-columns:1fr;gap:10px}}
+.keep{margin-top:36px;padding:22px 24px;border:2px dashed var(--ink);border-radius:16px;background:#fff}
+.keep ul{margin:8px 0 0;padding-left:1.2em;columns:2 300px;column-gap:40px}
+.keep li{margin-bottom:6px;break-inside:avoid}
+
+/* audiences */
+.people{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:20px}
+.person{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:24px}
+.person.main{background:var(--cover);color:var(--on-cover);border-color:var(--ink)}
+.person.main p,.person.main li{color:var(--cover-ink)}
+.person.main h3{color:var(--on-cover)}
+.person .tag{font:400 1.25rem/1 var(--hand);color:var(--red-ink);margin-bottom:8px;display:block}
+.person.main .tag{color:#FFB86B}
+.person p{font-size:1rem;color:var(--pencil)}
+.person dl{margin:14px 0 0;display:grid;gap:10px;font-size:.98rem}
+.person dt{font-weight:700}
+.person dd{margin:0;color:inherit;opacity:.9}
+@media (max-width:960px){.people{grid-template-columns:1fr}}
+.principles{counter-reset:p;list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0;border:2px solid var(--ink);border-radius:18px;overflow:hidden;background:#fff}
+.principles li{padding:22px 22px;border-right:1.5px solid var(--rule);font-size:1rem;color:var(--pencil)}
+.principles li:last-child{border-right:0}
+.principles li b{display:block;color:var(--ink);font:800 1.1rem/1.2 var(--display);margin-bottom:6px}
+.principles li::before{counter-increment:p;content:counter(p);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;font:700 .9rem/1 var(--body);margin-bottom:12px}
+
+/* IA table */
+.ia{width:100%;border-collapse:collapse;background:#fff;border:2px solid var(--ink);font-size:1rem}
+.ia th{font:700 .78rem/1 var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--pencil);text-align:left;padding:14px 16px;background:var(--paper);border-bottom:2px solid var(--ink)}
+.ia td{padding:14px 16px;border-bottom:1.5px solid var(--rule);vertical-align:top}
+.ia td:first-child{font:400 1.3rem/1 var(--hand);color:var(--red-ink);width:48px;text-align:center}
+.ia td:nth-child(2){font-weight:700;width:24%}
+.ia td:nth-child(3){color:var(--pencil)}
+.ia tr:last-child td{border-bottom:0}
+.ia .was{display:block;font-size:.88rem;color:var(--pencil);font-weight:400;margin-top:4px}
+@media (max-width:760px){.ia thead{display:none}.ia tr{display:grid;grid-template-columns:40px 1fr;padding:12px 8px;border-bottom:1.5px solid var(--rule)}.ia td{border:0;padding:2px 6px;width:auto!important}.ia td:first-child{grid-row:span 2}}
+
+/* direction */
+.thesis{font:800 clamp(1.6rem,3vw,2.4rem)/1.15 var(--display);letter-spacing:-.02em;max-width:26ch;margin:0 0 28px}
+.world{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+.card{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:24px}
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.sw{border:2px solid var(--ink);border-radius:12px;overflow:hidden;font-size:.85rem}
+.sw i{display:block;height:64px;background:var(--c)}
+.sw span{display:block;padding:8px 10px;line-height:1.3}
+.sw b{display:block;font-size:.92rem}
+.types{display:grid;gap:14px;margin-top:14px}
+.types div{border-bottom:1.5px solid var(--rule);padding-bottom:12px}
+.types div:last-child{border:0}
+.types .sample{display:block;margin-bottom:4px;line-height:1.1}
+.types small{color:var(--pencil);font-size:.92rem}
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:24px;border:2px solid var(--ink);border-radius:18px;overflow:hidden;background:#fff}
+.parts div{padding:20px 22px;border-right:1.5px solid var(--rule);border-bottom:1.5px solid var(--rule);font-size:.98rem;color:var(--pencil)}
+.parts div:nth-child(3n){border-right:0}
+.parts div:nth-last-child(-n+3){border-bottom:0}
+.parts b{display:block;color:var(--ink);font-size:1.02rem;margin-bottom:4px}
+.why{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.why .card h3 .hand{color:var(--red-ink);font-weight:400}
+@media (max-width:860px){.world,.why{grid-template-columns:1fr}.parts{grid-template-columns:1fr}.parts div{border-right:0!important;border-bottom:1.5px solid var(--rule)!important}.parts div:last-child{border-bottom:0!important}}
+
+.pals{margin-top:24px;background:#fff;border:2px solid var(--ink);border-radius:18px;padding:24px}
+.pals-head{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1fr);gap:24px;align-items:start;margin-bottom:18px}
+.pals-head p{margin:0;color:var(--pencil);font-size:1rem}
+.pals-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.pals-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pals-picker{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:28px;align-items:center;margin-top:22px}
+.pals-picker img{border:2px solid var(--ink);border-radius:12px}
+.pals-picker p{color:var(--pencil);font-size:1rem}
+@media (max-width:760px){.pals-picker{grid-template-columns:1fr}}
+.pals-grid figure{margin:0}
+.pals-grid img{border:2px solid var(--ink);border-radius:10px}
+.pals-grid figcaption{font-size:.95rem;color:var(--pencil);margin-top:10px;line-height:1.5}
+.pals-grid b{color:var(--ink);font-size:1.02rem}
+.rec{font:700 .72rem/1 var(--body);text-transform:uppercase;letter-spacing:.06em;background:var(--yellow);border:1.5px solid var(--ink);border-radius:999px;padding:.3em .6em;margin-left:6px;color:var(--ink)}
+@media (max-width:860px){.pals-head,.pals-grid{grid-template-columns:1fr}}
+/* mockups */
+.pg-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.pg-card{display:grid;gap:6px;color:var(--ink);text-decoration:none}
+.pg-card img{border:2px solid var(--ink);border-radius:10px;transition:transform .25s}
+.pg-card:hover img{transform:translateY(-3px) rotate(-.6deg)}
+.pg-card b{font:800 1.15rem/1.2 var(--display);margin-top:6px}
+.pg-card span{font-size:.95rem;color:var(--pencil)}
+@media (max-width:860px){.pg-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.pg-grid{grid-template-columns:1fr}}
+.mock{margin:0 0 56px}
+.mock .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px 48px;align-items:end;margin-bottom:18px}
+.mock .head p{margin:0;color:var(--pencil);font-size:1rem}
+.mock .notes{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.mock .notes li{font-size:.96rem;color:var(--pencil);padding-left:34px;position:relative}
+.mock .notes li b{color:var(--ink)}
+.mock .notes li::before{content:attr(data-n);position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:var(--yellow);border:2px solid var(--ink);font:700 .8rem/20px var(--body);text-align:center;color:var(--ink)}
+@media (max-width:860px){.mock .head{grid-template-columns:1fr}.mock .notes{grid-template-columns:1fr}}
+.phones{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;align-items:start}
+.phones figure{margin:0}
+.phones .label{font:400 1.2rem/1.1 var(--hand);color:var(--red-ink);margin-top:10px;text-align:center}
+@media (max-width:860px){.phones{grid-template-columns:1fr 1fr}}
+.open{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:10px}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:700 1.02rem/1 var(--body);padding:1em 1.3em;border-radius:10px;text-decoration:none;border:2px solid var(--ink)}
+.btn-y{background:var(--yellow);color:var(--ink)}
+.btn-l{background:#fff;color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+
+/* ux details */
+.ux{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:2px solid var(--ink);border-radius:18px;overflow:hidden;background:#fff}
+.ux div{padding:24px 26px;border-right:1.5px solid var(--rule);border-bottom:1.5px solid var(--rule)}
+.ux div:nth-child(2n){border-right:0}
+.ux div:nth-last-child(-n+2){border-bottom:0}
+.ux p{margin:0;font-size:1rem;color:var(--pencil)}
+.ux .k{font:400 1.2rem/1 var(--hand);color:var(--red-ink);display:block;margin-bottom:6px}
+@media (max-width:760px){.ux{grid-template-columns:1fr}.ux div{border-right:0!important;border-bottom:1.5px solid var(--rule)!important}.ux div:last-child{border-bottom:0!important}}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.phase{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:24px}
+.phase .when{font:400 1.3rem/1 var(--hand);color:var(--red-ink);margin-bottom:6px;display:block}
+.phase ul{margin:12px 0 0;padding-left:1.1em;font-size:.98rem;color:var(--pencil)}
+.phase li{margin-bottom:6px}
+@media (max-width:900px){.road{grid-template-columns:1fr}}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.two .card ul{margin:10px 0 0;padding-left:1.1em;font-size:.98rem;color:var(--pencil)}
+.two .card li{margin-bottom:6px}
+.two .card li b{color:var(--ink)}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+footer{background:var(--cover);color:var(--cover-ink);padding:48px clamp(20px,5vw,64px)}
+footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:end}
+footer h2{color:var(--on-cover);font-size:clamp(1.8rem,3.4vw,2.6rem);margin:0}
+footer p{margin:0}
+footer a{color:var(--on-cover)}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <div>
+      <h1>O caderno <span>do Martim.</span></h1>
+      <p class="lede">Proposta de redesign (UI e UX) para vamosajudaromartim.com. Análise do site atual, do propósito e dos públicos, uma nova arquitetura e uma direção visual própria, com maquetas em desktop e mobile.</p>
+    </div>
+    <div class="meta" aria-label="Ficha da proposta">
+      <div><small>Projeto</small><span>De mãos dadas pelo Martim</span></div>
+      <div><small>Entrega</small><span>Estratégia + maquetas</span></div>
+      <div><small>Data</small><span>25 de setembro de 2026</span></div>
+      <div><small>Estado</small><span>Proposta para discussão</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Índice">
+  <ol>
+    <li><a href="#resumo"><b>1</b>Resumo</a></li>
+    <li><a href="#diagnostico"><b>2</b>Diagnóstico</a></li>
+    <li><a href="#publicos"><b>3</b>Propósito e públicos</a></li>
+    <li><a href="#arquitetura"><b>4</b>Arquitetura</a></li>
+    <li><a href="#direcao"><b>5</b>Direção visual</a></li>
+    <li><a href="#maquetas"><b>6</b>Maquetas</a></li>
+    <li><a href="#ux"><b>7</b>Detalhes de UX</a></li>
+    <li><a href="#implementacao"><b>8</b>Implementação</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section class="s" id="resumo">
+  <div class="in">
+    <div class="intro">
+      <div><h2>O site conta a história, mas esconde o mecanismo.</h2></div>
+      <p>O conteúdo é rico e sincero. O problema é que um vizinho que abre o link no telemóvel não percebe, em poucos segundos, o que fazer com as tampas que tem na cozinha.</p>
+    </div>
+    <div class="tldr">
+      <div><b>A ação nº1 passa a ser juntar tampas</b><p>É o gesto mais fácil e o que mais gente pode fazer. O donativo por IBAN fica a um toque, sempre visível, mas em segundo lugar.</p></div>
+      <div><b>Mostrar a conta, não só contá-la</b><p>1 BigBag ≈ 300 kg ≈ 123 €. 55 BigBags ≈ 1 mês de tratamento. A conversão real das tampas em terapia passa a ser o centro da página.</p></div>
+      <div><b>Ensinar a separar a brincar</b><p>A separação é o que decide se um BigBag de 250 kg conta ou não. Uma ficha de trabalho interativa substitui três parágrafos de regras.</p></div>
+      <div><b>Uma identidade que só o Martim pode ter</b><p>O site vira o caderno escolar do Martim: capa azul-noite salpicada de tampinhas coloridas, papel quadriculado, marcador laranja, caneta vermelha, fotos coladas com fita-cola. Cada visitante pode escolher entre 12 capas. Nada disto se parece com um template.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="diagnostico">
+  <div class="in">
+    <div class="intro">
+      <div><h2>Diagnóstico do site atual.</h2></div>
+      <p>WordPress com um tema comprado (Qode), página única de ~21 000 px, PT/EN via Transposh. Lilás <b>#9B8DB7</b> e coral <b>#FF9370</b>, títulos em Anton maiúsculo, ícones de stock, contadores animados.</p>
+    </div>
+    <div class="shots">
+      <figure class="frame" style="margin:0"><div class="bar"><i></i><i></i><i></i><span>vamosajudaromartim.com · desktop 1440 (abriu em EN)</span></div><img src="img/atual-desktop.jpg" alt="Primeiro ecrã do site atual em desktop: duas fotos lado a lado com os títulos Caminhada Solidária e O Martim, e uma faixa coral com Vamos Ajudar" width="1440" height="900"></figure>
+      <figure style="margin:0"><div class="phone"><img src="img/atual-mobile.png" alt="Primeiro ecrã do site atual no telemóvel: fotos empilhadas com texto sobreposto e uma faixa coral cortada" width="390" height="844"></div><figcaption class="cap">Telemóvel, 390 px. Tal como no desktop, o site abriu na versão inglesa.</figcaption></figure>
+    </div>
+
+    <ol class="findings">
+      <li><span class="sev hi">Crítico</span><div><h3>O primeiro ecrã não diz o que fazer</h3><p>Duas fotos com títulos sobrepostos e uma faixa "VAMOS AJUDAR ↗ O MARTIM" em loop. Não há frase de valor nem botão de ação. No telemóvel, a primeira ação útil aparece depois de vários ecrãs de scroll.</p></div><div class="fix"><b>proposta</b>Título que diz o gesto ("Cada tampinha é um passo meu."), a conta ao lado e dois botões: "Onde entrego as tampas?" e "Doar por IBAN".</div></li>
+      <li><span class="sev hi">Crítico</span><div><h3>O IBAN está escondido numa FAQ fechada</h3><p>"Podes aceder aos dados da minha conta solidária AQUI" leva ao acordeão das FAQ, onde o IBAN está dentro da pergunta 6, fechada por defeito.</p></div><div class="fix"><b>proposta</b>IBAN visível na secção "Como ajudar", com botão Copiar. Botão "Doar" fixo na navegação e na barra de ações do telemóvel.</div></li>
+      <li><span class="sev hi">Crítico</span><div><h3>Os 14 pontos de recolha estão enterrados</h3><p>A resposta à pergunta mais prática ("onde entrego?") está na FAQ 9, num parágrafo corrido sem quebras, sem mapa e sem agrupamento por localidade.</p></div><div class="fix"><b>proposta</b>Secção própria "Onde entregar": tabela filtrável por localidade, com tipo de local e link para o mapa.</div></li>
+      <li><span class="sev md">Alto</span><div><h3>As regras de separação vêm em texto corrido</h3><p>O pedido mais importante (separar plástico de caricas) aparece a meio de um bloco longo, e a lista do que não é aceite só existe na FAQ 11.</p></div><div class="fix"><b>proposta</b>Ficha de trabalho interativa: arrastar ou tocar em 8 objetos reais e pô-los no saco certo, com correção a vermelho.</div></li>
+      <li><span class="sev md">Alto</span><div><h3>A conta existe, mas não se vê</h3><p>"Vamos a uma conta simples?!" mostra contadores que começam vazios e só animam com scroll (4 BigBag, 1 tonelada, 411 €). Sem a ligação ao custo real de um tratamento.</p></div><div class="fix"><b>proposta</b>A conta escrita à mão no primeiro ecrã e uma tabela de valores por material (plástico, caricas, cortiça).</div></li>
+      <li><span class="sev md">Alto</span><div><h3>Repetição e texto em excesso</h3><p>"Porque preciso da ajuda de todos?" repete o mesmo parágrafo em dois dos três blocos. A história completa aparece antes de qualquer forma de ajudar.</p></div><div class="fix"><b>proposta</b>História mais curta com "Continuar a ler", os números numa só frase e a ajuda antes da biografia.</div></li>
+      <li><span class="sev lo">Médio</span><div><h3>Uma linguagem visual que podia ser de qualquer causa</h3><p>Tema de template, ícones de stock, lilás e coral sem relação com o projeto. Anton em maiúsculas cansa a leitura, sobretudo a pessoas mais velhas.</p></div><div class="fix"><b>proposta</b>Identidade construída a partir do mundo do Martim (escola, tampas, BigBags) e uma letra de corpo desenhada para leitura fácil.</div></li>
+      <li><span class="sev lo">Médio</span><div><h3>Tradução automática na versão inglesa</h3><p>"broken purse", "Sell Phone", "Summer Entertainment: Prom Night", "Raffles and raffles": a tradução automática tira credibilidade junto de doadores estrangeiros.</p></div><div class="fix"><b>proposta</b>Versão EN revista à mão, só com o essencial (como ajudar, IBAN, história curta).</div></li>
+    </ol>
+
+    <div class="keep">
+      <h3>O que está bem e deve ficar</h3>
+      <ul>
+        <li>A voz na primeira pessoa do Martim, calorosa e com "tu".</li>
+        <li>A transparência: taxas por tonelada, faturas da Kinésio, quem gere o dinheiro.</li>
+        <li>A FAQ sobre a VOLTA, honesta sobre o que ainda é incerto.</li>
+        <li>O relatório do BFF Solidário 2026 com números reais (576 €).</li>
+        <li>Fotografias verdadeiras: BigBags "167 P", a carrinha do pai, as mesas de separação.</li>
+        <li>O número 167 como código secreto do Martim.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="publicos">
+  <div class="in">
+    <div class="intro">
+      <div><h2>Propósito e públicos.</h2></div>
+      <p><b>Propósito:</b> pagar os tratamentos intensivos do Martim na Clínica Kinésio (6 740 € por mês de tratamento, 3 a 4 vezes por ano), com o mínimo de trabalho extra para os pais. O sucesso mede-se em BigBags bem separados, donativos e eventos.</p>
+    </div>
+    <div class="people">
+      <article class="person main">
+        <span class="tag">público principal</span>
+        <h3>O vizinho do Algarve, no telemóvel</h3>
+        <p>Boliqueime, Albufeira, Paderne, Loulé. Ouviu falar do Martim na escola, no centro de saúde, num evento ou num grupo de WhatsApp. Abre o link no telemóvel, muitas vezes com mais de 50 anos.</p>
+        <dl><dt>O que quer fazer</dt><dd>Saber o que guardar, como separar e onde entregar, sem ler um texto longo.</dd><dt>O que o convence</dt><dd>Ver que as tampas dele viram tratamento de verdade, e que alguém da terra está por trás.</dd></dl>
+      </article>
+      <article class="person">
+        <span class="tag">secundário</span>
+        <h3>O doador em qualquer ponto do país</h3>
+        <p>Recebeu a história partilhada e quer dar dinheiro.</p>
+        <dl><dt>O que quer fazer</dt><dd>Copiar o IBAN ou doar diretamente à clínica, com fatura.</dd><dt>O que o convence</dt><dd>Transparência: quem gere o dinheiro, para que serve, como se comprova.</dd></dl>
+      </article>
+      <article class="person">
+        <span class="tag">terciário</span>
+        <h3>Organizadores e parceiros</h3>
+        <p>Escolas, clubes, escuteiros, festivais, empresas com carrinha.</p>
+        <dl><dt>O que quer fazer</dt><dd>Tornar-se ponto de recolha, organizar um evento ou levar BigBags a Beja.</dd><dt>O que o convence</dt><dd>Exemplos reais (BFF, padel, caminhadas) e um contacto direto.</dd></dl>
+      </article>
+    </div>
+    <ol class="principles">
+      <li><b>A tampa na mão é a porta de entrada</b>O gesto mais pequeno aparece primeiro.</li>
+      <li><b>Mostrar a conversão com honestidade</b>kg → € → dias de tratamento, com as taxas reais.</li>
+      <li><b>Ensinar a separar a fazer</b>Não com parágrafos.</li>
+      <li><b>A cara e a voz do Martim, nunca pena</b>Progresso, humor, um punho de super-herói.</li>
+      <li><b>Poupar trabalho aos pais</b>Cada decisão deve poupar uma mensagem, uma viagem ou um saco misturado.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="s" id="arquitetura">
+  <div class="in">
+    <div class="intro">
+      <div><h2>Arquitetura da homepage.</h2></div>
+      <p>A página passa a seguir o caminho do visitante: perceber, agir, confirmar, confiar. A história completa desce para depois da ajuda, porque quem chega por um link partilhado já conhece o Martim.</p>
+    </div>
+    <table class="ia">
+      <thead><tr><th scope="col">#</th><th scope="col">Secção</th><th scope="col">O que resolve</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Capa + a conta<span class="was">antes: 2 fotos + faixa em loop</span></td><td>A cara do Martim, o que precisa e porque as tampas contam, num só ecrã. Ações "Onde entrego as tampas?" e "Doar por IBAN".</td></tr>
+        <tr><td>2</td><td>Como me podes ajudar?<span class="was">antes: 4 formas em blocos longos</span></td><td>Tampas (em destaque), valor e tempo, com a foto do Martim com os pais: "somos uma equipa". O visitante escolhe o seu caminho, que fica traçado a vermelho na margem das secções que lhe interessam.</td></tr>
+        <tr><td>3</td><td>Das tuas mãos para a clínica<span class="was">antes: contadores vazios</span></td><td>Foto dos BigBags "167 P", tabela de valores por material, aviso sobre misturas.</td></tr>
+        <tr><td>4</td><td>O desafio das tampinhas<span class="was">antes: FAQ 11 e texto corrido</span></td><td>Aprender a separar em 30 segundos, com correção imediata.</td></tr>
+        <tr><td>5</td><td>Onde entregar<span class="was">antes: FAQ 9, um parágrafo</span></td><td>14 pontos filtráveis por localidade, link para o mapa, nota sobre a VOLTA e alternativa "fala com o pai".</td></tr>
+        <tr><td>6</td><td>A minha história<span class="was">antes: 6 parágrafos no topo</span></td><td>Redação curta com "Continuar a ler", os números essenciais numa frase e fotos coladas.</td></tr>
+        <tr><td>6b</td><td>Os meus parceiros<span class="was">antes: logótipos soltos, sem contexto</span></td><td>Resialentejo e Dê uma Tampa, Amorim, Clínica Kinésio e APPC Faro, cada um com logótipo, o que faz pelo Martim e o link oficial. O logótipo aparece também sempre que um parceiro é mencionado (tabela de valores, donativos, contactos, dúvidas, rodapé).</td></tr>
+        <tr><td>7</td><td>A agenda da aldeia<span class="was">antes: lista de eventos</span></td><td>Próximo evento em destaque, eventos passados e o "boletim" do BFF Solidário.</td></tr>
+        <tr><td>8</td><td>O álbum da minha equipa<span class="was">antes: não existia</span></td><td>Slide com 20 fotos e vídeos reais (BFF, padel, bolos, recolhas, a história do Martim em vídeo), filtrável por evento. Liga a cara do Martim às pessoas que o ajudam.</td></tr>
+        <tr><td>9</td><td>Dúvidas frequentes<span class="was">antes: 13 perguntas em acordeão</span></td><td>Uma lista simples de 11 perguntas escritas como as pessoas as fazem, cada uma com um botão + / − para abrir a resposta.</td></tr>
+        <tr><td>10</td><td>Junta-te à minha equipa<span class="was">antes: formulário genérico</span></td><td>Contactos por pessoa e por assunto; formulário com "Quero…" (fazer um donativo, ser ponto de recolha, ajudar no transporte, organizar um evento) para encaminhar pedidos.</td></tr>
+        <tr><td>11</td><td>Obrigado<span class="was">antes: não existia</span></td><td>Uma fotografia de multidão a toda a largura: "Sozinho não chegava lá. Convosco, sim."</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="s" id="direcao">
+  <div class="in">
+    <div class="intro">
+      <div><h2>O Caderno do Martim.</h2></div>
+      <p>A página não parte de um template de causa solidária: parte do mundo do Martim. Seis dos 14 pontos de recolha são escolas, a voz é a de uma criança a escrever uma composição, e o site já tinha um "problema de matemática" à espera de ser resolvido.</p>
+    </div>
+    <p class="thesis">O site é o caderno escolar do Martim: a história é uma <span class="hl">composição</span>, a conta dos BigBags é um <span class="hl">problema resolvido</span>, separar tampas é uma <span class="hl">ficha de trabalho</span>.</p>
+    <div class="world">
+      <div class="card">
+        <h3>Cor</h3>
+        <p class="hand" style="color:var(--pencil);font-size:1.15rem;margin:0">capa azul-noite (por defeito), papel, marcador e as cores das tampinhas</p>
+        <div class="swatches">
+          <div class="sw" style="--c:#1E2B45"><i></i><span><b>Capa azul-noite</b>#1E2B45 · grandes áreas</span></div>
+          <div class="sw" style="--c:#FBFCFF;background-image:linear-gradient(rgba(70,110,145,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(70,110,145,.2) 1px,transparent 1px);background-size:12px 12px"><i style="background:transparent"></i><span><b>Quadriculado</b>#FBFCFF · fundo</span></div>
+          <div class="sw" style="--c:#E0301E"><i></i><span><b>Caneta vermelha</b>#E0301E · marcas e ação</span></div>
+          <div class="sw" style="--c:#FFB86B"><i></i><span><b>Marcador laranja</b>#FFB86B · ação e destaque</span></div>
+          <div class="sw" style="--c:#1B1D2A"><i></i><span><b>Tinta</b>#1B1D2A · texto e contornos</span></div>
+          <div class="sw" style="--c:#F2784B"><i></i><span><b>Ação coral</b>#F2784B · botões sobre papel</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Letra</h3>
+        <div class="types">
+          <div><span class="sample" style="font:800 2.3rem/1 var(--display);letter-spacing:-.03em">Bricolage Grotesque</span><small>Títulos. Pesada, calorosa, com personalidade sem ser infantil.</small></div>
+          <div><span class="sample hand" style="font-size:2rem;color:var(--pen)">Gochi Hand, a letra do Martim</span><small>Só para a voz dele: contas, notas na margem, legendas das fotos.</small></div>
+          <div><span class="sample" style="font:700 1.5rem/1.2 var(--body)">Atkinson Hyperlegible</span><small>Texto corrido. Desenhada pelo Braille Institute para leitores com baixa visão, uma escolha certa para um público mais velho.</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="pals">
+      <div class="pals-head"><h3>Escolhe a capa: 12 capas</h3><p>O site abre com a capa <b>Azul-noite e tampinhas</b>, onde as tampinhas coloridas brilham. Cada visitante pode trocar entre 12 capas num painel "Escolhe a capa" no canto do ecrã, e o site lembra-se da escolha. Em todas, as cores das tampinhas decoram a capa e os sublinhados do menu.</p></div>
+      <figure style="margin:0"><img src="img/paletas-12.jpg" alt="Doze versões do primeiro ecrã, uma por capa: menta, céu, pêssego, limão, rosa, azul-noite, oceano, alperce, algodão-doce, papel reciclado, festa das tampinhas e lavanda" width="2256" height="2144" style="border:2px solid var(--ink);border-radius:10px"></figure>
+      <div class="pals-picker">
+        <img src="img/seletor-capas.jpg" alt="Painel Escolhe a capa do meu caderno aberto, com as 12 capas em grelha e o nome de cada uma" width="580" height="600">
+        <div><h3>O seletor</h3><p>Um botão "Escolhe a capa" fixo no canto, com a cor atual. Ao tocar, abre um painel com as 12 capas e os nomes. Fecha ao escolher fora ou com Esc; funciona com teclado. No telemóvel fica por cima da barra "Onde entregar / Doar".</p><p>Por defeito: <span class="rec">6 · Azul-noite e tampinhas</span></p></div>
+      </div>
+    </div>
+    <div class="parts">
+      <div><b>Etiqueta do caderno</b>Nome, terra e processo nº 167, escritos à mão.</div>
+      <div><b>Linha de margem vermelha</b>Percorre todas as secções; fica contínua no caminho que o visitante escolheu.</div>
+      <div><b>Fotos coladas com fita-cola</b>Fotografias reais com legenda à mão, ligeiramente tortas.</div>
+      <div><b>Marcas de correção</b>Visto e cruz a vermelho, círculo à volta da resposta, sublinhado a marcador.</div>
+      <div><b>Carimbo "Muito bem!"</b>Recompensa quando a ficha fica certa e no boletim do BFF.</div>
+      <div><b>Espiral</b>Separa a capa do papel no primeiro ecrã.</div>
+    </div>
+    <div class="why">
+      <div class="card"><h3>Porque funciona <span class="hand">para o público</span></h3><p style="margin:0;color:var(--pencil)">Toda a gente em Portugal reconhece um caderno quadriculado. As escolas de Boliqueime e Albufeira já são pontos de recolha e os miúdos são quem mais junta tampas em casa. O caderno torna o pedido familiar e divertido, sem pena.</p></div>
+      <div class="card"><h3>O risco <span class="hand">e como o evitamos</span></h3><p style="margin:0;color:var(--pencil)">Feito com timidez, fica infantil. Por isso a estrutura é rigorosa, como numa boa editora escolar: grelha real, tabelas limpas, letra de leitura séria. A letra à mão só aparece onde fala o Martim.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="maquetas">
+  <div class="in">
+    <div class="intro">
+      <div><h2>Maquetas.</h2></div>
+      <p>Tudo o que aparece é conteúdo real do site atual: textos, taxas, pontos de recolha, fotos e resultados. A maqueta é uma página HTML navegável; o desafio das tampinhas, os filtros e o botão de copiar IBAN funcionam.</p>
+    </div>
+    <div class="open" style="margin-bottom:48px"><a class="btn btn-y" href="../index.html">Abrir a maqueta navegável</a><span class="hand" style="font-size:1.3rem;color:var(--pencil)">experimenta o desafio das tampinhas!</span></div>
+
+    <div class="mock">
+      <div class="head"><h3>Primeiro ecrã: a capa e a conta</h3><p>Em cinco segundos: a cara do Martim, o que precisa, quanto vale um BigBag e onde entregar as tampas. No topo, o botão principal é "Onde entregar"; "Doar" fica logo ao lado.</p></div>
+      <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>desktop 1440 · primeiro ecrã</span></div><img src="img/nova-hero.jpg" alt="Maqueta do primeiro ecrã: capa azul-noite com tampinhas coloridas e etiqueta, título Cada tampinha é um passo meu, e página quadriculada com a conta escrita à mão até 55 BigBags" width="1440" height="900"></figure>
+      <ul class="notes"><li data-n="1"><b>Etiqueta com o processo nº 167:</b> o código do Martim na Resialentejo passa a ser identidade.</li><li data-n="2"><b>A conta resolvida à mão:</b> 300 kg × 0,41 €/kg = 123 € por BigBag; 55 BigBags ≈ um mês de tratamento.</li><li data-n="3"><b>Tampinhas na capa:</b> as cores das tampas que se juntam passam a ser a decoração; o botão principal "Onde entrego as tampas?" vem em marcador, contornado a tinta.</li></ul>
+    </div>
+
+    <div class="mock">
+      <div class="head"><h3>Como ajudar: escolhe o teu caminho</h3><p>Tampas em destaque; valor e tempo ao lado. Por baixo, o Martim com os pais: "O meu pai recolhe, a minha mãe leva-me aos tratamentos, tu guardas as tampas". Ao escolher, o cartão acende e a margem vermelha das secções relevantes passa de tracejada a contínua.</p></div>
+      <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>secção 2</span></div><img src="img/nova-ajudar.jpg" alt="Secção Como me podes ajudar com escolha de caminho, três passos numerados para as tampas, cartão de donativo com IBAN e botão copiar" width="1440" height="1229" loading="lazy"></figure>
+    </div>
+
+    <div class="mock">
+      <div class="head"><h3>A conta real e o aviso que importa</h3><p>As fotos verdadeiras dos BigBags "167 P" e do camião carregado, e uma tabela de valores por material. O aviso sobre misturas fica ao lado dos números, onde faz sentido.</p></div>
+      <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>secção 3</span></div><img src="img/nova-conta.jpg" alt="Secção Das tuas mãos para a clínica com foto dos BigBags e tabela de valores por tonelada" width="1440" height="945" loading="lazy"></figure>
+    </div>
+
+    <div class="mock">
+      <div class="head"><h3>O desafio das tampinhas</h3><p>A interação que define o site. Oito objetos reais (tampa de água, carica, rolha, borrifador…) para pôr no saco certo. Erros corrigidos a vermelho, com a razão; 6 ou mais certas dão direito ao carimbo.</p></div>
+      <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>secção 4 · interativa</span></div><img src="img/nova-ficha.jpg" alt="Ficha de trabalho interativa com oito peças e quatro sacos: plástico, caricas, cortiça e não aceite" width="1440" height="1240" loading="lazy"></figure>
+    </div>
+
+    <div class="mock">
+      <div class="head"><h3>Onde entregar: um horário, não um parágrafo</h3><p>Com a foto das entregas à porta de uma escola primária. Os 14 pontos numa tabela filtrável por localidade, com tipo de local e link para o mapa. Ao lado, a nota sobre a VOLTA e a alternativa para quem não tem um ponto perto.</p></div>
+      <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>secção 5</span></div><img src="img/nova-entregar.jpg" alt="Tabela dos 14 pontos de recolha com filtros por localidade e caixa azul sobre garrafas VOLTA" width="1440" height="1362" loading="lazy"></figure>
+    </div>
+
+    <div class="mock">
+      <div class="head"><h3>História, agenda e boletim</h3><p>A história fica mais curta e com fotos coladas. O próximo evento aparece com data relativa ("Amanhã!") e o BFF Solidário vira um boletim de notas, com o total real de 576 €.</p></div>
+      <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>secção 6</span></div><img src="img/nova-historia.jpg" alt="Secção A minha história com texto curto e fotos coladas" width="1440" height="1067" loading="lazy"></figure>
+      <figure class="frame" style="margin-top:24px"><div class="bar"><i></i><i></i><i></i><span>secção 7</span></div><img src="img/nova-eventos.jpg" alt="Secção de eventos com a caminhada de amanhã em destaque e o boletim do BFF Solidário 2026" width="1440" height="1137" loading="lazy"></figure>
+    </div>
+
+    <div class="mock">
+      <div class="head"><h3>Dúvidas frequentes e contactos</h3><p>As perguntas passam a uma lista simples, com + e − para abrir cada resposta. O formulário pergunta primeiro "Quero…", com a nova opção "fazer um donativo", para os pais saberem logo do que se trata.</p></div>
+      <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>secção 8</span></div><img src="img/nova-perguntas.jpg" alt="Lista de dúvidas frequentes com um botão mais em cada pergunta" width="1440" height="926" loading="lazy"></figure>
+      <figure class="frame" style="margin-top:24px"><div class="bar"><i></i><i></i><i></i><span>secção 9</span></div><img src="img/nova-contactos.jpg" alt="Contactos do pai, da mãe e da Clínica Kinésio e formulário com opções Quero" width="1440" height="1153" loading="lazy"></figure>
+    </div>
+
+    <div class="mock">
+      <div class="head"><h3>O álbum da minha equipa: fotos e vídeos</h3><p>Um slide que se arrasta com o dedo, com setas e contador. Filtros por evento e por vídeos. Os vídeos (a história do Martim, o resumo do BFF, o antes e depois, as recolhas) abrem e tocam no próprio cartão.</p></div>
+      <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>nova secção · slide</span></div><img src="img/nova-album.jpg" alt="Secção O álbum da minha equipa com filtros, setas e um slide de fotos coladas e vídeos com botão de play" width="1440" height="1092" loading="lazy"></figure>
+      <ul class="notes"><li data-n="1"><b>20 peças reais</b> do site e das redes: 14 fotos e 6 vídeos.</li><li data-n="2"><b>O Martim aparece com as pessoas:</b> com os pais no BFF, ao colo na equipa do padel, a festejar.</li><li data-n="3"><b>Aberto a contributos:</b> "Tens fotos de um evento? Envia-as ao pai do Martim".</li></ul>
+    </div>
+
+    <div class="mock">
+      <div class="head"><h3>Fecho: obrigado a toda a gente</h3><p>Antes do rodapé, uma fotografia da multidão reunida pelo Martim, para acabar a página nas pessoas e não num formulário.</p></div>
+      <figure class="frame"><div class="bar"><i></i><i></i><i></i><span>fecho + rodapé</span></div><img src="img/nova-obrigado.jpg" alt="Faixa com fotografia de multidão e o texto Sozinho não chegava lá. Convosco, sim., seguida do rodapé verde" width="1440" height="955" loading="lazy"></figure>
+    </div>
+
+    <div class="mock">
+      <div class="head"><h3>Páginas secundárias</h3><p>Todas no mesmo caderno, com a capa que o visitante escolheu. Há também uma página para cada evento (caminhada, noite de baile, BFF Solidário, torneio de padel) e uma página 404.</p></div>
+      <div class="pg-grid">
+<a class="pg-card" href="../eventos/"><img src="img/pag-ev-index.jpg" alt="Primeiro ecrã da página Agenda de eventos" width="960" height="600" loading="lazy"><b>Agenda de eventos</b><span>Próximo evento em destaque e lista dos que já foram, com resultado e fotografia.</span></a>
+<a class="pg-card" href="../eventos/caminhada-26-setembro-2026.html"><img src="img/pag-ev-caminhada-26-setembro-2026.jpg" alt="Primeiro ecrã da página Página de evento" width="960" height="600" loading="lazy"><b>Página de evento</b><span>Ficha do evento, programa, como te inscreves, adicionar ao calendário e copiar link.</span></a>
+<a class="pg-card" href="../eventos/bff-solidario-2026.html"><img src="img/pag-ev-bff-solidario-2026.jpg" alt="Primeiro ecrã da página Evento que já foi" width="960" height="600" loading="lazy"><b>Evento que já foi</b><span>Boletim com o resultado, vídeos do antes e depois e fotografias.</span></a>
+<a class="pg-card" href="../historia.html"><img src="img/pag-historia.jpg" alt="Primeiro ecrã da página A minha história" width="960" height="600" loading="lazy"><b>A minha história</b><span>A história completa, com o vídeo e as fotografias da família.</span></a>
+<a class="pg-card" href="../privacidade.html"><img src="img/pag-privacidade.jpg" alt="Primeiro ecrã da página Política de privacidade" width="960" height="600" loading="lazy"><b>Política de privacidade</b><span>Rascunho segundo o RGPD, a validar pela família.</span></a>
+<a class="pg-card" href="../cookies.html"><img src="img/pag-cookies.jpg" alt="Primeiro ecrã da página Cookies" width="960" height="600" loading="lazy"><b>Cookies</b><span>O site não usa cookies; explica a memória da capa escolhida, com botão para a esquecer.</span></a>
+<a class="pg-card" href="../mapa.html"><img src="img/pag-mapa.jpg" alt="Primeiro ecrã da página Mapa dos pontos de recolha" width="960" height="600" loading="lazy"><b>Mapa dos pontos de recolha</b><span>Os 14 pontos no mapa, filtros por localidade e "Mais perto de mim" com a distância a cada ponto.</span></a>
+<a class="pg-card" href="../organiza.html"><img src="img/pag-organiza.jpg" alt="Primeiro ecrã da página Organiza uma recolha" width="960" height="600" loading="lazy"><b>Organiza uma recolha</b><span>Guia em quatro passos para escolas, clubes e cafés, regras de separação e o pedido de ajuda com a carrinha.</span></a>
+<a class="pg-card" href="../cartaz.html"><img src="img/pag-cartaz.jpg" alt="Primeiro ecrã da página Cartaz para imprimir" width="960" height="600" loading="lazy"><b>Cartaz para imprimir</b><span>Cartaz A4 com o nome do local e QR code, mais etiquetas para os três garrafões. Segue a cor da capa.</span></a>
+<a class="pg-card" href="../mural.html"><img src="img/pag-mural.jpg" alt="Primeiro ecrã da página Mural dos amigos" width="960" height="600" loading="lazy"><b>Mural dos amigos</b><span>Quem ganhou o diploma no desafio pede para entrar; os pais afixam só o primeiro nome.</span></a>
+<a class="pg-card" href="../brochura.html"><img src="img/pag-brochura.jpg" alt="Primeiro ecrã da página Brochura" width="960" height="600" loading="lazy"><b>Brochura</b><span>A história do Martim em 8 páginas A4, pronta a descarregar em PDF (PT e EN), imprimir ou partilhar.</span></a>
+      </div>
+    </div>
+
+    <div class="mock" style="margin-bottom:0">
+      <div class="head"><h3>No telemóvel, onde está o público principal</h3><p>A capa ocupa o primeiro ecrã com as duas ações; a conta vem logo a seguir. Uma barra fixa em baixo mantém "Onde entregar" e "Doar" sempre à mão do polegar.</p></div>
+      <div class="phones">
+        <figure><div class="phone"><img src="img/atual-mobile.png" alt="Site atual no telemóvel" width="390" height="844" loading="lazy"></div><p class="label">antes</p></figure>
+        <figure><div class="phone"><img src="img/nova-mobile-0.jpg" alt="Nova capa no telemóvel com etiqueta, título e botões" width="390" height="844" loading="lazy"></div><p class="label">depois: a capa, com a cara do Martim</p></figure>
+        <figure><div class="phone"><img src="img/nova-mobile-1.jpg" alt="A conta escrita à mão no telemóvel com a foto colada" width="390" height="844" loading="lazy"></div><p class="label">a conta</p></figure>
+        <figure><div class="phone"><img src="img/nova-mobile-2.jpg" alt="O álbum no telemóvel, com filtros deslizáveis e cartões de vídeo" width="390" height="844" loading="lazy"></div><p class="label">o álbum</p></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="ux">
+  <div class="in">
+    <div class="intro">
+      <div><h2>Detalhes de UX.</h2></div>
+      <p>Pequenas decisões que tiram passos ao visitante e mensagens aos pais.</p>
+    </div>
+    <div class="ux">
+      <div><span class="k">copiar IBAN</span><p>Um toque copia o IBAN sem espaços, pronto a colar na app do banco. Hoje é preciso abrir uma FAQ e selecionar o texto à mão.</p></div>
+      <div><span class="k">barra de ações no telemóvel</span><p>"Onde entregar" e "Doar" fixos em baixo, na zona do polegar, em todas as secções.</p></div>
+      <div><span class="k">caminho escolhido</span><p>"Quero ajudar com tampas / valor / tempo" acende o cartão certo e marca as secções relevantes na margem, sem esconder nada.</p></div>
+      <div><span class="k">o desafio das tampinhas</span><p>Funciona com toque, rato, arrastar e teclado. Cada erro explica a regra ("tem mola de ferro"), que é o que se quer ensinar.</p></div>
+      <div><span class="k">filtros por localidade</span><p>Boliqueime (8), Albufeira (3), Paderne (2), Olhos de Água (1). Cada ponto abre no Google Maps.</p></div>
+      <div><span class="k">datas relativas</span><p>"Amanhã!" e "já foi" em vez de só a data. Eventos passados descem automaticamente.</p></div>
+      <div><span class="k">formulário com intenção</span><p>"Quero ser ponto de recolha / ajudar no transporte / organizar um evento" encaminha o pedido e poupa uma troca de mensagens.</p></div>
+      <div><span class="k">álbum que se arrasta</span><p>Setas, contador "3 / 20", teclado (← →) e deslizar com o dedo. Os vídeos só carregam quando se toca no play, para não gastar dados móveis.</p></div>
+      <div><span class="k">escolhe a capa</span><p>Um seletor fixo no canto deixa cada visitante trocar a cor da capa entre 12 opções, num painel com o nome de cada uma. A escolha fica guardada no navegador. É um pequeno gesto de participação, na linguagem do caderno.</p></div>
+      <div><span class="k">acessibilidade</span><p>Contraste AA, letra de corpo com 18 px, alvos de toque grandes, foco visível, movimento reduzido respeitado, texto alternativo em todas as fotos.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="implementacao">
+  <div class="in">
+    <div class="intro">
+      <div><h2>Implementação e próximos passos.</h2></div>
+      <p>O site pode continuar em WordPress, para os pais o editarem sozinhos. A proposta é trocar o tema comprado por um tema de blocos leve, feito à medida, com os componentes do caderno como blocos reutilizáveis.</p>
+    </div>
+    <div class="road">
+      <div class="phase"><span class="when">fase 1 · 2 a 3 semanas</span><h3>Homepage nova</h3><ul><li>Tema de blocos com o sistema do caderno (cores, letras, componentes).</li><li>Secções 1 a 5 e barra de ações no telemóvel.</li><li>O desafio das tampinhas como bloco independente.</li><li>Pontos de recolha editáveis pelo painel (lista simples).</li></ul></div>
+      <div class="phase"><span class="when">fase 2 · 1 a 2 semanas</span><h3>Conteúdo e confiança</h3><ul><li>História, agenda e boletins de eventos.</li><li>Dúvidas frequentes.</li><li>Versão EN revista à mão (essencial apenas).</li><li>Imagens de partilha para WhatsApp e Facebook.</li></ul></div>
+      <div class="phase"><span class="when">fase 3 · contínuo</span><h3>Medir e afinar</h3><ul><li>Cliques em "Onde entrego", aberturas de mapa, cópias do IBAN, desafios completos, pedidos no formulário.</li><li>Página de cada evento com cartaz e boletim final.</li></ul></div>
+    </div>
+    <div class="two">
+      <div class="card"><h3>O que precisamos da família</h3><ul><li><b>Morada ou localização exata</b> de cada ponto de recolha (para o mapa).</li><li><b>Nº de BigBags entregues</b> até hoje, se quiserem mostrar um total atualizado à mão.</li><li><b>Fotos e vídeos recentes</b> do Martim e dos eventos, com autorização de quem aparece.</li><li><b>Validação das contas</b>: 300 kg por BigBag e 6 740 € por tratamento (orçamento de 2024).</li><li><b>Contacto da mãe</b>, se quiserem publicá-lo.</li></ul></div>
+      <div class="card"><h3>Decisões em aberto</h3><ul><li><b>Contador de BigBags:</b> só faz sentido se alguém o atualizar. Sem isso, fica de fora.</li><li><b>Estado dos pontos</b> (cheio, recolhido): útil para o pai, mas exige atualização frequente.</li><li><b>Logótipo:</b> usa o logótipo original do projeto; as cores das camadas do "m" e das letras acompanham a capa escolhida, tal como o ícone do separador do browser.</li><li><b>Orçamento de 2024:</b> confirmar o valor atual do tratamento.</li><li><b>Capas:</b> ficam as 12, com Azul-noite e tampinhas por defeito. Se alguma for pouco escolhida pelos visitantes, pode sair mais tarde.</li><li><b>Legendas do álbum:</b> algumas fotos (multidões, caminhadas) têm legendas genéricas; a família deve dizer que evento é cada uma.</li><li><b>Vídeos:</b> o resumo do BFF pesa 30 MB. No site real convém alojá-los no YouTube ou Vimeo, ou comprimi-los.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="in">
+    <h2>Cada tampinha é um passo.</h2>
+    <p><a href="../index.html">Abrir a maqueta navegável</a> · Proposta de redesign, 25 set 2026</p>
+  </div>
+</footer>
+</body>
+</html>

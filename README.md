@@ -1,8 +1,9 @@
-# De mãos dadas pelo Martim: proposta de redesign
+# De mãos dadas pelo Martim
 
-- `index.html`: documento da proposta (análise, públicos, arquitetura, direção visual, maquetas).
-- `mockup/`: maqueta navegável do novo site, com 12 capas à escolha.
-  - `mockup/eventos/`: agenda e uma página por evento.
-  - `mockup/historia.html`, `mockup/privacidade.html`, `mockup/cookies.html`, `mockup/404.html`.
+Site: https://demaosdadaspelomartim.pt (DreamHost) · pré-visualização: https://nvjeronimo.github.io/demaosdadaspelomartim.pt/
 
-Fotos, vídeos e textos vêm do site https://demaosdadaspelomartim.pt.
+- Raiz: o site (gerado a partir de `mockup/` no projeto de trabalho com `sh tools/publish.sh`).
+  - `eventos/`, `historia.html`, `mapa.html`, `organiza.html`, `cartaz.html`, `mural.html`, `brochura.html`, `privacidade.html`, `cookies.html`, `404.html`, `en/` (versão inglesa).
+  - `docs/`: PDFs da brochura (PT e EN).
+- `proposta/`: documento da proposta de redesign.
+- `.github/workflows/deploy-dreamhost.yml`: cada push envia o site para a DreamHost por rsync (segredos `DH_HOST`, `DH_USER`, `DH_SSH_KEY`, `DH_PATH`).
