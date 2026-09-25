@@ -2,6 +2,14 @@
 <html lang="pt" data-paleta="noite" data-dark>
 <head>
 <meta charset="utf-8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="De mãos dadas pelo Martim">
+<meta property="og:title" content="De mãos dadas pelo Martim">
+<meta property="og:description" content="Cada tampinha é um passo meu. Junta tampas de plástico, caricas e rolhas de cortiça para pagar os tratamentos intensivos do Martim.">
+<meta property="og:image" content="https://demaosdadaspelomartim.pt/img/og.jpg">
+<meta property="og:url" content="https://demaosdadaspelomartim.pt/">
+<link rel="canonical" href="https://demaosdadaspelomartim.pt/">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>De mãos dadas pelo Martim</title>
 <link rel="alternate" hreflang="pt" href="index.html">
@@ -12,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202609252247">
+<link rel="stylesheet" href="css/site.css?v=202609252257">
 </head>
 <body>
 
@@ -219,10 +227,8 @@
       <div class="stamp" id="stamp" aria-hidden="true"><div>Muito<br>bem!<small>assinado: Martim</small></div></div>
       <div class="ws-head">
         <label class="name-field" for="g-name"><span class="hand">Nome:</span><input id="g-name" type="text" maxlength="24" autocomplete="given-name" placeholder="o teu nome"></label>
-        <div class="score" aria-live="polite">Pontos: <span id="score" class="num">0 / 10</span></div>
+        <div class="levels" role="group" aria-label="Nível do desafio"><span class="hand">Nível:</span><button type="button" data-lv="1" aria-pressed="false">Fácil <small>6 peças</small></button><button type="button" data-lv="2" aria-pressed="true">Normal <small>10 peças</small></button><button type="button" data-lv="3" aria-pressed="false">Difícil <small>com rasteiras</small></button></div>
       </div>
-      <div class="levels" role="group" aria-label="Nível do desafio"><span class="hand">Nível:</span><button type="button" data-lv="1" aria-pressed="false">Fácil <small>6 peças</small></button><button type="button" data-lv="2" aria-pressed="true">Normal <small>10 peças</small></button><button type="button" data-lv="3" aria-pressed="false">Difícil <small>com rasteiras</small></button></div>
-      <ol class="dots" id="dots" aria-hidden="true"></ol>
       <div class="stage" id="stage">
         <p class="q hand">Onde vai isto?</p>
         <div class="card-item" id="card" aria-live="polite"></div>
@@ -235,6 +241,7 @@
         <button class="bin" type="button" data-bin="cortica"><svg aria-hidden="true"><use href="#bag"/></svg><b>Cortiça</b><small>só 100% cortiça</small><span class="count num">0</span></button>
         <button class="bin bin-no" type="button" data-bin="nao"><svg aria-hidden="true"><use href="#nope"/></svg><b>Não aceite</b><small>vai para o ecoponto</small><span class="count num">0</span></button>
       </div>
+      <div class="progress"><ol class="dots" id="dots" aria-hidden="true"></ol><div class="score" aria-live="polite">Pontos: <span id="score" class="num">0 / 10</span></div></div>
       <div class="feedback" id="feedback" aria-live="polite"></div>
       <div class="diploma" id="diploma" hidden>
         <div class="dip-paper" id="dip-paper">
@@ -575,8 +582,8 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
-<script src="js/mural-api.js?v=202609252247"></script>
-<script src="js/pontos.js?v=202609252247"></script>
+<script src="js/mural-api.js?v=202609252257"></script>
+<script src="js/pontos.js?v=202609252257"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
 const LNG=document.documentElement.lang==='en';
@@ -823,6 +830,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 }));
 updCount();
 </script>
-<script src="js/site.js?v=202609252247"></script>
+<script src="js/site.js?v=202609252257"></script>
 </body>
 </html>
