@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css?v=202609251747">
+<link rel="stylesheet" href="../css/site.css?v=202609251752">
 </head>
 <body>
 
@@ -144,7 +144,7 @@
         </ol>
         <div style="display:flex;flex-wrap:wrap;gap:10px">
           <a class="btn btn-red" href="#entregar">See collection points <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-line" href="#ficha">Try the worksheet</a>
+          <a class="btn btn-line" href="#ficha">Take the challenge</a>
         </div>
       </article>
       <div class="team">
@@ -204,8 +204,8 @@
 <section class="page" id="ficha" data-path="tampas" aria-labelledby="h-ficha">
   <div class="inner">
     <div class="sec-head">
-      <h2 id="h-ficha">Worksheet: sort like my dad.</h2>
-      <p>Write your name, put each item in the right bag and earn the official sorter diploma. If you get it wrong, I'll correct it in red.</p>
+      <h2 id="h-ficha">The bottle-cap challenge.</h2>
+      <p>Sort like my dad: write your name, put each item in the right bag and earn the official sorter diploma. If you get it wrong, I'll correct it in red.</p>
     </div>
     <div class="worksheet game" id="game">
       <div class="stamp" id="stamp" aria-hidden="true"><div>Well<br>done!<small>signed: Martim</small></div></div>
@@ -591,7 +591,7 @@ document.querySelectorAll('[data-f]').forEach(b=>b.addEventListener('click',()=>
   tb.querySelectorAll('tr').forEach(r=>r.hidden=!(b.dataset.f==='all'||r.dataset.l===b.dataset.f));
 }));
 
-/* ---------- ficha de trabalho: jogo de separar, uma peça de cada vez ---------- */
+/* ---------- o desafio das tampinhas: jogo de separar, uma peça de cada vez ---------- */
 const T=a=>a[LNG?1:0];
 const items=[
  {id:'agua',icon:'cap',color:'#2AA7E8',bin:'plastico',label:['Tampa de garrafa de água','Water bottle cap'],ok:['Isso! Tampa de água vai para o plástico.','Yes! Water bottle caps go in plastic.'],hint:['É plástico, vai para o saco do plástico.','It’s plastic, so it goes in the plastic bag.']},
@@ -646,7 +646,7 @@ function finish(){
   document.getElementById('dip-text').textContent=LNG?(right===8?'8 out of 8. You sort like my dad!':`${right} out of 8. You already know more than most people!`):(right===8?'8 em 8. Já separas como o meu pai!':`${right} em 8. Já sabes mais do que muita gente!`);
   if(right>=6)G.stamp.classList.add('on');
   G.fb.className='feedback';G.fb.textContent='';
-  const txt=LNG?`${n} scored ${right}/8 on Martim’s sorting worksheet and now knows how to sort bottle caps! Can you beat that?`:`${n} fez ${right}/8 na ficha do Martim e já sabe separar tampas! Consegues fazer melhor?`;
+  const txt=LNG?`${n} scored ${right}/8 in Martim’s bottle-cap challenge and now knows how to sort caps! Can you beat that?`:`${n} fez ${right}/8 no desafio das tampinhas do Martim e já sabe separar tampas! Consegues fazer melhor?`;
   document.getElementById('game-share').dataset.shareText=txt;
   G.dip.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'center'});
 }
@@ -676,6 +676,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 }));
 updCount();
 </script>
-<script src="../js/site.js?v=202609251747"></script>
+<script src="../js/site.js?v=202609251752"></script>
 </body>
 </html>
