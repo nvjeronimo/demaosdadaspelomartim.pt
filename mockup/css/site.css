@@ -505,8 +505,8 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .evtxt b{font:800 1.45rem/1.1 var(--display);font-stretch:84%}
 .evtxt span{color:var(--pencil);font-size:1rem}
 .evtxt .res{justify-self:start;margin-top:6px;font:700 .85rem/1 var(--body);color:var(--ink);background:var(--hl);border:1.5px solid var(--ink);border-radius:999px;padding:.45em .8em}
-.evrow img{width:150px;aspect-ratio:4/3;object-fit:cover;border:2px solid var(--ink);border-radius:8px;transform:rotate(2deg)}
-@media (max-width:700px){.evrow{grid-template-columns:78px minmax(0,1fr)}.evrow img{display:none}.evdate b{font-size:1.8rem}}
+
+@media (max-width:700px){.evrow{grid-template-columns:78px minmax(0,1fr)}.evdate b{font-size:1.8rem}}
 .org{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center}
 .org h2{margin-bottom:16px}
 .org p{font-size:1.12rem;color:var(--pencil)}
@@ -595,3 +595,19 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .legal-single{grid-template-columns:minmax(0,1fr)}
 .subhero .label small{width:96px}
 .subhero .label{width:min(100%,370px)}
+
+/* moldura: cartaz do próximo evento e miniaturas dos eventos anteriores */
+.next .next-photo{position:relative;width:auto;margin:26px 8px 26px 26px;transform:rotate(-3deg);padding:10px 10px 36px;align-self:center}
+.next .next-photo img{width:100%;height:auto;min-height:0;aspect-ratio:1/1;object-fit:cover}
+.next .next-photo figcaption{bottom:8px;font-size:1.15rem}
+.next-lg .next-photo{margin:32px 10px 32px 32px}
+.mini-photo{display:block;flex:none;width:84px;background:#fff;padding:5px 5px 14px;box-shadow:0 10px 16px -10px rgba(10,20,50,.55),0 1px 3px rgba(10,20,50,.15);transform:rotate(3deg);position:relative;transition:transform .25s var(--ease)}
+.mini-photo::before{content:"";position:absolute;top:-6px;left:50%;width:34px;height:12px;background:var(--tape);transform:translateX(-50%) rotate(-4deg)}
+.mini-photo img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.past li:nth-child(even) .mini-photo,.evlist li:nth-child(even) .mini-photo{transform:rotate(-3deg)}
+.past li{grid-template-columns:86px 1fr 84px;align-items:center}
+.past li:hover .mini-photo{transform:rotate(0) scale(1.05)}
+.evrow .mini-photo{width:130px;padding:7px 7px 20px}
+.evrow:hover .mini-photo{transform:rotate(0) scale(1.04)}
+@media (max-width:560px){.next .next-photo{margin:20px 20px 6px;justify-self:center;width:min(78%,300px)}.past li{grid-template-columns:70px 1fr 64px}.mini-photo{width:64px}}
+@media (max-width:700px){.evrow .mini-photo{display:none}}
