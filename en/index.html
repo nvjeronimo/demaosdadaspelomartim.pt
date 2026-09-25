@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css?v=202609252348">
+<link rel="stylesheet" href="../css/site.css?v=202609252354">
 </head>
 <body>
 
@@ -116,6 +116,12 @@
   </div>
   <div class="spiral" aria-hidden="true"></div>
   <div class="sheet">
+    <div class="hero-tabs" role="tablist" aria-label="On my worksheet">
+      <button type="button" role="tab" id="ht-1" aria-controls="hs-1" aria-selected="true">The sum</button>
+      <button type="button" role="tab" id="ht-2" aria-controls="hs-2" aria-selected="false" tabindex="-1">Next event</button>
+    </div>
+    <div class="hero-slides" id="hero-slides">
+      <div class="hero-slide on" id="hs-1" role="tabpanel" aria-labelledby="ht-1">
     <div class="sum draw" aria-label="Problem: how much is a BigBag of plastic caps worth?">
       <p class="q"><b>Problem:</b> a BigBag holds about 300 kg of plastic caps. Resialentejo pays €411.60 per tonne. How many BigBags pay for one month of treatment?</p>
       <div class="line" style="animation-delay:.2s"><span class="op"></span><span class="num">300 kg × €0.41/kg</span></div>
@@ -128,6 +134,23 @@
       <p class="r" style="animation-delay:2.2s">A: 55 BigBags give me <b>a whole month</b> of getting stronger.</p>
     </div>
     <div class="note-red"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 10c10 2 22 10 26 28" fill="none" stroke="#E0301E" stroke-width="3" stroke-linecap="round"/><path d="M26 34l8 6 4-10" fill="none" stroke="#E0301E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Metal caps are worth even more. Keep them apart!</div>
+  </div>
+      <div class="hero-slide" id="hs-2" role="tabpanel" aria-labelledby="ht-2" aria-hidden="true">
+        <p class="hs-kicker hand" data-quando="2026-09-26">Saturday, 26 Sep</p>
+        <div class="hs-event">
+          <div>
+            <h2 class="hs-title">Charity walk for Martim</h2>
+            <dl class="ficha hs-ficha">
+              <dt>Time</dt><dd class="num">08:30 – 11:15</dd>
+              <dt>Where</dt><dd>Vale Silves School → Benfarras School</dd>
+              <dt>Registration</dt><dd>10 €</dd>
+            </dl>
+            <div class="hs-ctas"><a class="btn btn-red" href="eventos/caminhada-26-setembro-2026.html" tabindex="-1">See details <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="eventos/" tabindex="-1">All events</a></div>
+          </div>
+          <figure class="photo hs-poster"><span class="tape" aria-hidden="true"></span><img src="../img/cartaz-caminhada.jpg" alt="Poster for the charity walk on Saturday 26 September 2026 at 8:30" width="1200" height="1200" decoding="async"><figcaption>come walk with me!</figcaption></figure>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -535,7 +558,7 @@
           <label><input type="checkbox" name="q" value="evento" data-t="organizar um evento"> organise an event</label>
           <label><input type="checkbox" name="q" value="outro" data-t="outra coisa"> something else</label>
         </fieldset>
-        <div class="hp" aria-hidden="true"><label for="f-site">Não preencher</label><input id="f-site" name="site" tabindex="-1" autocomplete="off"></div>
+        <div class="hp" aria-hidden="true"><label for="f-site">Leave empty</label><input id="f-site" name="site" tabindex="-1" autocomplete="off"></div>
         <div class="field"><label for="f-nome">Name</label><input id="f-nome" autocomplete="name" required></div>
         <div class="field"><label for="f-mail">Email or mobile</label><input id="f-mail" autocomplete="email" required></div>
         <div class="field"><label for="f-msg">Message <span class="small">(optional)</span></label><textarea id="f-msg"></textarea></div>
@@ -583,8 +606,8 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Donate</a>
 </nav>
 
-<script src="../js/mural-api.js?v=202609252348"></script>
-<script src="../js/pontos.js?v=202609252348"></script>
+<script src="../js/mural-api.js?v=202609252354"></script>
+<script src="../js/pontos.js?v=202609252354"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
 const LNG=document.documentElement.lang==='en';
@@ -842,6 +865,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 }));
 updCount();
 </script>
-<script src="../js/site.js?v=202609252348"></script>
+<script src="../js/site.js?v=202609252354"></script>
 </body>
 </html>

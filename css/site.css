@@ -1178,3 +1178,29 @@ body{overflow-x:clip}
   @keyframes vtIn{from{opacity:0;transform:translateY(10px)}}
   .nav{view-transition-name:nav}
 }
+
+/* ================= hero: coluna direita em slides (a conta · o próximo evento) ================= */
+.sheet{padding-left:clamp(44px,4.2vw,72px);padding-right:clamp(20px,3vw,48px);justify-content:center;gap:18px}
+.sheet::before{left:clamp(26px,2.6vw,42px)}
+.hero-tabs{display:flex;gap:6px;align-self:flex-start}
+.hero-tabs button{font:400 1.2rem/1 var(--hand);color:var(--pencil);background:none;border:0;border-bottom:2px solid transparent;padding:6px 8px 5px;cursor:pointer}
+.hero-tabs button[aria-selected="true"]{color:var(--pen);border-bottom-color:var(--red);background:linear-gradient(transparent 60%,var(--hl-soft) 60%)}
+.hero-tabs button:focus-visible{outline:3px solid var(--pen);outline-offset:2px;border-radius:6px}
+.hero-tabs .bar{display:block;height:2px;background:var(--red);transform-origin:left;transform:scaleX(0)}
+.hero-slides{display:grid}
+.hero-slide{grid-area:1/1;min-width:0;align-self:start;transition:opacity .5s var(--ease),transform .6s var(--ease),visibility 0s .6s}
+.hero-slide:not(.on){opacity:0;transform:translateX(28px);visibility:hidden;pointer-events:none}
+.hero-slide.on{transition:opacity .5s var(--ease),transform .6s var(--ease),visibility 0s}
+.hs-kicker{font-size:1.5rem;color:var(--red-ink);margin:0 0 10px}
+.hs-event{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,.72fr);gap:clamp(18px,3vw,40px);align-items:center}
+.hs-date{display:inline-flex;align-items:center;gap:10px;border:2px solid var(--ink);border-radius:14px;padding:6px 14px 6px 10px;background:#fff;margin-bottom:14px}
+.hs-date b{font:800 2.6rem/1 var(--display);font-stretch:84%;color:var(--red-ink)}
+.hs-date span{font:700 .8rem/1.15 var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--pencil)}
+.hs-title{font-size:clamp(1.9rem,3vw,2.8rem);margin:0 0 14px;max-width:14ch}
+.hs-ficha{margin-bottom:18px}
+.hs-ctas{display:flex;flex-wrap:wrap;gap:10px}
+.hs-poster.photo{position:relative;width:100%;transform:rotate(3deg)}
+.hs-poster img{aspect-ratio:1}
+@media (max-width:1100px) and (min-width:901px){.hs-event{grid-template-columns:1fr}.hs-poster.photo{display:none}}
+@media (max-width:900px){.hs-event{grid-template-columns:1fr}.hs-poster.photo{display:none}}
+@media (prefers-reduced-motion:reduce){.hero-slide{transition:none}}

@@ -178,3 +178,25 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
   document.addEventListener('visibilitychange',tick);
   if('IntersectionObserver' in window)new IntersectionObserver(es=>{visible=es[0].isIntersecting;tick()},{threshold:.3}).observe(st);else{visible=true;tick()}
 })();
+
+/* ---------- hero: a folha da direita alterna entre a conta e o próximo evento ---------- */
+(()=>{
+  const box=document.getElementById('hero-slides');if(!box)return;
+  const tabs=[...document.querySelectorAll('.hero-tabs [role="tab"]')],slides=[...box.querySelectorAll('.hero-slide')];
+  const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let cur=0,timer=null,paused=false,visible=true;
+  const show=i=>{cur=(i+slides.length)%slides.length;
+    slides.forEach((s,k)=>{const on=k===cur;s.classList.toggle('on',on);s.setAttribute('aria-hidden',on?'false':'true');s.querySelectorAll('a,button').forEach(a=>a.tabIndex=on?0:-1)});
+    tabs.forEach((t,k)=>{t.setAttribute('aria-selected',k===cur);t.tabIndex=k===cur?0:-1})};
+  const tick=()=>{clearTimeout(timer);if(!still&&!paused&&visible&&!document.hidden)timer=setTimeout(()=>{show(cur+1);tick()},cur===0?9000:7000)};
+  tabs.forEach((t,k)=>{t.addEventListener('click',()=>{show(k);tick()});
+    t.addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;show(cur+(e.key==='ArrowRight'?1:-1));tabs[cur].focus();tick()})});
+  const sheet=box.closest('.sheet');
+  sheet.addEventListener('pointerenter',()=>{paused=true;clearTimeout(timer)});
+  sheet.addEventListener('pointerleave',()=>{paused=false;tick()});
+  sheet.addEventListener('focusin',()=>{paused=true;clearTimeout(timer)});
+  sheet.addEventListener('focusout',()=>{paused=false;tick()});
+  document.addEventListener('visibilitychange',tick);
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>{visible=es[0].isIntersecting;tick()},{threshold:.4}).observe(sheet);
+  show(0);tick();
+})();
