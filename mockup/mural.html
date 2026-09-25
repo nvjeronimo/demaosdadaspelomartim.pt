@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mural dos amigos do Martim · Vamos Ajudar o Martim">
-<meta property="og:description" content="O mural dos amigos do Martim: quem ganhou o diploma no desafio das tampinhas. Joga, ganha o teu diploma e pede para entrar.">
+<meta property="og:description" content="O top 10 dos amigos do Martim no desafio das tampinhas, em três níveis. Joga, ganha o teu diploma e entra no mural.">
 <meta property="og:image" content="https://nvjeronimo.github.io/martim-redesign/img/nova-hero.jpg">
 <meta property="og:url" content="https://nvjeronimo.github.io/martim-redesign/mockup/mural.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -12,12 +12,12 @@
 <title>Mural dos amigos do Martim · Vamos Ajudar o Martim</title>
 <link rel="alternate" hreflang="pt" href="mural.html">
 <link rel="alternate" hreflang="en" href="en/mural.html">
-<meta name="description" content="O mural dos amigos do Martim: quem ganhou o diploma no desafio das tampinhas. Joga, ganha o teu diploma e pede para entrar.">
+<meta name="description" content="O top 10 dos amigos do Martim no desafio das tampinhas, em três níveis. Joga, ganha o teu diploma e entra no mural.">
 <link rel="icon" type="image/svg+xml" href="img/marca/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202609251858">
+<link rel="stylesheet" href="css/site.css?v=202609252045">
 </head>
 <body class="sub">
 
@@ -98,75 +98,96 @@
   <div class="subhero-in">
     <nav class="crumbs" aria-label="Estás aqui"><a href="index.html">Início</a> <span aria-hidden="true">›</span> <span aria-current="page">Mural dos amigos</span></nav>
     <h1 id="h1">O mural dos amigos do Martim.</h1>
-    <p class="lede">Cada nome aqui é alguém que já separa tampas como o meu pai. Joga o desafio, ganha o diploma e pede para entrar.</p>
+    <p class="lede">Os melhores separadores de tampas, em três níveis. Joga o desafio, guarda ou partilha o teu diploma e entra no top 10.</p>
   </div>
-  <div class="label" aria-label="Etiqueta do caderno"><div class="row"><small>Para entrar</small><span class="hand">ganha o diploma no desafio</span></div><div class="row"><small>Quem afixa</small><span class="hand">os meus pais</span></div><div class="row"><small>Mostramos</small><span class="hand">só o primeiro nome</span></div></div>
+  <div class="label" aria-label="Etiqueta do caderno"><div class="row"><small>Para entrar</small><span class="hand">guarda ou partilha o diploma</span></div><div class="row"><small>Top 10</small><span class="hand">por nível, certas e tempo</span></div><div class="row"><small>Mostramos</small><span class="hand">só o primeiro nome</span></div></div>
 </section>
 <div class="spiral-h" aria-hidden="true"></div>
 
-<section class="page" aria-labelledby="h-meu">
-  <div class="inner meu">
-    <div id="meu-dip"></div>
-    <div>
-      <h2 id="h-meu" class="h-sm">Pede para entrar no mural.</h2>
-      <p id="meu-txt">Joga o desafio das tampinhas até ao fim e o teu diploma aparece aqui, pronto a enviar.</p>
-      <div class="meu-actions" id="meu-actions"></div>
-      <p class="meu-status" id="meu-status" aria-live="polite"></p>
-      <p class="small" style="margin-top:18px">Os pedidos chegam por email aos pais do Martim, que os afixam à mão. No mural só aparece o primeiro nome e, se quiseres, a terra. Se tens menos de 13 anos, pede a um adulto para enviar contigo.</p>
+<section class="page" aria-labelledby="h-top">
+  <div class="inner">
+    <div class="sec-head">
+      <h2 id="h-top">Top 10.</h2>
+      <p>Ganha quem acerta mais. Em caso de empate, ganha quem separou mais depressa. Cada pessoa conta uma vez por nível, com o seu melhor resultado.</p>
+    </div>
+    <div class="board-tabs" role="tablist" aria-label="Nível">
+      <button type="button" role="tab" id="tab-1" aria-controls="board" aria-selected="false" data-lv="1">Fácil</button>
+      <button type="button" role="tab" id="tab-2" aria-controls="board" aria-selected="true" data-lv="2">Normal</button>
+      <button type="button" role="tab" id="tab-3" aria-controls="board" aria-selected="false" data-lv="3">Difícil</button>
+    </div>
+    <ol class="board" id="board" role="tabpanel" aria-labelledby="tab-2" aria-live="polite"></ol>
+    <p class="board-note" id="board-note"></p>
+    <div class="share" data-share-url="mural.html" data-share-text="Estes são os melhores separadores de tampas do Martim. Consegues entrar no top 10?">
+      <span class="share-label">Desafia os teus amigos:</span>
+      <button class="btn btn-red share-native" type="button" data-share="native" hidden><svg aria-hidden="true"><use href="#i-share"/></svg>Partilhar</button>
+      <button class="share-btn" type="button" data-share="whatsapp" aria-label="Partilhar no WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</button>
+      <button class="share-btn" type="button" data-share="facebook" aria-label="Partilhar no Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook</button>
+      <button class="share-btn" type="button" data-share="tiktok" aria-label="Partilhar no TikTok"><svg aria-hidden="true"><use href="#i-tt"/></svg><span>TikTok</span></button>
+      <button class="share-btn" type="button" data-share="copy"><svg aria-hidden="true"><use href="#i-link"/></svg><span>Copiar link</span></button>
     </div>
   </div>
 </section>
 <hr class="divider">
-<section class="page" aria-labelledby="h-mural">
-  <div class="inner">
-    <div class="sec-head">
-      <h2 id="h-mural">Os amigos no mural.</h2>
-      <p class="mural-count" id="mural-count"></p>
+<section class="page" aria-labelledby="h-meu">
+  <div class="inner meu">
+    <div id="meu-dip"></div>
+    <div>
+      <h2 id="h-meu" class="h-sm">O teu diploma.</h2>
+      <p id="meu-txt">Joga o desafio das tampinhas até ao fim. Quando guardares ou partilhares o diploma, com a caixa "top 10 do mural" marcada, o teu nome entra aqui sozinho.</p>
+      <div class="meu-actions" id="meu-actions"></div>
+      <p class="meu-status" id="meu-status" aria-live="polite"></p>
+      <p class="small" style="margin-top:18px">Só aparece o primeiro nome e, se quiseres, a terra. Nomes ofensivos são recusados e os pais do Martim podem retirar qualquer nome. Se tens menos de 13 anos, joga com um adulto. Para tirar o teu nome, escreve para micka.a.cruz@gmail.com.</p>
     </div>
-    <div class="mural" id="mural"></div>
   </div>
 </section>
-<script src="js/mural.js?v=202609251858"></script>
+<script src="js/mural.js?v=202609252045"></script>
+<script src="js/mural-api.js?v=202609252045"></script>
 <script>
 (()=>{
 const LNG=document.documentElement.lang==='en',T=(pt,en)=>LNG?en:pt;
 const LV={1:T('fácil','easy'),2:T('normal','normal'),3:T('difícil','hard')};
 const M=LNG?['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']:['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
 const date=s=>{const d=new Date(s+'T12:00:00');return isNaN(d)?'':d.getDate()+' '+M[d.getMonth()]+' '+d.getFullYear()};
+const tm=s=>s>=60?Math.floor(s/60)+' min '+String(s%60).padStart(2,'0')+' s':s+' s';
 const stars=(r,t)=>{const n=r===t?3:r>=Math.ceil(t*.75)?2:1;return '<svg><use href="#i-star"/></svg>'.repeat(n)+'<svg class="off"><use href="#i-star"/></svg>'.repeat(3-n)};
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const card=(d,extra='')=>`<article class="mini-dip"><span class="tp" aria-hidden="true"></span><p class="t">${T('Diploma de Amigo do Martim','Friend of Martim Diploma')}</p><p class="nm">${esc(d.n||T('Amigo do Martim','Friend of Martim'))}</p><p class="sc">${d.r} ${T('de','of')} ${d.t} · ${T('nível','level')} ${LV[d.lv]||LV[2]}${d.terra?' · '+esc(d.terra):''}</p><p class="st" aria-label="${T('estrelas','stars')}">${stars(d.r,d.t)}</p><p class="sc">${date(d.d)}</p>${extra}</article>`;
-/* o meu diploma (guardado neste navegador quando acabas o desafio) */
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let meu=null;try{meu=JSON.parse(localStorage.getItem('mural-meu')||'null')}catch(e){}
+const board=document.getElementById('board'),note=document.getElementById('board-note');
+let data=null,cur=meu&&meu.lv?+meu.lv:2;
+const isMe=e=>e.me||(meu&&e.id&&e.id===meu.id);
+function draw(){
+  document.querySelectorAll('.board-tabs [data-lv]').forEach(b=>{const on=+b.dataset.lv===cur;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;if(on)board.setAttribute('aria-labelledby',b.id)});
+  const list=(data&&data.levels[cur])||[];
+  let html=list.map((e,i)=>`<li class="${i<3?'p'+(i+1):''}${isMe(e)?' me':''}"><span class="rk num">${i+1}</span><span class="who"><b>${esc(e.n)}</b>${e.terra?'<small>'+esc(e.terra)+'</small>':''}${isMe(e)?'<em>'+T('tu','you')+'</em>':''}</span><span class="st" aria-label="${e.r} ${T('de','of')} ${e.t}">${stars(e.r,e.t)}</span><span class="sc num">${e.r}/${e.t}</span><span class="tm num">${tm(e.s)}</span><span class="dt">${date(e.d)}</span></li>`).join('');
+  for(let i=list.length;i<10;i++)html+=`<li class="empty"><span class="rk num">${i+1}</span><span class="who">${i===list.length?T('o teu nome aqui','your name here'):''}</span></li>`;
+  board.innerHTML=html;
+}
+document.querySelectorAll('.board-tabs [data-lv]').forEach(b=>{
+  b.addEventListener('click',()=>{cur=+b.dataset.lv;draw()});
+  b.addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;cur=((cur-1+(e.key==='ArrowRight'?1:2))%3)+1;draw();document.getElementById('tab-'+cur).focus()});
+});
+draw();
+MuralAPI.top().then(d=>{data=d;draw();
+  note.textContent=d.live?T('Atualizado agora mesmo.','Updated just now.'):T('O mural partilhado liga-se quando a família ativar o servidor. Por agora vês os nomes afixados pelos pais e o teu resultado.','The shared wall goes live once the family switches the server on. For now you see the names pinned by the parents and your own result.')});
+/* o meu diploma */
 const box=document.getElementById('meu-dip'),acts=document.getElementById('meu-actions'),st=document.getElementById('meu-status');
 if(meu&&meu.t){
-  box.innerHTML=card(meu);
-  document.getElementById('meu-txt').textContent=T('Este é o teu último diploma. Escreve a tua terra, se quiseres, e envia o pedido aos meus pais.','This is your latest diploma. Add your town if you like and send the request to my parents.');
-  acts.innerHTML=`<div class="field" style="flex:1 1 220px;margin:0"><label for="m-terra">${T('A tua terra (opcional)','Your town (optional)')}</label><input id="m-terra" maxlength="30" autocomplete="address-level2"></div>
-   <a class="btn btn-red" id="m-send" href="#"><svg aria-hidden="true"><use href="#i-mail"/></svg>${T('Pedir para entrar','Ask to join')}</a>
-   <button class="btn btn-line" type="button" id="m-copy">${T('Copiar o pedido','Copy the request')}</button>
-   <a class="btn btn-line" href="index.html#ficha">${T('Jogar outra vez','Play again')}</a>`;
-  const msg=()=>{const terra=document.getElementById('m-terra').value.trim();
-    return T(`Olá! Gostava de entrar no mural dos amigos do Martim.\n\nNome: ${meu.n||'(sem nome)'}\nTerra: ${terra||'-'}\nResultado: ${meu.r} de ${meu.t} (nível ${LV[meu.lv]||LV[2]})\nData: ${meu.d}`,
-             `Hi! I would like to join the Friends of Martim wall.\n\nName: ${meu.n||'(no name)'}\nTown: ${terra||'-'}\nScore: ${meu.r} of ${meu.t} (${LV[meu.lv]||LV[2]} level)\nDate: ${meu.d}`)};
+  box.innerHTML=`<article class="mini-dip"><span class="tp" aria-hidden="true"></span><p class="t">${T('Diploma de Amigo do Martim','Friend of Martim Diploma')}</p><p class="nm">${esc(meu.n||T('Amigo do Martim','Friend of Martim'))}</p><p class="sc">${meu.r} ${T('de','of')} ${meu.t} · ${T('nível','level')} ${LV[meu.lv]||LV[2]}${meu.s?' · '+tm(meu.s):''}</p><p class="st">${stars(meu.r,meu.t)}</p><p class="sc">${date(meu.d)}</p></article>`;
+  document.getElementById('meu-txt').textContent=meu.pub?T('O teu último diploma já está no mural.','Your latest diploma is already on the wall.'):T('O teu último diploma ainda não está no mural. Escreve a tua terra, se quiseres, e junta-te ao top 10.','Your latest diploma is not on the wall yet. Add your town if you like and join the top 10.');
+  acts.innerHTML=(meu.pub?'':`<div class="field" style="flex:1 1 200px;margin:0"><label for="m-terra">${T('A tua terra (opcional)','Your town (optional)')}</label><input id="m-terra" maxlength="20" autocomplete="address-level2"></div><button class="btn btn-red" type="button" id="m-send">${T('Pôr no mural','Put me on the wall')}</button>`)+`<a class="btn btn-line" href="index.html#ficha">${T('Jogar outra vez','Play again')}</a>`;
   const send=document.getElementById('m-send');
-  const upd=()=>{send.href='mailto:micka.a.cruz@gmail.com?subject='+encodeURIComponent(T('Mural: diploma de ','Wall: diploma for ')+(meu.n||''))+'&body='+encodeURIComponent(msg())};
-  upd();document.getElementById('m-terra').addEventListener('input',upd);
-  send.addEventListener('click',()=>{st.textContent=T('Abrimos o teu email com o pedido pronto. Se não abriu, usa "Copiar o pedido" e envia para micka.a.cruz@gmail.com.','We opened your email with the request ready. If it did not open, use "Copy the request" and send it to micka.a.cruz@gmail.com.')});
-  document.getElementById('m-copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(msg());st.textContent=T('Pedido copiado. Cola-o num email para micka.a.cruz@gmail.com.','Request copied. Paste it into an email to micka.a.cruz@gmail.com.')}catch(e){st.textContent=msg()}});
+  if(send)send.addEventListener('click',async()=>{
+    if(!meu.n){st.textContent=T('O diploma não tem nome. Joga outra vez e escreve o teu nome.','The diploma has no name. Play again and write your name.');return}
+    send.disabled=true;meu.pub=true;try{localStorage.setItem('mural-meu',JSON.stringify(meu))}catch(e){}
+    const res=await MuralAPI.send(Object.assign({},meu,{terra:(document.getElementById('m-terra')||{}).value||''}));
+    if(!res.ok){send.disabled=false;meu.pub=false;try{localStorage.setItem('mural-meu',JSON.stringify(meu))}catch(e){}
+      st.textContent=res.why==='nome'?T('Esse nome não pode ir para o mural.','That name can’t go on the wall.'):T('Não conseguimos chegar ao mural agora. Tenta mais tarde.','We couldn’t reach the wall right now. Try again later.');return}
+    st.textContent=res.pos?T(`Estás em ${res.pos}.º lugar no nível ${LV[meu.lv]}!`,`You’re number ${res.pos} on the ${LV[meu.lv]} level!`):T('Pronto, estás no mural.','Done, you’re on the wall.');
+    cur=+meu.lv;data=await MuralAPI.top();draw();
+  });
 }else{
   box.innerHTML=`<div class="mural"><div class="vazio" style="min-height:240px">${T('o teu diploma aparece aqui','your diploma shows up here')}</div></div>`;
   acts.innerHTML=`<a class="btn btn-red" href="index.html#ficha">${T('Aceitar o desafio','Take the challenge')} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>`;
-}
-/* o mural: nomes afixados pelos pais em js/mural.js */
-const list=(window.MURAL||[]).slice().sort((a,b)=>(b.d||'').localeCompare(a.d||''));
-const wall=document.getElementById('mural'),count=document.getElementById('mural-count');
-if(list.length){
-  count.textContent=T(list.length===1?'1 amigo afixado até agora.':list.length+' amigos afixados até agora.',list.length===1?'1 friend pinned so far.':list.length+' friends pinned so far.');
-  wall.innerHTML=list.map(d=>card(d)).join('');
-}else{
-  count.textContent=T('O mural abre com os primeiros diplomas. Sê o primeiro!','The wall opens with the first diplomas. Be the first!');
-  wall.innerHTML=Array.from({length:6},(_, i)=>`<div class="vazio">${i===0?T('o teu nome aqui','your name here'):''}</div>`).join('');
 }
 })();
 </script>
@@ -202,6 +223,6 @@ if(list.length){
   <a class="btn btn-red" href="index.html#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
-<script src="js/site.js?v=202609251858"></script>
+<script src="js/site.js?v=202609252045"></script>
 </body>
 </html>

@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css?v=202609251858">
+<link rel="stylesheet" href="../css/site.css?v=202609252045">
 </head>
 <body class="sub">
 
@@ -115,6 +115,7 @@
           <tr><td><code>paleta</code></td><td>Remembering the notebook cover you picked in "Choose the cover".</td><td>The browser's local storage (localStorage), for this website only</td><td>Until you delete it</td></tr>
           <tr><td><code>ficha-nome</code>, <code>ficha-nivel</code></td><td>Remember the name and level you used in the bottle-cap challenge.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
           <tr><td><code>mural-meu</code></td><td>Keep your latest diploma (name, score, level and date) so you can send it to the wall.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
+          <tr><td><code>mural-ok</code>, <code>mural-enviados</code></td><td>Remember whether you agreed to put your name on the wall and which diplomas were already sent, so they are not repeated.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
           <tr><td><code>cartaz-local</code></td><td>Remember the place name you typed on the printable poster.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
         </tbody>
       </table></div>
@@ -140,7 +141,7 @@
 </section>
 <script>
 document.getElementById('esquecer').addEventListener('click',()=>{
-  let ok=true;try{['paleta','ficha-nome','ficha-nivel','mural-meu','cartaz-local'].forEach(k=>localStorage.removeItem(k))}catch(e){ok=false}
+  let ok=true;try{['paleta','ficha-nome','ficha-nivel','mural-meu','mural-ok','mural-enviados','cartaz-local'].forEach(k=>localStorage.removeItem(k))}catch(e){ok=false}
   document.getElementById('esquecer-msg').textContent=ok?'Done. On your next visit the website opens with the Midnight cover.':'Your browser didn’t allow it. Use your browser settings instead.';
 });
 </script>
@@ -176,6 +177,6 @@ document.getElementById('esquecer').addEventListener('click',()=>{
   <a class="btn btn-red" href="index.html#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Donate</a>
 </nav>
 
-<script src="../js/site.js?v=202609251858"></script>
+<script src="../js/site.js?v=202609252045"></script>
 </body>
 </html>

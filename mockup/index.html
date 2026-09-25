@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202609251858">
+<link rel="stylesheet" href="css/site.css?v=202609252045">
 </head>
 <body>
 
@@ -256,6 +256,8 @@
           </div>
         </div>
         <div class="dip-actions"><button class="btn btn-red" type="button" id="dip-save"><svg aria-hidden="true"><use href="#i-down"/></svg>Guardar diploma</button><button class="btn btn-line" type="button" id="again">Jogar outra vez</button><a class="btn btn-line" href="mural.html">Pôr o diploma no mural <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        <label class="dip-mural"><input type="checkbox" id="dip-mural"> <span>Pôr o meu primeiro nome no <b>top 10 do mural</b> quando guardar ou partilhar o diploma</span></label>
+        <p class="dip-mural-st" id="dip-mural-st" aria-live="polite"></p>
         <p class="dip-tip hand">Dica: o diploma muda de cor com a capa. <button type="button" class="dip-tip-btn" id="dip-cover">Escolhe outra capa</button> e guarda-o na tua cor preferida.</p>
         <div class="share" id="game-share" data-share-url="#ficha" data-share-text="">
           <span class="share-label">Desafia os teus amigos:</span>
@@ -577,7 +579,8 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
-<script src="js/pontos.js?v=202609251858"></script>
+<script src="js/mural-api.js?v=202609252045"></script>
+<script src="js/pontos.js?v=202609252045"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
 const LNG=document.documentElement.lang==='en';
@@ -657,11 +660,11 @@ function drawDeck(){
 const G={card:document.getElementById('card'),fb:document.getElementById('feedback'),score:document.getElementById('score'),dots:document.getElementById('dots'),
   streak:document.getElementById('streak'),stamp:document.getElementById('stamp'),dip:document.getElementById('diploma'),stage:document.getElementById('stage'),
   bins:[...document.querySelectorAll('#bins .bin')],name:document.getElementById('g-name'),game:document.getElementById('game')};
-let deck=[],pos=0,right=0,run=0,best=0,busy=false;
+let deck=[],pos=0,right=0,run=0,best=0,busy=false,t0=0,secs=0,rid='';
 try{G.name.value=localStorage.getItem('ficha-nome')||''}catch(e){}
 G.name.addEventListener('input',()=>{try{localStorage.setItem('ficha-nome',G.name.value.trim())}catch(e){}});
 function start(){
-  deck=drawDeck();document.querySelectorAll('.levels [data-lv]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.lv===LEVEL));pos=0;right=0;run=0;best=0;busy=false;
+  deck=drawDeck();t0=0;secs=0;rid=Date.now().toString(36)+Math.random().toString(36).slice(2,7);document.querySelectorAll('.levels [data-lv]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.lv===LEVEL));pos=0;right=0;run=0;best=0;busy=false;
   G.dots.innerHTML=deck.map(()=>'<li></li>').join('');
   G.bins.forEach(b=>{b.querySelector('.count').textContent='0';b.disabled=false;b.classList.remove('right','wrong')});
   G.dip.hidden=true;G.stage.hidden=false;G.game.classList.remove('done');G.stamp.classList.remove('on');G.streak.textContent='';
@@ -669,6 +672,7 @@ function start(){
   show();upd();
 }
 function show(){
+  if(!t0)t0=performance.now();
   const it=deck[pos];
   G.card.innerHTML=`<svg aria-hidden="true" style="color:${it.color||'#FF7A1A'}"><use href="#${it.icon}"/></svg><span>${T(it.label)}</span><small class="num">${pos+1} / ${deck.length}</small>`;
   G.card.classList.remove('in');void G.card.offsetWidth;G.card.classList.add('in');
@@ -692,11 +696,12 @@ function dipName(){return (document.getElementById('dip-name').value||G.name.val
 function shareTxt(){const n=dipName()||(LNG?'A friend of Martim':'Um amigo do Martim');
   return LNG?`${n} scored ${right}/${ROUND} in Martim’s bottle-cap challenge and earned the Friend of Martim diploma! Can you beat that?`:`${n} fez ${right}/${ROUND} no desafio das tampinhas e ganhou o diploma de amigo do Martim! Consegues fazer melhor?`}
 function finish(){
+  secs=Math.max(1,Math.round((performance.now()-t0)/1000));
   G.stage.hidden=true;G.game.classList.add('done');G.dip.hidden=false;
   const dn=document.getElementById('dip-name');dn.value=(G.name.value||'').trim();
   const stars=right===ROUND?3:right>=Math.ceil(ROUND*.75)?2:1;
   document.getElementById('stars').innerHTML='<svg><use href="#i-star"/></svg>'.repeat(stars)+'<svg class="off"><use href="#i-star"/></svg>'.repeat(3-stars);
-  document.getElementById('dip-body').innerHTML=LNG?`sorted <b>${right} out of ${ROUND}</b> items into the right bag in the Bottle-Cap Challenge (${LEVELS[LEVEL].en} level) and is, from today, an official <b>Friend of Martim</b> and bottle-cap sorter.`:`separou <b>${right} de ${ROUND}</b> peças no saco certo no Desafio das Tampinhas (nível ${LEVELS[LEVEL].pt}) e é, a partir de hoje, <b>Amigo do Martim</b> e separador oficial de tampinhas.`;
+  document.getElementById('dip-body').innerHTML=LNG?`sorted <b>${right} out of ${ROUND}</b> items into the right bag in the Bottle-Cap Challenge (${LEVELS[LEVEL].en} level, ${secs} s) and is, from today, an official <b>Friend of Martim</b> and bottle-cap sorter.`:`separou <b>${right} de ${ROUND}</b> peças no saco certo no Desafio das Tampinhas (nível ${LEVELS[LEVEL].pt}, em ${secs} s) e é, a partir de hoje, <b>Amigo do Martim</b> e separador oficial de tampinhas.`;
   document.getElementById('dip-text').textContent=LNG?(right===ROUND?'Perfect score. You sort like my dad!':'You already know more than most people!'):(right===ROUND?'Tudo certo. Já separas como o meu pai!':'Já sabes mais do que muita gente!');
   const d=new Date(),m=LNG?['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']:['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
   document.getElementById('dip-date').textContent=d.getDate()+' '+m[d.getMonth()]+' '+d.getFullYear();
@@ -708,7 +713,14 @@ function finish(){
   if(!dn.value)setTimeout(()=>dn.focus({preventScroll:true}),600);
   G.dip.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
 }
-function saveResult(){try{localStorage.setItem('mural-meu',JSON.stringify({n:dipName(),r:right,t:ROUND,lv:LEVEL,d:new Date().toISOString().slice(0,10),p:document.documentElement.dataset.paleta}))}catch(e){}}
+function saveResult(){try{localStorage.setItem('mural-meu',JSON.stringify({id:rid,n:dipName(),r:right,t:ROUND,lv:LEVEL,s:secs,d:new Date().toISOString().slice(0,10),p:document.documentElement.dataset.paleta,pub:document.getElementById('dip-mural').checked}))}catch(e){}}
+/* mural: ao guardar ou partilhar o diploma, entra no top 10 se a pessoa autorizou */
+async function toMural(){const st=document.getElementById('dip-mural-st');if(!document.getElementById('dip-mural').checked)return;
+  if(!dipName()){st.textContent=LNG?'Write your name on the diploma to join the wall.':'Escreve o teu nome no diploma para entrar no mural.';return}
+  saveResult();const res=await MuralAPI.send({id:rid,n:dipName(),r:right,t:ROUND,lv:LEVEL,s:secs,d:new Date().toISOString().slice(0,10)});
+  const lv=LNG?LEVELS[LEVEL].en:LEVELS[LEVEL].pt,link=`<a href="mural.html">${LNG?'See the wall →':'Ver o mural →'}</a>`;
+  if(!res.ok){st.innerHTML=res.why==='nome'?(LNG?'That name can’t go on the wall. Try your first name.':'Esse nome não pode ir para o mural. Experimenta o teu primeiro nome.'):(LNG?'We couldn’t reach the wall right now. Try again later.':'Não conseguimos chegar ao mural agora. Tenta mais tarde.');return}
+  st.innerHTML=res.pos?(LNG?`You’re number ${res.pos} on the ${lv} level! `:`Estás em ${res.pos}.º lugar no nível ${lv}! `)+link:(res.pos===0?(LNG?`You’re on the wall, outside the ${lv} top 10 for now. `:`Estás no mural, ainda fora do top 10 do nível ${lv}. `)+link:res.local?(LNG?'Saved on this device’s wall. The shared wall goes live once the family switches it on. ':'Guardado no mural deste aparelho. O mural partilhado com todos fica ativo quando a família o ligar. ')+link:(LNG?'Your result is on the wall. ':'O teu resultado está no mural. ')+link)}
 document.getElementById('dip-name').addEventListener('input',e=>{G.name.value=e.target.value;saveResult();try{localStorage.setItem('ficha-nome',e.target.value.trim())}catch(x){}document.getElementById('game-share').dataset.shareText=shareTxt()});
 
 /* diploma como imagem (PNG) para guardar ou partilhar */
@@ -728,7 +740,7 @@ async function diplomaPNG(){
   x.fillStyle=act;x.font='400 110px "Gochi Hand", cursive';x.fillText(nm,W/2,510);
   x.strokeStyle=pen;x.lineWidth=3;x.beginPath();x.moveTo(W/2-460,540);x.lineTo(W/2+460,540);x.stroke();
   x.fillStyle=ink;x.font='400 36px "Atkinson Hyperlegible", sans-serif';
-  const body=LNG?[`sorted ${right} out of ${ROUND} items into the right bag in the Bottle-Cap Challenge (${LEVELS[LEVEL].en} level)`,'and is, from today, an official Friend of Martim and bottle-cap sorter.']:[`separou ${right} de ${ROUND} peças no saco certo no Desafio das Tampinhas (nível ${LEVELS[LEVEL].pt})`,'e é, a partir de hoje, Amigo do Martim e separador oficial de tampinhas.'];
+  const body=LNG?[`sorted ${right} out of ${ROUND} items into the right bag in the Bottle-Cap Challenge (${LEVELS[LEVEL].en} level, ${secs} s)`,'and is, from today, an official Friend of Martim and bottle-cap sorter.']:[`separou ${right} de ${ROUND} peças no saco certo no Desafio das Tampinhas (nível ${LEVELS[LEVEL].pt}, em ${secs} s)`,'e é, a partir de hoje, Amigo do Martim e separador oficial de tampinhas.'];
   body.forEach((l,i)=>x.fillText(l,W/2,620+i*52));
   const st=right===ROUND?3:right>=Math.ceil(ROUND*.75)?2:1;
   for(let i=0;i<3;i++){const cx=W/2-90+i*90,cy=780;x.beginPath();for(let k=0;k<10;k++){const r=k%2?18:40,a=-Math.PI/2+k*Math.PI/5;x.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a))}x.closePath();x.fillStyle=i<st?hl:'#fff';x.fill();x.strokeStyle=ink;x.lineWidth=3;x.stroke()}
@@ -744,12 +756,17 @@ async function diplomaPNG(){
 }
 document.getElementById('dip-cover').addEventListener('click',e=>{e.stopPropagation();const t=document.querySelector('.paleta-toggle');if(t&&t.getAttribute('aria-expanded')!=='true')t.click()});
 document.getElementById('dip-save').addEventListener('click',async()=>{
+  toMural();
   const blob=await diplomaPNG(),name=(LNG?'friend-of-martim-diploma':'diploma-amigo-do-martim')+'.png',file=new File([blob],name,{type:'image/png'});
   if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:LNG?'Friend of Martim Diploma':'Diploma de Amigo do Martim',text:shareTxt()});return}catch(e){if(e.name==='AbortError')return}}
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);
 });
 /* TikTok: a imagem do diploma vai para a folha de partilha (telemóvel) ou é descarregada; a legenda fica copiada */
+document.getElementById('game-share').addEventListener('click',e=>{if(e.target.closest('[data-share]'))toMural()});
+document.getElementById('dip-mural').addEventListener('change',e=>{try{localStorage.setItem('mural-ok',e.target.checked?'1':'')}catch(x){}saveResult()});
+try{document.getElementById('dip-mural').checked=!!localStorage.getItem('mural-ok')}catch(x){}
 document.getElementById('game-share').addEventListener('share-tiktok',async e=>{
+  toMural();
   const b=e.detail.btn,s=b.querySelector('span'),old=s.textContent,u=new URL('#ficha',location.href).href,cap=shareTxt()+' '+u+' #VamosAjudaroMartim #tampinhas';
   try{await navigator.clipboard.writeText(cap)}catch(x){}
   const blob=await diplomaPNG(),name=(LNG?'friend-of-martim-diploma':'diploma-amigo-do-martim')+'.png',file=new File([blob],name,{type:'image/png'});
@@ -785,6 +802,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 }));
 updCount();
 </script>
-<script src="js/site.js?v=202609251858"></script>
+<script src="js/site.js?v=202609252045"></script>
 </body>
 </html>
