@@ -1,0 +1,4 @@
+# só os dois pontos de entrada respondem; config.php não é servido diretamente
+<Files "config.php">
+  Require all denied
+</Files>

@@ -1,7 +1,7 @@
 /* Mural dos amigos: top 10 por nível.
-   MURAL_API_URL = endereço da "app web" do Google Apps Script (ver backend/LEIA-ME.md).
-   Enquanto estiver vazio, o mural mostra os nomes de js/mural.js (afixados à mão) e o teu resultado guardado neste navegador. */
-const MURAL_API_URL = '';
+   No domínio oficial, os resultados ficam no próprio servidor (api/mural.php, SQLite fora da pasta pública).
+   Noutros endereços (pré-visualização sem PHP), mostra os nomes de js/mural.js e o teu resultado guardado neste navegador. */
+const MURAL_API_URL = /(^|\.)demaosdadaspelomartim\.pt$/.test(location.hostname) ? '/api/mural.php' : '';
 
 window.MuralAPI = (() => {
   const qs = new URLSearchParams(location.search);

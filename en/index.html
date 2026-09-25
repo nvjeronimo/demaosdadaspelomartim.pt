@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css?v=202609252310">
+<link rel="stylesheet" href="../css/site.css?v=202609252336">
 </head>
 <body>
 
@@ -535,6 +535,7 @@
           <label><input type="checkbox" name="q" value="evento" data-t="organizar um evento"> organise an event</label>
           <label><input type="checkbox" name="q" value="outro" data-t="outra coisa"> something else</label>
         </fieldset>
+        <div class="hp" aria-hidden="true"><label for="f-site">Não preencher</label><input id="f-site" name="site" tabindex="-1" autocomplete="off"></div>
         <div class="field"><label for="f-nome">Name</label><input id="f-nome" autocomplete="name" required></div>
         <div class="field"><label for="f-mail">Email or mobile</label><input id="f-mail" autocomplete="email" required></div>
         <div class="field"><label for="f-msg">Message <span class="small">(optional)</span></label><textarea id="f-msg"></textarea></div>
@@ -582,8 +583,8 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Donate</a>
 </nav>
 
-<script src="../js/mural-api.js?v=202609252310"></script>
-<script src="../js/pontos.js?v=202609252310"></script>
+<script src="../js/mural-api.js?v=202609252336"></script>
+<script src="../js/pontos.js?v=202609252336"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
 const LNG=document.documentElement.lang==='en';
@@ -602,17 +603,28 @@ chips.forEach(c=>c.addEventListener('click',()=>choose(c.dataset.choose,true)));
 document.querySelectorAll('a[href="#doar"]').forEach(a=>a.addEventListener('click',()=>choose('dinheiro')));
 choose(location.hash==='#doar'?'dinheiro':'tampas');
 
-/* ---------- formulário: sem servidor, abre o email com a mensagem pronta ---------- */
-{const f=document.getElementById('join'),st=document.getElementById('join-status');
+/* ---------- formulário: envia pelo site (api/contacto.php); sem servidor, abre o email com a mensagem pronta ---------- */
+{const f=document.getElementById('join'),st=document.getElementById('join-status'),btn=f.querySelector('button[type="submit"]');
  const q=new URLSearchParams(location.search).get('quero');if(q){const c=f.querySelector(`input[value="${q}"]`);if(c)c.checked=true}
- f.addEventListener('submit',e=>{e.preventDefault();
+ const LIVE=/(^|\.)demaosdadaspelomartim\.pt$/.test(location.hostname);
+ f.addEventListener('submit',async e=>{e.preventDefault();
   if(!f.checkValidity()){f.reportValidity();return}
-  const quero=[...f.querySelectorAll('input[name="q"]:checked')].map(c=>c.dataset.t).join(', ')||(LNG?'something else':'outra coisa');
+  const quero=[...f.querySelectorAll('input[name="q"]:checked')].map(c=>c.dataset.t);
   const nome=document.getElementById('f-nome').value.trim(),ct=document.getElementById('f-mail').value.trim(),msg=document.getElementById('f-msg').value.trim();
-  const body=(LNG?`Hi! My name is ${nome}.\nI want to: ${quero}.\nContact: ${ct}\n\n${msg}`:`Olá! Chamo-me ${nome}.\nQuero: ${quero}.\nContacto: ${ct}\n\n${msg}`).trim();
-  location.href='mailto:micka.a.cruz@gmail.com?subject='+encodeURIComponent((LNG?'Website: ':'Site: ')+quero)+'&body='+encodeURIComponent(body);
-  st.textContent=LNG?'We opened your email with the message ready: just press send. If nothing opened, write to micka.a.cruz@gmail.com.':'Abrimos o teu email com a mensagem pronta: só tens de carregar em enviar. Se não abriu nada, escreve para micka.a.cruz@gmail.com.';
+  const mailto=()=>{const qs=quero.join(', ')||(LNG?'something else':'outra coisa');const body=(LNG?`Hi! My name is ${nome}.\nI want to: ${qs}.\nContact: ${ct}\n\n${msg}`:`Olá! Chamo-me ${nome}.\nQuero: ${qs}.\nContacto: ${ct}\n\n${msg}`).trim();
+    location.href='mailto:micka.a.cruz@gmail.com?subject='+encodeURIComponent((LNG?'Website: ':'Site: ')+qs)+'&body='+encodeURIComponent(body);
+    st.textContent=LNG?'We opened your email with the message ready: just press send. If nothing opened, write to micka.a.cruz@gmail.com.':'Abrimos o teu email com a mensagem pronta: só tens de carregar em enviar. Se não abriu nada, escreve para micka.a.cruz@gmail.com.'};
+  if(!LIVE){mailto();return}
+  btn.disabled=true;st.textContent=LNG?'Sending…':'A enviar…';
+  try{const r=await fetch('/api/contacto.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nome,contacto:ct,mensagem:msg,quero,consentimento:true,lang:LNG?'en':'pt',site:document.getElementById('f-site').value})});
+   const j=await r.json().catch(()=>({}));
+   if(j.ok){f.reset();st.textContent=LNG?'Message sent. Thank you! My parents will get back to you soon.':'Mensagem enviada. Obrigado! Os meus pais respondem-te em breve.';btn.disabled=false;return}
+   btn.disabled=false;
+   if(j.why==='limite'){st.textContent=LNG?'You have sent several messages in a short time. Please try again later.':'Enviaste várias mensagens em pouco tempo. Tenta outra vez mais tarde.';return}
+   mailto();
+  }catch(err){btn.disabled=false;mailto()}
  });}
+
 
 /* ---------- collection points ---------- */
 const points=PONTOS.map(p=>[p.n,TIPOS[p.t][LNG?'en':'pt'],p.l,TIPOS[p.t].c,p]);
@@ -830,6 +842,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 }));
 updCount();
 </script>
-<script src="../js/site.js?v=202609252310"></script>
+<script src="../js/site.js?v=202609252336"></script>
 </body>
 </html>
