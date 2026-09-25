@@ -681,3 +681,12 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .foot-logos .logo-chip{width:58px;height:30px;padding:4px 5px;border-radius:6px}
 .label-logo{width:20px;height:20px}
 .volta-logo{margin-bottom:6px}
+/* apoios da comunidade: separados e em escala menor */
+.community{margin-top:34px;padding-top:22px;border-top:1.5px dashed var(--rule);max-width:none}
+.community-h{font:700 .78rem/1 var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--pencil);margin:0 0 14px}
+.community-logos{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px}
+.community-logos li{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--pencil)}
+.logo-chip.mini{width:52px;height:26px;padding:3px 4px;border-radius:5px;border-color:var(--rule)}
+.logo-chip.mini .logo-img{height:100%;width:100%;max-width:none;object-fit:contain}
+.community p{font-size:.92rem;color:var(--pencil);margin:0}
+.ficha-logos{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
