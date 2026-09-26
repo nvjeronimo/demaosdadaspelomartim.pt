@@ -17,10 +17,11 @@
 <meta name="description" content="Cada tampinha é um passo meu. Junta tampas de plástico, caricas e rolhas de cortiça para pagar os tratamentos intensivos do Martim.">
 <link rel="icon" type="image/svg+xml" href="img/marca/favicon.svg">
 <link rel="apple-touch-icon" href="img/marca/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202609260954">
+<link rel="preload" href="fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=202609262042">
+<link rel="stylesheet" href="css/site.css?v=202609262042">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NGO", "name": "De mãos dadas pelo Martim", "alternateName": "Hand in Hand for Martim", "url": "https://demaosdadaspelomartim.pt/", "logo": "https://demaosdadaspelomartim.pt/img/marca/apple-touch-icon.png", "image": "https://demaosdadaspelomartim.pt/img/og.jpg", "description": "Recolha solidária de tampas de plástico, caricas e rolhas de cortiça para pagar os tratamentos intensivos do Martim Silva Cruz, de Boliqueime (processo nº 167, Dê uma Tampa).", "email": "micka.a.cruz@gmail.com", "areaServed": "Algarve, Portugal", "address": {"@type": "PostalAddress", "addressLocality": "Boliqueime", "addressRegion": "Faro", "addressCountry": "PT"}}</script>
 </head>
 <body>
 
@@ -323,7 +324,7 @@
         </table>
         <div class="where-links"><a class="btn btn-red" href="mapa.html"><svg aria-hidden="true"><use href="#i-map"/></svg>Ver no mapa e o mais perto de mim</a><a class="btn btn-line" href="cartaz.html"><svg aria-hidden="true"><use href="#i-print"/></svg>Cartaz para o teu ponto</a></div>
       </div>
-      <aside>
+      <div class="where-side">
         <figure class="photo school"><span class="tape" aria-hidden="true"></span><img src="img/escola.jpg" alt="Sacos cheios de tampas à porta de uma escola primária" width="900" height="1200" loading="lazy"><figcaption>entregas na escola</figcaption></figure>
         <div class="volta">
           <span class="logo-chip sm volta-logo"><img class="logo-img " src="img/parceiros/volta.png" alt="Símbolo VOLTA" loading="lazy"></span>
@@ -336,7 +337,7 @@
           <p><b>Nenhum ponto perto de ti?</b> A tua escola, clube ou café pode ser o próximo. Nós ajudamos em tudo.</p>
           <a href="organiza.html" style="font-weight:700">Organiza uma recolha →</a>
         </div>
-      </aside>
+      </div>
     </div>
   </div>
 </section>
@@ -608,8 +609,9 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
-<script src="js/mural-api.js?v=202609260954"></script>
-<script src="js/pontos.js?v=202609260954"></script>
+<script src="js/eventos.js?v=202609262042"></script>
+<script src="js/mural-api.js?v=202609262042"></script>
+<script src="js/pontos.js?v=202609262042"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
 const LNG=document.documentElement.lang==='en';
@@ -868,6 +870,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 updCount();
 </script>
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=202609260954"></script>
+<script src="js/site.js?v=202609262042"></script>
 </body>
 </html>

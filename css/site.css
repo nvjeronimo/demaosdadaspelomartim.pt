@@ -1284,3 +1284,5 @@ html.lenis{scroll-behavior:auto}
 .game.full .game-full{display:inline-flex;position:fixed;right:14px;top:max(14px,env(safe-area-inset-top))}
 html.game-open,html.game-open body{overflow:hidden}
 html.game-open .actionbar,html.game-open .paleta{display:none}
+/* links dentro de frases do rodapé: negrito para não dependerem só da cor */
+footer .fine a{font-weight:700}

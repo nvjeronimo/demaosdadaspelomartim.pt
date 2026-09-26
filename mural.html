@@ -17,10 +17,10 @@
 <meta name="description" content="O top 10 dos amigos do Martim no desafio das tampinhas, em três níveis. Joga, ganha o teu diploma e entra no mural.">
 <link rel="icon" type="image/svg+xml" href="img/marca/favicon.svg">
 <link rel="apple-touch-icon" href="img/marca/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202609260954">
+<link rel="preload" href="fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=202609262042">
+<link rel="stylesheet" href="css/site.css?v=202609262042">
 </head>
 <body class="sub">
 
@@ -115,11 +115,11 @@
       <p>Ganha quem acerta mais. Em caso de empate, ganha quem separou mais depressa. Cada pessoa conta uma vez por nível, com o seu melhor resultado.</p>
     </div>
     <div class="board-tabs" role="tablist" aria-label="Nível">
-      <button type="button" role="tab" id="tab-1" aria-controls="board" aria-selected="false" data-lv="1">Fácil</button>
-      <button type="button" role="tab" id="tab-2" aria-controls="board" aria-selected="true" data-lv="2">Normal</button>
-      <button type="button" role="tab" id="tab-3" aria-controls="board" aria-selected="false" data-lv="3">Difícil</button>
+      <button type="button" role="tab" id="tab-1" aria-controls="board-panel" aria-selected="false" data-lv="1">Fácil</button>
+      <button type="button" role="tab" id="tab-2" aria-controls="board-panel" aria-selected="true" data-lv="2">Normal</button>
+      <button type="button" role="tab" id="tab-3" aria-controls="board-panel" aria-selected="false" data-lv="3">Difícil</button>
     </div>
-    <ol class="board" id="board" role="tabpanel" aria-labelledby="tab-2" aria-live="polite"></ol>
+    <div id="board-panel" role="tabpanel" aria-labelledby="tab-2"><ol class="board" id="board" aria-live="polite"></ol></div>
     <p class="board-note" id="board-note"></p>
     <div class="share" data-share-url="mural.html" data-share-text="Estes são os melhores separadores de tampas do Martim. Consegues entrar no top 10?">
       <span class="share-label">Desafia os teus amigos:</span>
@@ -144,8 +144,8 @@
     </div>
   </div>
 </section>
-<script src="js/mural.js?v=202609260954"></script>
-<script src="js/mural-api.js?v=202609260954"></script>
+<script src="js/mural.js?v=202609262042"></script>
+<script src="js/mural-api.js?v=202609262042"></script>
 <script>
 (()=>{
 const LNG=document.documentElement.lang==='en',T=(pt,en)=>LNG?en:pt;
@@ -160,7 +160,7 @@ const board=document.getElementById('board'),note=document.getElementById('board
 let data=null,cur=meu&&meu.lv?+meu.lv:2;
 const isMe=e=>e.me||(meu&&e.id&&e.id===meu.id);
 function draw(){
-  document.querySelectorAll('.board-tabs [data-lv]').forEach(b=>{const on=+b.dataset.lv===cur;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;if(on)board.setAttribute('aria-labelledby',b.id)});
+  document.querySelectorAll('.board-tabs [data-lv]').forEach(b=>{const on=+b.dataset.lv===cur;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;if(on)document.getElementById('board-panel').setAttribute('aria-labelledby',b.id)});
   const list=(data&&data.levels[cur])||[];
   let html=list.map((e,i)=>`<li class="${i<3?'p'+(i+1):''}${isMe(e)?' me':''}"><span class="rk num">${i+1}</span><span class="who"><b>${esc(e.n)}</b>${e.terra?'<small>'+esc(e.terra)+'</small>':''}${isMe(e)?'<em>'+T('tu','you')+'</em>':''}</span><span class="st" aria-label="${e.r} ${T('de','of')} ${e.t}">${stars(e.r,e.t)}</span><span class="sc num">${e.r}/${e.t}</span><span class="tm num">${tm(e.s)}</span><span class="dt">${date(e.d)}</span></li>`).join('');
   for(let i=list.length;i<10;i++)html+=`<li class="empty"><span class="rk num">${i+1}</span><span class="who">${i===list.length?T('o teu nome aqui','your name here'):''}</span></li>`;
@@ -228,6 +228,6 @@ if(meu&&meu.t){
 </nav>
 
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=202609260954"></script>
+<script src="js/site.js?v=202609262042"></script>
 </body>
 </html>

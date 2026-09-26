@@ -17,10 +17,10 @@
 <meta name="description" content="Cartaz A4 e etiquetas para os garrafões de um ponto de recolha de tampas para o Martim, com o nome do teu local e QR code.">
 <link rel="icon" type="image/svg+xml" href="img/marca/favicon.svg">
 <link rel="apple-touch-icon" href="img/marca/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202609260954">
+<link rel="preload" href="fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=202609262042">
+<link rel="stylesheet" href="css/site.css?v=202609262042">
 </head>
 <body class="sub">
 
@@ -163,7 +163,7 @@
     <div class="note" style="margin-top:34px"><p class="hand">Dica</p><p>Plastifica o cartaz ou põe-no numa mica: dura meses ao pé dos garrafões. Imprime a 100% (sem "ajustar à página") para o QR code ficar bem legível.</p></div>
   </div>
 </section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" integrity="sha384-mZT2gIty7ZDdOGkxfP6joZcYdMW1Jvj9dRlfpTmaJAKKXTqzygtB22k7FLe+KZC1" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 (()=>{
 const LNG=document.documentElement.lang==='en';
@@ -216,6 +216,6 @@ else{document.getElementById('qr1').innerHTML='<p style="font-size:10px;text-ali
 </nav>
 
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=202609260954"></script>
+<script src="js/site.js?v=202609262042"></script>
 </body>
 </html>

@@ -8,6 +8,17 @@ RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://demaosdadaspelomartim.pt%{REQUEST_URI} [L,R=301]
 
+# fotos em WebP para quem as aceita (foto.jpg → foto.jpg.webp, se existir)
+AddType image/webp .webp
+RewriteCond %{HTTP_ACCEPT} image/webp
+RewriteCond %{REQUEST_FILENAME}.webp -f
+RewriteRule ^(.+\.(?:jpe?g|png))$ $1.webp [T=image/webp,E=WEBP:1,L]
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpe?g|png|webp)$">
+    Header append Vary Accept
+  </FilesMatch>
+</IfModule>
+
 # página de erro
 ErrorDocument 404 /404.html
 
@@ -19,6 +30,8 @@ ErrorDocument 404 /404.html
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 month"
   ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 month"
   ExpiresByType video/mp4 "access plus 1 month"
   ExpiresByType application/pdf "access plus 1 week"
@@ -28,3 +41,19 @@ ErrorDocument 404 /404.html
 </IfModule>
 AddType application/javascript .js
 AddType image/svg+xml .svg
+AddType font/woff2 .woff2
+
+# segurança
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "DENY"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set Permissions-Policy "geolocation=(self), camera=(), microphone=(), payment=(), usb=(), interest-cohort=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://*.tile.openstreetmap.org; font-src 'self'; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+</IfModule>
+# nunca servir ficheiros de dados, código de apoio ou escondidos
+<FilesMatch "(\.(sqlite|db|md|sh|py|key|log|bak|ini)|^\..*)$">
+  Require all denied
+</FilesMatch>

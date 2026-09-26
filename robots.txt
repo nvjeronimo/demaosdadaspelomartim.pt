@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /proposta/
+Disallow: /design/
+
+Sitemap: https://demaosdadaspelomartim.pt/sitemap.xml

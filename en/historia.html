@@ -17,10 +17,10 @@
 <meta name="description" content="The story of Martim Silva Cruz, from Boliqueime, in his own words: his birth, his diagnosis and the treatments that give him independence.">
 <link rel="icon" type="image/svg+xml" href="../img/marca/favicon.svg">
 <link rel="apple-touch-icon" href="../img/marca/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css?v=202609260954">
+<link rel="preload" href="../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/fonts.css?v=202609262042">
+<link rel="stylesheet" href="../css/site.css?v=202609262042">
 </head>
 <body class="sub">
 
@@ -120,12 +120,12 @@
       <p>Every gesture of yours is a giant step on my road to independence.</p>
       <p class="sign">Martim</p>
     </article>
-    <aside class="storyside">
+    <div class="storyside">
       <figure class="slide w vid" style="height:auto"><span class="tape" aria-hidden="true"></span><div class="media" style="aspect-ratio:16/9"><button class="play" type="button" data-src="../media/Martim-Silva-Cruz-12mb.mp4" aria-label="Watch video: my story (4:37)"><img class="poster" src="../media/Martim-Silva-Cruz-12mb.jpg" alt="" loading="lazy"><span class="btn-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><span class="dur">4:37</span></button></div><figcaption><span class="hand">my story on video</span></figcaption></figure>
       <figure class="photo "><span class="tape" aria-hidden="true"></span><img src="../img/martim-punho.jpg" alt="Martim with his arm up and fist clenched, wearing a Superman top" width="1300" height="1300" loading="lazy" style="aspect-ratio:1/1"><figcaption>me, training!</figcaption></figure>
       <figure class="photo "><span class="tape" aria-hidden="true"></span><img src="../img/martim-kinesio.jpg" alt="Martim and his mum outside Clínica Kinésio" width="1200" height="900" loading="lazy"><figcaption>with Mum, at Kinésio</figcaption></figure>
       <figure class="photo "><span class="tape" aria-hidden="true"></span><img src="../img/familia-natal.jpg" alt="Martim with his family, all in red tartan" width="1200" height="800" loading="lazy"><figcaption>my family</figcaption></figure>
-    </aside>
+    </div>
   </div>
 </section>
 <hr class="divider">
@@ -177,6 +177,6 @@ document.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 </nav>
 
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202609260954"></script>
+<script src="../js/site.js?v=202609262042"></script>
 </body>
 </html>

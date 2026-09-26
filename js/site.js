@@ -73,6 +73,33 @@ function buildPicker(){
  if(qs.has('abrircapas'))document.querySelector('.paleta-toggle').click();}
 
 
+/* ---------- próximo evento automático (js/eventos.js): slide do topo e cartão da agenda ---------- */
+(()=>{
+  const L=window.EVENTOS;if(!L)return;
+  const hs=document.getElementById('hs-2'),nx=document.querySelector('#eventos article.next');if(!hs&&!nx)return;
+  const T=(a)=>Array.isArray(a)?(EN?a[1]:a[0]):a,t=new Date();t.setHours(0,0,0,0);
+  const day=s=>{const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)};
+  const up=L.filter(e=>day(e.end||e.date)>=t).sort((a,b)=>day(a.date)-day(b.date))[0];
+  const ref=(hs&&hs.querySelector('img'))||(nx&&nx.querySelector('img'));const img=ref?ref.getAttribute('src').replace(/[^/]*$/,''):'img/';
+  const evdir=((document.querySelector('.hs-ctas a[href*="eventos/"]')||document.querySelector('a[href$="eventos/"]'))?.getAttribute('href')||'eventos/').replace(/eventos\/.*$/,'eventos/');
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const W={time:EN?'Time':'Hora',where:EN?'Where':'Onde',fee:EN?'Registration':'Inscrição',more:EN?'See details':'Ver detalhes',all:EN?'All events':'Todos os eventos'};
+  const dl=e=>`<dl class="ficha hs-ficha">${e.time?`<dt>${W.time}</dt><dd class="num">${esc(e.time)}</dd>`:''}<dt>${W.where}</dt><dd>${esc(T(e.where))}</dd>${T(e.fee)?`<dt>${W.fee}</dt><dd>${esc(T(e.fee))}</dd>`:''}</dl>`;
+  if(hs){
+    const ctas=hs.querySelector('.hs-ctas');const tab=hs.querySelectorAll('a').length&&hs.getAttribute('aria-hidden')==='true'?' tabindex="-1"':'';
+    hs.innerHTML=up?`<p class="hs-kicker hand" data-quando="${up.date}"></p><div class="hs-event"><div><h2 class="hs-title">${esc(T(up.title))}</h2>${dl(up)}<div class="hs-ctas"><a class="btn btn-red" href="${evdir}${up.slug}.html"${tab}>${W.more} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="${evdir}"${tab}>${W.all}</a></div></div><figure class="photo hs-poster"><span class="tape" aria-hidden="true"></span><img src="${img}${up.poster}" alt="${esc(T(up.alt))}" decoding="async"><figcaption>${EN?'come and join us!':'vem ter connosco!'}</figcaption></figure></div>`
+      :`<p class="hs-kicker hand">${EN?'next event: coming soon':'próximo evento: em breve'}</p><h2 class="hs-title">${EN?'We are planning the next one.':'Estamos a preparar o próximo.'}</h2><p style="max-width:40ch;margin:0 0 18px">${EN?'Walks, tournaments, concerts, cake sales: want to organise one with us?':'Caminhadas, torneios, concertos, vendas de bolos: queres organizar um connosco?'}</p><div class="hs-ctas"><a class="btn btn-red" href="${evdir.replace(/eventos\/$/,'')}organiza.html"${tab}>${EN?'Organise with us':'Organiza connosco'} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="${evdir}"${tab}>${EN?'Past events':'Eventos que já foram'}</a></div>`;
+    if(!up){const tb=document.getElementById('ht-2');if(tb)tb.textContent=EN?'Events':'Eventos'}
+  }
+  if(nx){
+    if(up){const share=nx.querySelector('.share');nx.querySelector('.next-photo img').setAttribute('src',img+up.poster);nx.querySelector('.next-photo img').setAttribute('alt',T(up.alt));
+      const b=nx.querySelector('.body');const w=b.querySelector('.when');w.dataset.quando=up.date;b.querySelector('h3').textContent=T(up.title);
+      b.querySelector('dl').outerHTML=dl(up).replace(' class="ficha hs-ficha"','');b.querySelector('a.btn').setAttribute('href',evdir+up.slug+'.html');
+      if(share){share.dataset.shareUrl=evdir+up.slug+'.html';share.dataset.shareText=T(up.share)}}
+    else nx.innerHTML=`<div class="body"><div class="when">${EN?'Next event: coming soon':'Próximo evento: em breve'}</div><h3>${EN?'We are planning the next one.':'Estamos a preparar o próximo.'}</h3><p>${EN?'Want to organise a walk, a tournament or a cake sale with us?':'Queres organizar uma caminhada, um torneio ou uma venda de bolos connosco?'}</p><a class="btn btn-yellow" href="${evdir.replace(/eventos\/$/,'')}organiza.html">${EN?'Organise with us':'Organiza connosco'} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>`;
+  }
+})();
+
 /* ---------- datas relativas: "Hoje!", "Amanhã!", "Faltam N dias", "Já foi" ---------- */
 (function(){
   const dias=EN?['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']:['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],meses=EN?['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']:['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
