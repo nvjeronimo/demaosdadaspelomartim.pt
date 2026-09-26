@@ -140,7 +140,8 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
     if(el.matches(PIN))el.animate([{opacity:0,transform:`${m} translateY(-22px) rotate(-5deg) scale(1.03)`},{opacity:1,transform:m||'none'}],{duration:800,delay:d,easing:ease,fill:'backwards'});
     else el.animate([{opacity:0,transform:`${m} translateY(22px)`},{opacity:1,transform:m||'none'}],{duration:700,delay:d,easing:ease,fill:'backwards'})};
   let first=true;
-  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting&&!first)return;io.unobserve(e.target);if(!first&&e.isIntersecting)run(e.target)});first=false},{rootMargin:'0px 0px -6% 0px'});
+  /* 1.ª leitura: o que já está no ecrã fica quieto; o resto continua vigiado e anima ao entrar */
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);if(!first)run(e.target)});first=false},{rootMargin:'0px 0px -6% 0px'});
   /* o que já está visível ao abrir fica quieto; o resto anima quando entra */
   document.querySelectorAll(RISE+','+PIN).forEach(el=>{if(!el.closest('.hero,.paleta,.a4,.diploma'))io.observe(el)});
   /* números que contam até ao valor quando aparecem */
@@ -225,6 +226,6 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
       img.animate([{filter:'saturate(.2) brightness(1.35) contrast(.85)'},{filter:'none'}],{duration:1600,delay:220,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'})};
     img.complete?go():img.addEventListener('load',go,{once:true})};
   let first=true;
-  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!first&&!e.isIntersecting)return;io.unobserve(e.target);if(!first)reveal(e.target)});first=false},{rootMargin:'0px 0px -8% 0px'});
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);if(!first)reveal(e.target)});first=false},{rootMargin:'0px 0px -8% 0px'});
   imgs.forEach(i=>io.observe(i));
 })();
