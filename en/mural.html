@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="../img/marca/apple-touch-icon.png">
 <link rel="preload" href="../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/fonts.css?v=202609262216">
-<link rel="stylesheet" href="../css/site.css?v=202609262216">
+<link rel="stylesheet" href="../css/fonts.css?v=202609262218">
+<link rel="stylesheet" href="../css/site.css?v=202609262218">
 </head>
 <body class="sub">
 
@@ -151,8 +151,8 @@
     </div>
   </div>
 </section>
-<script src="../js/mural.js?v=202609262216"></script>
-<script src="../js/mural-api.js?v=202609262216"></script>
+<script src="../js/mural.js?v=202609262218"></script>
+<script src="../js/mural-api.js?v=202609262218"></script>
 <script src="/api/dados.js.php"></script>
 <script>
 (()=>{
@@ -185,8 +185,8 @@ MuralAPI.top().then(d=>{data=d;draw();
 const box=document.getElementById('meu-dip'),acts=document.getElementById('meu-actions'),st=document.getElementById('meu-status');
 if(meu&&meu.t){
   box.innerHTML=`<article class="mini-dip"><span class="tp" aria-hidden="true"></span><p class="t">${T('Diploma de Amigo do Martim','Friend of Martim Diploma')}</p><p class="nm">${esc(meu.n||T('Amigo do Martim','Friend of Martim'))}</p><p class="sc">${meu.r} ${T('de','of')} ${meu.t} · ${T('nível','level')} ${LV[meu.lv]||LV[2]}${meu.s?' · '+tm(meu.s):''}</p><p class="st">${stars(meu.r,meu.t)}</p><p class="sc">${date(meu.d)}</p></article>`;
-  document.getElementById('meu-txt').textContent=meu.pub?T('O teu último diploma já está no mural.','Your latest diploma is already on the wall.'):T('O teu último diploma ainda não está no mural. Escreve a tua terra, se quiseres, e junta-te ao top 10.','Your latest diploma is not on the wall yet. Add your town if you like and join the top 10.');
-  acts.innerHTML=(meu.pub?'':`<div class="field" style="flex:1 1 200px;margin:0"><label for="m-terra">${T('A tua terra (opcional)','Your town (optional)')}</label><input id="m-terra" maxlength="20" autocomplete="address-level2"></div><button class="btn btn-red" type="button" id="m-send">${T('Pôr no mural','Put me on the wall')}</button>`)+`<a class="btn btn-line" href="index.html#ficha">${T('Jogar outra vez','Play again')}</a><a class="btn btn-line" href="jogos.html">${T('Mais jogos','More games')} →</a>`;
+  document.getElementById('meu-txt').textContent=meu.pub?T('O teu último diploma já está no mural.','Your latest diploma is already on the wall.'):T('O teu último diploma ainda não está no mural. Escreve a tua localidade, se quiseres, e junta-te ao top 10.','Your latest diploma is not on the wall yet. Add your town if you like and join the top 10.');
+  acts.innerHTML=(meu.pub?'':`<div class="field" style="flex:1 1 200px;margin:0"><label for="m-terra">${T('A tua localidade (opcional)','Your town (optional)')}</label><input id="m-terra" maxlength="20" autocomplete="address-level2"></div><button class="btn btn-red" type="button" id="m-send">${T('Pôr no mural','Put me on the wall')}</button>`)+`<a class="btn btn-line" href="index.html#ficha">${T('Jogar outra vez','Play again')}</a><a class="btn btn-line" href="jogos.html">${T('Mais jogos','More games')} →</a>`;
   const send=document.getElementById('m-send');
   if(send)send.addEventListener('click',async()=>{
     if(!meu.n){st.textContent=T('O diploma não tem nome. Joga outra vez e escreve o teu nome.','The diploma has no name. Play again and write your name.');return}
@@ -245,6 +245,6 @@ if(meu&&meu.t){
 
 
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202609262216"></script>
+<script src="../js/site.js?v=202609262218"></script>
 </body>
 </html>

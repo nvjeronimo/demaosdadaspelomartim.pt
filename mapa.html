@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="img/marca/apple-touch-icon.png">
 <link rel="preload" href="fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=202609262216">
-<link rel="stylesheet" href="css/site.css?v=202609262216">
+<link rel="stylesheet" href="css/fonts.css?v=202609262218">
+<link rel="stylesheet" href="css/site.css?v=202609262218">
 </head>
 <body class="sub">
 
@@ -138,14 +138,14 @@
 <hr class="divider">
 <section class="page" id="todo-o-lado" aria-labelledby="h-pins">
   <div class="inner">
-    <div class="sec-head"><h2 id="h-pins" class="h-sm">Tampas por todo o lado.</h2><p>De onde vêm as pessoas que me ajudam? Marca a tua terra no mapa. Arredondamos a posição a cerca de 5 km e não guardamos nada sobre ti.</p></div>
-    <div class="pins-tools"><button class="btn btn-red" type="button" id="pin-add"><svg aria-hidden="true"><use href="#i-map"/></svg>Marcar a minha terra</button><span class="small" id="pin-st" aria-live="polite"></span></div>
+    <div class="sec-head"><h2 id="h-pins" class="h-sm">Tampas por todo o lado.</h2><p>De onde vêm as pessoas que me ajudam? Marca a tua localidade no mapa. Arredondamos a posição a cerca de 5 km e não guardamos nada sobre ti.</p></div>
+    <div class="pins-tools"><button class="btn btn-red" type="button" id="pin-add"><svg aria-hidden="true"><use href="#i-map"/></svg>Marcar a minha localidade</button><span class="small" id="pin-st" aria-live="polite"></span></div>
     <div class="mapa-frame"><div id="pins-map" role="region" aria-label="Mapa de onde vêm as pessoas que ajudam"></div></div>
     <p class="small" id="pins-total"></p>
   </div>
 </section>
 
-<script src="js/pontos.js?v=202609262216"></script>
+<script src="js/pontos.js?v=202609262218"></script>
 <script src="/api/dados.js.php"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous" referrerpolicy="no-referrer"><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
@@ -186,16 +186,16 @@ document.querySelectorAll('[data-f]').forEach(b=>b.addEventListener('click',()=>
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(pm);
   const layer=L.layerGroup().addTo(pm);
   const draw=list=>{layer.clearLayers();let t=0;list.forEach(([a,b,n])=>{t+=n;L.circleMarker([a,b],{radius:6+Math.sqrt(n)*3,color:'#1B1D2A',weight:2,fillColor:'#FF9A4D',fillOpacity:.75}).bindTooltip(n+' '+(n===1?T('pessoa','person'):T('pessoas','people'))).addTo(layer)});
-    document.getElementById('pins-total').textContent=t?T(`${t} ${t===1?'pessoa marcou':'pessoas marcaram'} a sua terra.`,`${t} ${t===1?'person has':'people have'} marked their town.`):T('Sê o primeiro a marcar a tua terra!','Be the first to mark your town!')};
+    document.getElementById('pins-total').textContent=t?T(`${t} ${t===1?'pessoa marcou':'pessoas marcaram'} a sua localidade.`,`${t} ${t===1?'person has':'people have'} marked their town.`):T('Sê o primeiro a marcar a tua localidade!','Be the first to mark your town!')};
   const load=()=>live?fetch('/api/pins.php').then(r=>r.json()).then(j=>draw(j.pins||[])).catch(()=>draw([])):draw([]);load();
   let done=false;try{done=!!localStorage.getItem('pin-feito')}catch(e){}
-  if(done){btn.disabled=true;st.textContent=T('Obrigado, a tua terra já está no mapa!','Thank you, your town is already on the map!')}
+  if(done){btn.disabled=true;st.textContent=T('Obrigado, a tua localidade já está no mapa!','Thank you, your town is already on the map!')}
   let picking=false;
-  btn.addEventListener('click',()=>{picking=true;box.classList.add('picking');st.textContent=T('Toca no mapa onde fica a tua terra.','Tap the map where your town is.')});
+  btn.addEventListener('click',()=>{picking=true;box.classList.add('picking');st.textContent=T('Toca no mapa onde fica a tua localidade.','Tap the map where your town is.')});
   pm.on('click',async e=>{if(!picking)return;picking=false;box.classList.remove('picking');
     if(!live){st.textContent=T('Funciona em demaosdadaspelomartim.pt.','Works on demaosdadaspelomartim.pt.');return}
     try{const r=await fetch('/api/pins.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lat:e.latlng.lat,lng:e.latlng.lng})});const j=await r.json();
-      if(j.ok){try{localStorage.setItem('pin-feito','1')}catch(x){}btn.disabled=true;st.textContent=T('Obrigado! A tua terra já está no mapa.','Thank you! Your town is on the map.');if(window.conta)conta('mapa_terra');load()}
+      if(j.ok){try{localStorage.setItem('pin-feito','1')}catch(x){}btn.disabled=true;st.textContent=T('Obrigado! A tua localidade já está no mapa.','Thank you! Your town is on the map.');if(window.conta)conta('mapa_terra');load()}
       else st.textContent=T('Já marcaste hoje. Obrigado!','You already marked today. Thank you!')}catch(x){st.textContent=T('Não conseguimos guardar agora.','We could not save it now.')}});
 })();
 document.getElementById('perto').addEventListener('click',()=>{
@@ -256,6 +256,6 @@ document.getElementById('perto').addEventListener('click',()=>{
 
 
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=202609262216"></script>
+<script src="js/site.js?v=202609262218"></script>
 </body>
 </html>

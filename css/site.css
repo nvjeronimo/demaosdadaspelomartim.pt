@@ -1443,3 +1443,4 @@ footer .fine a{font-weight:400}
 /* rodapé: botão do WhatsApp ao centro, à direita do formulário */
 .foot-wa{margin-left:auto;align-self:center}
 @media (max-width:760px){.foot-wa{margin-left:0}}
+.label small{width:86px}
