@@ -7,7 +7,7 @@ function conteudo_db(): PDO {
   $db = db();
   $db->exec('CREATE TABLE IF NOT EXISTS eventos(id INTEGER PRIMARY KEY, titulo TEXT, data TEXT, fim TEXT, hora TEXT, local TEXT, inscricao TEXT, texto TEXT, foto TEXT, publicado INT DEFAULT 1)');
   $db->exec('CREATE TABLE IF NOT EXISTS pontos(id INTEGER PRIMARY KEY, nome TEXT, tipo TEXT, localidade TEXT, lat REAL, lng REAL, aprox INT DEFAULT 0, ordem INT DEFAULT 0, ativo INT DEFAULT 1)');
-  $db->exec('CREATE TABLE IF NOT EXISTS album(id INTEGER PRIMARY KEY, tipo TEXT DEFAULT 'foto', src TEXT, poster TEXT, dur TEXT, legenda TEXT, etiqueta TEXT, categoria TEXT, alt TEXT, forma TEXT DEFAULT 'w', data TEXT, ordem INT DEFAULT 0, visivel INT DEFAULT 1)');
+  $db->exec('CREATE TABLE IF NOT EXISTS album(id INTEGER PRIMARY KEY, tipo TEXT DEFAULT \'foto\', src TEXT, poster TEXT, dur TEXT, legenda TEXT, etiqueta TEXT, categoria TEXT, alt TEXT, forma TEXT DEFAULT \'w\', data TEXT, ordem INT DEFAULT 0, visivel INT DEFAULT 1)');
   $db->exec('CREATE TABLE IF NOT EXISTS novidades(id INTEGER PRIMARY KEY, data TEXT, titulo TEXT, texto TEXT, foto TEXT, link TEXT, publicado INT DEFAULT 1)');
   $db->exec('CREATE TABLE IF NOT EXISTS textos(chave TEXT PRIMARY KEY, valor TEXT)');
   return $db;
