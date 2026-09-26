@@ -289,7 +289,7 @@ The palette is a school pencil case: cool white paper, a notebook cover with loo
 - **Night-Blue Cover** (cover): the exercise-book cover. It fills entire regions: the hero cover, the VOLTA explainer, the next-event card and the footer. The same colour is used for the subpage cover band, the album scrollbar and the focused-field border. The darker cover-deep shade is the spiral binding strip and the name label's border.
 - **Cover Text** (on-cover) and **Soft Cover Text** (on-cover-soft): all text on the cover. On-cover is for headings, labels, links and ghost buttons (12.52:1 on noite). On-cover-soft is for lede and body copy (9.63:1). In the CSS, `--cover-ink` is an alias for on-cover-soft. Light covers use a dark on-cover; dark covers use a light one.
 - **Apricot Highlighter** (hl): the primary button fill with ink text and a 2px ink border (9.81:1). It also marks the hero headline's key phrase: a swipe on light covers, a solid block with ink text on dark ones. It is also the video play disc, checked chips, the diploma's corner studs and earned stars, round-button and share-button hover states, and text selection. In the CSS, `--yellow` is a legacy alias of `--hl`.
-- **Highlighter Wash** (hl-soft): the pale fill of hovered challenge bins, focused handwritten name fields, agenda-row hover and checklist boxes.
+- **Highlighter Wash** (hl-soft): the pale fill of the challenge invitation pill (tilted −1.2°, 2px ink border, 3px ink offset shadow, 🏆, under the section intro), hovered challenge bins, focused handwritten name fields, agenda-row hover and checklist boxes.
 - **Highlighter Ink** (hl-on-cover): handwritten accents on the cover (the VOLTA note and the next-event date). On dark covers it is the highlighter itself (8.29:1 on noite). On light covers it is derived as a dark brown.
 
 ### Secondary
@@ -398,7 +398,7 @@ Every pair in the table reaches 4.5:1 or better. Menta, reciclado, festa and oce
 - **Hand** (Gochi Hand 400, clamp 1.55–2.2rem, 1.3): the worked sum. The team note runs at clamp 1.35–1.7rem/1.25. **Hand note** (about 1.15–1.3rem, 1.1): captions, marginalia, handwritten values, feedback, the album counter, the picker prompt and the signature.
 
 ### Named Rules
-**The Martim's Pen Rule.** Gochi Hand appears only where Martim is writing: his notes, captions, the sum, filled-in values, corrections, feedback, the thank-you line, his signature, and short first-person prompts beside a control ("Quero ajudar com…", "Onde vai isto?", "Escolhe a capa", "Desafia os teus amigos:"), and names the visitor writes into the book (the challenge name field, the diploma name). It never sets headings, buttons' own labels, navigation, form labels or any instruction a reader must parse at length.
+**The Martim's Pen Rule.** Gochi Hand appears only where Martim is writing: his notes, captions, the sum, filled-in values, corrections, feedback, the thank-you line, his signature, and short first-person prompts beside a control ("Quero ajudar com…", "Onde vai isto?", "Escolhe a capa", "Desafia os teus amigos:", and the challenge invitation "Joga, ganha o teu diploma e partilha-o nas redes sociais!"), and names the visitor writes into the book (the challenge name field, the diploma name). It never sets headings, buttons' own labels, navigation, form labels or any instruction a reader must parse at length.
 
 **The Heavy Compressed Rule.** Every heading, h1 to h3, and every display figure is Bricolage 800 at 84% width with negative tracking. There is no light or regular display weight in this world.
 

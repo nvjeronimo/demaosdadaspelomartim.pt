@@ -440,6 +440,9 @@ footer .fine{grid-column:1 / -1;border-top:1.5px solid color-mix(in srgb,var(--o
 .sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:clamp(20px,4vw,64px);align-items:end}
 .sec-head p{font-size:1.14rem;color:var(--pencil);margin:0}
 @media (max-width:900px){.sec-head{grid-template-columns:1fr}}
+.sec-side{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.sec-head .play-cta{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 12px;border:2px solid var(--ink);border-radius:999px;background:var(--hl-soft);color:var(--ink);font-family:var(--hand);font-size:1.12rem;line-height:1.25;max-width:100%;transform:rotate(-1.2deg);box-shadow:3px 3px 0 var(--ink)}
+.sec-head .play-cta span{font-size:1.25rem}
 .divider{border:0;height:2px;background:var(--ink);margin:0}
 main{overflow-x:clip}
 
