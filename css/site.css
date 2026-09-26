@@ -1286,3 +1286,8 @@ html.game-open,html.game-open body{overflow:hidden}
 html.game-open .actionbar,html.game-open .paleta{display:none}
 /* links dentro de frases do rodapé: negrito para não dependerem só da cor */
 footer .fine a{font-weight:700}
+/* monte de fotos: só o contador e uma seta */
+.stack-next{font:700 .9rem/1 var(--body);color:var(--pencil);align-items:center;gap:6px}
+.stack-next svg{width:16px;height:16px}
+.stack-next .num{font-size:.9rem}
+.thanks img{object-position:50% 90%}
