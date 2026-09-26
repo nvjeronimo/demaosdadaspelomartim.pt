@@ -920,7 +920,7 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
   .sheets figcaption{display:none}
   .a4{width:210mm;height:297mm;box-shadow:none;aspect-ratio:auto}
   .poster-bot .pphoto{box-shadow:none;border:.3cqw solid #C9CDD6}
-  body.print-cartaz .sheets figure:not(.f-cartaz),body.print-etiquetas .sheets figure:not(.f-etiquetas){display:none}
+  body.print-cartaz .sheets figure:not(.f-cartaz),body.print-etiquetas .sheets figure:not(.f-etiquetas),body.print-selo .sheets figure:not(.f-selo){display:none}
 }
 
 /* ================= mural ================= */
@@ -1285,7 +1285,7 @@ html.lenis{scroll-behavior:auto}
 html.game-open,html.game-open body{overflow:hidden}
 html.game-open .actionbar,html.game-open .paleta{display:none}
 /* links dentro de frases do rodapé: negrito para não dependerem só da cor */
-footer .fine a{font-weight:700}
+footer .fine a{font-weight:400}
 /* monte de fotos: só o contador e uma seta */
 .stack-next{font:700 .9rem/1 var(--body);color:var(--pencil);align-items:center;gap:6px}
 .stack-next svg{width:16px;height:16px}
@@ -1310,3 +1310,135 @@ footer .fine a{font-weight:700}
 .news-full p{font-size:1.1rem;line-height:1.7;margin:0;white-space:pre-line}
 .news-empty{border:2px dashed var(--pencil);border-radius:14px;padding:22px;font:400 1.4rem/1.3 var(--hand);color:var(--pencil);max-width:560px}
 .ev-page .photo{position:relative;width:min(100%,420px);transform:rotate(2deg)}
+
+/* ================= jogos ================= */
+.jogos-nav .filters{margin:0;gap:8px}
+.jogos-nav .chip{text-decoration:none}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px 34px;align-items:start}
+@media (max-width:900px){.calc{grid-template-columns:1fr}}
+.calc-in{display:grid;gap:18px}
+.calc-row{display:grid;grid-template-columns:1fr 56px;gap:6px 12px;align-items:center;font-weight:700}
+.calc-row span{grid-column:1/-1;display:flex;align-items:center;gap:10px}
+.calc-row svg{width:28px;height:28px}
+.calc-row input[type=range]{width:100%;accent-color:var(--red);height:28px}
+.calc-row output{font:800 1.4rem/1 var(--display);text-align:right}
+.calc-out{display:grid;gap:12px}
+.calc-card{background:#fff;border:2px solid var(--ink);border-radius:14px;padding:14px 16px;display:grid;gap:4px}
+.calc-card.hl{background:var(--hl-soft)}
+.calc-card small{font:700 .75rem/1 var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--pencil)}
+.calc-card b{font:800 1.9rem/1 var(--display);font-stretch:84%}
+.calc-card span{color:var(--pen);font-weight:700}
+.calc-note{grid-column:1/-1;margin:0}
+.calc .share{grid-column:1/-1;justify-content:flex-start;margin:0}
+.tf-top{display:flex;justify-content:space-between;color:var(--pen);font-size:1.25rem}
+.tf-q{font:800 clamp(1.4rem,2.6vw,2rem)/1.15 var(--display);font-stretch:84%;margin:14px 0 18px;max-width:30ch}
+.tf-btns{display:flex;flex-wrap:wrap;gap:12px}
+.tf-btns .btn{min-width:140px;justify-content:center;font-size:1.15rem}
+.tf-fb{font-size:1.3rem;min-height:1.4em;margin:16px 0 0}.tf-fb.ok{color:var(--green)}.tf-fb.no{color:var(--red-ink)}
+.tf-end{font-size:1.2rem}.tf-end b{font:800 2.4rem/1 var(--display);margin-right:10px}
+.memo-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;font-size:1.3rem;color:var(--pen);margin-bottom:16px}
+.memo-head .btn{margin-left:auto}
+.memo{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:560px}
+.memo-card{aspect-ratio:1;border:2px solid var(--ink);border-radius:12px;background:var(--cover);cursor:pointer;position:relative;padding:0;perspective:600px;font:inherit}
+.memo-card span{position:absolute;inset:0;display:grid;place-items:center;border-radius:10px;backface-visibility:hidden;transition:transform .35s var(--ease)}
+.memo-card .back{color:var(--on-cover);font:800 2rem/1 var(--display)}
+.memo-card .front{background:#fff;transform:rotateY(180deg);align-content:center;gap:4px;padding:6px}
+.memo-card .front svg{width:44%;height:44%}
+.memo-card .front small{font:700 .7rem/1.15 var(--body);text-align:center;color:var(--ink)}
+.memo-card.up .back{transform:rotateY(180deg)}.memo-card.up .front{transform:rotateY(360deg)}
+.memo-card.done{border-color:var(--green)}.memo-card.done .front{background:color-mix(in srgb,var(--green) 10%,#fff)}
+.memo-card:focus-visible{outline:3px solid var(--pen);outline-offset:2px}
+.memo-msg{min-height:1.4em;font-size:1.35rem;color:var(--pen);margin:14px 0 0}
+.peso-range input{width:100%;max-width:560px;accent-color:var(--red);height:32px}
+.peso-val{font-size:1.1rem}.peso-val b{font:800 2.2rem/1 var(--display);font-stretch:84%}
+.peso .btn{margin-right:10px}
+.semana{display:grid;justify-items:start;gap:6px}
+.semana .card-item{min-width:min(100%,320px)}
+.semana .bins{width:100%}
+.semana .bin{justify-items:center;text-align:center;padding:16px 10px}
+@media (prefers-reduced-motion:reduce){.memo-card span{transition:none}}
+
+/* contador do ano */
+.contador{margin-top:14px;background:var(--cover);color:var(--on-cover);border:2px solid var(--ink);border-radius:14px;padding:14px 18px}
+.contador .hand{font-size:1.3rem;color:var(--hl-on-cover)}
+.ct-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:6px}
+.ct-grid b{display:block;font:800 clamp(1.5rem,2.6vw,2.1rem)/1 var(--display);font-stretch:84%;color:var(--on-cover)}
+.ct-grid span{font-size:.85rem;color:var(--on-cover-soft)}
+.contador .small{color:var(--on-cover-soft);margin:8px 0 0}
+/* rodapé: avisos por email */
+.foot-avisos{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px 24px;border-top:1.5px solid color-mix(in srgb,var(--on-cover) 25%,transparent);padding-top:22px}
+.avisos-form{flex:1 1 380px;max-width:620px}
+.avisos-form label{display:block;font-weight:700;margin-bottom:8px;color:var(--on-cover)}
+.av-row{display:flex;gap:10px;flex-wrap:wrap}
+.av-row input[type=email]{flex:1 1 220px;font:inherit;padding:.8em 1em;border-radius:10px;border:2px solid var(--ink);background:#fff;color:var(--ink)}
+.av-st{margin:8px 0 0;font-size:.9rem;color:var(--on-cover-soft)}
+.foot-wa svg{width:20px;height:20px}
+/* ranking das escolas (mural) */
+.escolas-rank{list-style:none;margin:20px 0 0;padding:0;background:#fff;border:2px solid var(--ink);border-radius:18px}
+.escolas-rank li{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 18px;border-bottom:1.5px solid var(--rule)}
+.escolas-rank li:last-child{border-bottom:0}
+.escolas-rank .rk{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);font:800 1.1rem/1 var(--display)}
+.escolas-rank li:nth-child(1) .rk{background:#F6C343}.escolas-rank li:nth-child(2) .rk{background:#D5DAE3}.escolas-rank li:nth-child(3) .rk{background:#E3A06A}
+.escolas-rank b{font-weight:700}.escolas-rank small{display:block;color:var(--pencil)}
+.escolas-rank .kg{font:800 1.3rem/1 var(--display);text-align:right}.escolas-rank .kg small{font:400 .85rem var(--body)}
+.pins-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:18px 0}
+#pins-map{height:clamp(360px,55vh,520px);z-index:1}
+#pins-map.picking{cursor:crosshair;outline:4px solid var(--hl);outline-offset:-4px}
+
+/* selo "ponto de recolha amigo do Martim" (cartaz.html) */
+.selos{display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:5cqw 6cqw;gap:2.4cqw}
+.selos-top{font:700 2cqw/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--pencil);margin:0}
+.seal{position:relative;border-radius:50%;background:var(--cover);color:var(--on-cover);border:.8cqw solid var(--ink);display:grid;place-items:center;aspect-ratio:1}
+.seal.big{width:70cqw}
+.seal-ring{position:absolute;inset:0;width:100%;height:100%}
+.seal-ring text{font:800 11px/1 var(--body);letter-spacing:2.2px;fill:var(--on-cover)}
+.seal-in{width:54%;display:grid;justify-items:center;gap:.25em;text-align:center}
+.seal-mark{width:82%;height:auto;background:#fff;border-radius:10%;padding:4% 6%}
+.seal-in b{font:800 4.4cqw/1 var(--display);font-stretch:84%}
+.seal-in .qr{width:38%;aspect-ratio:1;background:#fff;padding:3%;border-radius:6%}
+.seal-in .qr svg{display:block;width:100%;height:100%}
+.selos-local{font:400 4.6cqw/1.1 var(--hand);color:var(--pen);min-height:5cqw;margin:0}
+.selos-small{display:grid;grid-template-columns:repeat(4,1fr);gap:3cqw;width:100%;margin-top:auto}
+.selos-small .seal{width:100%;border-width:.5cqw}
+.selos-small .seal-in b{font-size:1.25cqw}
+.selos-small .seal-ring text{font-size:12px}
+.ink-saver .seal{background:#fff;color:var(--ink)}.ink-saver .seal-ring text{fill:var(--ink)}
+.selos-msg{font:800 5cqw/1.1 var(--display);font-stretch:84%;text-align:center;max-width:80%;margin:0;color:var(--ink)}
+.selos-local{font-size:6cqw}
+/* imprensa */
+.press-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
+@media (max-width:760px){.press-grid{grid-template-columns:1fr 1fr}}
+.press-photo{margin:0;background:#fff;border:2px solid var(--ink);border-radius:12px;overflow:hidden}
+.press-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.press-photo figcaption{padding:8px 10px;font-size:.9rem}.press-photo a{font-weight:700;color:var(--ink)}
+/* kit de evento */
+.kit-form{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.kit-form{grid-template-columns:1fr}}
+.kit-form .btns{grid-column:1/-1}
+.kit-sheets{grid-template-columns:minmax(0,1fr) minmax(0,.8fr)}
+@media (max-width:900px){.kit-sheets{grid-template-columns:1fr}}
+.kit-poster .poster-top h2{font-size:9cqw}
+.kit-local{font:800 5.4cqw/1.1 var(--display);font-stretch:84%;margin:0}
+.kit-org{font:700 2.6cqw/1.2 var(--body);color:var(--pencil);margin:0}
+.kit-poster .poster-bins b{font-size:4cqw}
+.kit-txt{width:100%;font:1rem/1.5 var(--body);padding:12px;border:2px solid var(--ink);border-radius:10px;background:#fff;resize:vertical}
+@media print{
+  body.print-kit>*:not(main),body.print-kit main>*:not(.kit-page),body.print-kit .kit-form,body.print-kit .kit-side,body.print-kit .paleta,body.print-kit .actionbar{display:none!important}
+  body.print-kit .kit-page{padding:0!important}body.print-kit .kit-page .inner{max-width:none}body.print-kit .kit-sheets{display:block}body.print-kit figcaption{display:none}
+  body.print-kit .a4{width:210mm;height:297mm;box-shadow:none;aspect-ratio:auto}
+}
+/* "Mais jogos": destaque no fim do desafio */
+.more-games{margin-top:30px;background:var(--cover);color:var(--on-cover);border:2px solid var(--ink);border-radius:18px;padding:22px clamp(16px,3vw,28px);display:grid;gap:14px}
+.more-games .hand{font-size:1.5rem;color:var(--hl-on-cover);margin:0}
+.mg-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.mg-tiles{grid-template-columns:1fr 1fr}}
+.mg-tiles a{display:grid;gap:6px;background:#fff;color:var(--ink);border:2px solid var(--ink);border-radius:14px;padding:12px 14px;text-decoration:none;transition:transform .2s var(--ease)}
+.mg-tiles a:hover{transform:translateY(-2px)}
+.mg-tiles span{font-size:1.6rem;line-height:1}
+.mg-tiles b{font:800 1.05rem/1.15 var(--display);font-stretch:84%}
+.more-games .btn{justify-self:start;font-size:1.1rem}
+/* o atributo hidden ganha sempre aos estilos de componente (.btn, grelhas…); o painel de capas usa a sua própria animação */
+[hidden]:not(.paleta-panel){display:none!important}
+/* rodapé: botão do WhatsApp ao centro, à direita do formulário */
+.foot-wa{margin-left:auto;align-self:center}
+@media (max-width:760px){.foot-wa{margin-left:0}}

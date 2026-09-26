@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="../img/marca/apple-touch-icon.png">
 <link rel="preload" href="../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/fonts.css?v=202609262125">
-<link rel="stylesheet" href="../css/site.css?v=202609262125">
+<link rel="stylesheet" href="../css/fonts.css?v=202609262215">
+<link rel="stylesheet" href="../css/site.css?v=202609262215">
 </head>
 <body class="sub">
 
@@ -129,6 +129,10 @@
       <p>We keep messages for as long as we need to deal with your request and for no more than 12 months after our last contact. Then we delete them.</p>
       <h2 id="partilha">Who we share it with</h2>
       <p>We don’t sell or pass your data to anyone. The form sends your message by email, from ajudar@demaosdadaspelomartim.pt, to Martim’s parents. The website does not keep the message: it only sits in the recipient’s inbox. To prevent abuse we keep an encrypted code of your IP address for 24 hours, which cannot identify you. The website is hosted by DreamHost on servers in the European Union (Amsterdam).</p>
+      <h2 id="avisos">Email notifications</h2>
+      <p>If you ask for notifications in the footer, we keep your email and the date of the request. We only write after you confirm in the email we send you, and only when there is news about Martim or a new event. Every email has an unsubscribe link: when you unsubscribe, your address is deleted. Emails are sent from ajudar@demaosdadaspelomartim.pt by the website’s server (DreamHost, European Union).</p>
+      <h2 id="terras">"Caps from all over" map</h2>
+      <p>If you mark your town on the map, we only keep a point rounded to about 5 km, with no name, email or IP address.</p>
       <h2 id="mural">Friends wall</h2>
       <p>If you tick the "wall’s top 10" box on the diploma, when you save or share it we send your first name, your town (if you type it), the level, your right answers, your time and the date. They are stored on the website’s own server (DreamHost, European Union) and appear on the wall; Martim’s parents get an email about each new name in the top 10 and can remove it. Nothing is sent if the box is not ticked. To remove your name, write to micka.a.cruz@gmail.com.</p>
       <p class="small"><span class="todo">If the family starts using a form service (for example Formspree or Netlify Forms), this paragraph must name that service.</span></p>
@@ -161,7 +165,15 @@
     </div>
     <div>
       <h3>Shortcuts</h3>
-      <ul><li><a href="index.html#entregar">Where to drop off</a></li><li><a href="mapa.html">Map of drop-off points</a></li><li><a href="organiza.html">Run a collection point</a></li><li><a href="cartaz.html">Printable poster</a></li><li><a href="novidades.html">Martim’s news</a></li><li><a href="mural.html">Friends wall</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="index.html#doar">Donate by IBAN</a></li><li><a href="eventos/">All events</a></li><li><a href="index.html#perguntas">Frequently asked questions</a></li></ul>
+      <ul><li><a href="index.html#entregar">Where to drop off</a></li><li><a href="mapa.html">Map of drop-off points</a></li><li><a href="organiza.html">Run a collection point</a></li><li><a href="cartaz.html">Printable poster</a></li><li><a href="novidades.html">Martim’s news</a></li><li><a href="jogos.html">Bottle-cap games</a></li><li><a href="mural.html">Friends wall</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="index.html#doar">Donate by IBAN</a></li><li><a href="eventos/">All events</a></li><li><a href="index.html#perguntas">Frequently asked questions</a></li></ul>
+    </div>
+    <div class="foot-avisos">
+      <form class="avisos-form" id="avisos-form" novalidate>
+        <label for="av-email">Get an email when there is news about Martim or a new event</label>
+        <div class="av-row"><input type="email" id="av-email" autocomplete="email" placeholder="your email" required><input class="hp" id="av-site" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn btn-yellow" type="submit">Notify me</button></div>
+        <p class="av-st" id="av-st" aria-live="polite">We only use your email for this. Unsubscribe from any email.</p>
+      </form>
+      <a class="btn btn-ghost foot-wa" id="foot-wa" href="#" target="_blank" rel="noopener" hidden><svg aria-hidden="true"><use href="#i-wa"/></svg>Follow on WhatsApp</a>
     </div>
     <div class="fine"><span>© <span data-year>2026</span> <a href="https://demaosdadaspelomartim.pt/">Hand in Hand for Martim</a>. All rights reserved.<br>By <a href="https://nelsonjeronimo.pt" rel="noopener">nelsonjeronimo.pt</a></span><span><a href="privacidade.html">Privacy policy</a> · <a href="cookies.html">Cookies</a> · <a href="../privacidade.html" lang="pt" hreflang="pt">Português</a></span></div>
   </div>
@@ -177,7 +189,8 @@
   <a class="btn btn-red" href="index.html#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Donate</a>
 </nav>
 
+<script src="/api/dados.js.php"></script>
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202609262125"></script>
+<script src="../js/site.js?v=202609262215"></script>
 </body>
 </html>

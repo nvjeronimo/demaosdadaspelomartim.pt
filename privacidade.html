@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="img/marca/apple-touch-icon.png">
 <link rel="preload" href="fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=202609262125">
-<link rel="stylesheet" href="css/site.css?v=202609262125">
+<link rel="stylesheet" href="css/fonts.css?v=202609262215">
+<link rel="stylesheet" href="css/site.css?v=202609262215">
 </head>
 <body class="sub">
 
@@ -129,6 +129,10 @@
       <p>Guardamos as mensagens enquanto for preciso para tratar do teu pedido e, no máximo, 12 meses depois do último contacto. Depois apagamo-las.</p>
       <h2 id="partilha">Com quem os partilhamos</h2>
       <p>Não vendemos nem cedemos os teus dados a ninguém. O formulário envia a tua mensagem por email, a partir do endereço ajudar@demaosdadaspelomartim.pt, para os pais do Martim. O site não guarda a mensagem: fica só na caixa de email de quem a recebe. Para travar abusos, guardamos durante 24 horas um código cifrado do teu endereço IP, que não permite identificar-te. O site está alojado na DreamHost, em servidores na União Europeia (Amesterdão).</p>
+      <h2 id="avisos">Avisos por email</h2>
+      <p>Se pedires avisos no rodapé do site, guardamos o teu email e a data do pedido. Só te escrevemos depois de confirmares no email que te enviamos, e só quando houver uma novidade do Martim ou um evento novo. Cada email tem um link para cancelar: ao cancelar, o teu endereço é apagado. Os emails saem de ajudar@demaosdadaspelomartim.pt, pelo servidor do site (DreamHost, União Europeia).</p>
+      <h2 id="terras">Mapa "Tampas por todo o lado"</h2>
+      <p>Se marcares a tua terra no mapa, guardamos só um ponto arredondado a cerca de 5 km, sem nome, email ou endereço IP.</p>
       <h2 id="mural">Mural dos amigos</h2>
       <p>Se marcares a caixa "top 10 do mural" no diploma, quando o guardas ou partilhas enviamos o teu primeiro nome, a terra (se a escreveres), o nível, as respostas certas, o tempo e a data. Ficam guardados no servidor do próprio site (DreamHost, União Europeia) e aparecem no mural; os pais do Martim recebem um aviso por email de cada nome novo no top 10 e podem retirá-lo. Nada é enviado se a caixa não estiver marcada. Para tirar o teu nome, escreve para micka.a.cruz@gmail.com.</p>
       <p class="small"><span class="todo">Se a família passar a usar um serviço de formulários (por exemplo Formspree ou Netlify Forms), este parágrafo tem de indicar esse serviço.</span></p>
@@ -161,7 +165,15 @@
     </div>
     <div>
       <h3>Atalhos</h3>
-      <ul><li><a href="index.html#entregar">Onde entregar</a></li><li><a href="mapa.html">Mapa dos pontos</a></li><li><a href="organiza.html">Organiza uma recolha</a></li><li><a href="cartaz.html">Cartaz para imprimir</a></li><li><a href="novidades.html">Novidades do Martim</a></li><li><a href="mural.html">Mural dos amigos</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Brochura para descarregar</a></li><li><a href="index.html#doar">Doar por IBAN</a></li><li><a href="eventos/">Todos os eventos</a></li><li><a href="index.html#perguntas">Dúvidas frequentes</a></li></ul>
+      <ul><li><a href="index.html#entregar">Onde entregar</a></li><li><a href="mapa.html">Mapa dos pontos</a></li><li><a href="organiza.html">Organiza uma recolha</a></li><li><a href="cartaz.html">Cartaz para imprimir</a></li><li><a href="novidades.html">Novidades do Martim</a></li><li><a href="jogos.html">Jogos das tampinhas</a></li><li><a href="mural.html">Mural dos amigos</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Brochura para descarregar</a></li><li><a href="index.html#doar">Doar por IBAN</a></li><li><a href="eventos/">Todos os eventos</a></li><li><a href="index.html#perguntas">Dúvidas frequentes</a></li></ul>
+    </div>
+    <div class="foot-avisos">
+      <form class="avisos-form" id="avisos-form" novalidate>
+        <label for="av-email">Recebe um email quando houver novidades do Martim ou um evento novo</label>
+        <div class="av-row"><input type="email" id="av-email" autocomplete="email" placeholder="o teu email" required><input class="hp" id="av-site" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn btn-yellow" type="submit">Quero avisos</button></div>
+        <p class="av-st" id="av-st" aria-live="polite">Só usamos o email para isto. Cancelas em qualquer email.</p>
+      </form>
+      <a class="btn btn-ghost foot-wa" id="foot-wa" href="#" target="_blank" rel="noopener" hidden><svg aria-hidden="true"><use href="#i-wa"/></svg>Segue no WhatsApp</a>
     </div>
     <div class="fine"><span>© <span data-year>2026</span> <a href="https://demaosdadaspelomartim.pt/">De Mãos Dadas pelo Martim</a>. Todos os direitos reservados.<br>By <a href="https://nelsonjeronimo.pt" rel="noopener">nelsonjeronimo.pt</a></span><span><a href="privacidade.html">Política de privacidade</a> · <a href="cookies.html">Cookies</a> · <a href="en/privacidade.html" lang="en" hreflang="en">English</a></span></div>
   </div>
@@ -177,7 +189,8 @@
   <a class="btn btn-red" href="index.html#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
+<script src="/api/dados.js.php"></script>
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=202609262125"></script>
+<script src="js/site.js?v=202609262215"></script>
 </body>
 </html>

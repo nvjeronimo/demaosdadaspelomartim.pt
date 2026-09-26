@@ -145,6 +145,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/historia.html"/>
   </url>
   <url>
+    <loc>https://demaosdadaspelomartim.pt/imprensa.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://demaosdadaspelomartim.pt/imprensa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demaosdadaspelomartim.pt/en/imprensa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/imprensa.html"/>
+  </url>
+  <url>
+    <loc>https://demaosdadaspelomartim.pt/en/imprensa.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://demaosdadaspelomartim.pt/imprensa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demaosdadaspelomartim.pt/en/imprensa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/imprensa.html"/>
+  </url>
+  <url>
     <loc>https://demaosdadaspelomartim.pt/</loc>
     <lastmod>2026-09-26</lastmod>
     <priority>1.0</priority>
@@ -159,6 +175,38 @@
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://demaosdadaspelomartim.pt/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://demaosdadaspelomartim.pt/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/"/>
+  </url>
+  <url>
+    <loc>https://demaosdadaspelomartim.pt/jogos.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://demaosdadaspelomartim.pt/jogos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demaosdadaspelomartim.pt/en/jogos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/jogos.html"/>
+  </url>
+  <url>
+    <loc>https://demaosdadaspelomartim.pt/en/jogos.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://demaosdadaspelomartim.pt/jogos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demaosdadaspelomartim.pt/en/jogos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/jogos.html"/>
+  </url>
+  <url>
+    <loc>https://demaosdadaspelomartim.pt/kit.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://demaosdadaspelomartim.pt/kit.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demaosdadaspelomartim.pt/en/kit.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/kit.html"/>
+  </url>
+  <url>
+    <loc>https://demaosdadaspelomartim.pt/en/kit.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://demaosdadaspelomartim.pt/kit.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demaosdadaspelomartim.pt/en/kit.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/kit.html"/>
   </url>
   <url>
     <loc>https://demaosdadaspelomartim.pt/mapa.html</loc>

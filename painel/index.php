@@ -71,13 +71,24 @@ else {
     if (!ok_csrf()) { $erro = 'A sessão expirou. Tenta outra vez.'; }
     else try {
       $a = $_POST['a'] ?? ''; $id = (int)($_POST['id'] ?? 0);
+      if ($a === 'contador') { $n = fn($k) => max(0, (float)str_replace(',', '.', (string)($_POST[$k] ?? 0)));
+        guarda_texto($db, 'contador', ['ano' => (int)($_POST['ano'] ?? date('Y')), 'plastico' => $n('plastico'), 'caricas' => $n('caricas'), 'cortica' => $n('cortica'), 'nota' => limpo('nota', 200)]); $msg = 'Contador do ano guardado.'; }
+      if ($a === 'whatsapp') { $l = limpo('whatsapp', 300); guarda_texto($db, 'whatsapp', preg_match('#^https://(whatsapp\.com|chat\.whatsapp\.com|wa\.me)/#', $l) ? $l : ''); $msg = 'Link do WhatsApp guardado.'; }
+      if ($a === 'escola') { $v = [limpo('nome', 120), limpo('localidade', 60), max(0, (float)str_replace(',', '.', (string)($_POST['kg'] ?? 0))), max(0, (int)($_POST['garrafoes'] ?? 0)), isset($_POST['ativo']) ? 1 : 0];
+        if ($v[0] === '') throw new RuntimeException('Falta o nome da escola.');
+        if ($id) $db->prepare('UPDATE escolas SET nome=?, localidade=?, kg=?, garrafoes=?, ativo=? WHERE id=?')->execute(array_merge($v, [$id])); else $db->prepare('INSERT INTO escolas(nome,localidade,kg,garrafoes,ativo) VALUES (?,?,?,?,?)')->execute($v);
+        $msg = 'Escola guardada.'; }
+      if ($a === 'tirar_subscritor' && $id) { $db->prepare('DELETE FROM subscritores WHERE id = ?')->execute([$id]); $msg = 'Endereço apagado.'; }
       if ($a === 'resultado') { guarda_texto($db, 'resultado', ['valor' => limpo('valor', 20), 'titulo' => limpo('titulo', 120), 'texto' => limpo('texto', 400), 'link' => limpo('link', 200)]); $msg = 'Último resultado guardado.'; }
       if ($a === 'evento') {
         $f = foto_enviada('foto', $UP); $d = data_ok(limpo('data', 10)); if (!$d || limpo('titulo') === '') throw new RuntimeException('Falta o título ou a data.');
         $v = [limpo('titulo', 120), $d, data_ok(limpo('fim', 10)) ?: $d, limpo('hora', 40), limpo('local', 160), limpo('inscricao', 80), limpo('texto', 2000), isset($_POST['publicado']) ? 1 : 0];
         if ($id) { $db->prepare('UPDATE eventos SET titulo=?, data=?, fim=?, hora=?, local=?, inscricao=?, texto=?, publicado=?' . ($f ? ', foto=?' : '') . ' WHERE id=?')->execute(array_merge($v, $f ? [$f] : [], [$id])); }
         else { $db->prepare('INSERT INTO eventos(titulo,data,fim,hora,local,inscricao,texto,publicado,foto) VALUES (?,?,?,?,?,?,?,?,?)')->execute(array_merge($v, [$f])); }
-        $msg = 'Evento guardado.';
+        $eid = $id ?: (int)$db->lastInsertId(); $msg = 'Evento guardado.';
+        if (isset($_POST['avisar']) && $v[7]) { $x = $db->query('SELECT avisado FROM eventos WHERE id=' . $eid)->fetchColumn();
+          if (!$x) { $k = avisar_subscritores($db, 'Novo evento: ' . $v[0], $v[0] . "\n" . $v[1] . ($v[3] ? ' · ' . $v[3] : '') . ($v[4] ? "\n" . $v[4] : '') . ($v[6] ? "\n\n" . mb_substr($v[6], 0, 400) : ''), SITE . '/evento.html?id=' . $eid);
+            $db->exec('UPDATE eventos SET avisado=1 WHERE id=' . $eid); $msg .= " Aviso enviado a $k pessoas."; } }
       }
       if ($a === 'ponto') {
         $t = array_key_exists($_POST['tipo'] ?? '', TIPOS_PONTO) ? $_POST['tipo'] : 'comunidade';
@@ -103,10 +114,13 @@ else {
         $v = [$d, limpo('titulo', 140), limpo('texto', 3000), $link, isset($_POST['publicado']) ? 1 : 0];
         if ($id) $db->prepare('UPDATE novidades SET data=?, titulo=?, texto=?, link=?, publicado=?' . ($f ? ', foto=?' : '') . ' WHERE id=?')->execute(array_merge($v, $f ? [$f] : [], [$id]));
         else $db->prepare('INSERT INTO novidades(data,titulo,texto,link,publicado,foto) VALUES (?,?,?,?,?,?)')->execute(array_merge($v, [$f]));
-        $msg = 'Novidade guardada.';
+        $nid = $id ?: (int)$db->lastInsertId(); $msg = 'Novidade guardada.';
+        if (isset($_POST['avisar']) && $v[4]) { $x = $db->query('SELECT avisado FROM novidades WHERE id=' . $nid)->fetchColumn();
+          if (!$x) { $k = avisar_subscritores($db, 'Novidades do Martim: ' . $v[1], $v[1] . "\n\n" . mb_substr($v[2], 0, 600), SITE . '/novidades.html#n-' . $nid);
+            $db->exec('UPDATE novidades SET avisado=1 WHERE id=' . $nid); $msg .= " Aviso enviado a $k pessoas."; } }
       }
       if ($a === 'apagar') {
-        $t = ['evento' => 'eventos', 'ponto' => 'pontos', 'foto' => 'album', 'novidade' => 'novidades'][$_POST['tipo'] ?? ''] ?? '';
+        $t = ['evento' => 'eventos', 'ponto' => 'pontos', 'foto' => 'album', 'novidade' => 'novidades', 'escola' => 'escolas'][$_POST['tipo'] ?? ''] ?? '';
         if ($t && $id) { $db->prepare("DELETE FROM $t WHERE id = ?")->execute([$id]); $msg = 'Apagado.'; }
       }
       if ($a === 'ordem' && $id) {
@@ -166,7 +180,7 @@ button,.btn{font:700 1rem/1 inherit;padding:.8em 1.2em;border-radius:10px;border
 <main><h1>Entrar</h1><div class="card"><?php if ($erro): ?><p class="msg err"><?= $h($erro) ?></p><?php endif; ?>
 <form method="post"><?= $csrf ?><label for="p">Palavra-passe</label><input type="password" id="p" name="p" autocomplete="current-password" required autofocus><button>Entrar</button></form></div></main>
 <?php else:
-$tabs = ['inicio' => 'Início', 'novidades' => 'Novidades', 'eventos' => 'Eventos', 'album' => 'Álbum', 'pontos' => 'Pontos de recolha', 'resultado' => 'Último resultado', 'senha' => 'Palavra-passe']; ?>
+$tabs = ['inicio' => 'Início', 'novidades' => 'Novidades', 'eventos' => 'Eventos', 'album' => 'Álbum', 'pontos' => 'Pontos de recolha', 'resultado' => 'Resultados', 'escolas' => 'Escolas', 'avisos' => 'Avisos', 'senha' => 'Palavra-passe']; ?>
 <nav><?php foreach ($tabs as $k => $v): ?><a href="?s=<?= $k ?>" class="<?= $s === $k ? 'on' : '' ?>"><?= $v ?></a><?php endforeach; ?></nav>
 <main>
 <?php if ($msg): ?><p class="msg"><?= $h($msg) ?> As mudanças aparecem no site em cerca de 1 minuto.</p><?php endif; ?>
@@ -179,7 +193,9 @@ $tabs = ['inicio' => 'Início', 'novidades' => 'Novidades', 'eventos' => 'Evento
 <a href="?s=eventos">📅 Eventos<small>Próximos eventos e os detalhes</small></a>
 <a href="?s=album">📷 Álbum<small>Juntar fotos e corrigir legendas</small></a>
 <a href="?s=pontos">📍 Pontos de recolha<small>Acrescentar, mudar ou retirar</small></a>
-<a href="?s=resultado">🧢 Último resultado<small>O valor da última entrega</small></a>
+<a href="?s=resultado">🧢 Resultados<small>Último resultado e contador do ano</small></a>
+<a href="?s=escolas">🏫 Escolas<small>O desafio entre escolas</small></a>
+<a href="?s=avisos">✉️ Avisos<small>Quem pediu avisos por email</small></a>
 </div>
 
 <?php elseif ($s === 'resultado'): $r = texto($db, 'resultado', []) ?: []; ?>
@@ -189,6 +205,15 @@ $tabs = ['inicio' => 'Início', 'novidades' => 'Novidades', 'eventos' => 'Evento
 <label for="texto">Texto</label><textarea id="texto" name="texto"><?= $h($r['texto'] ?? '') ?></textarea>
 <label for="link">Link (opcional)</label><input type="text" id="link" name="link" value="<?= $h($r['link'] ?? '') ?>" placeholder="eventos/bff-solidario-2026.html">
 <p class="hint">Enquanto estiver vazio, o site mostra o texto que já lá está.</p><button>Guardar</button></form></div>
+<?php $c = texto($db, 'contador', []) ?: []; ?>
+<h2>Contador de tampas do ano</h2><div class="card"><form method="post"><?= $csrf ?><input type="hidden" name="a" value="contador">
+<div class="row"><div><label for="ano">Ano</label><input type="text" inputmode="numeric" id="ano" name="ano" value="<?= $h($c['ano'] ?? date('Y')) ?>"></div><div><label for="plastico">Kg de tampas de plástico entregues</label><input type="text" inputmode="decimal" id="plastico" name="plastico" value="<?= $h($c['plastico'] ?? 0) ?>"></div></div>
+<div class="row"><div><label for="caricas">Kg de caricas</label><input type="text" inputmode="decimal" id="caricas" name="caricas" value="<?= $h($c['caricas'] ?? 0) ?>"></div><div><label for="cortica">Kg de cortiça</label><input type="text" inputmode="decimal" id="cortica" name="cortica" value="<?= $h($c['cortica'] ?? 0) ?>"></div></div>
+<label for="nota">Nota (opcional)</label><input type="text" id="nota" name="nota" value="<?= $h($c['nota'] ?? '') ?>" placeholder="Última entrega: 3 BigBags em setembro">
+<p class="hint">O site calcula sozinho os euros e os dias de tratamento com os valores de cada material. Enquanto estiver tudo a zero, o contador não aparece.</p><button>Guardar</button></form></div>
+<h2>Canal de WhatsApp</h2><div class="card"><form method="post"><?= $csrf ?><input type="hidden" name="a" value="whatsapp">
+<label for="whatsapp">Link do canal ou grupo (https://whatsapp.com/channel/… ou https://chat.whatsapp.com/…)</label><input type="url" id="whatsapp" name="whatsapp" value="<?= $h(texto($db, 'whatsapp', '') ?: '') ?>">
+<p class="hint">Quando tiver um link, aparece "Segue no WhatsApp" no rodapé do site.</p><button>Guardar</button></form></div>
 
 <?php elseif ($s === 'novidades'): $e = $ed ? $db->query('SELECT * FROM novidades WHERE id=' . $ed)->fetch() : []; ?>
 <h1>Novidades do Martim</h1>
@@ -199,6 +224,7 @@ $tabs = ['inicio' => 'Início', 'novidades' => 'Novidades', 'eventos' => 'Evento
 <label for="foto">Foto <?= !empty($e['foto']) ? '(deixa vazio para manter)' : '' ?></label><input type="file" id="foto" name="foto" accept="image/*">
 <label for="link">Link da publicação no Facebook (opcional)</label><input type="url" id="link" name="link" value="<?= $h($e['link'] ?? '') ?>" placeholder="https://www.facebook.com/...">
 <label class="chk"><input type="checkbox" name="publicado" <?= ($e['publicado'] ?? 1) ? 'checked' : '' ?>> Publicada no site</label>
+<?php if (empty($e['avisado'])): ?><label class="chk"><input type="checkbox" name="avisar"> Avisar por email quem pediu avisos (<?= (int)$db->query('SELECT COUNT(*) FROM subscritores WHERE confirmado=1')->fetchColumn() ?> pessoas)</label><?php else: ?><p class="hint">O aviso por email já foi enviado.</p><?php endif; ?>
 <button>Guardar</button> <?php if ($ed): ?><a class="btn btn-l" href="?s=novidades">Cancelar</a><?php endif; ?></form></div>
 <div class="card"><h2>Publicadas</h2><ul class="list"><?php foreach ($db->query('SELECT * FROM novidades ORDER BY data DESC, id DESC') as $n): ?>
 <li><?= $img($n['foto']) ?: '<span></span>' ?><div><b><?= $h($n['titulo']) ?></b><div class="muted"><?= $h($n['data']) ?><?= $n['publicado'] ? '' : ' · escondida' ?></div></div>
@@ -215,6 +241,7 @@ $tabs = ['inicio' => 'Início', 'novidades' => 'Novidades', 'eventos' => 'Evento
 <label for="texto">Descrição</label><textarea id="texto" name="texto"><?= $h($e['texto'] ?? '') ?></textarea>
 <label for="foto">Cartaz ou foto <?= !empty($e['foto']) ? '(deixa vazio para manter)' : '' ?></label><input type="file" id="foto" name="foto" accept="image/*">
 <label class="chk"><input type="checkbox" name="publicado" <?= ($e['publicado'] ?? 1) ? 'checked' : '' ?>> Publicado no site</label>
+<?php if (empty($e['avisado'])): ?><label class="chk"><input type="checkbox" name="avisar"> Avisar por email quem pediu avisos (<?= (int)$db->query('SELECT COUNT(*) FROM subscritores WHERE confirmado=1')->fetchColumn() ?> pessoas)</label><?php else: ?><p class="hint">O aviso por email já foi enviado.</p><?php endif; ?>
 <p class="hint">O próximo evento aparece sozinho no topo do site e na agenda, e desaparece depois do dia.</p>
 <button>Guardar</button> <?php if ($ed): ?><a class="btn btn-l" href="?s=eventos">Cancelar</a><?php endif; ?></form></div>
 <div class="card"><h2>Eventos do painel</h2><ul class="list"><?php foreach ($db->query('SELECT * FROM eventos ORDER BY data DESC') as $n): ?>
@@ -265,6 +292,26 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,att
 let mk=has?L.marker([+la.value,+ln.value]).addTo(m):null;
 m.on('click',e=>{la.value=e.latlng.lat.toFixed(5);ln.value=e.latlng.lng.toFixed(5);mk?mk.setLatLng(e.latlng):mk=L.marker(e.latlng).addTo(m)});
 </script>
+
+<?php elseif ($s === 'escolas'): $e = $ed ? $db->query('SELECT * FROM escolas WHERE id=' . $ed)->fetch() : []; ?>
+<h1>Desafio das escolas</h1>
+<div class="card"><h2><?= $ed ? 'Editar escola' : 'Nova escola' ?></h2><form method="post"><?= $csrf ?><input type="hidden" name="a" value="escola"><input type="hidden" name="id" value="<?= $ed ?>">
+<div class="row"><div><label for="nome">Escola</label><input type="text" id="nome" name="nome" required value="<?= $h($e['nome'] ?? '') ?>" placeholder="EB1 Benfarras"></div><div><label for="localidade">Localidade</label><input type="text" id="localidade" name="localidade" value="<?= $h($e['localidade'] ?? '') ?>"></div></div>
+<div class="row"><div><label for="kg">Kg entregues este ano</label><input type="text" inputmode="decimal" id="kg" name="kg" value="<?= $h($e['kg'] ?? '0') ?>"></div><div><label for="garrafoes">Garrafões cheios</label><input type="text" inputmode="numeric" id="garrafoes" name="garrafoes" value="<?= $h($e['garrafoes'] ?? '0') ?>"></div></div>
+<label class="chk"><input type="checkbox" name="ativo" <?= ($e['ativo'] ?? 1) ? 'checked' : '' ?>> Aparece no ranking</label>
+<button>Guardar</button> <?php if ($ed): ?><a class="btn btn-l" href="?s=escolas">Cancelar</a><?php endif; ?></form></div>
+<div class="card"><h2>Ranking</h2><ul class="list"><?php $i = 0; foreach ($db->query('SELECT * FROM escolas ORDER BY kg DESC, garrafoes DESC') as $n): $i++; ?>
+<li><b style="font-size:1.4rem;text-align:center"><?= $i ?>.º</b><div><b><?= $h($n['nome']) ?></b><div class="muted"><?= $h($n['localidade']) ?> · <?= $h($n['kg']) ?> kg · <?= (int)$n['garrafoes'] ?> garrafões<?= $n['ativo'] ? '' : ' · escondida' ?></div></div>
+<div><a class="btn btn-l" style="margin:0;padding:.5em .7em;font-size:.9rem" href="?s=escolas&id=<?= $n['id'] ?>">Editar</a> <form method="post" onsubmit="return confirm('Apagar esta escola?')"><?= $csrf ?><input type="hidden" name="a" value="apagar"><input type="hidden" name="tipo" value="escola"><input type="hidden" name="id" value="<?= $n['id'] ?>"><button class="del">Apagar</button></form></div></li>
+<?php endforeach; ?></ul><p class="hint">O ranking aparece na página do mural. Ordem: kg, depois garrafões.</p></div>
+
+<?php elseif ($s === 'avisos'): $c = (int)$db->query('SELECT COUNT(*) FROM subscritores WHERE confirmado=1')->fetchColumn(); $pend = (int)$db->query('SELECT COUNT(*) FROM subscritores WHERE confirmado=0')->fetchColumn(); ?>
+<h1>Avisos por email</h1>
+<div class="card"><p><b><?= $c ?></b> pessoas confirmaram que querem avisos<?= $pend ? " · $pend ainda por confirmar" : '' ?>.</p><p class="hint">Para enviar um aviso, marca "Avisar por email" ao publicar uma novidade ou um evento. Cada email tem um link para a pessoa cancelar. Não uses estes endereços para outra coisa.</p></div>
+<div class="card"><h2>Endereços</h2><ul class="list"><?php foreach ($db->query('SELECT * FROM subscritores ORDER BY criado DESC') as $n): ?>
+<li><span></span><div><b><?= $h($n['email']) ?></b><div class="muted"><?= $n['confirmado'] ? 'confirmado' : 'por confirmar' ?> · <?= $h(substr($n['criado'], 0, 10)) ?></div></div>
+<div><form method="post" onsubmit="return confirm('Apagar este endereço?')"><?= $csrf ?><input type="hidden" name="a" value="tirar_subscritor"><input type="hidden" name="id" value="<?= $n['id'] ?>"><button class="del">Apagar</button></form></div></li>
+<?php endforeach; ?></ul></div>
 
 <?php elseif ($s === 'senha'): ?>
 <h1>Mudar a palavra-passe</h1><div class="card"><form method="post"><?= $csrf ?><input type="hidden" name="a" value="senha">

@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="../img/marca/apple-touch-icon.png">
 <link rel="preload" href="../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/fonts.css?v=202609262125">
-<link rel="stylesheet" href="../css/site.css?v=202609262125">
+<link rel="stylesheet" href="../css/fonts.css?v=202609262215">
+<link rel="stylesheet" href="../css/site.css?v=202609262215">
 </head>
 <body class="sub">
 
@@ -114,13 +114,14 @@
     <div class="legal-body">
       <h2>What is stored in your browser</h2>
       <div class="tablewrap"><table class="rates legal-table">
-        <thead><tr><th scope="col">Name</th><th scope="col">What for</th><th scope="col">Where</th><th scope="col">Duration</th></tr></thead>
+        <thead><tr><th scope="col">Name</th><th scope="col">What for</th><th scope="col">Where</th><th scope="col">Length</th></tr></thead>
         <tbody>
           <tr><td><code>paleta</code></td><td>Remembering the notebook cover you picked in "Choose the cover".</td><td>The browser's local storage (localStorage), for this website only</td><td>Until you delete it</td></tr>
           <tr><td><code>ficha-nome</code>, <code>ficha-nivel</code>, <code>ficha-vistos</code></td><td>Remember the name and level you used in the bottle-cap challenge, and which items you have seen, so the next round shows you different ones.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
           <tr><td><code>mural-meu</code></td><td>Keep your latest diploma (name, score, level and date) so you can send it to the wall.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
           <tr><td><code>mural-ok</code>, <code>mural-enviados</code></td><td>Remember whether you agreed to put your name on the wall and which diplomas were already sent, so they are not repeated.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
           <tr><td><code>mdm_painel</code></td><td>Session cookie, only for Martim’s parents when they sign in to the website’s management panel. It is not used on public pages.</td><td>The website’s own cookie (secure, HTTPS only)</td><td>Until you close your browser</td></tr>
+          <tr><td><code>rasteira</code>, <code>pin-feito</code>, <code>kit-evento</code></td><td>Remember your answer to the trick of the week, whether you already marked your town on the map, and the details you typed in the event kit.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
           <tr><td><code>cartaz-local</code></td><td>Remember the place name you typed on the printable poster.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
         </tbody>
       </table></div>
@@ -147,7 +148,7 @@
 </section>
 <script>
 document.getElementById('esquecer').addEventListener('click',()=>{
-  let ok=true;try{['paleta','ficha-nome','ficha-nivel','ficha-vistos','mural-meu','mural-ok','mural-enviados','cartaz-local'].forEach(k=>localStorage.removeItem(k))}catch(e){ok=false}
+  let ok=true;try{['paleta','ficha-nome','ficha-nivel','ficha-vistos','mural-meu','mural-ok','mural-enviados','cartaz-local','rasteira','pin-feito','kit-evento'].forEach(k=>localStorage.removeItem(k))}catch(e){ok=false}
   document.getElementById('esquecer-msg').textContent=ok?'Done. On your next visit the website opens with the Midnight cover.':'Your browser didn’t allow it. Use your browser settings instead.';
 });
 </script>
@@ -167,7 +168,15 @@ document.getElementById('esquecer').addEventListener('click',()=>{
     </div>
     <div>
       <h3>Shortcuts</h3>
-      <ul><li><a href="index.html#entregar">Where to drop off</a></li><li><a href="mapa.html">Map of drop-off points</a></li><li><a href="organiza.html">Run a collection point</a></li><li><a href="cartaz.html">Printable poster</a></li><li><a href="novidades.html">Martim’s news</a></li><li><a href="mural.html">Friends wall</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="index.html#doar">Donate by IBAN</a></li><li><a href="eventos/">All events</a></li><li><a href="index.html#perguntas">Frequently asked questions</a></li></ul>
+      <ul><li><a href="index.html#entregar">Where to drop off</a></li><li><a href="mapa.html">Map of drop-off points</a></li><li><a href="organiza.html">Run a collection point</a></li><li><a href="cartaz.html">Printable poster</a></li><li><a href="novidades.html">Martim’s news</a></li><li><a href="jogos.html">Bottle-cap games</a></li><li><a href="mural.html">Friends wall</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="index.html#doar">Donate by IBAN</a></li><li><a href="eventos/">All events</a></li><li><a href="index.html#perguntas">Frequently asked questions</a></li></ul>
+    </div>
+    <div class="foot-avisos">
+      <form class="avisos-form" id="avisos-form" novalidate>
+        <label for="av-email">Get an email when there is news about Martim or a new event</label>
+        <div class="av-row"><input type="email" id="av-email" autocomplete="email" placeholder="your email" required><input class="hp" id="av-site" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn btn-yellow" type="submit">Notify me</button></div>
+        <p class="av-st" id="av-st" aria-live="polite">We only use your email for this. Unsubscribe from any email.</p>
+      </form>
+      <a class="btn btn-ghost foot-wa" id="foot-wa" href="#" target="_blank" rel="noopener" hidden><svg aria-hidden="true"><use href="#i-wa"/></svg>Follow on WhatsApp</a>
     </div>
     <div class="fine"><span>© <span data-year>2026</span> <a href="https://demaosdadaspelomartim.pt/">Hand in Hand for Martim</a>. All rights reserved.<br>By <a href="https://nelsonjeronimo.pt" rel="noopener">nelsonjeronimo.pt</a></span><span><a href="privacidade.html">Privacy policy</a> · <a href="cookies.html">Cookies</a> · <a href="../cookies.html" lang="pt" hreflang="pt">Português</a></span></div>
   </div>
@@ -183,7 +192,8 @@ document.getElementById('esquecer').addEventListener('click',()=>{
   <a class="btn btn-red" href="index.html#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Donate</a>
 </nav>
 
+<script src="/api/dados.js.php"></script>
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202609262125"></script>
+<script src="../js/site.js?v=202609262215"></script>
 </body>
 </html>

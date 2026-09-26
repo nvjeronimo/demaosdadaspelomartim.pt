@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="img/marca/apple-touch-icon.png">
 <link rel="preload" href="fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=202609262125">
-<link rel="stylesheet" href="css/site.css?v=202609262125">
+<link rel="stylesheet" href="css/fonts.css?v=202609262215">
+<link rel="stylesheet" href="css/site.css?v=202609262215">
 </head>
 <body class="sub">
 
@@ -119,6 +119,7 @@
       <div class="btns">
         <button class="btn btn-red" type="button" data-print="cartaz"><svg aria-hidden="true"><use href="#i-print"/></svg>Imprimir cartaz</button>
         <button class="btn btn-line" type="button" data-print="etiquetas"><svg aria-hidden="true"><use href="#i-print"/></svg>Imprimir etiquetas</button>
+        <button class="btn btn-line" type="button" data-print="selo"><svg aria-hidden="true"><use href="#i-print"/></svg>Imprimir selo</button>
       </div>
       <div class="opts">
         <label><input type="checkbox" id="c-tinta"> Poupar tinta (fundo branco)</label>
@@ -159,6 +160,16 @@
         </div>
         <figcaption>etiquetas para os três garrafões: recorta pelo tracejado</figcaption>
       </figure>
+      <figure class="f-selo">
+        <div class="a4 selos" id="selos">
+          <p class="selos-top">Selo para a montra</p>
+          <div class="seal big"><svg class="seal-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="sc-big" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#sc-big" startOffset="0">PONTO DE RECOLHA · AMIGO DO MARTIM · Nº 167 ·</textPath></text></svg><div class="seal-in"><svg class="seal-mark" viewBox="0 0 318.33 113.92" aria-hidden="true"><use href="#marca"/></svg><b>Aqui recolhemos tampas</b><span class="qr" data-qr="https://demaosdadaspelomartim.pt/mapa.html"></span></div></div>
+          <p class="selos-local" id="s-local"></p>
+          <p class="selos-msg">Traz as tuas tampas de plástico, caricas e rolhas de cortiça. Separadas, por favor!</p>
+          <div class="selos-small"><div class="seal s1"><svg class="seal-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="sc-s1" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#sc-s1" startOffset="0">PONTO DE RECOLHA · AMIGO DO MARTIM · Nº 167 ·</textPath></text></svg><div class="seal-in"><svg class="seal-mark" viewBox="0 0 318.33 113.92" aria-hidden="true"><use href="#marca"/></svg><b>Aqui recolhemos tampas</b><span class="qr" data-qr="https://demaosdadaspelomartim.pt/mapa.html"></span></div></div><div class="seal s2"><svg class="seal-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="sc-s2" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#sc-s2" startOffset="0">PONTO DE RECOLHA · AMIGO DO MARTIM · Nº 167 ·</textPath></text></svg><div class="seal-in"><svg class="seal-mark" viewBox="0 0 318.33 113.92" aria-hidden="true"><use href="#marca"/></svg><b>Aqui recolhemos tampas</b><span class="qr" data-qr="https://demaosdadaspelomartim.pt/mapa.html"></span></div></div><div class="seal s3"><svg class="seal-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="sc-s3" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#sc-s3" startOffset="0">PONTO DE RECOLHA · AMIGO DO MARTIM · Nº 167 ·</textPath></text></svg><div class="seal-in"><svg class="seal-mark" viewBox="0 0 318.33 113.92" aria-hidden="true"><use href="#marca"/></svg><b>Aqui recolhemos tampas</b><span class="qr" data-qr="https://demaosdadaspelomartim.pt/mapa.html"></span></div></div><div class="seal s4"><svg class="seal-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="sc-s4" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#sc-s4" startOffset="0">PONTO DE RECOLHA · AMIGO DO MARTIM · Nº 167 ·</textPath></text></svg><div class="seal-in"><svg class="seal-mark" viewBox="0 0 318.33 113.92" aria-hidden="true"><use href="#marca"/></svg><b>Aqui recolhemos tampas</b><span class="qr" data-qr="https://demaosdadaspelomartim.pt/mapa.html"></span></div></div></div>
+        </div>
+        <figcaption>selo para a montra e quatro pequenos para os garrafões</figcaption>
+      </figure>
     </div>
     <div class="note" style="margin-top:34px"><p class="hand">Dica</p><p>Plastifica o cartaz ou põe-no numa mica: dura meses ao pé dos garrafões. Imprime a 100% (sem "ajustar à página") para o QR code ficar bem legível.</p></div>
   </div>
@@ -168,7 +179,7 @@
 (()=>{
 const LNG=document.documentElement.lang==='en';
 const local=document.getElementById('c-local'),out=document.getElementById('p-local'),sheets=document.getElementById('sheets');
-const set=()=>{const v=local.value.trim();out.textContent=v?(LNG?'at ':'em ')+v:''};
+const sl=document.getElementById('s-local');const set=()=>{const v=local.value.trim();out.textContent=v?(LNG?'at ':'em ')+v:'';if(sl)sl.textContent=v};
 try{local.value=localStorage.getItem('cartaz-local')||''}catch(e){}set();
 local.addEventListener('input',()=>{set();try{localStorage.setItem('cartaz-local',local.value)}catch(e){}});
 document.getElementById('c-tinta').addEventListener('change',e=>sheets.classList.toggle('ink-saver',e.target.checked));
@@ -176,10 +187,10 @@ document.getElementById('c-capa').addEventListener('click',e=>{e.stopPropagation
 /* o nome do PDF vem do título da página: muda-o enquanto imprime (ex.: "Cartaz tampas Martim - Bar do CDB") */
 const T0=document.title;
 const docName=k=>{const v=local.value.trim().replace(/[\/:*?"<>|]+/g,' ').replace(/\s+/g,' ').trim();
-  const base=k==='cartaz'?(LNG?'Martim bottle-cap poster':'Cartaz tampas Martim'):(LNG?'Martim container labels':'Etiquetas garrafões Martim');return v?base+' - '+v:base};
-document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',()=>{document.body.classList.remove('print-cartaz','print-etiquetas');document.body.classList.add('print-'+b.dataset.print);document.title=docName(b.dataset.print);window.print()}));
+  const base=k==='cartaz'?(LNG?'Martim bottle-cap poster':'Cartaz tampas Martim'):k==='selo'?(LNG?'Friend of Martim sticker':'Selo ponto amigo Martim'):(LNG?'Martim container labels':'Etiquetas garrafões Martim');return v?base+' - '+v:base};
+document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',()=>{document.body.classList.remove('print-cartaz','print-etiquetas','print-selo');document.body.classList.add('print-'+b.dataset.print);document.title=docName(b.dataset.print);window.print()}));
 addEventListener('afterprint',()=>{document.body.classList.remove('print-cartaz','print-etiquetas');document.title=T0});
-if(window.qrcode){const q=qrcode(0,'M');q.addData('https://demaosdadaspelomartim.pt/');q.make();document.getElementById('qr1').innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true})}
+if(window.qrcode){const q=qrcode(0,'M');q.addData('https://demaosdadaspelomartim.pt/');q.make();document.getElementById('qr1').innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true});document.querySelectorAll('.seal [data-qr]').forEach(el=>{const z=qrcode(0,'M');z.addData(el.dataset.qr);z.make();el.innerHTML=z.createSvgTag({cellSize:4,margin:0,scalable:true})})}
 else{document.getElementById('qr1').innerHTML='<p style="font-size:10px;text-align:center">demaosdadaspelomartim.pt</p>'}
 })();
 </script>
@@ -199,7 +210,15 @@ else{document.getElementById('qr1').innerHTML='<p style="font-size:10px;text-ali
     </div>
     <div>
       <h3>Atalhos</h3>
-      <ul><li><a href="index.html#entregar">Onde entregar</a></li><li><a href="mapa.html">Mapa dos pontos</a></li><li><a href="organiza.html">Organiza uma recolha</a></li><li><a href="cartaz.html">Cartaz para imprimir</a></li><li><a href="novidades.html">Novidades do Martim</a></li><li><a href="mural.html">Mural dos amigos</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Brochura para descarregar</a></li><li><a href="index.html#doar">Doar por IBAN</a></li><li><a href="eventos/">Todos os eventos</a></li><li><a href="index.html#perguntas">Dúvidas frequentes</a></li></ul>
+      <ul><li><a href="index.html#entregar">Onde entregar</a></li><li><a href="mapa.html">Mapa dos pontos</a></li><li><a href="organiza.html">Organiza uma recolha</a></li><li><a href="cartaz.html">Cartaz para imprimir</a></li><li><a href="novidades.html">Novidades do Martim</a></li><li><a href="jogos.html">Jogos das tampinhas</a></li><li><a href="mural.html">Mural dos amigos</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Brochura para descarregar</a></li><li><a href="index.html#doar">Doar por IBAN</a></li><li><a href="eventos/">Todos os eventos</a></li><li><a href="index.html#perguntas">Dúvidas frequentes</a></li></ul>
+    </div>
+    <div class="foot-avisos">
+      <form class="avisos-form" id="avisos-form" novalidate>
+        <label for="av-email">Recebe um email quando houver novidades do Martim ou um evento novo</label>
+        <div class="av-row"><input type="email" id="av-email" autocomplete="email" placeholder="o teu email" required><input class="hp" id="av-site" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn btn-yellow" type="submit">Quero avisos</button></div>
+        <p class="av-st" id="av-st" aria-live="polite">Só usamos o email para isto. Cancelas em qualquer email.</p>
+      </form>
+      <a class="btn btn-ghost foot-wa" id="foot-wa" href="#" target="_blank" rel="noopener" hidden><svg aria-hidden="true"><use href="#i-wa"/></svg>Segue no WhatsApp</a>
     </div>
     <div class="fine"><span>© <span data-year>2026</span> <a href="https://demaosdadaspelomartim.pt/">De Mãos Dadas pelo Martim</a>. Todos os direitos reservados.<br>By <a href="https://nelsonjeronimo.pt" rel="noopener">nelsonjeronimo.pt</a></span><span><a href="privacidade.html">Política de privacidade</a> · <a href="cookies.html">Cookies</a> · <a href="en/cartaz.html" lang="en" hreflang="en">English</a></span></div>
   </div>
@@ -215,7 +234,8 @@ else{document.getElementById('qr1').innerHTML='<p style="font-size:10px;text-ali
   <a class="btn btn-red" href="index.html#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
+<script src="/api/dados.js.php"></script>
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=202609262125"></script>
+<script src="js/site.js?v=202609262215"></script>
 </body>
 </html>

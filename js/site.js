@@ -116,6 +116,23 @@ function buildPicker(){
     :`<p class="news-empty">${EN?'The first news will be here soon.':'As primeiras novidades chegam em breve.'}</p>`;
   const r=window.RESULTADO,bo=document.querySelector('.boletim');
   if(r&&bo&&r.valor){bo.querySelector('.big').textContent=r.valor;const ps=bo.querySelectorAll('p');if(ps[0])ps[0].innerHTML='<b>'+e(r.titulo)+'</b>';if(ps[1])ps[1].textContent=r.texto||'';const a=bo.querySelector('small a');if(a&&r.link)a.setAttribute('href',/^https?:/.test(r.link)?r.link:R+r.link)}
+  /* agenda: eventos do painel que já passaram entram em "Já foram" */
+  const evl=document.querySelector('.evlist');
+  if(evl&&window.EVENTOS_PAINEL){const hoje=new Date();hoje.setHours(0,0,0,0);
+    const past=window.EVENTOS_PAINEL.filter(x=>{const[y,m,d]=(x.end||x.date).split('-').map(Number);return new Date(y,m-1,d)<hoje}).sort((a,b)=>b.date.localeCompare(a.date));
+    evl.insertAdjacentHTML('afterbegin',past.map(x=>{const[y,m,d]=x.date.split('-').map(Number);return `<li data-evento><a class="evrow" href="${R}${e(x.url)}"><span class="evdate num"><b>${d}</b>${M[m-1]} ${y}</span><span class="evtxt"><small>${EN?'Event':'Evento'}</small><b>${e(x.title[0])}</b><span>${e(x.where[0])}</span></span>${x.poster?`<span class="mini-photo"><img src="${R}${e(x.poster)}" alt="" loading="lazy"></span>`:''}</a></li>`}).join(''))}
+  /* contador do ano */
+  const C=window.CONTADOR,ct=document.getElementById('contador');
+  if(C&&ct&&(C.plastico||C.caricas||C.cortica)){const kg=(+C.plastico||0)+(+C.caricas||0)+(+C.cortica||0),eur=(+C.plastico||0)*.4116+(+C.caricas||0)*.4656+(+C.cortica||0)*.5;
+    const nf=(n,d=0)=>n.toLocaleString(EN?'en-GB':'pt-PT',{maximumFractionDigits:d});
+    document.getElementById('ct-ano').textContent=(EN?'This year, ':'Em ')+(C.ano||new Date().getFullYear())+(EN?' so far':' já entregámos');
+    document.getElementById('ct-kg').textContent=nf(kg);document.getElementById('ct-eur').textContent=EN?'€'+nf(eur):nf(eur)+' €';document.getElementById('ct-dias').textContent=nf(eur/(6740/30),1);
+    document.getElementById('ct-nota').textContent=C.nota||'';ct.hidden=false}
+  /* WhatsApp e escolas */
+  const wa=document.getElementById('foot-wa');if(wa&&window.WHATSAPP){wa.href=window.WHATSAPP;wa.hidden=false}
+  const er=document.getElementById('escolas-rank');
+  if(er){const L=window.ESCOLAS||[];const box=document.getElementById('escolas');if(L.length&&box){box.hidden=false;
+    er.innerHTML=L.map((x,i)=>`<li><span class="rk num">${i+1}</span><span><b>${e(x.nome)}</b><small>${e(x.localidade||'')}</small></span><span class="kg num">${(+x.kg).toLocaleString(EN?'en-GB':'pt-PT')} kg${+x.garrafoes?`<small>${x.garrafoes} ${EN?'jugs':'garrafões'}</small>`:''}</span></li>`).join('')}}
   const ev=document.getElementById('evento-painel');
   if(ev){const id=new URLSearchParams(location.search).get('id'),x=(window.EVENTOS_PAINEL||[]).find(v=>String(v.id)===id);
     if(!x){ev.innerHTML=`<p class="news-empty">${EN?'This event no longer exists.':'Este evento já não existe.'} <a href="${R}eventos/">${EN?'See all events':'Ver todos os eventos'}</a></p>`}
@@ -304,4 +321,15 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
     if(a.dataset.print)return conta('imprimir_'+a.dataset.print);
     if(a.matches('a[href$=".pdf"]'))return conta('brochura_pdf');
     conta({perto:'mapa_perto','dip-save':'diploma_guardar','game-full':'desafio_ecra_inteiro','m-send':'mural_pedido'}[a.id]||a.id)});
+})();
+
+/* ---------- avisos por email (rodapé) ---------- */
+(()=>{const f=document.getElementById('avisos-form');if(!f)return;const st=document.getElementById('av-st'),live=/(^|\.)demaosdadaspelomartim\.pt$/.test(location.hostname);
+  f.addEventListener('submit',async e=>{e.preventDefault();const em=document.getElementById('av-email');
+    if(!em.checkValidity()){st.textContent=EN?'Please write a valid email.':'Escreve um email válido.';em.focus();return}
+    if(!live){st.textContent=EN?'Sign-ups work on demaosdadaspelomartim.pt.':'A inscrição funciona em demaosdadaspelomartim.pt.';return}
+    st.textContent=EN?'Sending…':'A enviar…';
+    try{const r=await fetch('/api/avisos.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em.value,lang:EN?'en':'pt',site:document.getElementById('av-site').value})});const j=await r.json().catch(()=>({}));
+      if(j.ok){f.reset();st.textContent=j.ja?(EN?'You are already signed up. Thank you!':'Já estás inscrito. Obrigado!'):(EN?'Almost there: check your email and confirm.':'Quase! Vai ao teu email e confirma a inscrição.');if(window.conta)conta('avisos_inscricao')}
+      else st.textContent=j.why==='limite'?(EN?'Too many attempts, try again later.':'Demasiadas tentativas, tenta mais tarde.'):(EN?'That email did not work. Try again.':'Esse email não funcionou. Tenta outra vez.')}catch(err){st.textContent=EN?'We could not send it now. Try again later.':'Não conseguimos enviar agora. Tenta mais tarde.'}});
 })();

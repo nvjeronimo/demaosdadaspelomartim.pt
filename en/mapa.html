@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="../img/marca/apple-touch-icon.png">
 <link rel="preload" href="../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/fonts.css?v=202609262125">
-<link rel="stylesheet" href="../css/site.css?v=202609262125">
+<link rel="stylesheet" href="../css/fonts.css?v=202609262215">
+<link rel="stylesheet" href="../css/site.css?v=202609262215">
 </head>
 <body class="sub">
 
@@ -135,7 +135,17 @@
     </div>
   </div>
 </section>
-<script src="../js/pontos.js?v=202609262125"></script>
+<hr class="divider">
+<section class="page" id="todo-o-lado" aria-labelledby="h-pins">
+  <div class="inner">
+    <div class="sec-head"><h2 id="h-pins" class="h-sm">Caps from all over.</h2><p>Where do the people who help me come from? Mark your town on the map. We round the position to about 5 km and store nothing about you.</p></div>
+    <div class="pins-tools"><button class="btn btn-red" type="button" id="pin-add"><svg aria-hidden="true"><use href="#i-map"/></svg>Mark my town</button><span class="small" id="pin-st" aria-live="polite"></span></div>
+    <div class="mapa-frame"><div id="pins-map" role="region" aria-label="Map of where helpers come from"></div></div>
+    <p class="small" id="pins-total"></p>
+  </div>
+</section>
+
+<script src="../js/pontos.js?v=202609262215"></script>
 <script src="/api/dados.js.php"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous" referrerpolicy="no-referrer"><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
@@ -169,6 +179,25 @@ if(window.L){
 }else{status.textContent=T('O mapa não carregou. A lista abre cada ponto no Google Maps.','The map did not load. The list opens each point in Google Maps.')}
 list.addEventListener('click',e=>{const li=e.target.closest('li');if(li)focus(+li.dataset.i)});
 document.querySelectorAll('[data-f]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-f]').forEach(x=>x.setAttribute('aria-pressed',x===b));filter(b.dataset.f)}));
+/* tampas por todo o lado */
+(()=>{const box=document.getElementById('pins-map');if(!box||!window.L)return;
+  const live=/(^|\.)demaosdadaspelomartim\.pt$/.test(location.hostname),st=document.getElementById('pin-st'),btn=document.getElementById('pin-add');
+  const pm=L.map(box,{scrollWheelZoom:false}).setView([39.6,-8],6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(pm);
+  const layer=L.layerGroup().addTo(pm);
+  const draw=list=>{layer.clearLayers();let t=0;list.forEach(([a,b,n])=>{t+=n;L.circleMarker([a,b],{radius:6+Math.sqrt(n)*3,color:'#1B1D2A',weight:2,fillColor:'#FF9A4D',fillOpacity:.75}).bindTooltip(n+' '+(n===1?T('pessoa','person'):T('pessoas','people'))).addTo(layer)});
+    document.getElementById('pins-total').textContent=t?T(`${t} ${t===1?'pessoa marcou':'pessoas marcaram'} a sua terra.`,`${t} ${t===1?'person has':'people have'} marked their town.`):T('Sê o primeiro a marcar a tua terra!','Be the first to mark your town!')};
+  const load=()=>live?fetch('/api/pins.php').then(r=>r.json()).then(j=>draw(j.pins||[])).catch(()=>draw([])):draw([]);load();
+  let done=false;try{done=!!localStorage.getItem('pin-feito')}catch(e){}
+  if(done){btn.disabled=true;st.textContent=T('Obrigado, a tua terra já está no mapa!','Thank you, your town is already on the map!')}
+  let picking=false;
+  btn.addEventListener('click',()=>{picking=true;box.classList.add('picking');st.textContent=T('Toca no mapa onde fica a tua terra.','Tap the map where your town is.')});
+  pm.on('click',async e=>{if(!picking)return;picking=false;box.classList.remove('picking');
+    if(!live){st.textContent=T('Funciona em demaosdadaspelomartim.pt.','Works on demaosdadaspelomartim.pt.');return}
+    try{const r=await fetch('/api/pins.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lat:e.latlng.lat,lng:e.latlng.lng})});const j=await r.json();
+      if(j.ok){try{localStorage.setItem('pin-feito','1')}catch(x){}btn.disabled=true;st.textContent=T('Obrigado! A tua terra já está no mapa.','Thank you! Your town is on the map.');if(window.conta)conta('mapa_terra');load()}
+      else st.textContent=T('Já marcaste hoje. Obrigado!','You already marked today. Thank you!')}catch(x){st.textContent=T('Não conseguimos guardar agora.','We could not save it now.')}});
+})();
 document.getElementById('perto').addEventListener('click',()=>{
   if(!navigator.geolocation){status.textContent=T('O teu navegador não indica a localização.','Your browser cannot share your location.');return}
   status.textContent=T('A procurar onde estás…','Finding where you are…');
@@ -201,7 +230,15 @@ document.getElementById('perto').addEventListener('click',()=>{
     </div>
     <div>
       <h3>Shortcuts</h3>
-      <ul><li><a href="index.html#entregar">Where to drop off</a></li><li><a href="mapa.html">Map of drop-off points</a></li><li><a href="organiza.html">Run a collection point</a></li><li><a href="cartaz.html">Printable poster</a></li><li><a href="novidades.html">Martim’s news</a></li><li><a href="mural.html">Friends wall</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="index.html#doar">Donate by IBAN</a></li><li><a href="eventos/">All events</a></li><li><a href="index.html#perguntas">Frequently asked questions</a></li></ul>
+      <ul><li><a href="index.html#entregar">Where to drop off</a></li><li><a href="mapa.html">Map of drop-off points</a></li><li><a href="organiza.html">Run a collection point</a></li><li><a href="cartaz.html">Printable poster</a></li><li><a href="novidades.html">Martim’s news</a></li><li><a href="jogos.html">Bottle-cap games</a></li><li><a href="mural.html">Friends wall</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="index.html#doar">Donate by IBAN</a></li><li><a href="eventos/">All events</a></li><li><a href="index.html#perguntas">Frequently asked questions</a></li></ul>
+    </div>
+    <div class="foot-avisos">
+      <form class="avisos-form" id="avisos-form" novalidate>
+        <label for="av-email">Get an email when there is news about Martim or a new event</label>
+        <div class="av-row"><input type="email" id="av-email" autocomplete="email" placeholder="your email" required><input class="hp" id="av-site" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn btn-yellow" type="submit">Notify me</button></div>
+        <p class="av-st" id="av-st" aria-live="polite">We only use your email for this. Unsubscribe from any email.</p>
+      </form>
+      <a class="btn btn-ghost foot-wa" id="foot-wa" href="#" target="_blank" rel="noopener" hidden><svg aria-hidden="true"><use href="#i-wa"/></svg>Follow on WhatsApp</a>
     </div>
     <div class="fine"><span>© <span data-year>2026</span> <a href="https://demaosdadaspelomartim.pt/">Hand in Hand for Martim</a>. All rights reserved.<br>By <a href="https://nelsonjeronimo.pt" rel="noopener">nelsonjeronimo.pt</a></span><span><a href="privacidade.html">Privacy policy</a> · <a href="cookies.html">Cookies</a> · <a href="../mapa.html" lang="pt" hreflang="pt">Português</a></span></div>
   </div>
@@ -217,7 +254,8 @@ document.getElementById('perto').addEventListener('click',()=>{
   <a class="btn btn-red" href="index.html#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Donate</a>
 </nav>
 
+
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202609262125"></script>
+<script src="../js/site.js?v=202609262215"></script>
 </body>
 </html>

@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="img/marca/apple-touch-icon.png">
 <link rel="preload" href="fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=202609262125">
-<link rel="stylesheet" href="css/site.css?v=202609262125">
+<link rel="stylesheet" href="css/fonts.css?v=202609262215">
+<link rel="stylesheet" href="css/site.css?v=202609262215">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NGO", "name": "De mãos dadas pelo Martim", "alternateName": "Hand in Hand for Martim", "url": "https://demaosdadaspelomartim.pt/", "logo": "https://demaosdadaspelomartim.pt/img/marca/apple-touch-icon.png", "image": "https://demaosdadaspelomartim.pt/img/og.jpg", "description": "Recolha solidária de tampas de plástico, caricas e rolhas de cortiça para pagar os tratamentos intensivos do Martim Silva Cruz, de Boliqueime (processo nº 167, Dê uma Tampa).", "email": "micka.a.cruz@gmail.com", "areaServed": "Algarve, Portugal", "address": {"@type": "PostalAddress", "addressLocality": "Boliqueime", "addressRegion": "Faro", "addressCountry": "PT"}}</script>
 </head>
 <body>
@@ -180,6 +180,7 @@
         <div style="display:flex;flex-wrap:wrap;gap:10px">
           <a class="btn btn-red" href="#entregar">Ver pontos de recolha <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <a class="btn btn-line" href="#ficha">Ganha o teu diploma de amigo do Martim</a>
+          <a class="btn btn-line" href="jogos.html">Mais jogos <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
       </article>
       <div class="team">
@@ -235,6 +236,7 @@
           <p>600 kg de caricas, 600 kg de plástico e 100 kg de cortiça, separados por cerca de 80 pessoas numa tarde.</p>
           <small>Atualizado à mão pelos meus pais quando há uma entrega nova. <a href="eventos/bff-solidario-2026.html" style="font-weight:700;color:var(--ink)">Ver o boletim →</a></small>
         </div>
+        <div class="contador" id="contador" hidden><small class="hand" id="ct-ano"></small><div class="ct-grid"><div><b class="num" id="ct-kg"></b><span>kg entregues</span></div><div><b class="num" id="ct-eur"></b><span>para os tratamentos</span></div><div><b class="num" id="ct-dias"></b><span>dias de tratamento</span></div></div><p class="small" id="ct-nota"></p></div>
       </div>
     </div>
   </div>
@@ -284,7 +286,7 @@
             <div class="dip-sig"><span class="hand" id="dip-date"></span><small id="dip-date-label">Data</small></div>
           </div>
         </div>
-        <div class="dip-actions"><button class="btn btn-red" type="button" id="dip-save"><svg aria-hidden="true"><use href="#i-down"/></svg>Guardar diploma</button><button class="btn btn-line" type="button" id="again">Jogar outra vez</button><a class="btn btn-line" href="mural.html">Pôr o diploma no mural <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        <div class="dip-actions"><button class="btn btn-red" type="button" id="dip-save"><svg aria-hidden="true"><use href="#i-down"/></svg>Guardar diploma</button><button class="btn btn-line" type="button" id="again">Jogar outra vez</button><a class="btn btn-line" href="mural.html">Pôr o diploma no mural <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="jogos.html">Mais jogos <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
         <label class="dip-mural"><input type="checkbox" id="dip-mural"> <span>Pôr o meu primeiro nome no <b>top 10 do mural</b> quando guardar ou partilhar o diploma</span></label>
         <p class="dip-mural-st" id="dip-mural-st" aria-live="polite"></p>
         <p class="dip-tip hand">Dica: o diploma muda de cor com a capa. <button type="button" class="dip-tip-btn" id="dip-cover">Escolhe outra capa</button> e guarda-o na tua cor preferida.</p>
@@ -297,6 +299,16 @@
           <button class="share-btn" type="button" data-share="copy"><svg aria-hidden="true"><use href="#i-link"/></svg><span>Copiar link</span></button>
         </div>
       </div>
+    </div>
+    <div class="more-games">
+      <p class="hand">Gostaste? Há mais jogos das tampinhas:</p>
+      <div class="mg-tiles">
+        <a href="jogos.html#calculadora"><span aria-hidden="true">🧮</span><b>Quanto valem as tuas tampas?</b></a>
+        <a href="jogos.html#verdade"><span aria-hidden="true">✅</span><b>Tampa ou não tampa?</b></a>
+        <a href="jogos.html#memoria"><span aria-hidden="true">🧠</span><b>Jogo de memória</b></a>
+        <a href="jogos.html#peso"><span aria-hidden="true">⚖️</span><b>Adivinha o peso</b></a>
+      </div>
+      <a class="btn btn-red" href="jogos.html"><svg aria-hidden="true"><use href="#i-star"/></svg>Mais jogos <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
@@ -617,7 +629,15 @@
     </div>
     <div>
       <h3>Atalhos</h3>
-      <ul><li><a href="#entregar">Onde entregar</a></li><li><a href="mapa.html">Mapa dos pontos</a></li><li><a href="organiza.html">Organiza uma recolha</a></li><li><a href="cartaz.html">Cartaz para imprimir</a></li><li><a href="novidades.html">Novidades do Martim</a></li><li><a href="mural.html">Mural dos amigos</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Brochura para descarregar</a></li><li><a href="#doar">Doar por IBAN</a></li><li><a href="eventos/">Todos os eventos</a></li><li><a href="#perguntas">Dúvidas frequentes</a></li></ul>
+      <ul><li><a href="#entregar">Onde entregar</a></li><li><a href="mapa.html">Mapa dos pontos</a></li><li><a href="organiza.html">Organiza uma recolha</a></li><li><a href="cartaz.html">Cartaz para imprimir</a></li><li><a href="novidades.html">Novidades do Martim</a></li><li><a href="jogos.html">Jogos das tampinhas</a></li><li><a href="mural.html">Mural dos amigos</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Brochura para descarregar</a></li><li><a href="#doar">Doar por IBAN</a></li><li><a href="eventos/">Todos os eventos</a></li><li><a href="#perguntas">Dúvidas frequentes</a></li></ul>
+    </div>
+    <div class="foot-avisos">
+      <form class="avisos-form" id="avisos-form" novalidate>
+        <label for="av-email">Recebe um email quando houver novidades do Martim ou um evento novo</label>
+        <div class="av-row"><input type="email" id="av-email" autocomplete="email" placeholder="o teu email" required><input class="hp" id="av-site" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn btn-yellow" type="submit">Quero avisos</button></div>
+        <p class="av-st" id="av-st" aria-live="polite">Só usamos o email para isto. Cancelas em qualquer email.</p>
+      </form>
+      <a class="btn btn-ghost foot-wa" id="foot-wa" href="#" target="_blank" rel="noopener" hidden><svg aria-hidden="true"><use href="#i-wa"/></svg>Segue no WhatsApp</a>
     </div>
     <div class="fine"><span>© <span data-year>2026</span> <a href="https://demaosdadaspelomartim.pt/">De Mãos Dadas pelo Martim</a>. Todos os direitos reservados.<br>By <a href="https://nelsonjeronimo.pt" rel="noopener">nelsonjeronimo.pt</a></span><span><a href="privacidade.html">Política de privacidade</a> · <a href="cookies.html">Cookies</a> · <a href="en/index.html" lang="en" hreflang="en">English</a></span></div>
   </div>
@@ -633,9 +653,10 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
-<script src="js/eventos.js?v=202609262125"></script>
-<script src="js/mural-api.js?v=202609262125"></script>
-<script src="js/pontos.js?v=202609262125"></script>
+<script src="js/pecas.js?v=202609262215"></script>
+<script src="js/eventos.js?v=202609262215"></script>
+<script src="js/mural-api.js?v=202609262215"></script>
+<script src="js/pontos.js?v=202609262215"></script>
 <script src="/api/dados.js.php"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
@@ -689,34 +710,7 @@ document.querySelectorAll('[data-f]').forEach(b=>b.addEventListener('click',()=>
 
 /* ---------- o desafio das tampinhas: jogo de separar, uma peça de cada vez ---------- */
 const T=a=>a[LNG?1:0];
-const POOL=[
- {id:'agua',lv:1,icon:'cap',color:'#2AA7E8',bin:'plastico',label:['Tampa de garrafa de água','Water bottle cap'],ok:['Isso! Tampa de água vai para o plástico.','Yes! Water bottle caps go in plastic.'],hint:['É plástico, vai para o saco do plástico.','It’s plastic, so it goes in the plastic bag.']},
- {id:'champo',lv:2,icon:'cap',color:'#F0508C',bin:'plastico',label:['Tampa de champô','Shampoo cap'],ok:['Sim! Até as de champô cheirosas contam.','Yes! Even the nice-smelling shampoo caps count.'],hint:['Tampas de champô são plástico e são aceites.','Shampoo caps are plastic and they are accepted.']},
- {id:'amaciador',lv:2,icon:'cap',color:'#9B6BD1',bin:'plastico',label:['Tampa de amaciador','Fabric softener cap'],ok:['Certo! Amaciador conta como plástico.','Right! Fabric softener caps count as plastic.'],hint:['Tampas de amaciador são plástico e são aceites.','Fabric softener caps are plastic and accepted.']},
- {id:'detergente',lv:2,icon:'cap',color:'#2FA36B',bin:'plastico',label:['Tampa de detergente da loiça','Washing-up liquid cap'],ok:['Boa! Detergente também vai para o plástico.','Nice! Washing-up liquid caps go in plastic too.'],hint:['Tampas de detergente são plástico e são aceites.','Detergent caps are plastic and accepted.']},
- {id:'pasta',lv:2,icon:'cap',color:'#F4F6FA',bin:'plastico',label:['Tampa de pasta de dentes','Toothpaste cap'],ok:['Exato! Até a da pasta de dentes.','Exactly! Even the toothpaste cap.'],hint:['A tampa da pasta de dentes é plástico e conta.','The toothpaste cap is plastic and it counts.']},
- {id:'leite',lv:1,icon:'milk',bin:'plastico',label:['Tampa de pacote de leite','Milk carton cap'],ok:['Isso! As tampas dos pacotes de leite contam.','Yes! Milk carton caps count.'],hint:['É a tampa de plástico do pacote: vai para o plástico.','It’s the carton’s plastic cap: it goes in plastic.']},
- {id:'sumo',lv:1,icon:'milk',bin:'plastico',label:['Tampa de pacote de sumo','Juice carton cap'],ok:['Certo! Sumos e águas são as melhores.','Right! Juice and water caps are the best ones.'],hint:['É plástico de uma bebida: vai para o plástico.','It’s plastic from a drink: it goes in plastic.']},
- {id:'pega',lv:3,icon:'handle',bin:'plastico',label:['Pega de garrafão','Water-jug handle'],ok:['Exato! As pegas dos garrafões também são plástico.','Exactly! Water-jug handles are plastic too.'],hint:['As pegas dos garrafões são plástico e contam.','Water-jug handles are plastic and they count.']},
- {id:'cerveja',lv:1,icon:'carica',bin:'caricas',label:['Carica de cerveja','Beer bottle cap'],ok:['Boa! Caricas de metal num saco só delas.','Nice! Metal caps get a bag of their own.'],hint:['É metal: vai para as caricas, nunca com o plástico.','It’s metal: it goes with the metal caps, never with plastic.']},
- {id:'refri',lv:1,icon:'carica',bin:'caricas',label:['Carica de refrigerante em garrafa de vidro','Soft-drink bottle cap (glass bottle)'],ok:['Certo! Garrafa de vidro, carica de metal.','Right! Glass bottle, metal cap.'],hint:['As caricas das garrafas de vidro são metal.','Caps from glass bottles are metal.']},
- {id:'rolha',lv:1,icon:'cork',bin:'cortica',label:['Rolha de vinho, só cortiça','Wine cork, 100% cork'],ok:['Certo! 100% cortiça vai para a Amorim.','Right! 100% cork goes to Amorim.'],hint:['Se é 100% cortiça, vai para a cortiça.','If it’s 100% cork, it goes in the cork bag.']},
- {id:'spray',lv:3,icon:'spray',bin:'nao',label:['Borrifador de limpeza','Cleaning spray trigger'],ok:['Muito bem! Tem uma mola de ferro lá dentro, não serve.','Well done! It has a metal spring inside, so it can’t go.'],hint:['O borrifador tem uma mola de ferro: não é aceite.','The spray trigger has a metal spring: not accepted.']},
- {id:'sabonete',lv:3,icon:'pump',bin:'nao',label:['Doseador de sabonete líquido','Liquid soap pump'],ok:['Isso! A mola de ferro não deixa.','Yes! The metal spring rules it out.'],hint:['Os doseadores têm uma mola de ferro: não são aceites.','Pumps have a metal spring: not accepted.']},
- {id:'rolhaplast',lv:3,icon:'corkplastic',bin:'nao',label:['Rolha com topo de plástico','Cork with a plastic top'],ok:['Apanhaste-a! Rolhas misturadas não podem ir.','You got it! Mixed corks can’t go.'],hint:['Tem plástico no topo, por isso não é aceite.','It has a plastic top, so it isn’t accepted.']},
- {id:'tupper',lv:1,icon:'lid',color:'#9ED86B',bin:'nao',label:['Tampa de tupperware','Tupperware lid'],ok:['Isso mesmo, tupperware não é aceite.','That’s right, Tupperware isn’t accepted.'],hint:['Tampas de tupperware não são aceites.','Tupperware lids are not accepted.']},
- {id:'azeite',lv:3,icon:'cap',color:'#B8A12E',bin:'nao',label:['Tampa de garrafa de azeite','Olive oil bottle cap'],ok:['Boa! Embalagens com gordura não são aceites.','Nice! Anything that held fat isn’t accepted.'],hint:['Azeite, óleo e manteiga deixam gordura: não é aceite.','Olive oil, cooking oil and butter leave grease: not accepted.']},
- {id:'tinta',lv:3,icon:'lid',color:'#8A8F9C',bin:'nao',label:['Tampa de lata de tinta','Paint tin lid'],ok:['Certo! Tintas e vernizes ficam de fora.','Right! Paint and varnish stay out.'],hint:['Embalagens de tintas e vernizes não são aceites.','Paint and varnish containers are not accepted.']},
- {id:'rosca',lv:3,icon:'cap',color:'#B0B6C0',bin:'nao',label:['Tampa de plástico com rosca de metal','Plastic cap with a metal thread'],ok:['Muito bem! Plástico com metal não pode ir.','Well done! Plastic mixed with metal can’t go.'],hint:['Qualquer tampa com metal misturado não é aceite.','Any cap with metal mixed in is not accepted.']},
- {id:'seringa',lv:3,icon:'syringe',bin:'nao',label:['Tampa de seringa','Syringe cap'],ok:['Isso! Resíduos de hospital nunca.','Yes! Never hospital waste.'],hint:['Tampas de seringas e resíduos hospitalares não são aceites.','Syringe caps and hospital waste are not accepted.']},
- {id:'jerrican',lv:1,icon:'cap',color:'#E0301E',bin:'nao',label:['Tampa de jerrican','Jerrycan cap'],ok:['Certo! Jerricans ficam de fora.','Right! Jerrycans stay out.'],hint:['As tampas de jerricans não são aceites.','Jerrycan caps are not accepted.']},
- {id:'gel',lv:2,icon:'cap',color:'#7FC8A9',bin:'plastico',label:['Tampa de gel de banho','Shower gel cap'],ok:['Boa! Tampa de gel de banho é plástico.','Nice! Shower gel caps are plastic.'],hint:['É uma tampa de plástico: vai para o plástico.','It’s a plastic cap: it goes in plastic.']},
- {id:'lixivia',lv:2,icon:'cap',color:'#F2F3F6',bin:'plastico',label:['Tampa de garrafa de lixívia','Bleach bottle cap'],ok:['Certo! Passa-a por água e vai para o plástico.','Right! Give it a rinse and it goes in plastic.'],hint:['A tampa da lixívia é plástico.','A bleach cap is plastic.']},
- {id:'iogurte',lv:1,icon:'cap',color:'#F28AB3',bin:'plastico',label:['Tampa de iogurte líquido','Drinking-yoghurt cap'],ok:['Isso! Tampa de iogurte líquido é plástico.','Yes! Drinking-yoghurt caps are plastic.'],hint:['É uma tampa de plástico.','It’s a plastic cap.']},
- {id:'garrafao',lv:1,icon:'cap',color:'#2B5FA8',bin:'plastico',label:['Tampa de garrafão de água de 5 L','5-litre water jug cap'],ok:['Certo! A tampa do garrafão é plástico.','Right! The jug’s cap is plastic.'],hint:['A tampa vai para o plástico (o garrafão não).','The cap goes in plastic (the jug doesn’t).']},
- {id:'gas',lv:1,icon:'carica',bin:'caricas',label:['Carica de água com gás','Sparkling water bottle cap'],ok:['Boa! Carica de metal, saco das caricas.','Nice! Metal cap, metal-caps bag.'],hint:['As caricas de metal vão num saco só delas.','Metal caps go in a bag of their own.']},
- {id:'cafe',lv:3,icon:'cap',color:'#6B4A2B',bin:'nao',label:['Cápsula de café','Coffee capsule'],ok:['Certo! Cápsulas de café não são tampas.','Right! Coffee capsules are not caps.'],hint:['Parece uma tampa, mas não é: fica de fora.','It looks like a cap, but it isn’t: leave it out.']},
-];
+const POOL=window.PECAS;
 const LEVELS={1:{n:6,pt:'fácil',en:'easy'},2:{n:10,pt:'normal',en:'normal'},3:{n:10,pt:'difícil',en:'hard'}};
 let LEVEL=2;try{LEVEL=+localStorage.getItem('ficha-nivel')||2}catch(e){}if(!LEVELS[LEVEL])LEVEL=2;
 let ROUND=LEVELS[LEVEL].n;
@@ -901,6 +895,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 updCount();
 </script>
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=202609262125"></script>
+<script src="js/site.js?v=202609262215"></script>
 </body>
 </html>
