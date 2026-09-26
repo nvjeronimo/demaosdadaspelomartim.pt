@@ -679,6 +679,12 @@ Purposeful and quiet, all off under `prefers-reduced-motion`:
 ### Margin Line
 The red margin line that runs down every paper section (and the hero sheet) is always the same: 2px, dashed (10px red, 8px gap), at 60% opacity. It no longer thickens or switches between solid and dashed as sections scroll into view.
 
+### News (home section and `novidades.html`)
+"Novidades do Martim." sits before the album and stays hidden until the parents publish the first item. Up to three white ink-bordered cards: 4:3 photo on top with an ink rule, the date in pen handwriting, a Bricolage title, a 160-character excerpt in pencil and "Ler mais →". The news page lists every item in full: handwritten date, headline, taped photo tilted -1°, text with line breaks kept and an optional "Ver no Facebook →". Empty state: a dashed handwritten note "As primeiras novidades chegam em breve."
+
+### Parents' Panel (`/painel/`)
+A plain, phone-first admin in the site's colours and fonts (not part of the notebook world): night-blue header, sticky pill tabs, white ink-bordered cards, 17px Atkinson, action-colour buttons, emoji tiles on the start screen. It edits news, events, the album (captions, filter, small label, date, visibility, order), collection points (tap a Leaflet map to place them) and the latest result. Everything public reads `/api/dados.js.php` and falls back to the static page content if it fails. Panel-made events get `evento.html?id=N`; the hero slide and agenda pick them up with the static events.
+
 ### Share Images per Event
 Each event page has its own Open Graph image in `img/og/<slug>.jpg` (1200×630): white logo on the night-blue cover, the date in orange handwriting, the title in Bricolage, the place, the domain, and the event poster or photo as a taped polaroid on the right with the event kind as caption. Other pages use `img/og.jpg`.
 

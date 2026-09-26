@@ -1,6 +1,6 @@
 # De mãos dadas pelo Martim · DreamHost (Apache)
 Options -Indexes
-DirectoryIndex index.html
+DirectoryIndex index.html index.php
 
 # https e sem www (certificado Let's Encrypt ativo na DreamHost)
 RewriteEngine On
