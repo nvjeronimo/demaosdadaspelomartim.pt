@@ -608,9 +608,7 @@ A plain ruled list (max 880px, 2px ink top rule, 1.5px rule rows). Each question
 The full composition essay (1.16rem/1.8) beside a column of framed photos and a slide, alternating ±2°.
 
 ### Legal Pages (secondary page)
-- **Layout:** a sticky 230px contents list with a handwritten heading, beside a body of up to 70ch with 1.5–1.9rem headings.
-- **Draft banner:** marked text that is still a draft sits on a white note with a pencil dashed border, and `.todo` spans carry the highlighter wash with a dashed red underline. They mark unfinished legal text and must be resolved before launch.
-- **Cookies page:** a scrollable table with code in highlighter-wash chips, and a "forget my cover" button that clears the saved choice.
+Privacy and cookies are final (version 1.0, in force since 26 September 2026; no draft notes). Privacy has a table of contents and, under "Que dados recolhemos e porquê", a four-column table (where, what data, what for, GDPR legal basis) that becomes stacked blocks on phones with small uppercase column labels (English labels via `:lang(en)`). Sections: who we are, data and why, retention, sharing, children (under 13 with an adult; first names only), photos, donations, security, rights (reply within a month, CNPD), contact. Cookies lists every browser-memory key and the single cookie (`mdm_painel`, parents' panel only), explains why no consent banner is needed, and has "Esquecer tudo o que o site guardou". Any new stored key, data flow or third party must be added to both pages.
 
 ### 404
 A subhero with a 6–14rem Bricolage "404" in the cover text colour over a highlighter swipe (aria-hidden), so it reads on light and dark covers, plus the usual crumbs and lede.

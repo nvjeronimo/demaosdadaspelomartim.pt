@@ -1444,3 +1444,19 @@ footer .fine a{font-weight:400}
 .foot-wa{margin-left:auto;align-self:center}
 @media (max-width:760px){.foot-wa{margin-left:0}}
 .label small{width:86px}
+/* tabela da política de privacidade: em blocos no telemóvel */
+@media (max-width:760px){
+  #dados + .tablewrap .legal-table thead{display:none}
+  #dados + .tablewrap .legal-table,#dados + .tablewrap .legal-table tbody,#dados + .tablewrap .legal-table tr,#dados + .tablewrap .legal-table td{display:block;width:auto}
+  #dados + .tablewrap .legal-table tr{padding:12px 14px;border-bottom:1.5px solid var(--rule)}
+  #dados + .tablewrap .legal-table td{padding:2px 0;border:0}
+  #dados + .tablewrap .legal-table td:first-child{font-size:1.05rem;margin-bottom:4px}
+  #dados + .tablewrap .legal-table td:nth-child(n+2)::before{display:block;font:700 .7rem/1.4 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--pencil);margin-top:6px}
+  #dados + .tablewrap .legal-table td:nth-child(2)::before{content:"Que dados"}
+  #dados + .tablewrap .legal-table td:nth-child(3)::before{content:"Para quê"}
+  #dados + .tablewrap .legal-table td:nth-child(4)::before{content:"Base legal"}
+  :lang(en) #dados + .tablewrap .legal-table td:nth-child(2)::before{content:"What data"}
+  :lang(en) #dados + .tablewrap .legal-table td:nth-child(3)::before{content:"What for"}
+  :lang(en) #dados + .tablewrap .legal-table td:nth-child(4)::before{content:"Legal basis"}
+}
+@media (max-width:760px){#dados + .tablewrap .legal-table{min-width:0!important;table-layout:auto}#dados + .tablewrap{overflow:visible}#dados + .tablewrap .legal-table td{white-space:normal;overflow-wrap:anywhere}}
