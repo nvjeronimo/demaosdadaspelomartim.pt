@@ -541,7 +541,7 @@ The hero's right sheet is a maths problem. The question is in Atkinson (pencil g
 
 ### Share
 A row of pill buttons for sharing the diploma and events.
-- **Label:** a handwritten prompt in pen ("Desafia os teus amigos:", "Partilha este evento:").
+- **Label:** a handwritten prompt in pen ("Desafia os teus amigos:", "Partilha este evento:") on the same line as the buttons, before them; on phones it takes its own centred line.
 - **Native share:** an action button with the share icon, shown only when `navigator.share` exists, so on phones it leads. On the compact next-event cover cards it is a white pill like the others, but still first in the row.
 - **Networks:** WhatsApp, Facebook, X, TikTok and copy link. TikTok has no web share link, so its button copies the text and link, then opens tiktok.com/upload; on the diploma it first hands the diploma PNG to the phone's share sheet (where TikTok appears) or downloads it, with a caption and hashtags copied. Each is a white pill with a 2px ink border, Atkinson 700 at 0.95rem and an 18px monochrome ink icon drawn as an SVG symbol (i-wa, i-fb, i-xs, i-link, i-share). Hover fills with the highlighter. Copy confirms with "Copiado".
 - **Where:** the diploma (with the player's score in the text), every event page (in the actions row, with event-specific text in `data-share-text`, translated for EN), and a compact on-cover version (0.85rem, WhatsApp and Facebook) on the next-event cards.
@@ -685,6 +685,28 @@ The red margin line that runs down every paper section (and the hero sheet) is a
 ### Parents' Panel (`/painel/`)
 A plain, phone-first admin in the site's colours and fonts (not part of the notebook world): night-blue header, sticky pill tabs, white ink-bordered cards, 17px Atkinson, action-colour buttons, emoji tiles on the start screen. It edits news, events, the album (captions, filter, small label, date, visibility, order), collection points (tap a Leaflet map to place them) and the latest result. Everything public reads `/api/dados.js.php` and falls back to the static page content if it fails. Panel-made events get `evento.html?id=N`; the hero slide and agenda pick them up with the static events.
 
+### Games Page (`jogos.html`)
+Five short games under one subhero, with chip anchors at the top; pieces come from `js/pecas.js` (26 items shared with the diploma challenge), logic in `js/jogos.js`:
+- **Calculator "Quanto valem as tuas tampas?":** three sliders (plastic caps, metal caps, cork stoppers per week) and three result cards (you in a year, 100 neighbours, the village of 1,000 families; the middle one on the highlighter wash) showing caps, kg, €, BigBags and treatment days. Honest maths from the real rates (2 g per cap or metal cap, 4 g per stopper); a share row with a generated sentence.
+- **"Tampa ou não tampa?":** 10 of 16 true/false statements, Bricolage question, two big buttons, green or red handwritten explanation, and a list of the rules that caught the player out.
+- **Memory:** 4×4 night-blue cards with a "?" that flip to white faces (pictogram + name); each pair found says which bag it goes in.
+- **"Adivinha o peso":** three log-scale sliders (caps per kg ≈ 500, per BigBag ≈ 150,000, per month ≈ 8 million) scored with stars.
+- **"A rasteira da semana":** one tricky item picked by ISO week, four bins, one try, remembered in the browser.
+"Mais jogos" is promoted in a cover-coloured block after the diploma challenge (four emoji tiles + action button), on the "Guardar tampas" card, next to the diploma, on the wall, the collection guide, the 404 and the footer.
+
+### Year Counter, Schools and Email Notifications
+- **Year counter** (home, under the latest result): a night-blue card with the year in handwriting and three figures (kg delivered, € for treatments, treatment days), computed from the kilos the parents enter in the panel; hidden while zero.
+- **Schools challenge** (wall page): a ranked list with gold/silver/bronze discs, kg and jugs per school, managed in the panel.
+- **Notifications** (footer, every page): email field + "Quero avisos" with double opt-in (`api/avisos.php`), one-click unsubscribe; the parents tick "Avisar por email" when publishing news or an event. "Segue no WhatsApp" appears only when the panel has a channel link, centred at the right of the form.
+
+### "Tampas por todo o lado" (map page)
+Visitors tap the map to mark their locality; points are rounded to about 5 km (`api/pins.php`, no personal data, 3 per day) and drawn as orange circles sized by count. The wording is always "localidade", never "terra".
+
+### Sticker, Press and Event Kit
+- **Sticker** (third A4 on `cartaz.html`): a night-blue round seal with "PONTO DE RECOLHA · AMIGO DO MARTIM · Nº 167" on a circular path, the logo on a white tab, "Aqui recolhemos tampas" and a QR code to the map, plus four small seals for the containers; prints as "Selo ponto amigo Martim - <local>".
+- **Press** (`imprensa.html`): the story, the numbers, six downloadable photos, SVG logos, the booklet and contacts.
+- **Event kit** (`kit.html`): event name/date/place/organiser feed a live A4 poster (print), a 1080×1080 PNG drawn on canvas in the cover colours, and ready-to-copy social text.
+
 ### Share Images per Event
 Each event page has its own Open Graph image in `img/og/<slug>.jpg` (1200×630): white logo on the night-blue cover, the date in orange handwriting, the title in Bricolage, the place, the domain, and the event poster or photo as a taped polaroid on the right with the event kind as caption. Other pages use `img/og.jpg`.
 
@@ -695,6 +717,8 @@ White, 2px ink outline, paper header band with uppercase labels, 1.5px rule rows
 ## Do's and Don'ts
 
 ### Do:
+- **Do** let the `hidden` attribute always win (`[hidden]:not(.paleta-panel){display:none!important}`); component display rules such as `.btn{display:inline-flex}` otherwise leak hidden elements.
+- **Do** say "localidade" (not "terra") for where people live, on the site, the wall and the map.
 - **Do** add new events only to `EVENTS` in `tools/build_pages.py` (date, end, time, where, fee, poster, en{}); the build writes `js/eventos.js` and the hero slide and home agenda card pick the next event by today's date, falling back to "próximo evento: em breve" with an invitation to organise one.
 - **Do** keep fonts self-hosted (`css/fonts.css`, `fonts/*.woff2`, latin + latin-ext, Bricolage variable 75–100% width) and never re-add Google Fonts.
 - **Do** let `tools/webp.py` create `.jpg.webp` siblings; the DreamHost `.htaccess` serves them to browsers that accept WebP (about a third of the size).
