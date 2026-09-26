@@ -266,3 +266,16 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
   b.addEventListener('click',()=>set(!g.classList.contains('full')));
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&g.classList.contains('full'))set(false)});
 })();
+
+/* ---------- estatísticas sem cookies (api/stats.php): só no domínio oficial; respeita "não seguir" ---------- */
+(()=>{
+  if(!/(^|\.)demaosdadaspelomartim\.pt$/.test(location.hostname)||navigator.doNotTrack==='1'||navigator.globalPrivacyControl)return;
+  const send=(t,k)=>{const b=JSON.stringify({t,k});try{navigator.sendBeacon?navigator.sendBeacon('/api/stats.php',new Blob([b],{type:'text/plain'})):fetch('/api/stats.php',{method:'POST',body:b,keepalive:true})}catch(e){}};
+  window.conta=k=>send('e',k);
+  send('v',location.pathname.replace(/index\.html$/,''));
+  document.addEventListener('click',e=>{const a=e.target.closest('[data-share],[data-print],#perto,#dip-save,#game-full,a[href$=".pdf"],#m-send');if(!a)return;
+    if(a.dataset.share)return conta('partilha_'+a.dataset.share+(a.closest('#game-share')?'_diploma':''));
+    if(a.dataset.print)return conta('imprimir_'+a.dataset.print);
+    if(a.matches('a[href$=".pdf"]'))return conta('brochura_pdf');
+    conta({perto:'mapa_perto','dip-save':'diploma_guardar','game-full':'desafio_ecra_inteiro','m-send':'mural_pedido'}[a.id]||a.id)});
+})();
