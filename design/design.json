@@ -1475,7 +1475,7 @@
     },
     "map": {
       "library": "Leaflet 1.9.4 (cdnjs) over OpenStreetMap tiles, slightly desaturated",
-      "markers": "cap-shaped discs in the point-type colour: school #FF7A1A, community #12884A, health #E0301E, sport #2B5FA8, business #7A4FB0",
+      "markers": "cap-shaped discs by point type: school #2B6FC8, community #7A4FB0, health #0B7A93, sport #C2407A, business #8A5A2B (no red/green/yellow: not a traffic light)",
       "nearest": "geolocation only on tap, never leaves the browser; sorts the list and opens the closest"
     },
     "domain": {

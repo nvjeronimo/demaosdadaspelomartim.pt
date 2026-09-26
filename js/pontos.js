@@ -1,11 +1,12 @@
 /* Pontos de recolha: fonte única para a home (tabela) e para mapa.html.
    Para acrescentar um ponto, copia uma linha. aprox:true = localização aproximada, a confirmar. */
+/* cores dos tipos: sem vermelho, verde nem amarelo (não parecer um semáforo de aberto/fechado) */
 window.TIPOS={
-  escola:{pt:'Escola',en:'School',c:'#FF7A1A'},
-  comunidade:{pt:'Comunidade',en:'Community',c:'#12884A'},
-  saude:{pt:'Saúde',en:'Health',c:'#E0301E'},
-  desporto:{pt:'Desporto',en:'Sport',c:'#2B5FA8'},
-  comercio:{pt:'Comércio',en:'Business',c:'#7A4FB0'}
+  escola:{pt:'Escola',en:'School',c:'#2B6FC8'},
+  comunidade:{pt:'Comunidade',en:'Community',c:'#7A4FB0'},
+  saude:{pt:'Saúde',en:'Health',c:'#0B7A93'},
+  desporto:{pt:'Desporto',en:'Sport',c:'#C2407A'},
+  comercio:{pt:'Comércio',en:'Business',c:'#8A5A2B'}
 };
 window.PONTOS=[
   {n:'CD Boliqueime',t:'desporto',l:'Boliqueime',lat:37.13218,lng:-8.14671},
