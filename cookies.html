@@ -5,7 +5,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="De mãos dadas pelo Martim">
 <meta property="og:title" content="Cookies · De mãos dadas pelo Martim">
-<meta property="og:description" content="O site De mãos dadas pelo Martim não usa cookies de publicidade nem de estatística. Só guarda a capa escolhida.">
+<meta property="og:description" content="O site De mãos dadas pelo Martim não usa cookies de publicidade nem de rastreio: só memória do navegador para lembrar as tuas escolhas.">
 <meta property="og:image" content="https://demaosdadaspelomartim.pt/img/og.jpg">
 <meta property="og:url" content="https://demaosdadaspelomartim.pt/cookies.html">
 <link rel="canonical" href="https://demaosdadaspelomartim.pt/cookies.html">
@@ -14,13 +14,13 @@
 <title>Cookies · De mãos dadas pelo Martim</title>
 <link rel="alternate" hreflang="pt" href="cookies.html">
 <link rel="alternate" hreflang="en" href="en/cookies.html">
-<meta name="description" content="O site De mãos dadas pelo Martim não usa cookies de publicidade nem de estatística. Só guarda a capa escolhida.">
+<meta name="description" content="O site De mãos dadas pelo Martim não usa cookies de publicidade nem de rastreio: só memória do navegador para lembrar as tuas escolhas.">
 <link rel="icon" type="image/svg+xml" href="img/marca/favicon.svg">
 <link rel="apple-touch-icon" href="img/marca/apple-touch-icon.png">
 <link rel="preload" href="fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=202609262219">
-<link rel="stylesheet" href="css/site.css?v=202609262219">
+<link rel="stylesheet" href="css/fonts.css?v=202609262229">
+<link rel="stylesheet" href="css/site.css?v=202609262229">
 </head>
 <body class="sub">
 
@@ -102,15 +102,14 @@
   <div class="subhero-in">
     <nav class="crumbs" aria-label="Estás aqui"><a href="index.html">Início</a> <span aria-hidden="true">›</span> <span aria-current="page">Cookies</span></nav>
     <h1 id="h1">Cookies e memória do navegador.</h1>
-    <p class="lede">Este site não usa cookies de publicidade nem de estatística. Só guarda a capa do caderno que escolheste.</p>
+    <p class="lede">Este site não usa cookies de publicidade nem de rastreio. Nas páginas públicas não há cookies: só memória do navegador para lembrar as tuas escolhas.</p>
   </div>
-  <div class="label" aria-label="Etiqueta do caderno"><div class="row"><small>Cookies</small><span class="hand">nenhum</span></div><div class="row"><small>Estatística</small><span class="hand">não</span></div><div class="row"><small>Publicidade</small><span class="hand">não</span></div></div>
+  <div class="label" aria-label="Etiqueta do caderno"><div class="row"><small>Cookies</small><span class="hand">só no painel dos pais</span></div><div class="row"><small>Rastreio</small><span class="hand">não</span></div><div class="row"><small>Publicidade</small><span class="hand">não</span></div></div>
 </section>
 <div class="spiral-h" aria-hidden="true"></div>
 
 <section class="page">
   <div class="inner legal legal-single">
-    <div class="note note-todo"><p><b>Rascunho para validação.</b> Este texto é uma proposta. A família deve rever esta lista antes de publicar e sempre que o site mudar.</p></div>
     <div class="legal-body">
       <h2>O que fica guardado no teu navegador</h2>
       <div class="tablewrap"><table class="rates legal-table">
@@ -125,7 +124,7 @@
           <tr><td><code>cartaz-local</code></td><td>Lembrar o nome do local que escreveste no cartaz para imprimir.</td><td>Memória local do navegador</td><td>Até a apagares</td></tr>
         </tbody>
       </table></div>
-      <p>Nada disto é um cookie e nada sai do teu computador ou telemóvel. Só fica guardado se usares essa parte do site.</p>
+      <p>Com exceção do cookie de sessão do painel dos pais, nada disto é um cookie e nada sai do teu computador ou telemóvel. Só fica guardado se usares essa parte do site. Como é tudo estritamente necessário para as funções que pedes, não é preciso pedir consentimento nem mostrar um aviso de cookies.</p>
       <div class="forget">
         <button class="btn btn-line" type="button" id="esquecer">Esquecer tudo o que o site guardou</button>
         <span class="small" id="esquecer-msg" aria-live="polite"></span>
@@ -142,14 +141,14 @@
       <h2>Como apagar tudo</h2>
       <p>Podes apagar os dados deste site nas definições do teu navegador (por exemplo, "Limpar dados de navegação" no Chrome ou "Gerir dados de sites" no Safari).</p>
       <p>Sobre os dados que nos envias pelo formulário, lê a <a href="privacidade.html">política de privacidade</a>.</p>
-      <p class="small">Última atualização: 25 de setembro de 2026.</p>
+      <p class="small">Versão 1.0 · em vigor desde 26 de setembro de 2026.</p>
     </div>
   </div>
 </section>
 <script>
 document.getElementById('esquecer').addEventListener('click',()=>{
   let ok=true;try{['paleta','ficha-nome','ficha-nivel','ficha-vistos','mural-meu','mural-ok','mural-enviados','cartaz-local','rasteira','pin-feito','kit-evento'].forEach(k=>localStorage.removeItem(k))}catch(e){ok=false}
-  document.getElementById('esquecer-msg').textContent=ok?'Feito. Na próxima visita o site abre com a capa Azul-noite.':'O teu navegador não deixou apagar. Usa as definições do navegador.';
+  document.getElementById('esquecer-msg').textContent=ok?'Feito. Apagámos tudo o que o site tinha guardado neste navegador.':'O teu navegador não deixou apagar. Usa as definições do navegador.';
 });
 </script>
 
@@ -194,6 +193,6 @@ document.getElementById('esquecer').addEventListener('click',()=>{
 
 <script src="/api/dados.js.php"></script>
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=202609262219"></script>
+<script src="js/site.js?v=202609262229"></script>
 </body>
 </html>

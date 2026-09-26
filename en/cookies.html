@@ -5,7 +5,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="De mãos dadas pelo Martim">
 <meta property="og:title" content="Cookies · Hand in Hand for Martim">
-<meta property="og:description" content="The Hand in Hand for Martim website uses no advertising or analytics cookies. It only remembers the cover you chose.">
+<meta property="og:description" content="The website Hand in Hand for Martim uses no advertising or tracking cookies: only browser memory to remember your choices.">
 <meta property="og:image" content="https://demaosdadaspelomartim.pt/img/og.jpg">
 <meta property="og:url" content="https://demaosdadaspelomartim.pt/en/cookies.html">
 <link rel="canonical" href="https://demaosdadaspelomartim.pt/en/cookies.html">
@@ -14,13 +14,13 @@
 <title>Cookies · Hand in Hand for Martim</title>
 <link rel="alternate" hreflang="pt" href="../cookies.html">
 <link rel="alternate" hreflang="en" href="cookies.html">
-<meta name="description" content="The Hand in Hand for Martim website uses no advertising or analytics cookies. It only remembers the cover you chose.">
+<meta name="description" content="The website Hand in Hand for Martim uses no advertising or tracking cookies: only browser memory to remember your choices.">
 <link rel="icon" type="image/svg+xml" href="../img/marca/favicon.svg">
 <link rel="apple-touch-icon" href="../img/marca/apple-touch-icon.png">
 <link rel="preload" href="../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/fonts.css?v=202609262219">
-<link rel="stylesheet" href="../css/site.css?v=202609262219">
+<link rel="stylesheet" href="../css/fonts.css?v=202609262229">
+<link rel="stylesheet" href="../css/site.css?v=202609262229">
 </head>
 <body class="sub">
 
@@ -102,15 +102,14 @@
   <div class="subhero-in">
     <nav class="crumbs" aria-label="You are here"><a href="index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Cookies</span></nav>
     <h1 id="h1">Cookies and browser memory.</h1>
-    <p class="lede">This website uses no advertising or analytics cookies. It only remembers the notebook cover you chose.</p>
+    <p class="lede">This website uses no advertising or tracking cookies. Public pages set no cookies: only browser memory to remember your choices.</p>
   </div>
-  <div class="label" aria-label="Notebook label"><div class="row"><small>Cookies</small><span class="hand">none</span></div><div class="row"><small>Analytics</small><span class="hand">no</span></div><div class="row"><small>Advertising</small><span class="hand">no</span></div></div>
+  <div class="label" aria-label="Notebook label"><div class="row"><small>Cookies</small><span class="hand">only in the parents’ panel</span></div><div class="row"><small>Tracking</small><span class="hand">no</span></div><div class="row"><small>Advertising</small><span class="hand">no</span></div></div>
 </section>
 <div class="spiral-h" aria-hidden="true"></div>
 
 <section class="page">
   <div class="inner legal legal-single">
-    <div class="note note-todo"><p><b>Draft for review.</b> This text is a proposal. The family should review this list before publishing and whenever the website changes.</p></div>
     <div class="legal-body">
       <h2>What is stored in your browser</h2>
       <div class="tablewrap"><table class="rates legal-table">
@@ -125,7 +124,7 @@
           <tr><td><code>cartaz-local</code></td><td>Remember the place name you typed on the printable poster.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
         </tbody>
       </table></div>
-      <p>None of this is a cookie and nothing leaves your computer or phone. It is only stored if you use that part of the website.</p>
+      <p>Apart from the session cookie of the parents’ panel, none of this is a cookie and nothing leaves your computer or phone. It is only stored if you use that part of the website. As all of it is strictly necessary for the features you ask for, no consent or cookie banner is needed.</p>
       <div class="forget">
         <button class="btn btn-line" type="button" id="esquecer">Forget everything the website stored</button>
         <span class="small" id="esquecer-msg" aria-live="polite"></span>
@@ -142,14 +141,14 @@
       <h2>How to delete everything</h2>
       <p>You can delete this website's data in your browser settings (for example, "Clear browsing data" in Chrome or "Manage Website Data" in Safari).</p>
       <p>For the data you send us through the form, read the <a href="privacidade.html">privacy policy</a>.</p>
-      <p class="small">Last updated: 25 September 2026.</p>
+      <p class="small">Version 1.0 · in force since 26 September 2026.</p>
     </div>
   </div>
 </section>
 <script>
 document.getElementById('esquecer').addEventListener('click',()=>{
   let ok=true;try{['paleta','ficha-nome','ficha-nivel','ficha-vistos','mural-meu','mural-ok','mural-enviados','cartaz-local','rasteira','pin-feito','kit-evento'].forEach(k=>localStorage.removeItem(k))}catch(e){ok=false}
-  document.getElementById('esquecer-msg').textContent=ok?'Done. On your next visit the website opens with the Midnight cover.':'Your browser didn’t allow it. Use your browser settings instead.';
+  document.getElementById('esquecer-msg').textContent=ok?'Done. We deleted everything the website had stored in this browser.':'Your browser didn’t allow it. Use your browser settings instead.';
 });
 </script>
 
@@ -194,6 +193,6 @@ document.getElementById('esquecer').addEventListener('click',()=>{
 
 <script src="/api/dados.js.php"></script>
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202609262219"></script>
+<script src="../js/site.js?v=202609262229"></script>
 </body>
 </html>
