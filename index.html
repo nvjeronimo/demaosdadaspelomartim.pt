@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=202609260909">
+<link rel="stylesheet" href="css/site.css?v=202609260953">
 </head>
 <body>
 
@@ -67,6 +67,7 @@
     <symbol id="i-tt" viewBox="0 0 24 24"><path d="M13.5 3v11.6a3.6 3.6 0 1 1-3.6-3.6" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 3.2c.5 2.7 2.4 4.5 5.3 4.8" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></symbol>
     <symbol id="i-xs" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M6 2.8h8.2L19 7.6V20a1.2 1.2 0 0 1-1.2 1.2H6A1.2 1.2 0 0 1 4.8 20V4A1.2 1.2 0 0 1 6 2.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2.8v4.8h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><text x="12" y="17.2" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="6.2" fill="currentColor">PDF</text></symbol>
     <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-map" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="9.5" r="2.4" fill="currentColor"/></symbol>
     <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3l10 18H2z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M12 10v5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="18" r="1.3" fill="currentColor"/></symbol>
@@ -220,7 +221,7 @@
           <caption>Quanto vale cada material</caption>
           <thead><tr><th scope="col">Material</th><th scope="col" style="text-align:right">Por tonelada</th><th scope="col" style="text-align:right">1 BigBag ≈</th></tr></thead>
           <tbody>
-            <tr><td><div class="mat"><svg style="color:var(--cap-orange)" aria-hidden="true"><use href="#cap"/></svg><div>Tampas de plástico<small><span class="logo-chip xs"><img class="logo-img " src="img/parceiros/resialentejo.svg" alt="Resialentejo" loading="lazy"></span> Beja</small></div></div></td><td class="eur num">411,60 €</td><td class="bag num">123 €</td></tr>
+            <tr><td><div class="mat"><svg style="color:var(--cap-plastic)" aria-hidden="true"><use href="#cap"/></svg><div>Tampas de plástico<small><span class="logo-chip xs"><img class="logo-img " src="img/parceiros/resialentejo.svg" alt="Resialentejo" loading="lazy"></span> Beja</small></div></div></td><td class="eur num">411,60 €</td><td class="bag num">123 €</td></tr>
             <tr><td><div class="mat"><svg aria-hidden="true"><use href="#carica"/></svg><div>Caricas de metal<small><span class="logo-chip xs"><img class="logo-img " src="img/parceiros/resialentejo.svg" alt="Resialentejo" loading="lazy"></span> Beja</small></div></div></td><td class="eur num">465,60 €</td><td class="bag num">140 €</td></tr>
             <tr><td><div class="mat"><svg aria-hidden="true"><use href="#cork"/></svg><div>Rolhas 100% cortiça<small><span class="logo-chip xs"><img class="logo-img " src="img/parceiros/amorim.png" alt="Amorim" loading="lazy"></span> Silves</small></div></div></td><td class="eur num">500,00 €</td><td class="bag num">—</td></tr>
           </tbody>
@@ -248,6 +249,7 @@
     </div>
     <div class="worksheet game" id="game">
       <div class="stamp" id="stamp" aria-hidden="true"><div>Muito<br>bem!<small>assinado: Martim</small></div></div>
+      <button class="game-full" type="button" id="game-full" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Ecrã inteiro</span></button>
       <div class="ws-head">
         <label class="name-field" for="g-name"><span class="hand">Nome:</span><input id="g-name" type="text" maxlength="24" autocomplete="given-name" placeholder="o teu nome"></label>
         <div class="levels" role="group" aria-label="Nível do desafio"><span class="hand">Nível:</span><button type="button" data-lv="1" aria-pressed="false">Fácil <small>6 peças</small></button><button type="button" data-lv="2" aria-pressed="true">Normal <small>10 peças</small></button><button type="button" data-lv="3" aria-pressed="false">Difícil <small>com rasteiras</small></button></div>
@@ -259,7 +261,7 @@
       </div>
       <p class="how hand" id="how">Clica na categoria que achas correta:</p>
       <div class="bins" id="bins" role="group" aria-label="Sacos">
-        <button class="bin" type="button" data-bin="plastico"><svg aria-hidden="true" style="color:var(--cap-orange)"><use href="#bag"/></svg><b>Plástico</b><small>tampas e pegas</small><span class="count num">0</span></button>
+        <button class="bin" type="button" data-bin="plastico"><svg aria-hidden="true" style="color:var(--cap-plastic)"><use href="#bag"/></svg><b>Plástico</b><small>tampas e pegas</small><span class="count num">0</span></button>
         <button class="bin" type="button" data-bin="caricas"><svg aria-hidden="true"><use href="#bag"/></svg><b>Caricas</b><small>metal</small><span class="count num">0</span></button>
         <button class="bin" type="button" data-bin="cortica"><svg aria-hidden="true"><use href="#bag"/></svg><b>Cortiça</b><small>só 100% cortiça</small><span class="count num">0</span></button>
         <button class="bin bin-no" type="button" data-bin="nao"><svg aria-hidden="true"><use href="#nope"/></svg><b>Não aceite</b><small>vai para o ecoponto</small><span class="count num">0</span></button>
@@ -356,7 +358,7 @@
         </details>
         <p>Faço <span class="hl">3 a 4 tratamentos intensivos por ano</span> na Clínica Kinésio, em Espinho. Cada um dura um mês, longe de casa com a minha mãe, e custa <span class="hl">6 740 €</span>.</p>
         <p class="sign">Martim</p>
-        <p style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn-line" href="historia.html">Ler a história completa <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="brochura.html"><svg aria-hidden="true"><use href="#i-down"/></svg>Brochura para partilhar</a></p>
+        <p style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn-line" href="historia.html">Ler a história completa <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="brochura.html"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Brochura para partilhar</a></p>
       </div>
       <div class="album">
         <figure class="photo p1"><span class="tape" aria-hidden="true"></span><img src="img/martim-relva.jpg" alt="O Martim sentado na relva, com ortóteses azuis nos tornozelos" width="1400" height="1400" loading="lazy"><figcaption>no jardim</figcaption></figure>
@@ -590,7 +592,7 @@
     </div>
     <div>
       <h3>Atalhos</h3>
-      <ul><li><a href="#entregar">Onde entregar</a></li><li><a href="mapa.html">Mapa dos pontos</a></li><li><a href="organiza.html">Organiza uma recolha</a></li><li><a href="cartaz.html">Cartaz para imprimir</a></li><li><a href="mural.html">Mural dos amigos</a></li><li><a href="brochura.html">Brochura para descarregar</a></li><li><a href="#doar">Doar por IBAN</a></li><li><a href="eventos/">Todos os eventos</a></li><li><a href="#perguntas">Dúvidas frequentes</a></li></ul>
+      <ul><li><a href="#entregar">Onde entregar</a></li><li><a href="mapa.html">Mapa dos pontos</a></li><li><a href="organiza.html">Organiza uma recolha</a></li><li><a href="cartaz.html">Cartaz para imprimir</a></li><li><a href="mural.html">Mural dos amigos</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Brochura para descarregar</a></li><li><a href="#doar">Doar por IBAN</a></li><li><a href="eventos/">Todos os eventos</a></li><li><a href="#perguntas">Dúvidas frequentes</a></li></ul>
     </div>
     <div class="fine"><span>© <span data-year>2026</span> <a href="https://demaosdadaspelomartim.pt/">De Mãos Dadas pelo Martim</a>. Todos os direitos reservados.<br>By <a href="https://nelsonjeronimo.pt" rel="noopener">nelsonjeronimo.pt</a></span><span><a href="privacidade.html">Política de privacidade</a> · <a href="cookies.html">Cookies</a> · <a href="en/index.html" lang="en" hreflang="en">English</a></span></div>
   </div>
@@ -606,8 +608,8 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
-<script src="js/mural-api.js?v=202609260909"></script>
-<script src="js/pontos.js?v=202609260909"></script>
+<script src="js/mural-api.js?v=202609260953"></script>
+<script src="js/pontos.js?v=202609260953"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
 const LNG=document.documentElement.lang==='en';
@@ -725,7 +727,7 @@ function start(){
 function show(){
   if(!t0)t0=performance.now();
   const it=deck[pos];
-  G.card.innerHTML=`<svg aria-hidden="true" style="color:${it.color||'#FF7A1A'}"><use href="#${it.icon}"/></svg><span>${T(it.label)}</span><small class="num">${pos+1} / ${deck.length}</small>`;
+  G.card.innerHTML=`<svg aria-hidden="true" style="color:${it.color||'#5AB8E6'}"><use href="#${it.icon}"/></svg><span>${T(it.label)}</span><small class="num">${pos+1} / ${deck.length}</small>`;
   G.card.classList.remove('in');void G.card.offsetWidth;G.card.classList.add('in');
 }
 function upd(){G.score.textContent=right+' / '+ROUND}
@@ -866,6 +868,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 updCount();
 </script>
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=202609260909"></script>
+<script src="js/site.js?v=202609260953"></script>
 </body>
 </html>

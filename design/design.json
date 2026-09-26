@@ -571,6 +571,12 @@
           "#C2BBAA",
           "#FFFDF7"
         ]
+      },
+      "cap-plastic": {
+        "role": "accent",
+        "displayName": "Plastic Cap Blue",
+        "canonical": "#5AB8E6",
+        "note": "Generic plastic-cap pictures and the Plástico bin."
       }
     },
     "typographyMeta": {
@@ -1425,7 +1431,8 @@
       "reward": "Diploma de Amigo do Martim; PNG 1600x1130 named 'Diploma Amigo do Martim - <nome>.png', navigator.share with file where supported, else download",
       "wall": "opt-in checkbox on the diploma (unticked by default); saving or sharing sends the result once",
       "highlight": "worksheet tinted by cover: 50% cover + white on light covers, 12% cover over #E9F0FF on dark covers; cover glow and ring; card, bins and idle level pills stay white",
-      "order": "name, level (in head, above rule), Onde vai isto? + card, instruction, bins, progress dots + score centred, feedback"
+      "order": "name, level (in head, above rule), Onde vai isto? + card, instruction, bins, progress dots + score centred, feedback",
+      "mobile": "compact ≤900px (~700px tall); 'Ecrã inteiro' focus mode (fixed full-viewport layer, Escape/Fechar to close; not Fullscreen API, iPhone limitation)"
     },
     "share": {
       "order": "native (only if navigator.share) first, then WhatsApp, Facebook, X, TikTok, copy link; compact on-cover variant = native + WhatsApp + Facebook + TikTok",

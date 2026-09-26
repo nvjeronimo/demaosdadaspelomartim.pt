@@ -299,6 +299,7 @@ The palette is a school pencil case: cool white paper, a notebook cover with loo
 
 ### Tertiary
 - **Dark Pen** (pen): Martim's handwriting ink on paper. Use it for the worked sum and its underline, filled-in label entries, handwritten table values, challenge feedback and the typed name, the team note, the album counter, the cover-picker text, the signature, agenda dates, timeline times and the legal contents heading. It also tints the grid, rules and focus ring.
+- **Plastic Cap Blue** (cap-plastic, #5AB8E6): every generic picture of a plastic cap (rule cards, poster bins and labels, rates table, booklet, the "Plástico" bin, and game items without their own colour) is light blue, the colour most plastic caps really are.
 - **Cover Caps** (cap1–cap4): the loose caps on the cover and the nav tab underlines. They change with the cover.
 
 ### Neutral
@@ -508,6 +509,7 @@ The hero's right sheet is a maths problem. The question is in Atkinson (pencil g
 "O desafio das tampinhas" (EN "The bottle-cap challenge"): a one-item-at-a-time sorting game on a white worksheet (20px radius). Each round draws from a pool of 26 real-rule items (12 plastic, 3 metal caps, 1 cork, 10 not accepted), always at least one per bin. Rotation favours freshness: the browser remembers which items the player has seen (`ficha-vistos`) and each round picks the ones seen longest ago or never, so consecutive rounds share at most the single cork item and every item appears within three rounds. Every item carries a level (`lv` 1 obvious, 2 everyday, 3 tricky).
 - **Highlight:** the worksheet is tinted with the chosen cover so the challenge stands out on the page: 50% cover mixed with white on light covers, 12% cover over a pale blue (#E9F0FF) on dark covers; a soft cover-coloured glow and ring around it; the item card, bins and unselected level pills stay white on top.
 - **Head:** a handwritten "Nome:" with an underlined name field in pen-colour Gochi Hand at 1.5rem. On focus the underline turns the action colour over the highlighter wash. The name is saved in localStorage (`ficha-nome`). On the right sits the "Pontos: n / 8" score.
+- **Phones (≤900px):** a compact layout keeps the whole round on one screen (about 700px): tighter padding, 52px item pictogram, bins without their sub-labels, smaller dots, "Nível:" label hidden. A pill button "Ecrã inteiro" (top right, beside the name) opens a focus mode: the worksheet becomes a fixed full-viewport layer (safe-area aware) with the item centred, page scrolling, the action bar and the cover picker hidden, and Lenis paused; "Fechar" or Escape returns to the page. It is a CSS focus mode, not the Fullscreen API, because iPhone Safari does not allow element fullscreen.
 - **Order, top to bottom:** name, level (both above the ruled line of the head), "Onde vai isto?" with the item card, the instruction, the four bins, then one centred row with the progress dots and "Pontos: x / 10" (Bricolage label, handwritten red-ink number), then the feedback line.
 - **Levels:** under the head, a handwritten "Nível:" and three ink-ringed pills: Fácil (6 items, obvious ones only), Normal (10 items, any) and Difícil (10 items, at least six tricky ones). The pressed level is ink-filled; the choice is saved in the browser and changing it restarts the round. On phones the pills sit in a 3-column grid with the item count under the name. The diploma sentence and the PNG name the level ("nível difícil").
 - **Progress:** a row of 14px dots with ink rings, white until answered, then filled green for right or red for wrong; it sits under the bins, centred, beside the score.
@@ -660,6 +662,7 @@ A full-width cover region with three columns (brand, partners, shortcuts; one co
 - **Links:** every footer link is on-cover text with no underline at rest; the underline (2px, offset 4px) appears only on hover and on keyboard focus.
 
 ### Photo Stack (contacts)
+Photo-stack cards reset any inherited margin (`.stack .stack-card.photo{margin:0}`); a legacy phone rule gave loose photos a 40px left margin that pushed the pile off-screen.
 Six taped polaroids of the team (padel team, padel tournament, sorting at BFF, the community, the cake sale, the crowd at the church) piled in one grid cell, each at its own tilt (±2–5°). Every 3.6s the back photo slides out to the side (34% of its width on phones, 46% on desktop) with a 12° swing, jumps to the top of the pile and settles back with a small overshoot. Tapping a photo or "toca para ver a próxima foto" (handwritten, with a "3 / 6" counter) advances it. It pauses on hover, focus, when off-screen and when the tab is hidden; under reduced motion it only changes on tap, with no movement. Only the front photo is exposed to screen readers.
 
 ### Motion System
@@ -677,11 +680,13 @@ Purposeful and quiet, all off under `prefers-reduced-motion`:
 The red margin line that runs down every paper section (and the hero sheet) is always the same: 2px, dashed (10px red, 8px gap), at 60% opacity. It no longer thickens or switches between solid and dashed as sections scroll into view.
 
 ### Tables (rates, timetable, report)
+On phones the drop-off timetable folds each row into two lines: the name, then type and town side by side ("● Escola · Boliqueime"), with the map link on the right spanning both.
 White, 2px ink outline, paper header band with uppercase labels, 1.5px rule rows. Money is set in figure type. Handwritten quantities are in pen-colour Gochi Hand. Timetable categories are 10px pictogram-colour dots.
 
 ## Do's and Don'ts
 
 ### Do:
+- **Do** mark every link or button to the booklet with the PDF icon (`#i-pdf`), including the footer shortcut.
 - **Do** publish with `sh tools/publish.sh`, then commit and push `site/` (repository `nvjeronimo/demaosdadaspelomartim.pt`): the site sits at the repository root (GitHub Pages preview at https://nvjeronimo.github.io/demaosdadaspelomartim.pt/), the proposal at `/proposta/`, and every push is sent by GitHub Actions (rsync over SSH, deploy key) to DreamHost at https://demaosdadaspelomartim.pt. The DreamHost `.htaccess` forces https without www, serves `404.html` (which carries `<base href="/">` so it works from any folder), and caches assets; `favicon.ico` and `favicon.gif` sit at the root for browsers that ask for them directly.
 - **Do** keep collection points in `js/pontos.js` and wall entries in `js/mural.js`, and run `sh tools/build.sh` after any change: it bumps asset versions, rebuilds the secondary pages and the English copy.
 - **Do** compress new videos to H.264 around 1 Mbps and 960px on the long side, and photos to JPEG quality 78 at most 1600px; originals go in `media-originais/`, which is never published.

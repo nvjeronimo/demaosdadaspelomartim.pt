@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Gochi+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css?v=202609260909">
+<link rel="stylesheet" href="../css/site.css?v=202609260953">
 </head>
 <body>
 
@@ -67,6 +67,7 @@
     <symbol id="i-tt" viewBox="0 0 24 24"><path d="M13.5 3v11.6a3.6 3.6 0 1 1-3.6-3.6" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 3.2c.5 2.7 2.4 4.5 5.3 4.8" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></symbol>
     <symbol id="i-xs" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M6 2.8h8.2L19 7.6V20a1.2 1.2 0 0 1-1.2 1.2H6A1.2 1.2 0 0 1 4.8 20V4A1.2 1.2 0 0 1 6 2.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2.8v4.8h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><text x="12" y="17.2" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="6.2" fill="currentColor">PDF</text></symbol>
     <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-map" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="9.5" r="2.4" fill="currentColor"/></symbol>
     <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3l10 18H2z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M12 10v5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="18" r="1.3" fill="currentColor"/></symbol>
@@ -220,7 +221,7 @@
           <caption>What each material is worth</caption>
           <thead><tr><th scope="col">Material</th><th scope="col" style="text-align:right">Per tonne</th><th scope="col" style="text-align:right">1 BigBag ≈</th></tr></thead>
           <tbody>
-            <tr><td><div class="mat"><svg style="color:var(--cap-orange)" aria-hidden="true"><use href="#cap"/></svg><div>Plastic caps<small><span class="logo-chip xs"><img class="logo-img " src="../img/parceiros/resialentejo.svg" alt="Resialentejo" loading="lazy"></span> Beja</small></div></div></td><td class="eur num">€411.60</td><td class="bag num">€123</td></tr>
+            <tr><td><div class="mat"><svg style="color:var(--cap-plastic)" aria-hidden="true"><use href="#cap"/></svg><div>Plastic caps<small><span class="logo-chip xs"><img class="logo-img " src="../img/parceiros/resialentejo.svg" alt="Resialentejo" loading="lazy"></span> Beja</small></div></div></td><td class="eur num">€411.60</td><td class="bag num">€123</td></tr>
             <tr><td><div class="mat"><svg aria-hidden="true"><use href="#carica"/></svg><div>Metal caps<small><span class="logo-chip xs"><img class="logo-img " src="../img/parceiros/resialentejo.svg" alt="Resialentejo" loading="lazy"></span> Beja</small></div></div></td><td class="eur num">€465.60</td><td class="bag num">€140</td></tr>
             <tr><td><div class="mat"><svg aria-hidden="true"><use href="#cork"/></svg><div>100% cork stoppers<small><span class="logo-chip xs"><img class="logo-img " src="../img/parceiros/amorim.png" alt="Amorim" loading="lazy"></span> Silves</small></div></div></td><td class="eur num">€500.00</td><td class="bag num">—</td></tr>
           </tbody>
@@ -248,6 +249,7 @@
     </div>
     <div class="worksheet game" id="game">
       <div class="stamp" id="stamp" aria-hidden="true"><div>Well<br>done!<small>signed: Martim</small></div></div>
+      <button class="game-full" type="button" id="game-full" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Full screen</span></button>
       <div class="ws-head">
         <label class="name-field" for="g-name"><span class="hand">Name:</span><input id="g-name" type="text" maxlength="24" autocomplete="given-name" placeholder="your name"></label>
         <div class="levels" role="group" aria-label="Challenge level"><span class="hand">Level:</span><button type="button" data-lv="1" aria-pressed="false">Easy <small>6 items</small></button><button type="button" data-lv="2" aria-pressed="true">Normal <small>10 items</small></button><button type="button" data-lv="3" aria-pressed="false">Hard <small>with tricky ones</small></button></div>
@@ -259,7 +261,7 @@
       </div>
       <p class="how hand" id="how">Click the category you think is right:</p>
       <div class="bins" id="bins" role="group" aria-label="Bags">
-        <button class="bin" type="button" data-bin="plastico"><svg aria-hidden="true" style="color:var(--cap-orange)"><use href="#bag"/></svg><b>Plastic</b><small>caps and handles</small><span class="count num">0</span></button>
+        <button class="bin" type="button" data-bin="plastico"><svg aria-hidden="true" style="color:var(--cap-plastic)"><use href="#bag"/></svg><b>Plastic</b><small>caps and handles</small><span class="count num">0</span></button>
         <button class="bin" type="button" data-bin="caricas"><svg aria-hidden="true"><use href="#bag"/></svg><b>Metal caps</b><small>metal</small><span class="count num">0</span></button>
         <button class="bin" type="button" data-bin="cortica"><svg aria-hidden="true"><use href="#bag"/></svg><b>Cork</b><small>100% cork only</small><span class="count num">0</span></button>
         <button class="bin bin-no" type="button" data-bin="nao"><svg aria-hidden="true"><use href="#nope"/></svg><b>Not accepted</b><small>goes in the recycling bin</small><span class="count num">0</span></button>
@@ -356,7 +358,7 @@
         </details>
         <p>I have <span class="hl">3 to 4 intensive treatments a year</span> at Clínica Kinésio, in Espinho. Each one lasts a month, away from home with my mum, and costs <span class="hl">€6,740</span>.</p>
         <p class="sign">Martim</p>
-        <p style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn-line" href="historia.html">Read the full story <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="brochura.html"><svg aria-hidden="true"><use href="#i-down"/></svg>Booklet to share</a></p>
+        <p style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn-line" href="historia.html">Read the full story <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="brochura.html"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to share</a></p>
       </div>
       <div class="album">
         <figure class="photo p1"><span class="tape" aria-hidden="true"></span><img src="../img/martim-relva.jpg" alt="Martim sitting on the grass, with blue ankle braces" width="1400" height="1400" loading="lazy"><figcaption>in the garden</figcaption></figure>
@@ -590,7 +592,7 @@
     </div>
     <div>
       <h3>Shortcuts</h3>
-      <ul><li><a href="#entregar">Where to drop off</a></li><li><a href="mapa.html">Map of drop-off points</a></li><li><a href="organiza.html">Run a collection point</a></li><li><a href="cartaz.html">Printable poster</a></li><li><a href="mural.html">Friends wall</a></li><li><a href="brochura.html">Booklet to download</a></li><li><a href="#doar">Donate by IBAN</a></li><li><a href="eventos/">All events</a></li><li><a href="#perguntas">Frequently asked questions</a></li></ul>
+      <ul><li><a href="#entregar">Where to drop off</a></li><li><a href="mapa.html">Map of drop-off points</a></li><li><a href="organiza.html">Run a collection point</a></li><li><a href="cartaz.html">Printable poster</a></li><li><a href="mural.html">Friends wall</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="#doar">Donate by IBAN</a></li><li><a href="eventos/">All events</a></li><li><a href="#perguntas">Frequently asked questions</a></li></ul>
     </div>
     <div class="fine"><span>© <span data-year>2026</span> <a href="https://demaosdadaspelomartim.pt/">Hand in Hand for Martim</a>. All rights reserved.<br>By <a href="https://nelsonjeronimo.pt" rel="noopener">nelsonjeronimo.pt</a></span><span><a href="privacidade.html">Privacy policy</a> · <a href="cookies.html">Cookies</a> · <a href="../index.html" lang="pt" hreflang="pt">Português</a></span></div>
   </div>
@@ -606,8 +608,8 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Donate</a>
 </nav>
 
-<script src="../js/mural-api.js?v=202609260909"></script>
-<script src="../js/pontos.js?v=202609260909"></script>
+<script src="../js/mural-api.js?v=202609260953"></script>
+<script src="../js/pontos.js?v=202609260953"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
 const LNG=document.documentElement.lang==='en';
@@ -725,7 +727,7 @@ function start(){
 function show(){
   if(!t0)t0=performance.now();
   const it=deck[pos];
-  G.card.innerHTML=`<svg aria-hidden="true" style="color:${it.color||'#FF7A1A'}"><use href="#${it.icon}"/></svg><span>${T(it.label)}</span><small class="num">${pos+1} / ${deck.length}</small>`;
+  G.card.innerHTML=`<svg aria-hidden="true" style="color:${it.color||'#5AB8E6'}"><use href="#${it.icon}"/></svg><span>${T(it.label)}</span><small class="num">${pos+1} / ${deck.length}</small>`;
   G.card.classList.remove('in');void G.card.offsetWidth;G.card.classList.add('in');
 }
 function upd(){G.score.textContent=right+' / '+ROUND}
@@ -866,6 +868,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 updCount();
 </script>
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202609260909"></script>
+<script src="../js/site.js?v=202609260953"></script>
 </body>
 </html>

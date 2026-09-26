@@ -229,3 +229,13 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);if(!first)reveal(e.target)});first=false},{rootMargin:'0px 0px -8% 0px'});
   imgs.forEach(i=>io.observe(i));
 })();
+
+/* ---------- desafio em ecrã inteiro (útil no telemóvel; o iPhone não permite fullscreen de um elemento) ---------- */
+(()=>{
+  const g=document.getElementById('game'),b=document.getElementById('game-full');if(!g||!b)return;
+  const lab=b.querySelector('span'),on0=lab.textContent,off0=EN?'Close':'Fechar';
+  const set=on=>{g.classList.toggle('full',on);document.documentElement.classList.toggle('game-open',on);b.setAttribute('aria-pressed',on);lab.textContent=on?off0:on0;
+    if(window.lenis)on?lenis.stop():lenis.start();if(!on)g.scrollIntoView({block:'start'})};
+  b.addEventListener('click',()=>set(!g.classList.contains('full')));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&g.classList.contains('full'))set(false)});
+})();
