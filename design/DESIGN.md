@@ -679,6 +679,9 @@ Purposeful and quiet, all off under `prefers-reduced-motion`:
 ### Margin Line
 The red margin line that runs down every paper section (and the hero sheet) is always the same: 2px, dashed (10px red, 8px gap), at 60% opacity. It no longer thickens or switches between solid and dashed as sections scroll into view.
 
+### Share Images per Event
+Each event page has its own Open Graph image in `img/og/<slug>.jpg` (1200×630): white logo on the night-blue cover, the date in orange handwriting, the title in Bricolage, the place, the domain, and the event poster or photo as a taped polaroid on the right with the event kind as caption. Other pages use `img/og.jpg`.
+
 ### Tables (rates, timetable, report)
 On phones the drop-off timetable folds each row into two lines: the name, then type and town side by side ("● Escola · Boliqueime"), with the map link on the right spanning both.
 White, 2px ink outline, paper header band with uppercase labels, 1.5px rule rows. Money is set in figure type. Handwritten quantities are in pen-colour Gochi Hand. Timetable categories are 10px pictogram-colour dots.
@@ -686,6 +689,10 @@ White, 2px ink outline, paper header band with uppercase labels, 1.5px rule rows
 ## Do's and Don'ts
 
 ### Do:
+- **Do** add new events only to `EVENTS` in `tools/build_pages.py` (date, end, time, where, fee, poster, en{}); the build writes `js/eventos.js` and the hero slide and home agenda card pick the next event by today's date, falling back to "próximo evento: em breve" with an invitation to organise one.
+- **Do** keep fonts self-hosted (`css/fonts.css`, `fonts/*.woff2`, latin + latin-ext, Bricolage variable 75–100% width) and never re-add Google Fonts.
+- **Do** let `tools/webp.py` create `.jpg.webp` siblings; the DreamHost `.htaccess` serves them to browsers that accept WebP (about a third of the size).
+- **Do** keep third-party scripts on cdnjs with SRI, and keep the CSP in `.htaccess` in step with any new external source.
 - **Do** mark every link or button to the booklet with the PDF icon (`#i-pdf`), including the footer shortcut.
 - **Do** publish with `sh tools/publish.sh`, then commit and push `site/` (repository `nvjeronimo/demaosdadaspelomartim.pt`): the site sits at the repository root (GitHub Pages preview at https://nvjeronimo.github.io/demaosdadaspelomartim.pt/), the proposal at `/proposta/`, and every push is sent by GitHub Actions (rsync over SSH, deploy key) to DreamHost at https://demaosdadaspelomartim.pt. The DreamHost `.htaccess` forces https without www, serves `404.html` (which carries `<base href="/">` so it works from any folder), and caches assets; `favicon.ico` and `favicon.gif` sit at the root for browsers that ask for them directly.
 - **Do** keep collection points in `js/pontos.js` and wall entries in `js/mural.js`, and run `sh tools/build.sh` after any change: it bumps asset versions, rebuilds the secondary pages and the English copy.
