@@ -45,7 +45,7 @@ function forma_de(string $rel): string { $i = @getimagesize(dirname(__DIR__) . '
 $setupFile = DADOS . '/painel-setup.txt';
 if (!is_file($ADMIN)) {
   $tok = is_file($setupFile) ? trim(file_get_contents($setupFile)) : '';
-  if ($tok === '' || !hash_equals($tok, (string)($_GET['setup'] ?? $_POST['setup'] ?? ''))) { http_response_code(403); exit('Painel ainda não configurado.'); }
+  if ($tok === '' || !hash_equals($tok, (string)($_GET['setup'] ?? $_POST['setup'] ?? ''))) { http_response_code(403); header('Content-Type: text/html; charset=utf-8'); exit('<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Painel</title><body style="font:18px system-ui;margin:40px;max-width:560px;line-height:1.5"><h1>Painel ainda não configurado</h1><p>O primeiro acesso é feito com o <b>link de configuração</b> (um endereço que termina em <code>?setup=…</code>), que só funciona uma vez. Abre esse link para escolheres a palavra-passe; depois entras aqui só com ela.</p></body>'); }
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && ok_csrf()) {
     $p1 = (string)($_POST['p1'] ?? ''); $p2 = (string)($_POST['p2'] ?? '');
     if (mb_strlen($p1) < 10) $erro = 'A palavra-passe tem de ter pelo menos 10 caracteres.';
