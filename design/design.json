@@ -827,6 +827,11 @@
         "name": "smooth-scroll",
         "value": "Lenis 1.3.26 self-hosted, lerp .1, fine pointer only, anchors offset nav+12px",
         "purpose": "Inertial wheel/trackpad scrolling; native on touch; off under reduced motion."
+      },
+      {
+        "name": "photo-develop",
+        "value": "clip-path inset(0 0 100% 0)→0 .9s + filter saturate(.2) brightness(1.35) contrast(.85)→none 1.6s",
+        "purpose": "Photos reveal like developing polaroids as they enter; content photos only."
       }
     ],
     "breakpoints": [

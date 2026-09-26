@@ -666,6 +666,7 @@ Six taped polaroids of the team (padel team, padel tournament, sorting at BFF, t
 Purposeful and quiet, all off under `prefers-reduced-motion`:
 - **Page open:** the hero headline, lede and buttons rise 16px in sequence (0, .15s, .28s); the taped hero photo drops in like a pinned print.
 - **Scroll:** section heads, cards, bins, rule cards, event rows, logo chips and FAQ items rise 22px as they enter; taped photos, album slides and mini photos drop in from above with a small tilt; siblings stagger by 70ms (at most 6 steps). Everything is visible by default and anything already on screen at load stays still (the observer skips its first batch), so nothing can be left hidden and thumbnails are complete.
+- **Photos develop:** every photo in the content (polaroids, album slides and posters, mini photos, story and event images; not logos, icons, the hero, the photo stack or printable sheets) reveals like an instant photo as it enters: a top-to-bottom wipe (clip-path, .9s, .12s delay) while it develops from washed-out to full colour (saturate .2, brightness 1.35, contrast .85 → none over 1.6s). It waits for the image to load, skips images under 120px and anything on screen at load, and never leaves an image hidden.
 - **Numbers:** the latest-result figure and booklet figures count up to their value over 1.1s when they come into view.
 - **Ambient:** the loose caps on the cover float and turn slowly (6–8.5s loops, offset).
 - **Touch:** buttons, chips, bins and level pills sink 1px and scale to .98 when pressed.

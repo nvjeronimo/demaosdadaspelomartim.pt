@@ -213,3 +213,18 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
   const orig=Element.prototype.scrollIntoView;
   Element.prototype.scrollIntoView=function(o){if(o&&typeof o==='object'&&o.behavior==='smooth'){const off=o.block==='center'?-(innerHeight/2-this.getBoundingClientRect().height/2):-((nav?nav.offsetHeight:70)+12);lenis.scrollTo(this,{offset:off});return}return orig.apply(this,arguments)};
 })();
+
+/* ---------- imagens "revelam-se" como polaroids ao entrar no ecrã (nunca escondidas por defeito) ---------- */
+(()=>{
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window)||!Element.prototype.animate)return;
+  const skip='.hero,.paleta,.a4,.diploma,.stack-card,.leaflet-container,.logo-chip,.who-logo,.volta,.bk-tip,.foot-logos,footer,.brand';
+  const imgs=[...document.querySelectorAll('main img')].filter(i=>!i.closest(skip)&&!i.classList.contains('logo-img'));
+  const reveal=img=>{
+    const go=()=>{if(img.naturalWidth&&img.naturalWidth<120)return;
+      img.animate([{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0 0)'}],{duration:900,delay:120,easing:'cubic-bezier(.65,0,.35,1)',fill:'backwards'});
+      img.animate([{filter:'saturate(.2) brightness(1.35) contrast(.85)'},{filter:'none'}],{duration:1600,delay:220,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'})};
+    img.complete?go():img.addEventListener('load',go,{once:true})};
+  let first=true;
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!first&&!e.isIntersecting)return;io.unobserve(e.target);if(!first)reveal(e.target)});first=false},{rootMargin:'0px 0px -8% 0px'});
+  imgs.forEach(i=>io.observe(i));
+})();
