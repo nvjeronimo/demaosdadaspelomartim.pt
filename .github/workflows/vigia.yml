@@ -1,0 +1,51 @@
+# Vigia o site: a cada 30 minutos confirma a página inicial, o servidor do mural e o certificado https.
+# Se falhar, abre uma issue (o GitHub envia email ao dono do repositório); quando volta, fecha-a.
+name: Vigia do site
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+permissions:
+  issues: write
+concurrency: vigia
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar
+        id: v
+        run: |
+          set +e
+          B=https://demaosdadaspelomartim.pt
+          erros=""
+          for i in 1 2 3; do
+            code=$(curl -s -o /tmp/home.html -w '%{http_code}' --max-time 20 "$B/")
+            [ "$code" = "200" ] && grep -q "De mãos dadas pelo Martim" /tmp/home.html && break
+            sleep 20
+          done
+          [ "$code" = "200" ] && grep -q "De mãos dadas pelo Martim" /tmp/home.html || erros="$erros\n- Página inicial: HTTP $code"
+          curl -s --max-time 20 "$B/api/mural.php?a=top" | grep -q '"ok":true' || erros="$erros\n- Servidor do mural (api/mural.php) não responde"
+          fim=$(echo | openssl s_client -connect demaosdadaspelomartim.pt:443 -servername demaosdadaspelomartim.pt 2>/dev/null | openssl x509 -noout -enddate | cut -d= -f2)
+          dias=$(( ( $(date -d "$fim" +%s) - $(date +%s) ) / 86400 ))
+          [ "$dias" -ge 14 ] || erros="$erros\n- Certificado https expira em $dias dias ($fim)"
+          echo "certificado: $dias dias"
+          printf "erros<<EOF\n%b\nEOF\n" "$erros" >> "$GITHUB_OUTPUT"
+      - name: Abrir ou fechar aviso
+        uses: actions/github-script@v7
+        env:
+          ERROS: ${{ steps.v.outputs.erros }}
+        with:
+          script: |
+            const erros = (process.env.ERROS || '').trim();
+            const titulo = 'O site demaosdadaspelomartim.pt está com problemas';
+            const { data: abertas } = await github.rest.issues.listForRepo({ ...context.repo, state: 'open', labels: 'vigia' });
+            if (erros) {
+              if (!abertas.length) await github.rest.issues.create({ ...context.repo, title: titulo, labels: ['vigia'],
+                body: `Detetado às ${new Date().toISOString()}:\n${erros}\n\nEsta issue fecha-se sozinha quando o site voltar ao normal.` });
+              core.setFailed(erros);
+            } else {
+              for (const i of abertas) {
+                await github.rest.issues.createComment({ ...context.repo, issue_number: i.number, body: 'O site voltou ao normal. ✅' });
+                await github.rest.issues.update({ ...context.repo, issue_number: i.number, state: 'closed' });
+              }
+            }
