@@ -193,6 +193,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/mural.html"/>
   </url>
   <url>
+    <loc>https://demaosdadaspelomartim.pt/novidades.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://demaosdadaspelomartim.pt/novidades.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demaosdadaspelomartim.pt/en/novidades.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/novidades.html"/>
+  </url>
+  <url>
+    <loc>https://demaosdadaspelomartim.pt/en/novidades.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://demaosdadaspelomartim.pt/novidades.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demaosdadaspelomartim.pt/en/novidades.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/novidades.html"/>
+  </url>
+  <url>
     <loc>https://demaosdadaspelomartim.pt/organiza.html</loc>
     <lastmod>2026-09-26</lastmod>
     <priority>0.8</priority>

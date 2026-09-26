@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="../img/marca/apple-touch-icon.png">
 <link rel="preload" href="../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/fonts.css?v=202609262058">
-<link rel="stylesheet" href="../css/site.css?v=202609262058">
+<link rel="stylesheet" href="../css/fonts.css?v=202609262113">
+<link rel="stylesheet" href="../css/site.css?v=202609262113">
 </head>
 <body class="sub">
 
@@ -120,6 +120,7 @@
           <tr><td><code>ficha-nome</code>, <code>ficha-nivel</code>, <code>ficha-vistos</code></td><td>Remember the name and level you used in the bottle-cap challenge, and which items you have seen, so the next round shows you different ones.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
           <tr><td><code>mural-meu</code></td><td>Keep your latest diploma (name, score, level and date) so you can send it to the wall.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
           <tr><td><code>mural-ok</code>, <code>mural-enviados</code></td><td>Remember whether you agreed to put your name on the wall and which diplomas were already sent, so they are not repeated.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
+          <tr><td><code>mdm_painel</code></td><td>Session cookie, only for Martim’s parents when they sign in to the website’s management panel. It is not used on public pages.</td><td>The website’s own cookie (secure, HTTPS only)</td><td>Until you close your browser</td></tr>
           <tr><td><code>cartaz-local</code></td><td>Remember the place name you typed on the printable poster.</td><td>Browser local storage</td><td>Until you delete it</td></tr>
         </tbody>
       </table></div>
@@ -166,7 +167,7 @@ document.getElementById('esquecer').addEventListener('click',()=>{
     </div>
     <div>
       <h3>Shortcuts</h3>
-      <ul><li><a href="index.html#entregar">Where to drop off</a></li><li><a href="mapa.html">Map of drop-off points</a></li><li><a href="organiza.html">Run a collection point</a></li><li><a href="cartaz.html">Printable poster</a></li><li><a href="mural.html">Friends wall</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="index.html#doar">Donate by IBAN</a></li><li><a href="eventos/">All events</a></li><li><a href="index.html#perguntas">Frequently asked questions</a></li></ul>
+      <ul><li><a href="index.html#entregar">Where to drop off</a></li><li><a href="mapa.html">Map of drop-off points</a></li><li><a href="organiza.html">Run a collection point</a></li><li><a href="cartaz.html">Printable poster</a></li><li><a href="novidades.html">Martim’s news</a></li><li><a href="mural.html">Friends wall</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="index.html#doar">Donate by IBAN</a></li><li><a href="eventos/">All events</a></li><li><a href="index.html#perguntas">Frequently asked questions</a></li></ul>
     </div>
     <div class="fine"><span>© <span data-year>2026</span> <a href="https://demaosdadaspelomartim.pt/">Hand in Hand for Martim</a>. All rights reserved.<br>By <a href="https://nelsonjeronimo.pt" rel="noopener">nelsonjeronimo.pt</a></span><span><a href="privacidade.html">Privacy policy</a> · <a href="cookies.html">Cookies</a> · <a href="../cookies.html" lang="pt" hreflang="pt">Português</a></span></div>
   </div>
@@ -183,6 +184,6 @@ document.getElementById('esquecer').addEventListener('click',()=>{
 </nav>
 
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202609262058"></script>
+<script src="../js/site.js?v=202609262113"></script>
 </body>
 </html>

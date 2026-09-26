@@ -75,29 +75,55 @@ function buildPicker(){
 
 /* ---------- próximo evento automático (js/eventos.js): slide do topo e cartão da agenda ---------- */
 (()=>{
-  const L=window.EVENTOS;if(!L)return;
-  const hs=document.getElementById('hs-2'),nx=document.querySelector('#eventos article.next');if(!hs&&!nx)return;
+  const L=[...(window.EVENTOS||[]),...(window.EVENTOS_PAINEL||[])];if(!L.length)return;
+  const hs=document.getElementById('hs-2'),nx=document.querySelector('#eventos article.next, #agenda-next');if(!hs&&!nx)return;
   const T=(a)=>Array.isArray(a)?(EN?a[1]:a[0]):a,t=new Date();t.setHours(0,0,0,0);
   const day=s=>{const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)};
   const up=L.filter(e=>day(e.end||e.date)>=t).sort((a,b)=>day(a.date)-day(b.date))[0];
   const ref=(hs&&hs.querySelector('img'))||(nx&&nx.querySelector('img'));const img=ref?ref.getAttribute('src').replace(/[^/]*$/,''):'img/';
   const evdir=((document.querySelector('.hs-ctas a[href*="eventos/"]')||document.querySelector('a[href$="eventos/"]'))?.getAttribute('href')||'eventos/').replace(/eventos\/.*$/,'eventos/');
+  const R=img.replace(/img\/$/,''),pic=e=>/^uploads\//.test(e.poster||'')?R+e.poster:img+e.poster,link=e=>e.url?R+e.url:evdir+e.slug+'.html';
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const W={time:EN?'Time':'Hora',where:EN?'Where':'Onde',fee:EN?'Registration':'Inscrição',more:EN?'See details':'Ver detalhes',all:EN?'All events':'Todos os eventos'};
   const dl=e=>`<dl class="ficha hs-ficha">${e.time?`<dt>${W.time}</dt><dd class="num">${esc(e.time)}</dd>`:''}<dt>${W.where}</dt><dd>${esc(T(e.where))}</dd>${T(e.fee)?`<dt>${W.fee}</dt><dd>${esc(T(e.fee))}</dd>`:''}</dl>`;
   if(hs){
     const ctas=hs.querySelector('.hs-ctas');const tab=hs.querySelectorAll('a').length&&hs.getAttribute('aria-hidden')==='true'?' tabindex="-1"':'';
-    hs.innerHTML=up?`<p class="hs-kicker hand" data-quando="${up.date}"></p><div class="hs-event"><div><h2 class="hs-title">${esc(T(up.title))}</h2>${dl(up)}<div class="hs-ctas"><a class="btn btn-red" href="${evdir}${up.slug}.html"${tab}>${W.more} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="${evdir}"${tab}>${W.all}</a></div></div><figure class="photo hs-poster"><span class="tape" aria-hidden="true"></span><img src="${img}${up.poster}" alt="${esc(T(up.alt))}" decoding="async"><figcaption>${EN?'come and join us!':'vem ter connosco!'}</figcaption></figure></div>`
+    hs.innerHTML=up?`<p class="hs-kicker hand" data-quando="${up.date}"></p><div class="hs-event"><div><h2 class="hs-title">${esc(T(up.title))}</h2>${dl(up)}<div class="hs-ctas"><a class="btn btn-red" href="${link(up)}"${tab}>${W.more} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="${evdir}"${tab}>${W.all}</a></div></div><figure class="photo hs-poster"><span class="tape" aria-hidden="true"></span><img src="${pic(up)}" alt="${esc(T(up.alt))}" decoding="async"><figcaption>${EN?'come and join us!':'vem ter connosco!'}</figcaption></figure></div>`
       :`<p class="hs-kicker hand">${EN?'next event: coming soon':'próximo evento: em breve'}</p><h2 class="hs-title">${EN?'We are planning the next one.':'Estamos a preparar o próximo.'}</h2><p style="max-width:40ch;margin:0 0 18px">${EN?'Walks, tournaments, concerts, cake sales: want to organise one with us?':'Caminhadas, torneios, concertos, vendas de bolos: queres organizar um connosco?'}</p><div class="hs-ctas"><a class="btn btn-red" href="${evdir.replace(/eventos\/$/,'')}organiza.html"${tab}>${EN?'Organise with us':'Organiza connosco'} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="${evdir}"${tab}>${EN?'Past events':'Eventos que já foram'}</a></div>`;
     if(!up){const tb=document.getElementById('ht-2');if(tb)tb.textContent=EN?'Events':'Eventos'}
   }
   if(nx){
-    if(up){const share=nx.querySelector('.share');nx.querySelector('.next-photo img').setAttribute('src',img+up.poster);nx.querySelector('.next-photo img').setAttribute('alt',T(up.alt));
+    if(up){const share=nx.querySelector('.share');nx.querySelector('.next-photo img').setAttribute('src',pic(up));nx.querySelector('.next-photo img').setAttribute('alt',T(up.alt));
       const b=nx.querySelector('.body');const w=b.querySelector('.when');w.dataset.quando=up.date;b.querySelector('h3').textContent=T(up.title);
-      b.querySelector('dl').outerHTML=dl(up).replace(' class="ficha hs-ficha"','');b.querySelector('a.btn').setAttribute('href',evdir+up.slug+'.html');
-      if(share){share.dataset.shareUrl=evdir+up.slug+'.html';share.dataset.shareText=T(up.share)}}
+      b.querySelector('dl').outerHTML=dl(up).replace(' class="ficha hs-ficha"','');b.querySelector('a.btn').setAttribute('href',link(up));
+      if(share){share.dataset.shareUrl=link(up);share.dataset.shareText=T(up.share)}}
     else nx.innerHTML=`<div class="body"><div class="when">${EN?'Next event: coming soon':'Próximo evento: em breve'}</div><h3>${EN?'We are planning the next one.':'Estamos a preparar o próximo.'}</h3><p>${EN?'Want to organise a walk, a tournament or a cake sale with us?':'Queres organizar uma caminhada, um torneio ou uma venda de bolos connosco?'}</p><a class="btn btn-yellow" href="${evdir.replace(/eventos\/$/,'')}organiza.html">${EN?'Organise with us':'Organiza connosco'} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>`;
   }
+})();
+
+/* ---------- conteúdo do painel dos pais: novidades, último resultado, página de evento ---------- */
+(()=>{
+  const e=x=>String(x==null?'':x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const sj=document.querySelector('script[src*="js/site.js"]'),R=sj?sj.getAttribute('src').replace(/js\/site\.js.*$/,''):'';
+  const M=EN?['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']:['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const dt=s=>{const[y,m,d]=(s||'').split('-').map(Number);return y?d+' '+M[m-1]+' '+y:''};
+  const N=window.NOVIDADES||[];
+  const home=document.getElementById('news');
+  if(home&&N.length){home.innerHTML=N.slice(0,3).map(n=>`<article class="news-card">${n.foto?`<img src="${R}${e(n.foto)}" alt="" loading="lazy">`:''}<div class="b"><time datetime="${e(n.data)}">${dt(n.data)}</time><h3>${e(n.titulo)}</h3><p>${e((n.texto||'').slice(0,160))}${(n.texto||'').length>160?'…':''}</p><a href="${R}novidades.html#n-${n.id}">${EN?'Read more →':'Ler mais →'}</a></div></article>`).join('');
+    document.getElementById('novidades').hidden=false;const hr=document.getElementById('novidades-hr');if(hr)hr.hidden=false}
+  const full=document.getElementById('news-full');
+  if(full)full.innerHTML=N.length?N.map(n=>`<article id="n-${n.id}"><time datetime="${e(n.data)}">${dt(n.data)}</time><h2>${e(n.titulo)}</h2>${n.foto?`<figure class="photo"><span class="tape" aria-hidden="true"></span><img src="${R}${e(n.foto)}" alt="" loading="lazy"></figure>`:''}<p>${e(n.texto)}</p>${n.link?`<p><a href="${e(n.link)}" target="_blank" rel="noopener">${EN?'See it on Facebook →':'Ver no Facebook →'}</a></p>`:''}</article>`).join('')
+    :`<p class="news-empty">${EN?'The first news will be here soon.':'As primeiras novidades chegam em breve.'}</p>`;
+  const r=window.RESULTADO,bo=document.querySelector('.boletim');
+  if(r&&bo&&r.valor){bo.querySelector('.big').textContent=r.valor;const ps=bo.querySelectorAll('p');if(ps[0])ps[0].innerHTML='<b>'+e(r.titulo)+'</b>';if(ps[1])ps[1].textContent=r.texto||'';const a=bo.querySelector('small a');if(a&&r.link)a.setAttribute('href',/^https?:/.test(r.link)?r.link:R+r.link)}
+  const ev=document.getElementById('evento-painel');
+  if(ev){const id=new URLSearchParams(location.search).get('id'),x=(window.EVENTOS_PAINEL||[]).find(v=>String(v.id)===id);
+    if(!x){ev.innerHTML=`<p class="news-empty">${EN?'This event no longer exists.':'Este evento já não existe.'} <a href="${R}eventos/">${EN?'See all events':'Ver todos os eventos'}</a></p>`}
+    else{document.title=x.title[0]+' · '+document.title.split(' · ').pop();const h=document.getElementById('h1');if(h)h.textContent=x.title[0];
+      const q=document.querySelector('.subhero .lede');if(q)q.textContent=[dt(x.date)+(x.end&&x.end!==x.date?' – '+dt(x.end):''),x.where[0]].filter(Boolean).join(' · ');
+      ev.innerHTML=`<div class="org ev-page"><div><p class="hs-kicker hand" data-quando="${e(x.date)}"></p><dl class="ficha">${x.time?`<dt>${EN?'Time':'Hora'}</dt><dd class="num">${e(x.time)}</dd>`:''}<dt>${EN?'Where':'Onde'}</dt><dd>${e(x.where[0])}</dd>${x.fee[0]?`<dt>${EN?'Registration':'Inscrição'}</dt><dd>${e(x.fee[0])}</dd>`:''}</dl>${x.texto?`<p style="margin-top:18px;white-space:pre-line">${e(x.texto)}</p>`:''}
+        <div class="share" data-share-url="evento.html?id=${x.id}" data-share-text="${e(x.title[0])}"><span class="share-label">${EN?'Share this event:':'Partilha este evento:'}</span><button class="share-btn" type="button" data-share="whatsapp"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</button><button class="share-btn" type="button" data-share="facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook</button><button class="share-btn" type="button" data-share="copy"><svg aria-hidden="true"><use href="#i-link"/></svg><span>${EN?'Copy link':'Copiar link'}</span></button></div></div>
+        ${x.poster?`<figure class="photo"><span class="tape" aria-hidden="true"></span><img src="${R}${e(x.poster)}" alt="${e(x.title[0])}"></figure>`:''}</div>`}}
 })();
 
 /* ---------- datas relativas: "Hoje!", "Amanhã!", "Faltam N dias", "Já foi" ---------- */

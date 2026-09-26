@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="../img/marca/apple-touch-icon.png">
 <link rel="preload" href="../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/fonts.css?v=202609262058">
-<link rel="stylesheet" href="../css/site.css?v=202609262058">
+<link rel="stylesheet" href="../css/fonts.css?v=202609262113">
+<link rel="stylesheet" href="../css/site.css?v=202609262113">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NGO", "name": "De mãos dadas pelo Martim", "alternateName": "Hand in Hand for Martim", "url": "https://demaosdadaspelomartim.pt/", "logo": "https://demaosdadaspelomartim.pt/img/marca/apple-touch-icon.png", "image": "https://demaosdadaspelomartim.pt/img/og.jpg", "description": "Recolha solidária de tampas de plástico, caricas e rolhas de cortiça para pagar os tratamentos intensivos do Martim Silva Cruz, de Boliqueime (processo nº 167, Dê uma Tampa).", "email": "micka.a.cruz@gmail.com", "areaServed": "Algarve, Portugal", "address": {"@type": "PostalAddress", "addressLocality": "Boliqueime", "addressRegion": "Faro", "addressCountry": "PT"}}</script>
 </head>
 <body>
@@ -468,6 +468,18 @@
 </section>
 <hr class="divider">
 
+<!-- ============ NOVIDADES (painel dos pais) ============ -->
+<section class="page" id="novidades" aria-labelledby="h-novidades" hidden>
+  <div class="inner">
+    <div class="sec-head">
+      <h2 id="h-novidades">Martim’s news.</h2>
+      <p>What I have learnt and achieved, told by my parents after each treatment.</p>
+    </div>
+    <div class="news" id="news"></div>
+    <p style="margin-top:22px"><a class="btn btn-line" href="novidades.html">All news <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+  </div>
+</section>
+<hr class="divider" id="novidades-hr" hidden>
 <!-- ============ ALBUM ============ -->
 <section class="page" id="album" aria-labelledby="h-album">
   <div class="inner">
@@ -605,7 +617,7 @@
     </div>
     <div>
       <h3>Shortcuts</h3>
-      <ul><li><a href="#entregar">Where to drop off</a></li><li><a href="mapa.html">Map of drop-off points</a></li><li><a href="organiza.html">Run a collection point</a></li><li><a href="cartaz.html">Printable poster</a></li><li><a href="mural.html">Friends wall</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="#doar">Donate by IBAN</a></li><li><a href="eventos/">All events</a></li><li><a href="#perguntas">Frequently asked questions</a></li></ul>
+      <ul><li><a href="#entregar">Where to drop off</a></li><li><a href="mapa.html">Map of drop-off points</a></li><li><a href="organiza.html">Run a collection point</a></li><li><a href="cartaz.html">Printable poster</a></li><li><a href="novidades.html">Martim’s news</a></li><li><a href="mural.html">Friends wall</a></li><li><a href="brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="#doar">Donate by IBAN</a></li><li><a href="eventos/">All events</a></li><li><a href="#perguntas">Frequently asked questions</a></li></ul>
     </div>
     <div class="fine"><span>© <span data-year>2026</span> <a href="https://demaosdadaspelomartim.pt/">Hand in Hand for Martim</a>. All rights reserved.<br>By <a href="https://nelsonjeronimo.pt" rel="noopener">nelsonjeronimo.pt</a></span><span><a href="privacidade.html">Privacy policy</a> · <a href="cookies.html">Cookies</a> · <a href="../index.html" lang="pt" hreflang="pt">Português</a></span></div>
   </div>
@@ -621,9 +633,10 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Donate</a>
 </nav>
 
-<script src="../js/eventos.js?v=202609262058"></script>
-<script src="../js/mural-api.js?v=202609262058"></script>
-<script src="../js/pontos.js?v=202609262058"></script>
+<script src="../js/eventos.js?v=202609262113"></script>
+<script src="../js/mural-api.js?v=202609262113"></script>
+<script src="../js/pontos.js?v=202609262113"></script>
+<script src="/api/dados.js.php"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
 const LNG=document.documentElement.lang==='en';
@@ -861,6 +874,11 @@ document.querySelectorAll('.levels [data-lv]').forEach(b=>b.addEventListener('cl
 start();
 
 /* ---------- album ---------- */
+/* álbum gerido no painel dos pais (api/dados.js.php); sem dados, fica o álbum que a página já traz */
+if(Array.isArray(window.ALBUM)&&window.ALBUM.length){const e=x=>String(x==null?'':x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  document.getElementById('track').innerHTML=window.ALBUM.map(a=>{const cat=a.tipo==='video'?(a.categoria==='video'?'video video':a.categoria+' video'):a.categoria;
+    const media=a.tipo==='video'?`<button class="play" type="button" data-src="${e(a.src)}" aria-label="${LNG?'Watch video':'Ver vídeo'}: ${e(a.legenda)}${a.dur?' ('+e(a.dur)+')':''}"><img class="poster" src="${e(a.poster)}" alt="" loading="lazy"><span class="btn-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>${a.dur?`<span class="dur">${e(a.dur)}</span>`:''}</button>`:`<img src="${e(a.src)}" alt="${e(a.alt||a.legenda)}" loading="lazy">`;
+    return `<figure class="slide ${e(a.forma||'w')}" data-cat="${e(cat)}"><span class="tape" aria-hidden="true"></span><div class="media">${media}</div><figcaption><span class="hand">${e(a.legenda)}</span><small>${e(a.etiqueta)}</small></figcaption></figure>`}).join('')}
 const track=document.getElementById('track'),slidesEls=[...track.querySelectorAll('.slide')],cnt=document.getElementById('count'),prev=document.getElementById('prev'),next=document.getElementById('next');
 const vis=()=>slidesEls.filter(x=>!x.hidden);
 function current(){const v=vis(),l=track.getBoundingClientRect().left;let i=0,best=1e9;v.forEach((el,k)=>{const d=Math.abs(el.getBoundingClientRect().left-l);if(d<best){best=d;i=k}});return i}
@@ -883,6 +901,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 updCount();
 </script>
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202609262058"></script>
+<script src="../js/site.js?v=202609262113"></script>
 </body>
 </html>

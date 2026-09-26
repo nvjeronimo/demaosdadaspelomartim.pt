@@ -3,5 +3,7 @@ Allow: /
 Disallow: /api/
 Disallow: /proposta/
 Disallow: /design/
+Disallow: /painel/
+Disallow: /evento.html
 
 Sitemap: https://demaosdadaspelomartim.pt/sitemap.xml

@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="../../img/marca/apple-touch-icon.png">
 <link rel="preload" href="../../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../../css/fonts.css?v=202609262058">
-<link rel="stylesheet" href="../../css/site.css?v=202609262058">
+<link rel="stylesheet" href="../../css/fonts.css?v=202609262113">
+<link rel="stylesheet" href="../../css/site.css?v=202609262113">
 </head>
 <body class="sub">
 
@@ -111,7 +111,7 @@
 <section class="page" aria-labelledby="h-prox">
   <div class="inner">
     <h2 id="h-prox" class="h-sm">Next event</h2>
-    <article class="next next-lg" data-evento>
+    <article class="next next-lg" id="agenda-next" data-evento>
   <figure class="photo next-photo"><img src="../../img/cartaz-caminhada.jpg" alt="Charity walk poster, with Martim sitting and signposts saying Let's support Martim" width="1200" height="1200"><figcaption>the poster</figcaption></figure>
   <div class="body">
     <div class="when" data-quando="2026-09-26">Saturday, 26 Sep</div>
@@ -156,6 +156,10 @@
     </ul>
   </div>
 </section>
+<script src="../../js/eventos.js?v=202609262113"></script>
+<script src="/api/dados.js.php"></script>
+<section hidden>
+</section>
 <hr class="divider">
 <section class="page" aria-labelledby="h-org">
   <div class="inner org">
@@ -187,7 +191,7 @@
     </div>
     <div>
       <h3>Shortcuts</h3>
-      <ul><li><a href="../index.html#entregar">Where to drop off</a></li><li><a href="../mapa.html">Map of drop-off points</a></li><li><a href="../organiza.html">Run a collection point</a></li><li><a href="../cartaz.html">Printable poster</a></li><li><a href="../mural.html">Friends wall</a></li><li><a href="../brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="../index.html#doar">Donate by IBAN</a></li><li><a href="./">All events</a></li><li><a href="../index.html#perguntas">Frequently asked questions</a></li></ul>
+      <ul><li><a href="../index.html#entregar">Where to drop off</a></li><li><a href="../mapa.html">Map of drop-off points</a></li><li><a href="../organiza.html">Run a collection point</a></li><li><a href="../cartaz.html">Printable poster</a></li><li><a href="../novidades.html">Martim’s news</a></li><li><a href="../mural.html">Friends wall</a></li><li><a href="../brochura.html" class="foot-pdf"><svg aria-hidden="true"><use href="#i-pdf"/></svg>Booklet to download</a></li><li><a href="../index.html#doar">Donate by IBAN</a></li><li><a href="./">All events</a></li><li><a href="../index.html#perguntas">Frequently asked questions</a></li></ul>
     </div>
     <div class="fine"><span>© <span data-year>2026</span> <a href="https://demaosdadaspelomartim.pt/">Hand in Hand for Martim</a>. All rights reserved.<br>By <a href="https://nelsonjeronimo.pt" rel="noopener">nelsonjeronimo.pt</a></span><span><a href="../privacidade.html">Privacy policy</a> · <a href="../cookies.html">Cookies</a> · <a href="../../eventos/index.html" lang="pt" hreflang="pt">Português</a></span></div>
   </div>
@@ -204,6 +208,6 @@
 </nav>
 
 <script src="../../js/vendor/lenis.min.js"></script>
-<script src="../../js/site.js?v=202609262058"></script>
+<script src="../../js/site.js?v=202609262113"></script>
 </body>
 </html>
