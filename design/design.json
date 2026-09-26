@@ -796,7 +796,7 @@
       {
         "name": "scroll-reveal",
         "value": "rise 22px / pinned photos drop 22px with -5deg tilt, .7–.8s, 70ms stagger (max 6)",
-        "purpose": "Content enters as you scroll; never hidden at rest; first on-screen batch stays still."
+        "purpose": "Content enters as you scroll; never hidden at rest; first on-screen batch stays still. First observer callback unobserves only intersecting entries."
       },
       {
         "name": "hero-in",
@@ -1869,7 +1869,8 @@
       "Don't give share buttons brand colours (WhatsApp green, Facebook blue). Icons are monochrome ink, and the pills are white with ink outlines.",
       "Don't use the diploma's cream paper, double frame or seal anywhere else.",
       "Don't write print CSS that is not scoped to its own page, and don't size a sheet in cqw relative to itself.",
-      "Don't let a component's display rule override the hidden attribute (add an explicit [hidden]{display:none})."
+      "Don't let a component's display rule override the hidden attribute (add an explicit [hidden]{display:none}).",
+      "Don't unobserve off-screen elements in an IntersectionObserver's first callback; verify scroll animations actually fire, not only that nothing stays hidden."
     ]
   }
 }
