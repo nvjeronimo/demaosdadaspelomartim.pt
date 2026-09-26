@@ -700,7 +700,8 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 
 /* ============ PARTILHA (jogo e eventos) ============ */
 .share{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin:6px 0 12px}
-.share-label{width:100%;font:400 1.25rem/1.2 var(--hand);color:var(--pen)}
+.share-label{width:auto;margin-right:6px;font:400 1.25rem/1.2 var(--hand);color:var(--pen)}
+@media (max-width:560px){.share-label{width:100%;text-align:center;margin:0}}
 .share-btn{display:inline-flex;align-items:center;gap:7px;font:700 .95rem/1 var(--body);padding:.7em 1em;border-radius:999px;border:2px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;transition:background .2s,transform .2s var(--ease)}
 .share-btn:hover{background:var(--hl);transform:translateY(-1px)}
 .share-btn svg{width:18px;height:18px}
