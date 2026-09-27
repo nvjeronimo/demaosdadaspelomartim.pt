@@ -866,7 +866,8 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .a4{aspect-ratio:210/297;width:100%;background:#fff;box-shadow:0 22px 40px -24px rgba(10,20,50,.6),0 0 0 1px rgba(27,29,42,.2);container-type:inline-size;position:relative;overflow:hidden;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .poster{display:flex;flex-direction:column}
 .poster-top{background:var(--cover);color:var(--on-cover);padding:4.4cqw 6cqw 3.6cqw;position:relative}
-.poster-top .pmark{width:24cqw;height:auto;display:block;background:#fff;border-radius:2.4cqw;padding:1.6cqw 2.4cqw;border:.5cqw solid var(--ink)}
+.poster-top,.bk-cover{--logo-1:var(--hl-on-cover);--logo-2:var(--on-cover);--logo-3:var(--on-cover)}
+.poster-top .pmark{width:32cqw;height:auto;display:block}
 .poster-top .proc{position:absolute;right:6cqw;top:6cqw;font:700 2.1cqw/1.3 var(--body);letter-spacing:.14em;text-transform:uppercase;text-align:right;color:var(--on-cover)}
 .poster-top h2{font-size:7.8cqw;line-height:.98;margin-top:3cqw;color:var(--on-cover);max-width:none}
 .poster-top h2 em{font-style:normal;background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 92%,transparent 92%)}
@@ -908,7 +909,7 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .etq.plastico{background:color-mix(in srgb,var(--cap-plastic) 12%,#fff)}
 .etq.caricas{background:#F2F3F6}
 .etq.cortica{background:#F7EFE6}
-.ink-saver .poster-top{background:#fff;color:var(--ink);border-bottom:.6cqw solid var(--ink)}
+.ink-saver .poster-top{background:#fff;color:var(--ink);border-bottom:.6cqw solid var(--ink);--logo-1:#df6e45;--logo-2:#a14f32;--logo-3:#592c1c}
 .ink-saver .poster-top h2,.ink-saver .poster-where,.ink-saver .poster-top .proc{color:var(--ink)}
 .ink-saver .etq{background:#fff!important}
 /* página com nome: margem zero só nas folhas A4 (cartaz, etiquetas, brochura) */
@@ -1028,7 +1029,7 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 /* capa e contracapa */
 .bk-cover{background:var(--cover);color:var(--on-cover);position:relative}
 .bk-cover-top{display:flex;justify-content:space-between;align-items:flex-start}
-.bk-mark{width:30cqw;height:auto;background:#fff;border-radius:2.4cqw;padding:1.8cqw 2.6cqw;border:.5cqw solid var(--ink)}
+.bk-mark{width:38cqw;height:auto}
 .bk-proc{font:700 2cqw/1.4 var(--body);letter-spacing:.14em;text-transform:uppercase;text-align:right;color:var(--on-cover)}
 .bk-title{font-size:12.6cqw!important;color:var(--on-cover);margin-top:5cqw!important}
 .bk-title em{font-style:normal;background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 92%,transparent 92%)}
