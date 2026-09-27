@@ -1401,7 +1401,8 @@ footer .fine a{font-weight:400}
 .seal-ring{position:absolute;inset:0;width:100%;height:100%}
 .seal-ring text{font:800 11px/1 var(--body);letter-spacing:2.2px;fill:var(--on-cover)}
 .seal-in{width:54%;display:grid;justify-items:center;gap:.25em;text-align:center}
-.seal-mark{width:82%;height:auto;background:#fff;border-radius:10%;padding:4% 6%}
+.seal{--logo-1:var(--hl-on-cover);--logo-2:var(--on-cover);--logo-3:var(--on-cover)}
+.seal-mark{width:100%;height:auto;margin-bottom:.15em}
 .seal-in b{font:800 4.4cqw/1 var(--display);font-stretch:84%}
 .seal-in .qr{width:38%;aspect-ratio:1;background:#fff;padding:3%;border-radius:6%}
 .seal-in .qr svg{display:block;width:100%;height:100%}
@@ -1410,7 +1411,7 @@ footer .fine a{font-weight:400}
 .selos-small .seal{width:100%;border-width:.5cqw}
 .selos-small .seal-in b{font-size:1.25cqw}
 .selos-small .seal-ring text{font-size:12px}
-.ink-saver .seal{background:#fff;color:var(--ink)}.ink-saver .seal-ring text{fill:var(--ink)}
+.ink-saver .seal{background:#fff;color:var(--ink);--logo-1:#df6e45;--logo-2:#a14f32;--logo-3:#592c1c}.ink-saver .seal-ring text{fill:var(--ink)}
 .selos-msg{font:800 5cqw/1.1 var(--display);font-stretch:84%;text-align:center;max-width:80%;margin:0;color:var(--ink)}
 .selos-local{font-size:6cqw}
 /* imprensa */

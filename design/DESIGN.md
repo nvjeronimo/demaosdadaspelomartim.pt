@@ -703,7 +703,7 @@ Five short games under one subhero, with chip anchors at the top; pieces come fr
 Visitors tap the map to mark their locality; points are rounded to about 5 km (`api/pins.php`, no personal data, 3 per day) and drawn as orange circles sized by count. The wording is always "localidade", never "terra".
 
 ### Sticker, Press and Event Kit
-- **Sticker** (third A4 on `cartaz.html`): a night-blue round seal with "PONTO DE RECOLHA · AMIGO DO MARTIM · Nº 167" on a circular path, the logo on a white tab, "Aqui recolhemos tampas" and a QR code to the map, plus four small seals for the containers; prints as "Selo ponto amigo Martim - <local>".
+- **Sticker** (third A4 on `cartaz.html`): a night-blue round seal with "PONTO DE RECOLHA · AMIGO DO MARTIM · Nº 167" on a circular path, the logo straight on the cover at the full inner width, recoloured through the logo tokens to the cover's legible highlight (hl-on-cover; original colours in ink-saver mode), "Aqui recolhemos tampas" and a QR code to the map, plus four small seals for the containers; prints as "Selo ponto amigo Martim - <local>".
 - **Press** (`imprensa.html`): the story, the numbers, six downloadable photos, SVG logos, the booklet and contacts.
 - **Event kit** (`kit.html`): event name/date/place/organiser feed a live A4 poster (print), a 1080×1080 PNG drawn on canvas in the cover colours, and ready-to-copy social text.
 
