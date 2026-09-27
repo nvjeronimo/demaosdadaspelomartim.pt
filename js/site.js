@@ -89,7 +89,7 @@ function buildPicker(){
   if(hs){
     const ctas=hs.querySelector('.hs-ctas');const tab=hs.querySelectorAll('a').length&&hs.getAttribute('aria-hidden')==='true'?' tabindex="-1"':'';
     hs.innerHTML=up?`<p class="hs-kicker hand" data-quando="${up.date}"></p><div class="hs-event"><div><h2 class="hs-title">${esc(T(up.title))}</h2>${dl(up)}<div class="hs-ctas"><a class="btn btn-red" href="${link(up)}"${tab}>${W.more} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="${evdir}"${tab}>${W.all}</a></div></div><figure class="photo hs-poster"><span class="tape" aria-hidden="true"></span><img src="${pic(up)}" alt="${esc(T(up.alt))}" decoding="async"><figcaption>${EN?'come and join us!':'vem ter connosco!'}</figcaption></figure></div>`
-      :`<p class="hs-kicker hand">${EN?'next event: coming soon':'próximo evento: em breve'}</p><h2 class="hs-title">${EN?'We are planning the next one.':'Estamos a preparar o próximo.'}</h2><p style="max-width:40ch;margin:0 0 18px">${EN?'Walks, tournaments, concerts, cake sales: want to organise one with us?':'Caminhadas, torneios, concertos, vendas de bolos: queres organizar um connosco?'}</p><div class="hs-ctas"><a class="btn btn-red" href="${evdir.replace(/eventos\/$/,'')}organiza.html"${tab}>${EN?'Organise with us':'Organiza connosco'} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="${evdir}"${tab}>${EN?'Past events':'Eventos que já foram'}</a></div>`;
+      :`<p class="hs-kicker hand">${EN?'next event: coming soon':'próximo evento: em breve'}</p><h2 class="hs-title">${EN?'We are planning the next one.':'Estamos a preparar o próximo.'}</h2><p style="max-width:40ch;margin:0 0 18px">${EN?'Walks, tournaments, concerts, cake sales: want to organise one with us?':'Caminhadas, torneios, concertos, vendas de bolos: queres organizar um connosco?'}</p><div class="hs-ctas"><a class="btn btn-red" href="${evdir.replace(/eventos\/$/,'')}organiza.html"${tab}>${EN?'Organise with us':'Organiza connosco'} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="${evdir}"${tab}>${EN?'Past events':'Eventos anteriores'}</a></div>`;
     if(!up){const tb=document.getElementById('ht-2');if(tb)tb.textContent=EN?'Events':'Eventos'}
   }
   if(nx){
@@ -97,8 +97,20 @@ function buildPicker(){
       const b=nx.querySelector('.body');const w=b.querySelector('.when');w.dataset.quando=up.date;b.querySelector('h3').textContent=T(up.title);
       b.querySelector('dl').outerHTML=dl(up).replace(' class="ficha hs-ficha"','');b.querySelector('a.btn').setAttribute('href',link(up));
       if(share){share.dataset.shareUrl=link(up);share.dataset.shareText=T(up.share)}}
-    else nx.innerHTML=`<div class="body"><div class="when">${EN?'Next event: coming soon':'Próximo evento: em breve'}</div><h3>${EN?'We are planning the next one.':'Estamos a preparar o próximo.'}</h3><p>${EN?'Want to organise a walk, a tournament or a cake sale with us?':'Queres organizar uma caminhada, um torneio ou uma venda de bolos connosco?'}</p><a class="btn btn-yellow" href="${evdir.replace(/eventos\/$/,'')}organiza.html">${EN?'Organise with us':'Organiza connosco'} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>`;
+    else nx.innerHTML=`<figure class="photo next-photo"><img src="${img}bff-multidao.jpg" alt="${EN?'Long tables full of people at the Boliqueime Food Festival':'Mesas compridas cheias de gente no Boliqueime Food Festival'}"><figcaption>${EN?'the next one could be yours!':'o próximo pode ser teu!'}</figcaption></figure><div class="body"><div class="when">${EN?'Next event: coming soon':'Próximo evento: em breve'}</div><h3>${EN?'We are planning the next one.':'Estamos a preparar o próximo.'}</h3><p>${EN?'Want to organise a walk, a tournament or a cake sale with us?':'Queres organizar uma caminhada, um torneio ou uma venda de bolos connosco?'}</p><a class="btn btn-yellow" href="${evdir.replace(/eventos\/$/,'')}organiza.html">${EN?'Organise with us':'Organiza connosco'} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>`;
   }
+  /* "eventos anteriores": os eventos que passaram desde a última publicação entram sozinhos no topo das listas */
+  const gone=L.filter(e=>day(e.end||e.date)<t).sort((a,b)=>b.date.localeCompare(a.date));
+  const MM=EN?['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']:['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const dd=e=>{const a=day(e.date),b=day(e.end||e.date);return[a<b?a.getDate()+'–'+b.getDate():a.getDate(),MM[b.getMonth()],b.getFullYear()]};
+  const thumb=e=>{const x=e.thumb||e.poster;return /^uploads\//.test(x||'')?R+x:img+x};
+  const inList=(ul,e)=>[...ul.querySelectorAll('a[href]')].some(a=>{const h=a.getAttribute('href');return e.slug?h.includes(e.slug):h.endsWith(e.url)});
+  const miss=ul=>{const top=gone.filter(e=>inList(ul,e)).map(e=>e.date).sort().pop()||'';return gone.filter(e=>e.date>top&&!inList(ul,e))};
+  const past=document.querySelector('.agenda .past');
+  if(past){past.insertAdjacentHTML('afterbegin',miss(past).map(e=>{const[d,m]=dd(e),h=link(e);return `<li><span class="d num">${d} ${m}<small>${EN?'done':'já foi'}</small></span><span><b><a class="plain" href="${h}">${esc(T(e.title))}</a></b><br><span class="small">${esc(T(e.where))}</span></span><a class="mini-photo" href="${h}" tabindex="-1" aria-hidden="true"><img src="${thumb(e)}" alt="" loading="lazy"></a></li>`}).join(''));
+    [...past.children].slice(3).forEach(li=>li.remove())}
+  const evl=document.querySelector('.evlist');
+  if(evl)evl.insertAdjacentHTML('afterbegin',miss(evl).map(e=>{const[d,m,y]=dd(e);return `<li data-evento><a class="evrow" href="${link(e)}"><span class="evdate num"><b>${d}</b>${m} ${y}</span><span class="evtxt"><small>${esc(T(e.kind)||(EN?'Event':'Evento'))}</small><b>${esc(T(e.title))}</b><span>${esc(T(e.where))}</span></span><span class="mini-photo"><img src="${thumb(e)}" alt="" loading="lazy"></span></a></li>`}).join(''));
 })();
 
 /* ---------- conteúdo do painel dos pais: novidades, último resultado, página de evento ---------- */
@@ -116,11 +128,6 @@ function buildPicker(){
     :`<p class="news-empty">${EN?'The first news will be here soon.':'As primeiras novidades chegam em breve.'}</p>`;
   const r=window.RESULTADO,bo=document.querySelector('.boletim');
   if(r&&bo&&r.valor){bo.querySelector('.big').textContent=r.valor;const ps=bo.querySelectorAll('p');if(ps[0])ps[0].innerHTML='<b>'+e(r.titulo)+'</b>';if(ps[1])ps[1].textContent=r.texto||'';const a=bo.querySelector('small a');if(a&&r.link)a.setAttribute('href',/^https?:/.test(r.link)?r.link:R+r.link)}
-  /* agenda: eventos do painel que já passaram entram em "Já foram" */
-  const evl=document.querySelector('.evlist');
-  if(evl&&window.EVENTOS_PAINEL){const hoje=new Date();hoje.setHours(0,0,0,0);
-    const past=window.EVENTOS_PAINEL.filter(x=>{const[y,m,d]=(x.end||x.date).split('-').map(Number);return new Date(y,m-1,d)<hoje}).sort((a,b)=>b.date.localeCompare(a.date));
-    evl.insertAdjacentHTML('afterbegin',past.map(x=>{const[y,m,d]=x.date.split('-').map(Number);return `<li data-evento><a class="evrow" href="${R}${e(x.url)}"><span class="evdate num"><b>${d}</b>${M[m-1]} ${y}</span><span class="evtxt"><small>${EN?'Event':'Evento'}</small><b>${e(x.title[0])}</b><span>${e(x.where[0])}</span></span>${x.poster?`<span class="mini-photo"><img src="${R}${e(x.poster)}" alt="" loading="lazy"></span>`:''}</a></li>`}).join(''))}
   /* contador do ano */
   const C=window.CONTADOR,ct=document.getElementById('contador');
   if(C&&ct&&(C.plastico||C.caricas||C.cortica)){const kg=(+C.plastico||0)+(+C.caricas||0)+(+C.cortica||0),eur=(+C.plastico||0)*.4116+(+C.caricas||0)*.4656+(+C.cortica||0)*.5;

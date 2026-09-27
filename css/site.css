@@ -328,9 +328,10 @@ details.more[open] summary::after{transform:rotate(-135deg) translate(-2px,-1px)
 .report-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
 .report-photos img{border-radius:10px;aspect-ratio:4/3;object-fit:cover;border:1.5px solid var(--ink)}
 .host{margin-top:26px;padding:20px 22px;border-radius:14px;border:2px dashed var(--ink);background:#fff}
+.agenda-side .past{margin-top:0}
 .host ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:12px 0 0}
 .host li{font:700 .88rem/1 var(--body);padding:.55em .8em;border-radius:999px;background:var(--paper);border:1.5px solid var(--ink)}
-@media (max-width:980px){.agenda{grid-template-columns:1fr}}
+@media (max-width:980px){.agenda{grid-template-columns:1fr}.agenda>div:first-child{display:contents}.agenda .next{order:1}.agenda-side{order:2}.agenda .host{order:3;margin-top:0}}
 @media (max-width:560px){.next{grid-template-columns:1fr}}
 
 /* ============ FAQ (lista simples, + / −) ============ */
@@ -1466,3 +1467,19 @@ footer .fine a{font-weight:400}
   :lang(en) #dados + .tablewrap .legal-table td:nth-child(4)::before{content:"Legal basis"}
 }
 @media (max-width:760px){#dados + .tablewrap .legal-table{min-width:0!important;table-layout:auto}#dados + .tablewrap{overflow:visible}#dados + .tablewrap .legal-table td{white-space:normal;overflow-wrap:anywhere}}
+
+/* ================= telemóvel: mais ar entre secções, colunas empilhadas e blocos ================= */
+@media (max-width:900px){
+  .ways,.maths,.where,.story,.agenda,.contact,.org,.evgrid,.evgrid-rev,.storyfull,.legal,.mapa-grid,.meu,.book,.sheets,.kit-sheets,.calc,.hs-event{row-gap:48px}
+  .news,.news-full{row-gap:32px}
+  .sec-head{row-gap:18px}
+}
+@media (max-width:760px){
+  .page{padding-block:92px}
+  .maths,.where,.story,.agenda,.contact,.worksheet,.evposter,.news,.partners{margin-top:44px}
+  .sec-head p{line-height:1.6}
+  .past li,.evlist li{padding-block:18px}
+  .host,.boletim,.warn,.contador{margin-top:32px}
+  .gallery{gap:30px 16px}
+  footer .inner{gap:44px}
+}

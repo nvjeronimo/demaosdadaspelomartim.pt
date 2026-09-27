@@ -25,7 +25,12 @@ window.EVENTOS=[
   "share": [
    "Caminhada solidária pelo Martim: sábado, 26 de setembro, às 8h30, da Escola de Vale Silves à Escola das Benfarras. Inscrição 10 €. Vem caminhar connosco!",
    "Charity walk for Martim: Saturday 26 September at 8:30, from Vale Silves School to Benfarras School. Registration €10. Come and walk with us!"
-  ]
+  ],
+  "kind": [
+   "Caminhada",
+   "Walk"
+  ],
+  "thumb": "cartaz-caminhada.jpg"
  },
  {
   "slug": "noite-de-baile-14-agosto-2026",
@@ -52,7 +57,12 @@ window.EVENTOS=[
   "share": [
    "Animação de Verão: Noite de Baile",
    "Animação de Verão: Noite de Baile"
-  ]
+  ],
+  "kind": [
+   "Baile",
+   "Dance"
+  ],
+  "thumb": "cartaz-baile.jpg"
  },
  {
   "slug": "bff-solidario-2026",
@@ -79,7 +89,12 @@ window.EVENTOS=[
   "share": [
    "BFF Solidário 2026",
    "BFF Solidário 2026"
-  ]
+  ],
+  "kind": [
+   "Festival",
+   "Festival"
+  ],
+  "thumb": "bff-familia.jpg"
  },
  {
   "slug": "torneio-padel-martim-cruz-2023",
@@ -106,6 +121,11 @@ window.EVENTOS=[
   "share": [
    "Torneio de Padel Martim Cruz",
    "Torneio de Padel Martim Cruz"
-  ]
+  ],
+  "kind": [
+   "Torneio",
+   "Tournament"
+  ],
+  "thumb": "padel-todos.jpg"
  }
 ];

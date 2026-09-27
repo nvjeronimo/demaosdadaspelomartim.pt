@@ -590,7 +590,9 @@ Event imagery is framed but never taped: an event is a poster or a print pinned 
 A plain ruled list (max 880px, 2px ink top rule, 1.5px rule rows). Each question is a `details` summary in Atkinson 700 at 1.12rem, with a 34px round +/− toggle on the right: white with a 2px ink ring, drawn as two 2.5px ink bars. When open, the vertical bar rotates flat to make a minus and the circle fills with the highlighter. Answers run at 1.05rem, max 68ch. Hovering a question turns it pen colour.
 
 ### Agenda (secondary page)
-- **Next-event card:** a larger version of the home card.
+- **Home agenda layout:** left column = next-event card, then the dashed "Queres organizar um evento?" box; right column = "já foi" list (max 3 rows) and "Ver todos os eventos". The full BFF report table is no longer on the home page. On phones the order is next event → past list → organise box.
+- **Next-event card:** a larger version of the home card. With no upcoming event it keeps the photo slot (the Boliqueime Food Festival crowd, caption "o próximo pode ser teu!") beside "Próximo evento: em breve" and an "Organiza connosco" button.
+- **Past events stay current on their own:** JS adds any event from `EVENTOS`/`EVENTOS_PAINEL` that ended after the newest listed row to the top of the home list and of "Eventos anteriores", with its kind label and thumbnail.
 - **Event list:** ruled rows, each a whole-row link with a date column, a text column and a mini photo. The date is a handwritten weekday in pen over a 2.2rem Bricolage day number. The text column has an uppercase pencil kind label, a 1.45rem Bricolage title, a pencil line, and an optional highlighter pill with a 1.5px ink border for reservations. Hovering fills the row with the highlighter wash and underlines the title in the action colour.
 - **Relative dates:** elements with `data-quando` are rewritten by JS as "Hoje!", "Amanhã!", "Faltam N dias:" or "Já foi:" followed by the date. Past events get a `passado` class.
 
@@ -637,7 +639,7 @@ A top 10 per level. Three folder tabs (Fácil, Normal, Difícil; ink-bordered, 1
 An eight-page A4 book built with the same sheet system as the poster (each figure is the `cqw` container, so preview and print match): cover and back cover in the cover colour, six white inner pages. Each inner page has a handwritten pen kicker, a 7.4cqw Bricolage headline, 2.25cqw ink body text, taped photos (polaroid with tape strip, tilted ±2°) and an uppercase folio ("De mãos dadas pelo Martim · 3"). Pages: cover (logo tab, "Cada tampinha é um passo meu.", large taped photo); story; treatments (two figure tiles, ✓ list); the numbers (rates table, the worked sum with the circled 55 BigBags); sorting (four ✓/✗ rule cards and the VOLTA tip); drop-off points grouped by town with a QR to the map; ways to help (full-width donation card with the IBAN on one line, three help cards, the BFF 2026 result); back cover (contacts on white cards, QR, partner logos in one row). Above the book: "Descarregar PDF" (pre-generated `docs/brochura-martim.pdf` and `docs/martim-booklet.pdf`, rebuilt with headless Chrome from `brochura.html?pdf=1`), "Imprimir" (prints in the visitor's cover colour and names the file "Brochura Martim") and a share row. Shown as two-page spreads on desktop, one column on phones. Every page must end with its folio visible: re-measure after any copy change.
 
 ### Latest Result Box (home)
-Under the separation warning in the value section: a white ink-bordered box with the last known result in large Bricolage ("576 €"), a bold title, the kilos per material, and a pencil footnote saying it is updated by hand, linking to the event report. Stacks to one column on phones. Never a live counter.
+Under the separation warning in the value section: a white ink-bordered box with the last known result in large Bricolage ("576 €"), a bold title and a pencil footnote (no kilos: the breakdown lives only on the event page, so the home page tells each result once as a number and once as a story in the news) saying it is updated by hand, linking to the event report. Stacks to one column on phones. Never a live counter.
 
 ### Contact Form (home)
 On the live domain the form posts to `api/contacto.php`, which emails the message from `ajudar@demaosdadaspelomartim.pt` to the recipient set in `api/config.php` (`DESTINO`, currently the father's personal email, which stays visible on the site; change only that line to hand over). Nothing is stored except a 24-hour hashed-IP rate limit (5 messages per hour). A hidden honeypot field traps bots. The status line confirms "Mensagem enviada". If the server is unreachable, or on the GitHub Pages preview, it falls back to opening the visitor's email app with the message filled in. `?quero=` in the URL pre-ticks a help type.
@@ -717,7 +719,7 @@ White, 2px ink outline, paper header band with uppercase labels, 1.5px rule rows
 ### Do:
 - **Do** let the `hidden` attribute always win (`[hidden]:not(.paleta-panel){display:none!important}`); component display rules such as `.btn{display:inline-flex}` otherwise leak hidden elements.
 - **Do** say "localidade" (not "terra") for where people live, on the site, the wall and the map.
-- **Do** add new events only to `EVENTS` in `tools/build_pages.py` (date, end, time, where, fee, poster, en{}); the build writes `js/eventos.js` and the hero slide and home agenda card pick the next event by today's date, falling back to "próximo evento: em breve" with an invitation to organise one.
+- **Do** add new events only to `EVENTS` in `tools/build_pages.py` (date, end, time, where, fee, poster, en{}); the build writes `js/eventos.js` (with kind and thumb) and the hero slide and home agenda card pick the next event by today's date, falling back to "próximo evento: em breve" with an invitation to organise one.
 - **Do** keep fonts self-hosted (`css/fonts.css`, `fonts/*.woff2`, latin + latin-ext, Bricolage variable 75–100% width) and never re-add Google Fonts.
 - **Do** let `tools/webp.py` create `.jpg.webp` siblings; the DreamHost `.htaccess` serves them to browsers that accept WebP (about a third of the size).
 - **Do** keep third-party scripts on cdnjs with SRI, and keep the CSP in `.htaccess` in step with any new external source.
@@ -760,3 +762,6 @@ White, 2px ink outline, paper header band with uppercase labels, 1.5px rule rows
 - **Don't** put tape on event posters, event thumbnails, bulletin photos or event pages.
 - **Don't** give share buttons brand colours (WhatsApp green, Facebook blue). Icons are monochrome ink, and the pills are white with ink outlines.
 - **Don't** use the diploma's cream paper, double frame or seal anywhere else.
+
+### Mobile Breathing Room
+At 900px and below, stacked two-column blocks get a 48px row gap (news 32px, section head 18px). At 760px and below, sections use 92px vertical padding, main blocks sit 44px under their section head, past-event rows get 18px vertical padding, and boxes inside a column (organise, result, warning, counter) start 32px below the block above. Desktop spacing is unchanged.
