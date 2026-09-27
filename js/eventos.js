@@ -485,8 +485,8 @@ window.EVENTOS=[
   "date": "2023-10-28",
   "end": "2023-10-28",
   "title": [
-   "Torneio de Padel Martim Cruz",
-   "Torneio de Padel Martim Cruz"
+   "I Torneio Martim Cruz de Padel",
+   "I Torneio Martim Cruz de Padel"
   ],
   "where": [
    "Vilamoura",
@@ -499,12 +499,12 @@ window.EVENTOS=[
   ],
   "poster": "padel-todos.jpg",
   "alt": [
-   "Torneio de Padel Martim Cruz",
-   "Torneio de Padel Martim Cruz"
+   "I Torneio Martim Cruz de Padel",
+   "I Torneio Martim Cruz de Padel"
   ],
   "share": [
-   "Torneio de Padel Martim Cruz",
-   "Torneio de Padel Martim Cruz"
+   "I Torneio Martim Cruz de Padel",
+   "I Torneio Martim Cruz de Padel"
   ],
   "kind": [
    "Torneio",
