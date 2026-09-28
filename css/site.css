@@ -202,7 +202,9 @@ p{margin:0 0 1em;max-width:62ch}
 .steps span{color:var(--pencil);font-size:1rem;line-height:1.45}
 .side{display:grid;gap:clamp(20px,3vw,32px)}
 .iban{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:2px dashed var(--ink);border-radius:12px;padding:12px 14px;margin:14px 0}
-.iban code{font:700 1.02rem/1.3 var(--body);letter-spacing:.02em;flex:1 1 220px}
+.iban{container-type:inline-size}
+/* o IBAN fica sempre numa linha só: letra condensada que se ajusta à largura da caixa; o botão vai para baixo se não couber */
+.iban code{font:800 min(1.25rem,6.4cqi)/1.3 var(--display);font-stretch:84%;letter-spacing:.01em;white-space:nowrap;flex:1 1 auto;font-variant-numeric:tabular-nums}
 .copy{font:700 .9rem/1 var(--body);background:var(--ink);color:#fff;border:0;border-radius:8px;padding:.7em 1em;cursor:pointer;min-width:92px}
 .copy.done{background:var(--green)}
 .small{font-size:1rem;color:var(--pencil)}
