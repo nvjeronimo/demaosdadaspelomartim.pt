@@ -687,12 +687,12 @@ The red margin line that runs down every paper section (and the hero sheet) is a
 A plain, phone-first admin in the site's colours and fonts (not part of the notebook world): night-blue header, sticky pill tabs, white ink-bordered cards, 17px Atkinson, action-colour buttons, emoji tiles on the start screen. It edits news, events, the album (captions, filter, small label, date, visibility, order), collection points (tap a Leaflet map to place them) and the latest result. Everything public reads `/api/dados.js.php` and falls back to the static page content if it fails. Panel-made events get `evento.html?id=N`; the hero slide and agenda pick them up with the static events.
 
 ### Games Page (`jogos.html`)
-Five short games under one subhero, with chip anchors at the top; pieces come from `js/pecas.js` (26 items shared with the diploma challenge), logic in `js/jogos.js`:
+Five short games under one subhero, with chip anchors at the top; pieces come from `js/pecas.js` (40 items shared with the diploma challenge and the trick of the day), logic in `js/jogos.js`:
 - **Calculator "Quanto valem as tuas tampas?":** three sliders (plastic caps, metal caps, cork stoppers per week) and three result cards (you in a year, 100 neighbours, the village of 1,000 families; the middle one on the highlighter wash) showing caps, kg, €, BigBags and treatment days. Honest maths from the real rates (2 g per cap or metal cap, 4 g per stopper); a share row with a generated sentence.
-- **"Tampa ou não tampa?":** 10 of 16 true/false statements, Bricolage question, two big buttons, green or red handwritten explanation, and a list of the rules that caught the player out.
-- **Memory:** 4×4 night-blue cards with a "?" that flip to white faces (pictogram + name); each pair found says which bag it goes in.
-- **"Adivinha o peso":** three log-scale sliders (caps per kg ≈ 500, per BigBag ≈ 150,000, per month ≈ 8 million) scored with stars.
-- **"A rasteira da semana":** one tricky item picked by ISO week, four bins, one try, remembered in the browser.
+- **"Tampa ou não tampa?":** 10 of 119 true/false statements per game (5 true and 5 false, the ones this browser has seen least recently first, remembered in `vf-vistos`), Bricolage question, two big buttons, green or red handwritten explanation, and a list of the rules that caught the player out.
+- **Memory:** 8 pieces drawn at random from `pecas.js` each deal (never two with the same pictogram and colour), 4×4 night-blue cards with a "?" that flip to white faces (pictogram + name); each pair found says which bag it goes in.
+- **"Adivinha o peso":** 3 of 16 log-scale questions per game (caps per kg, per BigBag, per month or per day of treatment, kg per BigBag, BigBags per month, € per BigBag or tonne, BFF figures, collection points), each with its own unit. The slider starts at a random point well away from the answer. Scored with stars.
+- **"A rasteira do dia":** one tricky item a day (the same for everyone, the next one in the list of level 2–3 pieces each day, so it never repeats the day before), four bins, one try per day, remembered in the browser. The card shows "hoje, 28 set".
 "Mais jogos" is promoted in a cover-coloured block after the diploma challenge (four emoji tiles + action button), on the "Guardar tampas" card, next to the diploma, on the wall, the collection guide, the 404 and the footer.
 
 ### Year Counter, Schools and Email Notifications

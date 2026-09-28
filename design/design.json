@@ -1389,12 +1389,12 @@
     "challenge": {
       "name": "O desafio das tampinhas / The bottle-cap challenge",
       "pool": {
-        "size": 26,
+        "size": 40,
         "bins": {
-          "plastico": 12,
-          "caricas": 3,
+          "plastico": 16,
+          "caricas": 4,
           "cortica": 1,
-          "nao": 10
+          "nao": 19
         },
         "levelsPerItem": "lv 1 obvious, 2 everyday, 3 tricky"
       },
