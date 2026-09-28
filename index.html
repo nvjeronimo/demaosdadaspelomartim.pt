@@ -20,8 +20,8 @@
 <link rel="apple-touch-icon" href="img/marca/apple-touch-icon.png">
 <link rel="preload" href="fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=202609281042">
-<link rel="stylesheet" href="css/site.css?v=202609281042">
+<link rel="stylesheet" href="css/fonts.css?v=202609281409">
+<link rel="stylesheet" href="css/site.css?v=202609281409">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NGO", "name": "De mãos dadas pelo Martim", "alternateName": "Hand in Hand for Martim", "url": "https://demaosdadaspelomartim.pt/", "logo": "https://demaosdadaspelomartim.pt/img/marca/apple-touch-icon.png", "image": "https://demaosdadaspelomartim.pt/img/og.jpg", "description": "Recolha solidária de tampas de plástico, caricas e rolhas de cortiça para pagar os tratamentos intensivos do Martim Silva Cruz, de Boliqueime (processo nº 167, Dê uma Tampa).", "email": "micka.a.cruz@gmail.com", "areaServed": "Algarve, Portugal", "address": {"@type": "PostalAddress", "addressLocality": "Boliqueime", "addressRegion": "Faro", "addressCountry": "PT"}}</script>
 </head>
 <body>
@@ -120,25 +120,12 @@
   <div class="spiral" aria-hidden="true"></div>
   <div class="sheet">
     <div class="hero-tabs" role="tablist" aria-label="Na minha folha">
-      <button type="button" role="tab" id="ht-1" aria-controls="hs-1" aria-selected="true">A conta</button>
-      <button type="button" role="tab" id="ht-2" aria-controls="hs-2" aria-selected="false" tabindex="-1">Próximo evento</button>
+      <button type="button" role="tab" id="ht-2" aria-controls="hs-2" aria-selected="true">Próximo evento</button>
+      <button type="button" role="tab" id="ht-3" aria-controls="hs-3" aria-selected="false" tabindex="-1">Jogos</button>
+      <button type="button" role="tab" id="ht-1" aria-controls="hs-1" aria-selected="false" tabindex="-1">Números</button>
     </div>
     <div class="hero-slides" id="hero-slides">
-      <div class="hero-slide on" id="hs-1" role="tabpanel" aria-labelledby="ht-1">
-    <div class="sum draw" aria-label="Problema: quanto vale um BigBag de tampas de plástico?">
-      <p class="q"><b>Problema:</b> um BigBag leva cerca de 300 kg de tampas de plástico. A Resialentejo paga 411,60 € por tonelada. Quantos BigBags são precisos para um mês de tratamento?</p>
-      <div class="line" style="animation-delay:.2s"><span class="op"></span><span class="num">300 kg × 0,41 €/kg</span></div>
-      <div class="line" style="animation-delay:.6s"><span class="op">=</span><span class="hl num">123 € por BigBag</span></div>
-      <div class="rule" style="animation-delay:1s"></div>
-      <div class="line" style="animation-delay:1.3s"><span class="op"></span><span class="num">6 740 € ÷ 123 €</span></div>
-      <div class="line" style="animation-delay:1.8s"><span class="op">≈</span>
-        <span class="answer num">55 BigBags<svg viewBox="0 0 200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M20 38C18 14 96 4 160 12c34 5 40 30 12 44-40 18-128 12-150-6-10-8-6-18 8-24" fill="none" stroke="#E0301E" stroke-width="3.5" stroke-linecap="round"/></svg></span>
-      </div>
-      <p class="r" style="animation-delay:2.2s">R: 55 BigBags dão-me <b>um mês inteiro</b> a ficar mais forte.</p>
-    </div>
-    <div class="note-red"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 10c10 2 22 10 26 28" fill="none" stroke="#E0301E" stroke-width="3" stroke-linecap="round"/><path d="M26 34l8 6 4-10" fill="none" stroke="#E0301E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>As caricas valem ainda mais. Separa-as!</div>
-  </div>
-      <div class="hero-slide" id="hs-2" role="tabpanel" aria-labelledby="ht-2" aria-hidden="true">
+      <div class="hero-slide on" id="hs-2" role="tabpanel" aria-labelledby="ht-2">
         <p class="hs-kicker hand" data-quando="2026-09-26">Sábado, 26 set</p>
         <div class="hs-event">
           <div>
@@ -153,6 +140,33 @@
           <figure class="photo hs-poster"><span class="tape" aria-hidden="true"></span><img src="img/cartaz-caminhada.jpg" alt="Cartaz da caminhada solidária de sábado, 26 de setembro de 2026, às 8h30" width="1200" height="1200" decoding="async"><figcaption>vem caminhar comigo!</figcaption></figure>
         </div>
       </div>
+      <div class="hero-slide" id="hs-3" role="tabpanel" aria-labelledby="ht-3" aria-hidden="true">
+        <p class="hs-kicker hand">joga e aprende a separar!</p>
+        <h2 class="hs-title">Os jogos das tampinhas.</h2>
+        <ul class="hs-games">
+          <li><a href="#ficha" tabindex="-1"><span aria-hidden="true">🏆</span><b>O desafio das tampinhas</b></a></li>
+          <li><a href="jogos.html#calculadora" tabindex="-1"><span aria-hidden="true">🧮</span><b>Quanto valem as tuas tampas?</b></a></li>
+          <li><a href="jogos.html#verdade" tabindex="-1"><span aria-hidden="true">✅</span><b>Tampa ou não tampa?</b></a></li>
+          <li><a href="jogos.html#memoria" tabindex="-1"><span aria-hidden="true">🧠</span><b>Jogo de memória</b></a></li>
+          <li><a href="jogos.html#peso" tabindex="-1"><span aria-hidden="true">⚖️</span><b>Adivinha o peso</b></a></li>
+          <li><a href="jogos.html#semana" tabindex="-1"><span aria-hidden="true">🧐</span><b>A rasteira da semana</b></a></li>
+        </ul>
+        <div class="hs-ctas"><a class="btn btn-red" href="#ficha" tabindex="-1">Jogar o desafio <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="jogos.html" tabindex="-1"><svg aria-hidden="true"><use href="#i-star"/></svg>Mais jogos</a></div>
+      </div>
+      <div class="hero-slide" id="hs-1" role="tabpanel" aria-labelledby="ht-1" aria-hidden="true">
+    <div class="sum draw" aria-label="Problema: quanto vale um BigBag de tampas de plástico?">
+      <p class="q"><b>Problema:</b> um BigBag leva cerca de 300 kg de tampas de plástico. A Resialentejo paga 411,60 € por tonelada. Quantos BigBags são precisos para um mês de tratamento?</p>
+      <div class="line" style="animation-delay:.2s"><span class="op"></span><span class="num">300 kg × 0,41 €/kg</span></div>
+      <div class="line" style="animation-delay:.6s"><span class="op">=</span><span class="hl num">123 € por BigBag</span></div>
+      <div class="rule" style="animation-delay:1s"></div>
+      <div class="line" style="animation-delay:1.3s"><span class="op"></span><span class="num">6 740 € ÷ 123 €</span></div>
+      <div class="line" style="animation-delay:1.8s"><span class="op">≈</span>
+        <span class="answer num">55 BigBags<svg viewBox="0 0 200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M20 38C18 14 96 4 160 12c34 5 40 30 12 44-40 18-128 12-150-6-10-8-6-18 8-24" fill="none" stroke="#E0301E" stroke-width="3.5" stroke-linecap="round"/></svg></span>
+      </div>
+      <p class="r" style="animation-delay:2.2s">R: 55 BigBags dão-me <b>um mês inteiro</b> a ficar mais forte.</p>
+    </div>
+    <div class="note-red"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 10c10 2 22 10 26 28" fill="none" stroke="#E0301E" stroke-width="3" stroke-linecap="round"/><path d="M26 34l8 6 4-10" fill="none" stroke="#E0301E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>As caricas valem ainda mais. Separa-as!</div>
+  </div>
     </div>
   </div>
 </section>
@@ -640,10 +654,10 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
-<script src="js/pecas.js?v=202609281042"></script>
-<script src="js/eventos.js?v=202609281042"></script>
-<script src="js/mural-api.js?v=202609281042"></script>
-<script src="js/pontos.js?v=202609281042"></script>
+<script src="js/pecas.js?v=202609281409"></script>
+<script src="js/eventos.js?v=202609281409"></script>
+<script src="js/mural-api.js?v=202609281409"></script>
+<script src="js/pontos.js?v=202609281409"></script>
 <script src="/api/dados.js.php"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
@@ -882,6 +896,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 updCount();
 </script>
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=202609281042"></script>
+<script src="js/site.js?v=202609281409"></script>
 </body>
 </html>

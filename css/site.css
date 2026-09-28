@@ -1534,3 +1534,12 @@ footer .fine a{font-weight:400}
 .tel-nota{display:block;margin-top:4px;font-size:.82em;line-height:1.35;color:var(--pencil);font-weight:400}
 .person .tel-nota{grid-column:2;margin-top:2px}
 a[href^="tel:"]{white-space:nowrap}
+
+/* hero: slide dos jogos */
+.hs-games{list-style:none;margin:0 0 18px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.hs-games a{display:flex;align-items:center;gap:10px;height:100%;padding:9px 12px;border:2px solid var(--ink);border-radius:12px;background:#fff;color:var(--ink);text-decoration:none;transition:background .2s,transform .2s}
+.hs-games a:hover{background:var(--hl-soft);transform:translateY(-2px)}
+.hs-games span{font-size:1.35rem;line-height:1;flex:none}
+.hs-games b{font:700 .95rem/1.2 var(--body)}
+@media (max-width:520px){.hs-games a{padding:8px 10px;gap:8px}.hs-games b{font-size:.86rem}.hs-games span{font-size:1.15rem}}
+@media (max-width:360px){.hs-games{grid-template-columns:1fr}}
