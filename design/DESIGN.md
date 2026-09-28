@@ -720,6 +720,7 @@ White, 2px ink outline, paper header band with uppercase labels, 1.5px rule rows
 ### Do:
 - **Do** let the `hidden` attribute always win (`[hidden]:not(.paleta-panel){display:none!important}`); component display rules such as `.btn{display:inline-flex}` otherwise leak hidden elements.
 - **Do** say "localidade" (not "terra") for where people live, on the site, the wall and the map.
+- **Do** link both Martim logos (header `.brand`, footer `.foot-brand`) to the home page.
 - **Do** add new events only to `EVENTS` in `tools/build_pages.py` (date, end, time, where, fee, poster, en{}); the build writes `js/eventos.js` (with kind and thumb) and the hero slide and home agenda card pick the next event by today's date, falling back to "próximo evento: em breve" with an invitation to organise one.
 - **Do** keep fonts self-hosted (`css/fonts.css`, `fonts/*.woff2`, latin + latin-ext, Bricolage variable 75–100% width) and never re-add Google Fonts.
 - **Do** let `tools/webp.py` create `.jpg.webp` siblings; the DreamHost `.htaccess` serves them to browsers that accept WebP (about a third of the size).
