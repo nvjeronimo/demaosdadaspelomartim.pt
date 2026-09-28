@@ -12,15 +12,16 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Map of drop-off points · Hand in Hand for Martim</title>
-<link rel="alternate" hreflang="pt" href="../mapa.html">
-<link rel="alternate" hreflang="en" href="mapa.html">
+<link rel="alternate" hreflang="pt-PT" href="https://demaosdadaspelomartim.pt/mapa.html">
+<link rel="alternate" hreflang="en" href="https://demaosdadaspelomartim.pt/en/mapa.html">
+<link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/mapa.html">
 <meta name="description" content="The 14 bottle-cap drop-off points for Martim on a map: Boliqueime, Albufeira, Paderne and Olhos de Água. Find the one closest to you.">
 <link rel="icon" type="image/svg+xml" href="../img/marca/favicon.svg">
 <link rel="apple-touch-icon" href="../img/marca/apple-touch-icon.png">
 <link rel="preload" href="../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/fonts.css?v=202609281015">
-<link rel="stylesheet" href="../css/site.css?v=202609281015">
+<link rel="stylesheet" href="../css/fonts.css?v=202609281037">
+<link rel="stylesheet" href="../css/site.css?v=202609281037">
 </head>
 <body class="sub">
 
@@ -130,11 +131,45 @@
     </div>
     <p class="small" style="margin-top:14px">Points marked * have an approximate location, still to be confirmed by the family. Drop off during each place’s opening hours.</p>
     <div class="mapa-foot">
-      <div class="note"><p class="hand">No collection point near you?</p><p>Your school, club or café could be next. <a href="organiza.html" style="font-weight:700">Run a collection point →</a></p></div>
+      <div class="note"><p class="hand">No collection point near you?</p><p>Your school, club or café could be next. <a href="#quero-ser-ponto" style="font-weight:700">Ask to become a collection point →</a></p></div>
       <div class="note note-todo"><p class="hand" style="color:var(--pen)">Already a drop-off point?</p><p>Print the poster and the labels for the containers. <a href="cartaz.html" style="font-weight:700">Printable poster →</a></p></div>
     </div>
   </div>
 </section>
+<hr class="divider">
+<section class="page" id="quero-ser-ponto" aria-labelledby="h-pedido">
+  <div class="inner">
+    <div class="sec-head"><h2 id="h-pedido" class="h-sm">We want to be a collection point.</h2><p>A school, a café, a club or a pharmacy: tell us where it is and how to reach you. My parents bring the jugs and the poster, and your point appears on this map.</p></div>
+    <form class="join pedido-form" id="pedido-ponto" novalidate>
+      <div class="hp" aria-hidden="true"><label for="pp-site">Leave empty</label><input id="pp-site" name="site" tabindex="-1" autocomplete="off"></div>
+      <div class="pp-grid">
+        <div class="field"><label for="pp-nome">Name of the place</label><input id="pp-nome" required maxlength="120" placeholder="e.g. Central Café"></div>
+        <div class="field"><label for="pp-tipo">Type</label><select id="pp-tipo"><option value="comercio">Shop or café</option><option value="escola">School</option><option value="desporto">Club or sport</option><option value="saude">Health or pharmacy</option><option value="comunidade">Association or community</option></select></div>
+        <div class="field"><label for="pp-local">Town</label><input id="pp-local" required maxlength="60" placeholder="ex.: Boliqueime"></div>
+        <div class="field"><label for="pp-morada">Address <span class="small">(optional)</span></label><input id="pp-morada" maxlength="200" autocomplete="street-address"></div>
+        <div class="field pp-wide"><label for="pp-contacto">Email or mobile of the contact person</label><input id="pp-contacto" required maxlength="120" autocomplete="email"></div>
+        <div class="field pp-wide"><label for="pp-nota">Anything else? <span class="small">(optional)</span></label><textarea id="pp-nota" maxlength="1000" placeholder="e.g. opening hours, where the jug is"></textarea></div>
+      </div>
+      <label class="consent"><input type="checkbox" id="pp-ok" required> <span>I agree that Martim’s parents keep this data to handle the request. Handled requests are deleted after 6 months. <a href="privacidade.html">Privacy</a></span></label>
+      <button class="btn btn-red" type="submit">Send request <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      <p class="join-status" id="pp-st" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+<script>
+(()=>{const f=document.getElementById('pedido-ponto');if(!f)return;const LNG=document.documentElement.lang==='en',T=(a,b)=>LNG?b:a,st=document.getElementById('pp-st'),v=id=>document.getElementById(id).value.trim();
+f.addEventListener('submit',async ev=>{ev.preventDefault();
+  if(!v('pp-nome')||!v('pp-local')||!v('pp-contacto')){st.textContent=T('Falta o nome do local, a localidade ou o contacto.','Please add the place name, town and a contact.');return}
+  if(!document.getElementById('pp-ok').checked){st.textContent=T('Falta aceitar a nota de privacidade.','Please accept the privacy note.');return}
+  if(!/(^|\.)demaosdadaspelomartim\.pt$/.test(location.hostname)){st.textContent=T('Funciona em demaosdadaspelomartim.pt.','Works on demaosdadaspelomartim.pt.');return}
+  const b=f.querySelector('button');b.disabled=true;st.textContent=T('A enviar…','Sending…');
+  try{const r=await fetch('/api/pedido-ponto.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nome:v('pp-nome'),tipo:v('pp-tipo'),localidade:v('pp-local'),morada:v('pp-morada'),contacto:v('pp-contacto'),nota:v('pp-nota'),consentimento:true,site:v('pp-site')})});const j=await r.json();
+    if(j.ok){f.reset();st.textContent=T('Pedido enviado. Obrigado! Os meus pais vão falar contigo.','Request sent. Thank you! My parents will get in touch.');if(window.conta)conta('pedido_ponto')}
+    else st.textContent=j.why==='limite'?T('Já recebemos pedidos teus há pouco. Tenta mais tarde.','We already got your requests. Try again later.'):T('Falta preencher algum campo.','Some fields are missing.')}
+  catch(e){st.textContent=T('Não conseguimos enviar agora. Tenta outra vez ou usa o formulário de contacto.','We could not send it now. Try again or use the contact form.')}
+  b.disabled=false});
+})();
+</script>
 <hr class="divider">
 <section class="page" id="todo-o-lado" aria-labelledby="h-pins">
   <div class="inner">
@@ -145,7 +180,7 @@
   </div>
 </section>
 
-<script src="../js/pontos.js?v=202609281015"></script>
+<script src="../js/pontos.js?v=202609281037"></script>
 <script src="/api/dados.js.php"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous" referrerpolicy="no-referrer"><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
@@ -226,7 +261,7 @@ document.getElementById('perto').addEventListener('click',()=>{
     </div>
     <div>
       <h3>Partners</h3>
-      <ul class="foot-logos"><li><a href="index.html#parceiros" class="logo-chip"><img class="logo-img " src="../img/parceiros/resialentejo.svg" alt="Resialentejo" loading="lazy"></a></li><li><a href="index.html#parceiros" class="logo-chip"><img class="logo-img sq" src="../img/parceiros/de-uma-tampa.png" alt="Dê uma Tampa" loading="lazy"></a></li><li><a href="index.html#parceiros" class="logo-chip"><img class="logo-img " src="../img/parceiros/amorim.png" alt="Amorim" loading="lazy"></a></li><li><a href="index.html#parceiros" class="logo-chip"><img class="logo-img " src="../img/parceiros/kinesio.png" alt="Clínica Kinésio" loading="lazy"></a></li><li><a href="index.html#parceiros" class="logo-chip"><img class="logo-img " src="../img/parceiros/appc-faro.svg" alt="APPC Faro" loading="lazy"></a></li></ul>
+      <ul class="foot-logos"><li><a href="index.html#parceiros" class="logo-chip"><img width="500" height="285" class="logo-img " src="../img/parceiros/resialentejo.svg" alt="Resialentejo" loading="lazy"></a></li><li><a href="index.html#parceiros" class="logo-chip"><img width="308" height="308" class="logo-img sq" src="../img/parceiros/de-uma-tampa.png" alt="Dê uma Tampa" loading="lazy"></a></li><li><a href="index.html#parceiros" class="logo-chip"><img width="832" height="208" class="logo-img " src="../img/parceiros/amorim.png" alt="Amorim" loading="lazy"></a></li><li><a href="index.html#parceiros" class="logo-chip"><img width="370" height="160" class="logo-img " src="../img/parceiros/kinesio.png" alt="Clínica Kinésio" loading="lazy"></a></li><li><a href="index.html#parceiros" class="logo-chip"><img width="684" height="398" class="logo-img " src="../img/parceiros/appc-faro.svg" alt="APPC Faro" loading="lazy"></a></li></ul>
     </div>
     <div>
       <h3>Shortcuts</h3>
@@ -256,6 +291,6 @@ document.getElementById('perto').addEventListener('click',()=>{
 
 
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202609281015"></script>
+<script src="../js/site.js?v=202609281037"></script>
 </body>
 </html>

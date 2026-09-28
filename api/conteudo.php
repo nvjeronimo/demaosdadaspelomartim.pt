@@ -12,6 +12,9 @@ function conteudo_db(): PDO {
   $db->exec('CREATE TABLE IF NOT EXISTS textos(chave TEXT PRIMARY KEY, valor TEXT)');
   $db->exec('CREATE TABLE IF NOT EXISTS escolas(id INTEGER PRIMARY KEY, nome TEXT, localidade TEXT, kg REAL DEFAULT 0, garrafoes INT DEFAULT 0, ativo INT DEFAULT 1)');
   $db->exec('CREATE TABLE IF NOT EXISTS subscritores(id INTEGER PRIMARY KEY, email TEXT UNIQUE, token TEXT, confirmado INT DEFAULT 0, idioma TEXT, criado TEXT)');
+  $db->exec('CREATE TABLE IF NOT EXISTS fotos_evento(id INTEGER PRIMARY KEY, evento TEXT, src TEXT, legenda TEXT, ordem INT DEFAULT 0, criado TEXT)');
+  $db->exec('CREATE TABLE IF NOT EXISTS valores_evento(evento TEXT PRIMARY KEY, valor REAL)');
+  $db->exec('CREATE TABLE IF NOT EXISTS pedidos_pontos(id INTEGER PRIMARY KEY, nome TEXT, tipo TEXT, localidade TEXT, morada TEXT, contacto TEXT, nota TEXT, criado TEXT, estado TEXT DEFAULT \'novo\')');
   foreach (['eventos', 'novidades'] as $t) { try { $db->exec("ALTER TABLE $t ADD COLUMN avisado INT DEFAULT 0"); } catch (Throwable $e) {} }
   return $db;
 }
@@ -26,4 +29,13 @@ function avisar_subscritores(PDO $db, string $assunto, string $texto, string $ur
     usleep(300000);
   }
   return $n;
+}
+/* todos os eventos (os do site em js/eventos.js e os do painel), do mais recente para o mais antigo: [slug => "título · data"] */
+function lista_eventos(PDO $db): array {
+  $o = [];
+  $js = @file_get_contents(dirname(__DIR__) . '/js/eventos.js');
+  if ($js && preg_match('/window\.EVENTOS=(\[.*\]);/s', $js, $m)) foreach (json_decode($m[1], true) ?: [] as $e) $o[$e['slug']] = [$e['title'][0], $e['date']];
+  foreach ($db->query('SELECT id, titulo, data FROM eventos') as $e) $o['e' . $e['id']] = [$e['titulo'], $e['data']];
+  uasort($o, fn($a, $b) => strcmp($b[1], $a[1]));
+  return array_map(fn($x) => $x[0] . ' · ' . $x[1], $o);
 }

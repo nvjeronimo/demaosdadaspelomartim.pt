@@ -19,5 +19,11 @@ try {
   $o['WHATSAPP'] = texto($db, 'whatsapp');
   $o['ESCOLAS'] = $db->query('SELECT nome, localidade, kg, garrafoes FROM escolas WHERE ativo = 1 ORDER BY kg DESC, garrafoes DESC, nome')->fetchAll();
   $o['NOVIDADES'] = $db->query('SELECT id, data, titulo, texto, foto, link FROM novidades WHERE publicado = 1 ORDER BY data DESC, id DESC LIMIT 50')->fetchAll();
+  $fe = [];
+  foreach ($db->query('SELECT evento, src, legenda FROM fotos_evento ORDER BY ordem, id') as $f) $fe[$f['evento']][] = ['src' => $f['src'], 'legenda' => $f['legenda']];
+  if ($fe) $o['FOTOS_EVENTO'] = $fe;
+  $va = [];
+  foreach ($db->query('SELECT evento, valor FROM valores_evento WHERE valor > 0') as $v) $va[$v['evento']] = (float)$v['valor'];
+  if ($va) $o['VALORES'] = $va;
   foreach ($o as $k => $v) if ($v !== null) echo "window.$k=" . json_encode($v, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) . ";\n";
 } catch (Throwable $e) { echo "/* sem dados */\n"; }

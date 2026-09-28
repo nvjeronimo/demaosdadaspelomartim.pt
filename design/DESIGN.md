@@ -767,3 +767,13 @@ White, 2px ink outline, paper header band with uppercase labels, 1.5px rule rows
 
 ### Mobile Breathing Room
 At 900px and below, stacked two-column blocks get a 48px row gap (news 32px, section head 18px). At 760px and below, sections use 92px vertical padding, main blocks sit 44px under their section head, past-event rows get 18px vertical padding, and boxes inside a column (organise, result, warning, counter) start 32px below the block above. Desktop spacing is unchanged.
+
+### Past Events: Photos, Money Raised and Organisers
+- **Photos per event:** the parents upload several photos at once to any event in the panel ("Eventos passados"). The event page gets a "Fotografias" gallery (the same white-framed prints as the album, with a handwritten caption) above the prev/next navigation; if the page already has a gallery, the photos join it.
+- **Money raised:** one value per event, typed in the panel. It shows as the highlighter pill "576 € para os tratamentos" on the agenda rows, as an "Angariado" line in the event sheet, and, once at least two events have a value, as "Até agora: os N eventos com contas feitas já juntaram X €" under "Eventos anteriores". Home stays free of totals so the BFF figure is not repeated.
+- **Organisers strip:** "Quem já organizou por mim." on the agenda: white ink-bordered chips (bold name, handwritten event count) linking to that organiser's event, highlighter wash and a 2px lift on hover. The list lives in `ORGANIZADORES` in `tools/build_pages.py`.
+- **Add to calendar:** the next-event card has a plain underlined on-cover button with a calendar icon that downloads an .ics file (timed if the event has a time, all-day otherwise).
+- **Become a collection point:** a form on the map page (same white form card as the contact form, two-column fields collapsing to one under 640px, consent line, honeypot). Requests are emailed to the family and listed in the panel's "Pedidos" tab, where "Pôr no mapa" pre-fills the point form.
+
+### Performance
+Photos are capped at 1400px (JPEG q78 progressive, WebP q66) by `tools/otimizar_fotos.py`, which runs on every publish and keeps the untouched originals in `originais/`. Every local `<img>` gets width and height from `tools/img_sizes.py`. The hero title only slides in (no fade from transparent) so it counts as painted straight away.

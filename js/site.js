@@ -93,10 +93,19 @@ function buildPicker(){
     if(!up){const tb=document.getElementById('ht-2');if(tb)tb.textContent=EN?'Events':'Eventos'}
   }
   if(nx){
-    if(up){const share=nx.querySelector('.share');nx.querySelector('.next-photo img').setAttribute('src',pic(up));nx.querySelector('.next-photo img').setAttribute('alt',T(up.alt));
-      const b=nx.querySelector('.body');const w=b.querySelector('.when');w.dataset.quando=up.date;b.querySelector('h3').textContent=T(up.title);
-      b.querySelector('dl').outerHTML=dl(up).replace(' class="ficha hs-ficha"','');b.querySelector('a.btn').setAttribute('href',link(up));
-      if(share){share.dataset.shareUrl=link(up);share.dataset.shareText=T(up.share)}}
+    if(up){/* reconstrói o cartão (a página pode ter sido gerada sem próximo evento) */
+      const old=nx.querySelector('.share'),sh=old?old.outerHTML:`<div class="share share-oncover"><button class="share-btn" type="button" data-share="whatsapp" aria-label="${EN?'Share on WhatsApp':'Partilhar no WhatsApp'}"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</button><button class="share-btn" type="button" data-share="facebook" aria-label="${EN?'Share on Facebook':'Partilhar no Facebook'}"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook</button></div>`;
+      nx.innerHTML=`<figure class="photo next-photo"><img src="${pic(up)}" alt="${esc(T(up.alt))}"><figcaption>${EN?'the poster':'o cartaz'}</figcaption></figure><div class="body"><div class="when" data-quando="${up.date}"></div><h3>${esc(T(up.title))}</h3>${dl(up).replace(' class="ficha hs-ficha"','')}<a class="btn btn-yellow" href="${link(up)}">${W.more} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>${sh}</div>`;
+      const share=nx.querySelector('.share');if(share){share.dataset.shareUrl=link(up);share.dataset.shareText=T(up.share)}
+      if(!nx.querySelector('.ics-btn')){const btn=document.createElement('button');btn.type='button';btn.className='ics-btn';
+        btn.innerHTML=`<svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>${EN?'Add to calendar':'Adicionar ao calendário'}`;
+        btn.addEventListener('click',()=>{const f=d=>d.replace(/-/g,''),tm=(up.time||'').match(/(\d{1,2})[:h](\d{2}).*?(\d{1,2})[:h](\d{2})/),st=(up.time||'').match(/(\d{1,2})[:h](\d{2})/);
+          const p=n=>String(n).padStart(2,'0'),nx1=s=>{const d=day(s);d.setDate(d.getDate()+1);return d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())};
+          const when=tm?[`DTSTART:${f(up.date)}T${p(tm[1])}${tm[2]}00`,`DTEND:${f(up.end||up.date)}T${p(tm[3])}${tm[4]}00`]:st?[`DTSTART:${f(up.date)}T${p(st[1])}${st[2]}00`,`DTEND:${f(up.date)}T${p(Math.min(23,+st[1]+3))}${st[2]}00`]:[`DTSTART;VALUE=DATE:${f(up.date)}`,`DTEND;VALUE=DATE:${nx1(up.end||up.date)}`];
+          const esc2=s=>String(s||'').replace(/[\;,]/g,m=>'\\'+m).replace(/\n/g,'\\n'),url=new URL(link(up),location.href).href;
+          const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//demaosdadaspelomartim.pt//agenda//PT','BEGIN:VEVENT','UID:'+up.slug+'@demaosdadaspelomartim.pt','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+/,''),...when,'SUMMARY:'+esc2(T(up.title)),'LOCATION:'+esc2(T(up.where)),'DESCRIPTION:'+esc2((T(up.share)||'')+'\n'+url),'URL:'+url,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+          const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));a.download=up.slug+'.ics';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);if(window.conta)conta('calendario')});
+        const go=nx.querySelector('.body a.btn');go.insertAdjacentElement('afterend',btn)}}
     else nx.innerHTML=`<figure class="photo next-photo"><img src="${img}bff-multidao.jpg" alt="${EN?'Long tables full of people at the Boliqueime Food Festival':'Mesas compridas cheias de gente no Boliqueime Food Festival'}"><figcaption>${EN?'the next one could be yours!':'o próximo pode ser teu!'}</figcaption></figure><div class="body"><div class="when">${EN?'Next event: coming soon':'Próximo evento: em breve'}</div><h3>${EN?'We are planning the next one.':'Estamos a preparar o próximo.'}</h3><p>${EN?'Want to organise a walk, a tournament or a cake sale with us?':'Queres organizar uma caminhada, um torneio ou uma venda de bolos connosco?'}</p><a class="btn btn-yellow" href="${evdir.replace(/eventos\/$/,'')}organiza.html">${EN?'Organise with us':'Organiza connosco'} <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>`;
   }
   /* "eventos anteriores": os eventos que passaram desde a última publicação entram sozinhos no topo das listas */
@@ -148,6 +157,37 @@ function buildPicker(){
       ev.innerHTML=`<div class="org ev-page"><div><p class="hs-kicker hand" data-quando="${e(x.date)}"></p><dl class="ficha">${x.time?`<dt>${EN?'Time':'Hora'}</dt><dd class="num">${e(x.time)}</dd>`:''}<dt>${EN?'Where':'Onde'}</dt><dd>${e(x.where[0])}</dd>${x.fee[0]?`<dt>${EN?'Registration':'Inscrição'}</dt><dd>${e(x.fee[0])}</dd>`:''}</dl>${x.texto?`<p style="margin-top:18px;white-space:pre-line">${e(x.texto)}</p>`:''}
         <div class="share" data-share-url="evento.html?id=${x.id}" data-share-text="${e(x.title[0])}"><span class="share-label">${EN?'Share this event:':'Partilha este evento:'}</span><button class="share-btn" type="button" data-share="whatsapp"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</button><button class="share-btn" type="button" data-share="facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook</button><button class="share-btn" type="button" data-share="copy"><svg aria-hidden="true"><use href="#i-link"/></svg><span>${EN?'Copy link':'Copiar link'}</span></button></div></div>
         ${x.poster?`<figure class="photo"><span class="tape" aria-hidden="true"></span><img src="${R}${e(x.poster)}" alt="${e(x.title[0])}"></figure>`:''}</div>`}}
+})();
+
+/* ---------- eventos passados: fotos e valor angariado (painel dos pais) ---------- */
+(()=>{
+  const FE=window.FOTOS_EVENTO||{},V=window.VALORES||{},ALL=[...(window.EVENTOS||[]),...(window.EVENTOS_PAINEL||[])];
+  const e=x=>String(x==null?'':x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const sj=document.querySelector('script[src*="js/site.js"]'),R=sj?sj.getAttribute('src').replace(/js\/site\.js.*$/,''):'';
+  const eur=n=>{const o={minimumFractionDigits:n%1?2:0,maximumFractionDigits:2};return EN?'€'+n.toLocaleString('en-GB',o):n.toLocaleString('pt-PT',o)+' €'};
+  const val=x=>+(V[x.slug]??x.valor??0)||0;
+  const find=h=>ALL.find(x=>x.url?h.endsWith(x.url):h.replace(/\?.*$/,'').endsWith('/'+x.slug+'.html')||h.replace(/\?.*$/,'')===x.slug+'.html');
+  const res=x=>(EN?' for the treatments':' para os tratamentos');
+  /* página deste evento */
+  const m=location.pathname.match(/\/eventos\/([^/]+)\.html$/),pid=/evento\.html$/.test(location.pathname)?new URLSearchParams(location.search).get('id'):null;
+  const slug=m?m[1]:(pid?'e'+pid:null),me=slug&&ALL.find(x=>x.slug===slug);
+  if(slug){
+    const fotos=FE[slug]||[];
+    if(fotos.length){const figs=fotos.map(f=>`<figure class="photo"><img src="${R}${e(f.src)}" alt="${e(f.legenda||'')}" loading="lazy">${f.legenda?`<figcaption>${e(f.legenda)}</figcaption>`:''}</figure>`).join('');
+      const g=document.querySelector('#h-fotos ~ .gallery');
+      if(g)g.insertAdjacentHTML('beforeend',figs);
+      else{const nav=document.querySelector('.evnav'),box=nav?nav.closest('.inner'):document.getElementById('evento-painel');
+        if(box)box.insertAdjacentHTML(nav?'beforebegin':'afterend',`<div class="inner ev-fotos"><h2 class="h-sm">${EN?'Photos':'Fotografias'}</h2><div class="gallery">${figs}</div></div>`)}}
+    const v=me?val(me):(+V[slug]||0),dl=document.querySelector('.evgrid dl.ficha, .ev-page dl.ficha');
+    if(v&&dl&&!dl.querySelector('.ev-valor'))dl.insertAdjacentHTML('beforeend',`<dt class="ev-valor">${EN?'Raised':'Angariado'}</dt><dd class="ev-valor"><b>${eur(v)}</b>${res()}</dd>`);
+  }
+  /* agenda: valor em cada evento e total */
+  const evl=document.querySelector('.evlist');
+  if(evl){let tot=0,n=0;const seen=new Set();
+    evl.querySelectorAll('a.evrow').forEach(a=>{const x=find(a.getAttribute('href'));if(!x||seen.has(x.slug))return;seen.add(x.slug);const v=val(x);if(!v)return;tot+=v;n++;
+      const t=a.querySelector('.evtxt');let r=t&&t.querySelector('.res');if(t&&!r){t.insertAdjacentHTML('beforeend','<span class="res"></span>');r=t.querySelector('.res')}if(r)r.textContent=eur(v)+res()});
+    const h=document.getElementById('h-past');
+    if(n>=2&&h&&!document.getElementById('ev-total'))h.insertAdjacentHTML('afterend',`<p class="ev-total" id="ev-total"><span class="hand">${EN?'So far:':'Até agora:'}</span> ${EN?`the ${n} events with their accounts done raised <b>${eur(tot)}</b> for my treatments.`:`os ${n} eventos com contas feitas já juntaram <b>${eur(tot)}</b> para os meus tratamentos.`}</p>`)}
 })();
 
 /* ---------- datas relativas: "Hoje!", "Amanhã!", "Faltam N dias", "Já foi" ---------- */

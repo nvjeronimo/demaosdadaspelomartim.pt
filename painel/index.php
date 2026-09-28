@@ -97,6 +97,7 @@ else {
         $v = [limpo('nome', 120), $t, limpo('localidade', 60), $lat, $lng, isset($_POST['aprox']) ? 1 : 0, isset($_POST['ativo']) ? 1 : 0];
         if ($id) $db->prepare('UPDATE pontos SET nome=?, tipo=?, localidade=?, lat=?, lng=?, aprox=?, ativo=? WHERE id=?')->execute(array_merge($v, [$id]));
         else $db->prepare('INSERT INTO pontos(nome,tipo,localidade,lat,lng,aprox,ativo,ordem) VALUES (?,?,?,?,?,?,?,999)')->execute($v);
+        if ($pid = (int)($_POST['pedido'] ?? 0)) $db->prepare("UPDATE pedidos_pontos SET estado = 'aprovado' WHERE id = ?")->execute([$pid]);
         $msg = 'Ponto de recolha guardado.';
       }
       if ($a === 'foto') {
@@ -119,8 +120,25 @@ else {
           if (!$x) { $k = avisar_subscritores($db, 'Novidades do Martim: ' . $v[1], $v[1] . "\n\n" . mb_substr($v[2], 0, 600), SITE . '/novidades.html#n-' . $nid);
             $db->exec('UPDATE novidades SET avisado=1 WHERE id=' . $nid); $msg .= " Aviso enviado a $k pessoas."; } }
       }
+      if ($a === 'valor_evento') { $ev = limpo('evento', 80); $v = max(0, (float)str_replace([' ', '€', ','], ['', '', '.'], (string)($_POST['valor'] ?? '')));
+        if ($ev === '') throw new RuntimeException('Falta o evento.');
+        if ($v > 0) $db->prepare('INSERT INTO valores_evento VALUES (?, ?) ON CONFLICT(evento) DO UPDATE SET valor = excluded.valor')->execute([$ev, $v]);
+        else $db->prepare('DELETE FROM valores_evento WHERE evento = ?')->execute([$ev]);
+        $msg = 'Valor guardado.'; }
+      if ($a === 'fotos_evento') { $ev = limpo('evento', 80); if ($ev === '') throw new RuntimeException('Falta o evento.');
+        $n = 0; $F = $_FILES['fotos'] ?? null;
+        if ($F && is_array($F['name'])) foreach ($F['name'] as $i => $nm) {
+          $_FILES['_uma'] = ['name' => $nm, 'type' => $F['type'][$i], 'tmp_name' => $F['tmp_name'][$i], 'error' => $F['error'][$i], 'size' => $F['size'][$i]];
+          $f = foto_enviada('_uma', $UP); if ($f) { $db->prepare('INSERT INTO fotos_evento(evento,src,legenda,ordem,criado) VALUES (?,?,?,?,?)')->execute([$ev, $f, limpo('legenda', 120), $n, date('c')]); $n++; }
+        }
+        if (!$n) throw new RuntimeException('Escolhe pelo menos uma foto.');
+        $msg = $n === 1 ? '1 foto juntada.' : "$n fotos juntadas."; }
+      if ($a === 'legenda_foto' && $id) { $db->prepare('UPDATE fotos_evento SET legenda = ? WHERE id = ?')->execute([limpo('legenda', 120), $id]); $msg = 'Legenda guardada.'; }
+      if ($a === 'pedido' && $id) { $e = ($_POST['estado'] ?? '') === 'recusado' ? 'recusado' : 'arquivado';
+        if (($_POST['apagar'] ?? '') === '1') { $db->prepare('DELETE FROM pedidos_pontos WHERE id = ?')->execute([$id]); $msg = 'Pedido apagado.'; }
+        else { $db->prepare('UPDATE pedidos_pontos SET estado = ? WHERE id = ?')->execute([$e, $id]); $msg = 'Pedido arquivado.'; } }
       if ($a === 'apagar') {
-        $t = ['evento' => 'eventos', 'ponto' => 'pontos', 'foto' => 'album', 'novidade' => 'novidades', 'escola' => 'escolas'][$_POST['tipo'] ?? ''] ?? '';
+        $t = ['evento' => 'eventos', 'ponto' => 'pontos', 'foto' => 'album', 'novidade' => 'novidades', 'escola' => 'escolas', 'foto_evento' => 'fotos_evento'][$_POST['tipo'] ?? ''] ?? '';
         if ($t && $id) { $db->prepare("DELETE FROM $t WHERE id = ?")->execute([$id]); $msg = 'Apagado.'; }
       }
       if ($a === 'ordem' && $id) {
@@ -180,7 +198,7 @@ button,.btn{font:700 1rem/1 inherit;padding:.8em 1.2em;border-radius:10px;border
 <main><h1>Entrar</h1><div class="card"><?php if ($erro): ?><p class="msg err"><?= $h($erro) ?></p><?php endif; ?>
 <form method="post"><?= $csrf ?><label for="p">Palavra-passe</label><input type="password" id="p" name="p" autocomplete="current-password" required autofocus><button>Entrar</button></form></div></main>
 <?php else:
-$tabs = ['inicio' => 'Início', 'novidades' => 'Novidades', 'eventos' => 'Eventos', 'album' => 'Álbum', 'pontos' => 'Pontos de recolha', 'resultado' => 'Resultados', 'escolas' => 'Escolas', 'avisos' => 'Avisos', 'senha' => 'Palavra-passe']; ?>
+$tabs = ['inicio' => 'Início', 'novidades' => 'Novidades', 'eventos' => 'Eventos', 'passados' => 'Eventos passados', 'album' => 'Álbum', 'pontos' => 'Pontos de recolha', 'pedidos' => 'Pedidos' . (($np = (int)$db->query("SELECT COUNT(*) FROM pedidos_pontos WHERE estado = 'novo'")->fetchColumn()) ? " ($np)" : ''), 'resultado' => 'Resultados', 'escolas' => 'Escolas', 'avisos' => 'Avisos', 'senha' => 'Palavra-passe']; ?>
 <nav><?php foreach ($tabs as $k => $v): ?><a href="?s=<?= $k ?>" class="<?= $s === $k ? 'on' : '' ?>"><?= $v ?></a><?php endforeach; ?></nav>
 <main>
 <?php if ($msg): ?><p class="msg"><?= $h($msg) ?> As mudanças aparecem no site em cerca de 1 minuto.</p><?php endif; ?>
@@ -192,7 +210,9 @@ $tabs = ['inicio' => 'Início', 'novidades' => 'Novidades', 'eventos' => 'Evento
 <a href="?s=novidades">📰 Novidades<small>Uma notícia com foto depois de um tratamento</small></a>
 <a href="?s=eventos">📅 Eventos<small>Próximos eventos e os detalhes</small></a>
 <a href="?s=album">📷 Álbum<small>Juntar fotos e corrigir legendas</small></a>
+<a href="?s=passados">🖼️ Eventos passados<small>Fotos e valor angariado de cada evento</small></a>
 <a href="?s=pontos">📍 Pontos de recolha<small>Acrescentar, mudar ou retirar</small></a>
+<a href="?s=pedidos">🙋 Pedidos<small>Quem quer ser ponto de recolha</small></a>
 <a href="?s=resultado">🧢 Resultados<small>Último resultado e contador do ano</small></a>
 <a href="?s=escolas">🏫 Escolas<small>O desafio entre escolas</small></a>
 <a href="?s=avisos">✉️ Avisos<small>Quem pediu avisos por email</small></a>
@@ -268,10 +288,11 @@ $tabs = ['inicio' => 'Início', 'novidades' => 'Novidades', 'eventos' => 'Evento
 <?php if ($n['tipo'] === 'foto'): ?><form method="post" onsubmit="return confirm('Retirar esta foto do álbum?')"><?= $csrf ?><input type="hidden" name="a" value="apagar"><input type="hidden" name="tipo" value="foto"><input type="hidden" name="id" value="<?= $n['id'] ?>"><button class="del">Apagar</button></form><?php endif; ?></div></li>
 <?php endforeach; ?></ul></div>
 
-<?php elseif ($s === 'pontos'): $e = $ed ? $db->query('SELECT * FROM pontos WHERE id=' . $ed)->fetch() : []; ?>
+<?php elseif ($s === 'pontos'): $e = $ed ? $db->query('SELECT * FROM pontos WHERE id=' . $ed)->fetch() : [];
+  $pd = (int)($_GET['pedido'] ?? 0); if ($pd && !$ed) { $q = $db->prepare('SELECT * FROM pedidos_pontos WHERE id = ?'); $q->execute([$pd]); if ($r = $q->fetch()) $e = ['nome' => $r['nome'], 'tipo' => $r['tipo'], 'localidade' => $r['localidade'], 'ativo' => 1]; } ?>
 <h1>Pontos de recolha</h1>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous">
-<div class="card"><h2><?= $ed ? 'Editar ponto' : 'Novo ponto' ?></h2><form method="post"><?= $csrf ?><input type="hidden" name="a" value="ponto"><input type="hidden" name="id" value="<?= $ed ?>">
+<div class="card"><h2><?= $ed ? 'Editar ponto' : 'Novo ponto' ?></h2><form method="post"><?= $csrf ?><input type="hidden" name="a" value="ponto"><input type="hidden" name="id" value="<?= $ed ?>"><?php if (!empty($pd)): ?><input type="hidden" name="pedido" value="<?= $pd ?>"><p class="hint">A partir do pedido. Falta só tocar no mapa onde fica o ponto.</p><?php endif; ?>
 <label for="nome">Nome</label><input type="text" id="nome" name="nome" required value="<?= $h($e['nome'] ?? '') ?>" placeholder="Café Central">
 <div class="row"><div><label for="tipo">Tipo</label><select id="tipo" name="tipo"><?= $sel(TIPOS_PONTO, $e['tipo'] ?? 'comunidade') ?></select></div>
 <div><label for="localidade">Localidade</label><input type="text" id="localidade" name="localidade" value="<?= $h($e['localidade'] ?? '') ?>" placeholder="Boliqueime"></div></div>
@@ -292,6 +313,39 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,att
 let mk=has?L.marker([+la.value,+ln.value]).addTo(m):null;
 m.on('click',e=>{la.value=e.latlng.lat.toFixed(5);ln.value=e.latlng.lng.toFixed(5);mk?mk.setLatLng(e.latlng):mk=L.marker(e.latlng).addTo(m)});
 </script>
+
+<?php elseif ($s === 'passados'): $EV = lista_eventos($db); $ev = array_key_exists($_GET['ev'] ?? '', $EV) ? $_GET['ev'] : ''; ?>
+<h1>Eventos passados</h1>
+<?php if (!$ev): $cnt = []; foreach ($db->query('SELECT evento, COUNT(*) n FROM fotos_evento GROUP BY evento') as $r) $cnt[$r['evento']] = $r['n']; $vals = $db->query('SELECT evento, valor FROM valores_evento')->fetchAll(PDO::FETCH_KEY_PAIR); ?>
+<div class="card"><p class="hint" style="margin-top:0">Escolhe um evento para juntar fotos ou escrever o valor angariado. As fotos aparecem na página do evento; o valor aparece na agenda e no total.</p><ul class="list">
+<?php foreach ($EV as $k => $t): ?><li><span></span><div><b><?= $h($t) ?></b><div class="muted"><?= (int)($cnt[$k] ?? 0) ?> fotos<?= isset($vals[$k]) ? ' · ' . $h(number_format($vals[$k], 2, ',', ' ')) . ' €' : '' ?></div></div><div><a class="btn btn-l" style="margin:0;padding:.5em .7em;font-size:.9rem" href="?s=passados&ev=<?= $h(urlencode($k)) ?>">Abrir</a></div></li><?php endforeach; ?>
+</ul></div>
+<?php else: $q = $db->prepare('SELECT valor FROM valores_evento WHERE evento = ?'); $q->execute([$ev]); $val = $q->fetchColumn(); ?>
+<p><a href="?s=passados">← Todos os eventos</a></p><h2><?= $h($EV[$ev]) ?></h2>
+<div class="card"><form method="post"><?= $csrf ?><input type="hidden" name="a" value="valor_evento"><input type="hidden" name="evento" value="<?= $h($ev) ?>">
+<label for="valor">Valor angariado para os tratamentos (€)</label><input type="text" inputmode="decimal" id="valor" name="valor" value="<?= $val ? $h(str_replace('.', ',', (string)(float)$val)) : '' ?>" placeholder="ex.: 576">
+<p class="hint">Deixa vazio (ou 0) se ainda não sabes. Aparece como "576 € para os tratamentos" e soma no total dos eventos.</p><button>Guardar valor</button></form></div>
+<div class="card"><h2>Juntar fotos</h2><form method="post" enctype="multipart/form-data"><?= $csrf ?><input type="hidden" name="a" value="fotos_evento"><input type="hidden" name="evento" value="<?= $h($ev) ?>">
+<label for="fotos">Fotos (podes escolher várias de uma vez)</label><input type="file" id="fotos" name="fotos[]" accept="image/*" multiple required>
+<label for="legenda">Legenda para todas (opcional, escrita à mão no site)</label><input type="text" id="legenda" name="legenda" placeholder="tanta gente a ajudar!">
+<p class="hint">Cada foto é reduzida sozinha. Se forem muitas, junta 10 de cada vez.</p><button>Juntar</button></form></div>
+<div class="card"><h2>Fotos deste evento</h2><ul class="list"><?php $q = $db->prepare('SELECT * FROM fotos_evento WHERE evento = ? ORDER BY ordem, id'); $q->execute([$ev]); foreach ($q as $n): ?>
+<li><?= $img($n['src']) ?><div><form method="post" style="display:flex;gap:6px"><?= $csrf ?><input type="hidden" name="a" value="legenda_foto"><input type="hidden" name="id" value="<?= $n['id'] ?>"><input type="text" name="legenda" value="<?= $h($n['legenda']) ?>" placeholder="legenda" aria-label="Legenda"><button class="l" style="margin:0">OK</button></form></div>
+<div><form method="post" onsubmit="return confirm('Apagar esta foto?')"><?= $csrf ?><input type="hidden" name="a" value="apagar"><input type="hidden" name="tipo" value="foto_evento"><input type="hidden" name="id" value="<?= $n['id'] ?>"><button class="del">Apagar</button></form></div></li>
+<?php endforeach; ?></ul></div>
+<?php endif; ?>
+
+<?php elseif ($s === 'pedidos'): ?>
+<h1>Pedidos para ser ponto de recolha</h1>
+<?php foreach (['novo' => 'Novos', 'aprovado' => 'Já no mapa', 'arquivado' => 'Arquivados', 'recusado' => 'Recusados'] as $st => $tt): $q = $db->prepare('SELECT * FROM pedidos_pontos WHERE estado = ? ORDER BY criado DESC'); $q->execute([$st]); $rows = $q->fetchAll(); if (!$rows && $st !== 'novo') continue; ?>
+<div class="card"><h2><?= $tt ?></h2><?php if (!$rows): ?><p class="hint">Não há pedidos novos.</p><?php endif; ?><ul class="list">
+<?php foreach ($rows as $n): ?><li><span></span><div><b><?= $h($n['nome']) ?></b><div class="muted"><?= $h(TIPOS_PONTO[$n['tipo']] ?? $n['tipo']) ?> · <?= $h($n['localidade']) ?><?= $n['morada'] ? ' · ' . $h($n['morada']) : '' ?></div><div class="muted">Contacto: <?= $h($n['contacto']) ?> · <?= $h(substr($n['criado'], 0, 10)) ?></div><?php if ($n['nota']): ?><div class="muted">“<?= $h($n['nota']) ?>”</div><?php endif; ?></div>
+<div><?php if ($st === 'novo'): ?><a class="btn" style="margin:0 0 6px;padding:.5em .7em;font-size:.9rem" href="?s=pontos&pedido=<?= $n['id'] ?>">Pôr no mapa</a>
+<form method="post"><?= $csrf ?><input type="hidden" name="a" value="pedido"><input type="hidden" name="id" value="<?= $n['id'] ?>"><button class="l" name="estado" value="arquivado">Arquivar</button></form><?php endif; ?>
+<form method="post" onsubmit="return confirm('Apagar este pedido e o contacto?')"><?= $csrf ?><input type="hidden" name="a" value="pedido"><input type="hidden" name="id" value="<?= $n['id'] ?>"><input type="hidden" name="apagar" value="1"><button class="del">Apagar</button></form></div></li>
+<?php endforeach; ?></ul></div>
+<?php endforeach; ?>
+<p class="hint">Os pedidos chegam também por email. Depois de tratares um pedido, podes apagá-lo; os pedidos tratados são apagados sozinhos ao fim de 6 meses.</p>
 
 <?php elseif ($s === 'escolas'): $e = $ed ? $db->query('SELECT * FROM escolas WHERE id=' . $ed)->fetch() : []; ?>
 <h1>Desafio das escolas</h1>

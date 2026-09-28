@@ -30,7 +30,8 @@ window.EVENTOS=[
    "Caminhada",
    "Walk"
   ],
-  "thumb": "cartaz-caminhada.jpg"
+  "thumb": "cartaz-caminhada.jpg",
+  "valor": 0
  },
  {
   "slug": "noite-de-baile-14-agosto-2026",
@@ -62,7 +63,8 @@ window.EVENTOS=[
    "Baile",
    "Dance"
   ],
-  "thumb": "cartaz-baile.jpg"
+  "thumb": "cartaz-baile.jpg",
+  "valor": 0
  },
  {
   "slug": "noite-anos-80-7-agosto-2026",
@@ -94,7 +96,8 @@ window.EVENTOS=[
    "Música",
    "Event"
   ],
-  "thumb": "cartaz-noite-anos-80.jpg"
+  "thumb": "cartaz-noite-anos-80.jpg",
+  "valor": 0
  },
  {
   "slug": "baile-de-verao-cdb-2026",
@@ -126,7 +129,8 @@ window.EVENTOS=[
    "Baile",
    "Dance"
   ],
-  "thumb": "cartaz-baile-cdb-2026.jpg"
+  "thumb": "cartaz-baile-cdb-2026.jpg",
+  "valor": 0
  },
  {
   "slug": "bff-solidario-2026",
@@ -158,7 +162,8 @@ window.EVENTOS=[
    "Festival",
    "Festival"
   ],
-  "thumb": "bff-familia.jpg"
+  "thumb": "bff-familia.jpg",
+  "valor": 576.0
  },
  {
   "slug": "sun7-mar-a-vista-2026",
@@ -190,7 +195,8 @@ window.EVENTOS=[
    "Música",
    "Event"
   ],
-  "thumb": "cartaz-sun7-2026.jpg"
+  "thumb": "cartaz-sun7-2026.jpg",
+  "valor": 0
  },
  {
   "slug": "sorteio-bolo-joaninha-doce-2026",
@@ -222,7 +228,8 @@ window.EVENTOS=[
    "Sorteio",
    "Event"
   ],
-  "thumb": "cartaz-joaninha-doce.jpg"
+  "thumb": "cartaz-joaninha-doce.jpg",
+  "valor": 0
  },
  {
   "slug": "sorteio-cabaz-natal-cdb-2025",
@@ -254,7 +261,8 @@ window.EVENTOS=[
    "Sorteio",
    "Event"
   ],
-  "thumb": "cartaz-cabaz-natal.jpg"
+  "thumb": "cartaz-cabaz-natal.jpg",
+  "valor": 0
  },
  {
   "slug": "martim-motorock-solidario-2025",
@@ -286,7 +294,8 @@ window.EVENTOS=[
    "Concerto",
    "Event"
   ],
-  "thumb": "cartaz-motorock.jpg"
+  "thumb": "cartaz-motorock.jpg",
+  "valor": 0
  },
  {
   "slug": "baile-de-verao-cdb-2025",
@@ -318,7 +327,8 @@ window.EVENTOS=[
    "Baile",
    "Dance"
   ],
-  "thumb": "cartaz-baile-cdb-2025.jpg"
+  "thumb": "cartaz-baile-cdb-2025.jpg",
+  "valor": 0
  },
  {
   "slug": "sun7-mar-a-vista-2025",
@@ -350,7 +360,8 @@ window.EVENTOS=[
    "Música",
    "Event"
   ],
-  "thumb": "cartaz-sun7-2025.jpg"
+  "thumb": "cartaz-sun7-2025.jpg",
+  "valor": 0
  },
  {
   "slug": "conversas-a-quinta-ricardo-brito-2025",
@@ -382,7 +393,8 @@ window.EVENTOS=[
    "Conversa",
    "Event"
   ],
-  "thumb": "cartaz-conversas-quinta.jpg"
+  "thumb": "cartaz-conversas-quinta.jpg",
+  "valor": 0
  },
  {
   "slug": "ii-torneio-padel-martim-cruz-2025",
@@ -414,7 +426,8 @@ window.EVENTOS=[
    "Torneio",
    "Tournament"
   ],
-  "thumb": "cartaz-padel-2025.jpg"
+  "thumb": "cartaz-padel-2025.jpg",
+  "valor": 0
  },
  {
   "slug": "jantar-vinico-solidario-2024",
@@ -446,7 +459,8 @@ window.EVENTOS=[
    "Jantar",
    "Event"
   ],
-  "thumb": "cartaz-jantar-vinico.jpg"
+  "thumb": "cartaz-jantar-vinico.jpg",
+  "valor": 0
  },
  {
   "slug": "um-sorriso-pelo-martim-2024",
@@ -478,7 +492,8 @@ window.EVENTOS=[
    "Fotografia",
    "Event"
   ],
-  "thumb": "cartaz-um-sorriso.jpg"
+  "thumb": "cartaz-um-sorriso.jpg",
+  "valor": 0
  },
  {
   "slug": "torneio-padel-martim-cruz-2023",
@@ -510,6 +525,7 @@ window.EVENTOS=[
    "Torneio",
    "Tournament"
   ],
-  "thumb": "padel-todos.jpg"
+  "thumb": "padel-todos.jpg",
+  "valor": 0
  }
 ];

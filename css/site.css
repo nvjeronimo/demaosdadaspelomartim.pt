@@ -1169,11 +1169,13 @@ body{overflow-x:clip}
   .caps svg:nth-child(3n){animation-duration:6s;animation-delay:-4s}
   @keyframes capFloat{0%,100%{transform:rotate(var(--r)) translateY(0)}50%{transform:rotate(calc(var(--r) + 8deg)) translateY(-7px)}}
   /* título do hero escreve-se linha a linha ao abrir */
-  .cover h1{animation:heroIn .8s var(--ease) both}
+  .cover h1{animation:heroTitle .8s var(--ease) both}
   .cover .lede{animation:heroIn .8s .15s var(--ease) both}
   .cover .ctas{animation:heroIn .8s .28s var(--ease) both}
   .hero .photo{animation:pinIn .9s .2s var(--ease) both}
   @keyframes heroIn{from{opacity:0;transform:translateY(16px)}}
+  /* o título só desliza (sem começar invisível): conta logo como pintado para o LCP */
+  @keyframes heroTitle{from{transform:translateY(16px)}}
   @keyframes pinIn{from{opacity:0;transform:translateY(-26px) rotate(-6deg) scale(1.04)}}
   /* botões afundam ao carregar */
   .btn:active,.chip:active,.bin:active,.levels button:active{transform:translateY(1px) scale(.98)}
@@ -1501,3 +1503,29 @@ footer .fine a{font-weight:400}
 .foot-brand{display:inline-block;border-radius:8px;transition:opacity .2s}
 .foot-brand:hover{opacity:.85}
 .foot-brand:focus-visible{outline:3px solid var(--hl-on-cover);outline-offset:4px}
+
+/* pedido para ser ponto de recolha (mapa) */
+.pedido-form{max-width:860px;margin-top:30px}
+.pp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
+.pp-grid .pp-wide{grid-column:1/-1}
+@media (max-width:640px){.pp-grid{grid-template-columns:1fr}}
+
+/* agenda: quem já organizou eventos pelo Martim */
+.quem{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.quem a{display:flex;flex-direction:column;gap:2px;padding:.7em 1em;border:2px solid var(--ink);border-radius:14px;background:#fff;color:var(--ink);text-decoration:none;transition:background .2s,transform .2s}
+.quem a:hover{background:var(--hl-soft);transform:translateY(-2px)}
+.quem b{font:700 1rem/1.2 var(--body)}
+.quem small{font:400 1.05rem/1 var(--hand);color:var(--pen)}
+
+/* próximo evento: adicionar ao calendário */
+.ics-btn{display:inline-flex;align-items:center;gap:8px;margin:12px 0 0 14px;padding:.45em .2em;background:none;border:0;border-bottom:2px solid currentColor;color:var(--on-cover);font:700 .98rem/1.2 var(--body);cursor:pointer}
+.ics-btn svg{width:20px;height:20px}
+.ics-btn:hover{color:var(--hl-on-cover)}
+.ics-btn:focus-visible{outline:3px solid var(--hl-on-cover);outline-offset:3px}
+@media (max-width:560px){.ics-btn{margin:14px 0 0}}
+/* eventos passados: valor e total */
+.ev-total{margin:14px 0 6px;font-size:1.1rem;max-width:62ch}
+.ev-total .hand{font-size:1.4rem;color:var(--pen)}
+.ev-total b{background:var(--hl-soft);padding:0 .2em;border-radius:4px}
+.ficha .ev-valor b{font-weight:800}
+.ev-fotos{margin-top:40px}
