@@ -1529,3 +1529,8 @@ footer .fine a{font-weight:400}
 .ev-total b{background:var(--hl-soft);padding:0 .2em;border-radius:4px}
 .ficha .ev-valor b{font-weight:800}
 .ev-fotos{margin-top:40px}
+
+/* indicação do preço da chamada junto a cada número (DL 59/2021, alterado pelo DL 9/2022) */
+.tel-nota{display:block;margin-top:4px;font-size:.82em;line-height:1.35;color:var(--pencil);font-weight:400}
+.person .tel-nota{grid-column:2;margin-top:2px}
+a[href^="tel:"]{white-space:nowrap}
