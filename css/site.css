@@ -1357,6 +1357,15 @@ footer .fine a{font-weight:400}
 .tf-q{font:800 clamp(1.4rem,2.6vw,2rem)/1.15 var(--display);font-stretch:84%;margin:14px 0 18px;max-width:30ch}
 .tf-btns{display:flex;flex-wrap:wrap;gap:12px}
 .tf-btns .btn{min-width:140px;justify-content:center;font-size:1.15rem}
+/* as duas respostas com o mesmo peso: nenhuma sugere ser a certa */
+.tf-btns .tf-btn{min-width:0}
+.tf-btn{flex:1 1 0;max-width:220px;background:#fff;color:var(--ink);border-color:var(--ink)}
+.tf-btn:hover:not(:disabled){background:var(--hl-soft)}
+.tf-btn:disabled{opacity:1;cursor:default}
+.tf-btn:disabled:not(.ok):not(.no){opacity:.55}
+.tf-btn.ok{background:#E7F6EE;border-color:var(--green);color:var(--green)}
+.tf-btn.no{background:#FFF0EE;border-color:var(--red-ink);color:var(--red-ink)}
+.tf-q:focus{outline:none}
 .tf-fb{font-size:1.3rem;min-height:1.4em;margin:16px 0 0}.tf-fb.ok{color:var(--green)}.tf-fb.no{color:var(--red-ink)}
 .tf-end{font-size:1.2rem}.tf-end b{font:800 2.4rem/1 var(--display);margin-right:10px}
 .memo-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;font-size:1.3rem;color:var(--pen);margin-bottom:16px}
