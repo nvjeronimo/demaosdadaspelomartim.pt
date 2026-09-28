@@ -1,4 +1,4 @@
-/* Jogos das tampinhas (jogos.html): calculadora, verdadeiro/falso, memória, adivinha o peso, rasteira do dia. */
+/* Jogos das tampinhas (jogos.html): calculadora, verdadeiro/falso, memória, adivinha a resposta, rasteira do dia. */
 (()=>{
 const LNG=document.documentElement.lang==='en',T=(pt,en)=>LNG?en:pt;
 const nf=(n,d=0)=>n.toLocaleString(LNG?'en-GB':'pt-PT',{maximumFractionDigits:d,minimumFractionDigits:d});
@@ -177,7 +177,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
   document.getElementById('m-new').addEventListener('click',deal);deal();
 })();
 
-/* ---------- 4. adivinha o peso ---------- */
+/* ---------- 4. adivinha a resposta ---------- */
 (()=>{const box=document.getElementById('peso-box');if(!box)return;
   const TP=T('tampas','caps'),KG='kg',EU='€',BB='BigBags',PS=T('pessoas','people'),PT=T('pontos','points');
   const POOL=[[T('Quantas tampas de plástico são precisas para fazer 1 kg?','How many plastic caps make 1 kg?'),500,50,5000,T('Cerca de 500: cada tampa pesa uns 2 gramas.','About 500: each cap weighs roughly 2 grams.'),TP],
@@ -199,7 +199,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
   let Q=[];
   let i=0,score=0;const lg=(v,a,b)=>Math.round(Math.exp(Math.log(a)+(Math.log(b)-Math.log(a))*v/1000));
   const show=()=>{if(i===0&&!Q.length)Q=shuffle(POOL).slice(0,3);if(i>=Q.length){conta('jogo_peso');box.innerHTML=`<p class="tf-end"><b class="num">${'★'.repeat(score)}${'☆'.repeat(9-score)}</b></p><p>${score>=7?T('Tens olho para tampas!','You have an eye for caps!'):T('Agora já sabes porque é que cada tampa conta.','Now you know why every cap counts.')}</p><button class="btn btn-red" type="button" id="p-again">${T('Jogar outra vez','Play again')}</button>`;document.getElementById('p-again').addEventListener('click',()=>{i=0;score=0;Q=[];show()});return}
-    const [q,ans,a,b]=Q[i];const va=1000*(Math.log(ans)-Math.log(a))/(Math.log(b)-Math.log(a));let start0;do{start0=Math.round(Math.random()*1000)}while(Math.abs(start0-va)<300);box.innerHTML=`<p class="hand">${T('Pergunta','Question')} ${i+1} / ${Q.length}</p><p class="tf-q">${esc(q)}</p><label class="peso-range"><span class="visually-hidden">${T('O teu palpite','Your guess')}</span><input type="range" min="0" max="1000" value="${start0}" id="p-r"></label><p class="peso-val"><b class="num" id="p-v"></b> ${Q[i][5]}</p><button class="btn btn-red" type="button" id="p-ok">${T('Ver a resposta','See the answer')}</button><p class="tf-fb hand" id="p-fb" aria-live="polite"></p>`;
+    const [q,ans,a,b]=Q[i];const start0=0;/* o marcador começa sempre no início da escala */box.innerHTML=`<p class="hand">${T('Pergunta','Question')} ${i+1} / ${Q.length}</p><p class="tf-q">${esc(q)}</p><label class="peso-range"><span class="visually-hidden">${T('O teu palpite','Your guess')}</span><input type="range" min="0" max="1000" value="${start0}" id="p-r"></label><p class="peso-val"><b class="num" id="p-v"></b> ${Q[i][5]}</p><button class="btn btn-red" type="button" id="p-ok">${T('Ver a resposta','See the answer')}</button><p class="tf-fb hand" id="p-fb" aria-live="polite"></p>`;
     const r=document.getElementById('p-r'),v=document.getElementById('p-v');const upd=()=>{v.textContent=nf(lg(+r.value,a,b))};r.addEventListener('input',upd);upd();
     document.getElementById('p-ok').addEventListener('click',e=>{const g=lg(+r.value,a,b),ratio=Math.max(g,ans)/Math.min(g,ans),st=ratio<=1.35?3:ratio<=2?2:ratio<=4?1:0;score+=st;r.disabled=true;e.target.disabled=true;
       const fb=document.getElementById('p-fb');fb.className='tf-fb hand '+(st>=2?'ok':'no');fb.textContent=`${'★'.repeat(st)}${'☆'.repeat(3-st)} ${T('Resposta','Answer')}: ${nf(ans)}. ${Q[i][4]}`;i++;
