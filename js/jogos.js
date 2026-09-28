@@ -207,17 +207,31 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
   show();
 })();
 
-/* ---------- 5. rasteira do dia: uma peça que engana, igual para todos e diferente todos os dias ---------- */
+/* ---------- 5. rasteira do dia: uma peça que engana por dia, igual para todos; dá para voltar aos dias anteriores ---------- */
 (()=>{const box=document.getElementById('semana-box');if(!box||!window.PECAS)return;
-  const d=new Date(),dia=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/864e5);
-  const L=window.PECAS.filter(p=>p.lv>=2).sort((a,b)=>a.id.localeCompare(b.id)),p=L[dia%L.length];
+  const INICIO=Date.UTC(2026,8,25)/864e5;                 /* 25 set 2026: o site novo entrou no ar */
+  const d0=new Date(),HOJE=Math.floor(Date.UTC(d0.getFullYear(),d0.getMonth(),d0.getDate())/864e5);
+  const L=window.PECAS.filter(p=>p.lv>=2).sort((a,b)=>a.id.localeCompare(b.id));
   const MES=LNG?['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']:['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-  const hoje=LNG?`today, ${d.getDate()} ${MES[d.getMonth()]}`:`hoje, ${d.getDate()} ${MES[d.getMonth()]}`;
-  let done=null;try{done=JSON.parse(localStorage.getItem('rasteira')||'null')}catch(e){}
-  const render=ans=>{box.innerHTML=`<div class="card-item"><svg aria-hidden="true" style="color:${p.color||'#5AB8E6'}"><use href="#${p.icon}"/></svg><span>${esc(T(p.label[0],p.label[1]))}</span><small class="hand">${hoje}</small></div>
+  const SEM=LNG?['Sun','Mon','Tue','Wed','Thu','Fri','Sat']:['dom','seg','ter','qua','qui','sex','sáb'];
+  /* respostas guardadas: {dia:{id,a}}; lê também o formato antigo {dia,a} */
+  let R={};try{const x=JSON.parse(localStorage.getItem('rasteira')||'null');if(x&&typeof x==='object')R=('a' in x&&'dia' in x)?{[x.dia]:{a:x.a}}:x}catch(e){}
+  const save=()=>{try{localStorage.setItem('rasteira',JSON.stringify(R))}catch(e){}};
+  const peca=dia=>{const g=R[dia];return(g&&g.id&&window.PECAS.find(p=>p.id===g.id))||L[dia%L.length]};
+  const nome=dia=>{const x=new Date(dia*864e5),t=`${x.getUTCDate()} ${MES[x.getUTCMonth()]}`;return dia===HOJE?T('hoje, ','today, ')+t:dia===HOJE-1?T('ontem, ','yesterday, ')+t:SEM[x.getUTCDay()]+', '+t};
+  let dia=Math.max(INICIO,HOJE);
+  const render=()=>{const p=peca(dia),g=R[dia],ans=g&&g.a,feitos=Object.keys(R).filter(k=>+k>=INICIO&&+k<=HOJE),certos=feitos.filter(k=>{const q=peca(+k);return R[k].a===q.bin}).length,total=HOJE-INICIO+1;
+    box.innerHTML=`<div class="ras-nav"><button class="btn btn-line ras-prev" type="button"${dia<=INICIO?' disabled':''} aria-label="${T('Dia anterior','Previous day')}">‹ <span>${T('dia anterior','previous day')}</span></button>
+      <span class="hand ras-dia">${nome(dia)}</span>
+      <button class="btn btn-line ras-next" type="button"${dia>=HOJE?' disabled':''} aria-label="${T('Dia seguinte','Next day')}"><span>${T('dia seguinte','next day')}</span> ›</button></div>
+    <div class="card-item"><svg aria-hidden="true" style="color:${p.color||'#5AB8E6'}"><use href="#${p.icon}"/></svg><span>${esc(T(p.label[0],p.label[1]))}</span><small class="hand">${T('rasteira de ','trick of ')+nome(dia).replace(/^[^,]+, /,'')}</small></div>
     <p class="how hand">${T('Para onde vai?','Where does it go?')}</p><div class="bins">${Object.keys(BINS).map(k=>`<button class="bin${k==='nao'?' bin-no':''}${ans&&k===p.bin?' right':''}${ans&&ans===k&&k!==p.bin?' wrong':''}" type="button" data-b="${k}"${ans?' disabled':''}><b>${BINS[k]}</b></button>`).join('')}</div>
-    <p class="tf-fb hand ${ans?(ans===p.bin?'ok':'no'):''}">${ans?(ans===p.bin?T(p.ok[0],p.ok[1]):T('Rasteira! ','Tricky! ')+T(p.hint[0],p.hint[1]))+' '+T('Volta amanhã para outra.','Come back tomorrow for another.'):''}</p>`;
-    if(!ans)box.querySelectorAll('[data-b]').forEach(b=>b.addEventListener('click',()=>{try{localStorage.setItem('rasteira',JSON.stringify({dia,a:b.dataset.b}))}catch(e){}conta('jogo_rasteira');render(b.dataset.b)}))};
-  render(done&&done.dia===dia?done.a:null);
+    <p class="tf-fb hand ${ans?(ans===p.bin?'ok':'no'):''}">${ans?(ans===p.bin?T(p.ok[0],p.ok[1]):T('Rasteira! ','Tricky! ')+T(p.hint[0],p.hint[1]))+' '+(dia===HOJE?T('Volta amanhã para outra.','Come back tomorrow for another.'):''):''}</p>
+    <p class="ras-conta">${feitos.length?T(`Acertaste <b>${certos}</b> de ${feitos.length} ${feitos.length===1?'rasteira':'rasteiras'}`,`You got <b>${certos}</b> of ${feitos.length} ${feitos.length===1?'trick':'tricks'}`)+' · ':''}${total-feitos.length>0?T(`${total-feitos.length} ${total-feitos.length===1?'dia por responder':'dias por responder'}`,`${total-feitos.length} ${total-feitos.length===1?'day':'days'} to answer`):T('Respondeste a todos os dias!','You answered every day!')}</p>`;
+    const pv=box.querySelector('.ras-prev'),nx=box.querySelector('.ras-next');
+    pv.addEventListener('click',()=>{dia--;render();box.querySelector('.ras-prev:not(:disabled),.ras-next').focus({preventScroll:true})});
+    nx.addEventListener('click',()=>{dia++;render();box.querySelector('.ras-next:not(:disabled),.ras-prev').focus({preventScroll:true})});
+    if(!ans)box.querySelectorAll('[data-b]').forEach(b=>b.addEventListener('click',()=>{R[dia]={id:p.id,a:b.dataset.b};save();conta('jogo_rasteira');render()}))};
+  render();
 })();
 })();
