@@ -1564,3 +1564,13 @@ a[href^="tel:"]{white-space:nowrap}
 .more-below{margin:22px 0 0;font:400 1.5rem/1.2 var(--hand);color:var(--pen)}
 .more-below a{color:inherit;text-decoration:none;background:linear-gradient(transparent 62%,var(--hl-soft) 62%)}
 .more-below a:hover{background:linear-gradient(transparent 50%,var(--hl) 50%)}
+
+/* adivinha a resposta: termómetro quente/frio */
+.peso-temp{display:block;width:fit-content;min-height:1.9em;margin:0 0 14px;padding:.25em .8em;border-radius:999px;font:700 1rem/1.4 var(--body);border:2px solid transparent;transition:background .25s,color .25s}
+.peso-temp:empty{padding:0;border:0}
+.peso-temp.t1{background:#DDEFFC;color:#0E4C7A;border-color:#0E4C7A}
+.peso-temp.t2{background:#E6F2F8;color:#2D5F7A;border-color:#2D5F7A}
+.peso-temp.t3{background:#FFF3D6;color:#7A5200;border-color:#7A5200}
+.peso-temp.t4{background:#FFE2CC;color:#9A3A00;border-color:#9A3A00}
+.peso-temp.t5{background:#FFD9D3;color:#B0220F;border-color:#B0220F}
+.tf-fb.meh{color:#9A5A00}
