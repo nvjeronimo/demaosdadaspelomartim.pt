@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="De mãos dadas pelo Martim">
-<meta property="og:title" content="Map of drop-off points · Hand in Hand for Martim">
+<meta property="og:title" content="Where to drop off caps in the Algarve · 14 collection points · Hand in Hand for Martim">
 <meta property="og:description" content="The 14 bottle-cap drop-off points for Martim on a map: Boliqueime, Albufeira, Paderne and Olhos de Água. Find the one closest to you.">
 <meta property="og:image" content="https://demaosdadaspelomartim.pt/img/og.jpg">
 <meta property="og:url" content="https://demaosdadaspelomartim.pt/en/mapa.html">
 <link rel="canonical" href="https://demaosdadaspelomartim.pt/en/mapa.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Map of drop-off points · Hand in Hand for Martim</title>
+<title>Where to drop off caps in the Algarve · 14 collection points · Hand in Hand for Martim</title>
 <link rel="alternate" hreflang="pt-PT" href="https://demaosdadaspelomartim.pt/mapa.html">
 <link rel="alternate" hreflang="en" href="https://demaosdadaspelomartim.pt/en/mapa.html">
 <link rel="alternate" hreflang="x-default" href="https://demaosdadaspelomartim.pt/mapa.html">
@@ -20,8 +20,8 @@
 <link rel="apple-touch-icon" href="../img/marca/apple-touch-icon.png">
 <link rel="preload" href="../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/fonts.css?v=202609301751">
-<link rel="stylesheet" href="../css/site.css?v=202609301751">
+<link rel="stylesheet" href="../css/fonts.css?v=202609302023">
+<link rel="stylesheet" href="../css/site.css?v=202609302023">
 </head>
 <body class="sub">
 
@@ -101,11 +101,11 @@
 <section class="subhero" aria-labelledby="h1">
   <div class="caps" aria-hidden="true"><svg style="color:var(--cap1);--x:8%;--y:0%;--s:56px;--r:-10deg"><use href="#cap"/></svg><svg style="color:var(--cap3);--x:46%;--y:10%;--s:44px;--r:20deg"><use href="#cap"/></svg><svg style="color:var(--cap2);--x:74%;--y:0%;--s:38px;--r:0deg"><use href="#cap"/></svg><svg style="color:var(--cap4);--x:24%;--y:40%;--s:42px;--r:15deg"><use href="#cap"/></svg><svg style="color:var(--cap1);--x:62%;--y:46%;--s:50px;--r:-25deg"><use href="#cap"/></svg><svg style="color:var(--cap2);--x:2%;--y:66%;--s:34px;--r:30deg"><use href="#cap"/></svg><svg style="color:var(--cap3);--x:40%;--y:72%;--s:36px;--r:5deg"><use href="#cap"/></svg></div>
   <div class="subhero-in">
-    <nav class="crumbs" aria-label="You are here"><a href="index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Map of drop-off points</span></nav>
+    <nav class="crumbs" aria-label="You are here"><a href="index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Map of collection points</span></nav>
     <h1 id="h1">The bottle-cap map.</h1>
     <p class="lede">14 points in Boliqueime, Albufeira, Paderne and Olhos de Água. Pick the one closest to you and drop your caps there.</p>
   </div>
-  <div class="label" aria-label="Notebook label"><div class="row"><small>Points</small><span class="hand">14 drop-off points</span></div><div class="row"><small>Municipalities</small><span class="hand">Loulé and Albufeira</span></div><div class="row"><small>Pick-up</small><span class="hand">my dad visits them all</span></div></div>
+  <div class="label" aria-label="Notebook label"><div class="row"><small>Points</small><span class="hand">14 drop-off points</span></div><div class="row"><small>Municipalities</small><span class="hand">Loulé and Albufeira</span></div><div class="row"><small>Collection</small><span class="hand">my dad visits them all</span></div></div>
 </section>
 <div class="spiral-h" aria-hidden="true"></div>
 
@@ -123,12 +123,13 @@
       <button class="btn btn-red" type="button" id="perto"><svg aria-hidden="true"><use href="#i-locate"/></svg>Closest to me</button>
     </div>
     <div class="mapa-grid">
-      <div class="mapa-frame"><div id="map" role="region" aria-label="Map of drop-off points"></div></div>
+      <div class="mapa-frame"><div id="map" role="region" aria-label="Map of collection points"></div></div>
       <div>
-        <ol class="mapa-list" id="mapa-list" aria-label="Drop-off points"></ol>
+        <ol class="mapa-list" id="mapa-list" aria-label="Collection points"></ol>
         <p class="mapa-status" id="mapa-status" aria-live="polite"></p>
       </div>
     </div>
+    <p class="loc-por" style="margin-top:18px"><b>By town:</b> <a href="recolha-de-tampas-boliqueime.html">Boliqueime</a> · <a href="recolha-de-tampas-albufeira.html">Albufeira</a> · <a href="recolha-de-tampas-paderne.html">Paderne</a> · <a href="recolha-de-tampas-olhos-de-agua.html">Olhos de Água</a></p>
     <p class="small" style="margin-top:14px">Points marked * have an approximate location, still to be confirmed by the family. Drop off during each place’s opening hours.</p>
     <div class="mapa-foot">
       <div class="note"><p class="hand">No collection point near you?</p><p>Your school, club or café could be next. <a href="#quero-ser-ponto" style="font-weight:700">Ask to become a collection point →</a></p></div>
@@ -180,7 +181,7 @@ f.addEventListener('submit',async ev=>{ev.preventDefault();
   </div>
 </section>
 
-<script src="../js/pontos.js?v=202609301751"></script>
+<script src="../js/pontos.js?v=202609302023"></script>
 <script src="/api/dados.js.php"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous" referrerpolicy="no-referrer"><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
@@ -291,6 +292,6 @@ document.getElementById('perto').addEventListener('click',()=>{
 
 
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202609301751"></script>
+<script src="../js/site.js?v=202609302023"></script>
 </body>
 </html>

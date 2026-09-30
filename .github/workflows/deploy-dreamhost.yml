@@ -33,3 +33,13 @@ jobs:
             --exclude '.git' --exclude '.github' --exclude 'proposta' --exclude 'design' --exclude 'README.md' --exclude '.nojekyll' \
             -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new -o ConnectTimeout=20" \
             ./ "$DH_USER@$DH_HOST:${DH_PATH:-demaosdadaspelomartim.pt}/"
+      # IndexNow: avisa o Bing (e quem usa o seu índice: ChatGPT, Copilot) das páginas publicadas. Nunca faz falhar a publicação.
+      - name: IndexNow
+        if: steps.check.outputs.skip != '1'
+        continue-on-error: true
+        run: |
+          URLS=$(grep -o '<loc>[^<]*' sitemap.xml | sed 's/<loc>//' | python3 -c "import sys,json;print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))")
+          curl -s -o /dev/null -w "IndexNow: %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "{\"host\":\"demaosdadaspelomartim.pt\",\"key\":\"5756bdbf5f9c75bf0f23adda9042fd36\",\"keyLocation\":\"https://demaosdadaspelomartim.pt/5756bdbf5f9c75bf0f23adda9042fd36.txt\",\"urlList\":$URLS}"
+
