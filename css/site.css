@@ -1509,7 +1509,7 @@ footer .fine a{font-weight:400}
   .sec-head{row-gap:18px}
 }
 @media (max-width:760px){
-  .page{padding-block:92px}
+  .page{padding-block:64px}
   .maths,.where,.story,.agenda,.contact,.worksheet,.evposter,.news,.partners{margin-top:44px}
   .sec-head p{line-height:1.6}
   .past li,.evlist li{padding-block:18px}
