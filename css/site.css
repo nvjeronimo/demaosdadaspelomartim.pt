@@ -1645,11 +1645,6 @@ a[href^="tel:"]{white-space:nowrap}
 .compacta #entregar .where:not(.tudo) #points tbody tr:nth-child(n+6){display:none}
 .pts-mais{margin-top:12px}
 @media (max-width:760px){
-  /* parceiros: logos, nome e cidade em duas colunas */
-  .compacta .partners{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .compacta .partner{grid-template-columns:1fr;gap:8px;padding:16px 10px}
-  .compacta .partner > div > p:not(.where),.compacta .partner > div > a{display:none}
-  .compacta .partner h3{font-size:1.02rem}
   /* a minha história: só a primeira foto */
   .compacta #historia .album .photo:not(.p1){display:none}
   /* no telemóvel, as fotos decorativas empilhadas alongam a página: ficam só no computador */
@@ -1719,3 +1714,22 @@ a[href^="tel:"]{white-space:nowrap}
   .amostra .actionbar{display:none}
 }
 @media (max-width:760px){.amostra .actionbar{display:flex}}
+
+/* amostra 6: no telemóvel, novidades, parceiros e eventos anteriores passam a carrossel horizontal (o cartão seguinte espreita) */
+@media (max-width:760px){
+  .compacta .news,.compacta .partners,.compacta .agenda .past{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:2px;padding:4px 2px 14px;margin-right:-20px;padding-right:20px;scrollbar-width:none;overscroll-behavior-x:contain;border-top:0}
+  .compacta .news::-webkit-scrollbar,.compacta .partners::-webkit-scrollbar,.compacta .agenda .past::-webkit-scrollbar{display:none}
+  .compacta .news > *,.compacta .partner,.compacta .agenda .past li{flex:0 0 82%;scroll-snap-align:start}
+  /* parceiros: cartão branco com logo, nome, cidade e a descrição toda */
+  .compacta .partner{display:flex;flex-direction:column;gap:12px;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:18px!important}
+  .compacta .partner .partner-logos{display:flex;flex-direction:row;flex-wrap:wrap;gap:8px;justify-content:flex-start}
+  .compacta .partner .partner-logos .logo-chip{width:110px;height:52px}
+  /* eventos anteriores: cartão com o cartaz em cima */
+  .compacta .agenda .past li{display:flex;flex-direction:column;align-items:stretch;gap:8px;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:12px 14px 16px;flex-basis:68%}
+  .compacta .agenda .past .mini-photo{order:-1;width:100%;height:150px;transform:none!important;padding:0;box-shadow:none}
+  .compacta .agenda .past .mini-photo img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+  .compacta .agenda .past .d{display:flex;align-items:baseline;gap:8px}
+  .compacta .agenda .past .d small{margin:0}
+}
+.carr-dica{display:none}
+@media (max-width:760px){.compacta .carr-dica{display:block;margin:6px 0 0;font:400 1.15rem/1 var(--hand);color:var(--pen)}}
