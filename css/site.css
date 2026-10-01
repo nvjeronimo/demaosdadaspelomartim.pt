@@ -1808,3 +1808,20 @@ a[href^="tel:"]{white-space:nowrap}
   .amostra .dossie + main > .subhero{padding-top:calc(clamp(40px,6vw,80px) + 42px)}
   .amostra .dossie + main > .hero .photo{top:64px}
 }
+
+/* amostra 12: o cartão "Guardar tampas" no telemóvel fica compacto */
+@media (max-width:760px){
+  .compacta #ajudar .way[data-way="tampas"]{flex-basis:88%;padding:20px 18px 18px}
+  .compacta #ajudar .way[data-way="tampas"] h3{font-size:1.25rem}
+  .compacta #ajudar .way .steps{margin:14px 0 16px;gap:12px}
+  .compacta #ajudar .way .steps li{grid-template-columns:40px 1fr;gap:12px;align-items:start}
+  .compacta #ajudar .way .steps .thumb{width:40px;height:40px;border-radius:10px}
+  .compacta #ajudar .way .steps .thumb svg{width:26px;height:26px}
+  .compacta #ajudar .way .steps .thumb::before{width:20px;height:20px;font-size:.72rem;line-height:20px;top:-8px;left:-8px}
+  .compacta #ajudar .way .steps b{font-size:.98rem;line-height:1.25}
+  .compacta #ajudar .way .steps span{display:block;font-size:.88rem;line-height:1.4;margin-top:2px}
+  .compacta #ajudar .way .steps li > div, .compacta #ajudar .way .steps li > p{line-height:1.3}
+  /* um só botão: o desafio com o diploma está logo a seguir na página */
+  .compacta #ajudar .way[data-way="tampas"] > div a:not(:first-child){display:none}
+  .compacta #ajudar .way[data-way="tampas"] > div a{width:100%;justify-content:space-between;padding:13px 18px;font-size:1rem;white-space:nowrap}
+}
