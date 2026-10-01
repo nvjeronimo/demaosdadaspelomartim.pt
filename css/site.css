@@ -1656,7 +1656,7 @@ a[href^="tel:"]{white-space:nowrap}
 .indice-btn:hover{transform:translateY(-2px)}
 .indice-btn:focus-visible{outline:3px solid var(--pen);outline-offset:3px}
 @media (max-width:760px){.indice-btn{bottom:84px;left:10px}}
-.indice-dlg{border:0;padding:0;background:transparent;width:min(94vw,560px);max-height:88dvh;overflow:auto;margin:auto}
+.indice-dlg{border:0;padding:0;background:transparent;width:min(94vw,560px);max-height:88dvh;overflow:auto;margin:auto;overscroll-behavior:contain}
 .indice-dlg::backdrop{background:rgba(20,26,44,.55);backdrop-filter:blur(2px)}
 .indice-dlg .ind{max-width:none;position:relative;padding-top:26px}
 .indice-dlg[open]{animation:indIn .32s cubic-bezier(.2,.9,.3,1.1)}
