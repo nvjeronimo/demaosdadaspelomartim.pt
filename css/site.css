@@ -1732,7 +1732,7 @@ a[href^="tel:"]{white-space:nowrap}
   .compacta .agenda .past .d small{margin:0}
 }
 .carr-dica{display:none}
-@media (max-width:760px){.compacta .carr-dica{display:block;margin:6px 0 0;font:400 1.15rem/1 var(--hand);color:var(--pen)}}
+@media (max-width:760px){.compacta .carr-dica{display:block;margin:8px 0 16px;font:400 1.15rem/1 var(--hand);color:var(--pen)}}
 
 /* amostra 7: esconder o cabeçalho e a barra de baixo ao descer (só telemóvel e tablet) */
 @media (max-width:1099px){
