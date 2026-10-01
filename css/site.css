@@ -1825,3 +1825,10 @@ a[href^="tel:"]{white-space:nowrap}
   .compacta #ajudar .way[data-way="tampas"] > div a:not(:first-child){display:none}
   .compacta #ajudar .way[data-way="tampas"] > div a{width:100%;justify-content:space-between;padding:13px 18px;font-size:1rem;white-space:nowrap}
 }
+
+/* VOLTA: a ressalva fica atrás de "Ver mais" */
+.volta-mais summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:.95rem;color:var(--on-cover);text-decoration:underline;text-underline-offset:3px;padding:4px 0}
+.volta-mais summary::-webkit-details-marker{display:none}
+.volta-mais summary::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.volta-mais[open] summary{display:none}
+.volta-mais p{margin-top:4px}
