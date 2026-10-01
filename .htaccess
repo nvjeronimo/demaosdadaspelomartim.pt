@@ -34,7 +34,8 @@ ErrorDocument 404 /404.html
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 month"
   ExpiresByType video/mp4 "access plus 1 month"
-  ExpiresByType application/pdf "access plus 1 week"
+  # a brochura em PDF é gerada de novo depois de cada publicação e todas as noites: o browser pergunta sempre se há uma mais recente
+  ExpiresByType application/pdf "access plus 0 seconds"
 </IfModule>
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/json

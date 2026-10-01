@@ -1,0 +1,59 @@
+# Gera de novo a brochura em PDF (PT e EN) a partir da página publicada, para o ficheiro a descarregar estar sempre igual ao site
+# (inclui os pontos de recolha acrescentados no painel). Corre depois de cada publicação, todas as noites e à mão.
+# Se o PDF não sair com 8 páginas, falha e o ficheiro que está no servidor fica como estava.
+name: Brochura em PDF
+on:
+  workflow_run:
+    workflows: ["Publicar na DreamHost"]
+    types: [completed]
+  schedule:
+    - cron: '23 3 * * *'
+  workflow_dispatch:
+concurrency: brochura-pdf
+jobs:
+  pdf:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar segredos
+        id: check
+        env:
+          DH_HOST: ${{ secrets.DH_HOST }}
+        run: |
+          if [ -z "$DH_HOST" ]; then echo "Segredos da DreamHost ainda não configurados: nada a enviar."; echo "skip=1" >> "$GITHUB_OUTPUT"; fi
+      - name: Gerar os PDF
+        if: steps.check.outputs.skip != '1'
+        run: |
+          mkdir -p out
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium-browser || command -v chromium)
+          gerar() {
+            "$CHROME" --headless=new --no-sandbox --disable-gpu --no-pdf-header-footer --virtual-time-budget=20000 \
+              --run-all-compositor-stages-before-draw --print-to-pdf="out/$2" "https://demaosdadaspelomartim.pt/$1?pdf&t=$(date +%s)"
+          }
+          gerar brochura.html brochura-martim.pdf
+          gerar en/brochura.html martim-booklet.pdf
+      - name: Validar (8 páginas A4, tamanho plausível)
+        if: steps.check.outputs.skip != '1'
+        run: |
+          python3 - <<'PY'
+          import re, sys, os
+          for f in ('out/brochura-martim.pdf', 'out/martim-booklet.pdf'):
+              d = open(f, 'rb').read()
+              n = len(re.findall(rb'/Type\s*/Page[^s]', d))
+              print(f, len(d), 'bytes,', n, 'páginas')
+              if not d.startswith(b'%PDF') or n != 8 or len(d) < 500_000:
+                  sys.exit(f'{f}: PDF inesperado (esperava 8 páginas e mais de 500 KB); o ficheiro do servidor fica como estava.')
+          PY
+      - name: Enviar para a DreamHost
+        if: steps.check.outputs.skip != '1'
+        env:
+          DH_HOST: ${{ secrets.DH_HOST }}
+          DH_USER: ${{ secrets.DH_USER }}
+          DH_SSH_KEY: ${{ secrets.DH_SSH_KEY }}
+          DH_PATH: ${{ secrets.DH_PATH }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$DH_SSH_KEY" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
+          for i in 1 2 3; do ssh-keyscan -H "$DH_HOST" >> ~/.ssh/known_hosts 2>/dev/null && break; sleep 5; done
+          rsync -ptvz -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new -o ConnectTimeout=20" \
+            out/brochura-martim.pdf out/martim-booklet.pdf "$DH_USER@$DH_HOST:${DH_PATH:-demaosdadaspelomartim.pt}/docs/"
