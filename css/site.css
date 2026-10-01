@@ -1745,3 +1745,25 @@ a[href^="tel:"]{white-space:nowrap}
 }
 @media (max-width:1099px) and (prefers-reduced-motion:reduce){.amostra header.nav,.amostra .dossie,.amostra .actionbar{transition:none}}
 @media (max-width:760px){.amostra .paleta{transition:bottom .3s cubic-bezier(.2,.8,.2,1)}.nav-esc.amostra .paleta{bottom:14px}}
+
+/* amostra 8: mais carrosséis no telemóvel (como ajudar, valores por material, contacto) */
+@media (max-width:760px){
+  .compacta #ajudar .choose{display:none}
+  .compacta #ajudar .ways,.compacta #contactos .people,.compacta .rates tbody{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-right:-20px;padding:4px 20px 14px 2px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .compacta #ajudar .ways::-webkit-scrollbar,.compacta #contactos .people::-webkit-scrollbar,.compacta .rates tbody::-webkit-scrollbar{display:none}
+  .compacta #ajudar .side{display:contents}
+  .compacta #ajudar .way{display:block;flex:0 0 86%;scroll-snap-align:start;opacity:1}
+  .compacta #ajudar .way.dim{border-style:solid;border-color:var(--ink)}
+  .compacta #contactos .person{flex:0 0 82%;scroll-snap-align:start}
+  /* a tabela de valores passa a três cartões */
+  .compacta .rates{border:0;background:transparent;display:block;width:100%;max-width:100%}
+  .compacta .rates caption{display:block}
+  .compacta .maths > *{min-width:0}
+  .compacta .rates thead{display:none}
+  .compacta .rates tbody tr{flex:0 0 72%;display:flex;flex-direction:column;gap:10px;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:16px;scroll-snap-align:start}
+  .compacta .rates td{border:0;padding:0;text-align:left!important}
+  .compacta .rates td.eur{font-size:1.5rem}
+  .compacta .rates td.eur::after{content:" por tonelada";font:400 .85rem/1 var(--body);color:var(--pencil)}
+  .compacta .rates td.bag::before{content:"1 BigBag ≈ ";font:400 .9rem/1 var(--body);color:var(--pencil)}
+  .compacta .mat small{display:flex}
+}
