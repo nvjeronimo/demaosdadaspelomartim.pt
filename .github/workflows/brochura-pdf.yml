@@ -32,7 +32,7 @@ jobs:
           }
           gerar brochura.html brochura-martim.pdf
           gerar en/brochura.html martim-booklet.pdf
-      - name: Validar (8 páginas A4, tamanho plausível)
+      - name: Validar (8 páginas A4, entre 0,5 e 6 MB)
         if: steps.check.outputs.skip != '1'
         run: |
           python3 - <<'PY'
@@ -41,8 +41,8 @@ jobs:
               d = open(f, 'rb').read()
               n = len(re.findall(rb'/Type\s*/Page[^s]', d))
               print(f, len(d), 'bytes,', n, 'páginas')
-              if not d.startswith(b'%PDF') or n != 8 or len(d) < 500_000:
-                  sys.exit(f'{f}: PDF inesperado (esperava 8 páginas e mais de 500 KB); o ficheiro do servidor fica como estava.')
+              if not d.startswith(b'%PDF') or n != 8 or not 500_000 < len(d) < 6_000_000:
+                  sys.exit(f'{f}: PDF inesperado (esperava 8 páginas e entre 0,5 e 6 MB); o ficheiro do servidor fica como estava.')
           PY
       - name: Enviar para a DreamHost
         if: steps.check.outputs.skip != '1'

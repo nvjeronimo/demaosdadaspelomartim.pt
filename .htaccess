@@ -11,6 +11,8 @@ RewriteRule ^ https://demaosdadaspelomartim.pt%{REQUEST_URI} [L,R=301]
 # fotos em WebP para quem as aceita (foto.jpg → foto.jpg.webp, se existir)
 AddType image/webp .webp
 RewriteCond %{HTTP_ACCEPT} image/webp
+# exceto ao gerar a brochura em PDF (brochura.html?pdf): o JPEG original entra no PDF tal como está; o WebP ficava sem compressão (17 MB)
+RewriteCond %{HTTP_REFERER} !brochura\.html\?pdf
 RewriteCond %{REQUEST_FILENAME}.webp -f
 RewriteRule ^(.+\.(?:jpe?g|png))$ $1.webp [T=image/webp,E=WEBP:1,L]
 <IfModule mod_headers.c>
