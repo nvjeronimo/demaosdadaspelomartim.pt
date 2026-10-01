@@ -1800,3 +1800,11 @@ a[href^="tel:"]{white-space:nowrap}
   .compacta .news-card h3{font-size:1.15rem}
   .compacta .news-card p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:.95rem}
 }
+
+/* amostra 11: no telemóvel, a capa (cor do caderno) continua por baixo das linguetas */
+@media (max-width:900px){
+  .amostra .dossie{margin-bottom:-42px}
+  .amostra .dossie + main > .hero .cover{padding-top:calc(clamp(28px,4vw,56px) + 42px)}
+  .amostra .dossie + main > .subhero{padding-top:calc(clamp(40px,6vw,80px) + 42px)}
+  .amostra .dossie + main > .hero .photo{top:64px}
+}
