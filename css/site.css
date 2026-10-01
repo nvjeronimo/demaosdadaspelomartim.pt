@@ -1656,10 +1656,11 @@ a[href^="tel:"]{white-space:nowrap}
 .indice-btn:hover{transform:translateY(-2px)}
 .indice-btn:focus-visible{outline:3px solid var(--pen);outline-offset:3px}
 @media (max-width:760px){.indice-btn{bottom:84px;left:10px}}
-.indice-dlg{border:0;padding:0;background:transparent;width:min(94vw,560px);max-height:88dvh;overflow:auto;margin:auto;overscroll-behavior:contain}
+/* a moldura (contorno e cantos redondos) é da janela; o conteúdo é que faz scroll lá dentro, e o botão de fechar fica sempre à vista */
+.indice-dlg{border:2px solid var(--ink);border-radius:18px;padding:0;background:#fff;width:min(94vw,560px);max-height:88dvh;overflow:hidden;margin:auto;box-shadow:0 16px 30px -22px rgba(20,30,80,.5)}
 .indice-dlg::backdrop{background:rgba(20,26,44,.55);backdrop-filter:blur(2px)}
-.indice-dlg .ind{max-width:none;position:relative;padding-top:26px}
-.indice-dlg[open]{animation:indIn .32s cubic-bezier(.2,.9,.3,1.1)}
+.indice-dlg .ind{max-width:none;position:static;padding-top:26px;border:0;border-radius:0;box-shadow:none;overflow-y:auto;overscroll-behavior:contain;min-height:0;flex:1}
+.indice-dlg[open]{display:flex;flex-direction:column;animation:indIn .32s cubic-bezier(.2,.9,.3,1.1)}
 @keyframes indIn{from{opacity:0;transform:translateY(24px) scale(.98)}}
 @media (prefers-reduced-motion:reduce){.indice-dlg[open]{animation:none}}
 .ind__x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:#fff;font:400 1.6rem/1 var(--body);cursor:pointer;color:var(--ink)}
