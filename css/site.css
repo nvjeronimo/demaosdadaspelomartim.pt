@@ -1702,3 +1702,20 @@ a[href^="tel:"]{white-space:nowrap}
 .dossie__all:hover .dossie__longo,.dossie__all:focus-visible .dossie__longo{display:inline}
 @media (prefers-reduced-motion:reduce){.dossie__tab{transition:none}}
 .more-cta{margin:22px 0 0}
+
+/* amostra 5: no telemóvel e tablet, os separadores ficam deitados numa fila pendurada do cabeçalho */
+.dossie__s{display:none}
+@media (max-width:1099px){
+  .amostra .dossie{display:flex;position:sticky;top:var(--hdr,62px);right:auto;transform:none;flex-direction:row;align-items:flex-start;gap:6px;
+    overflow-x:auto;scrollbar-width:none;padding:0 12px 6px calc(var(--margin,0px) + 8px);margin:0;z-index:39;background:transparent;pointer-events:none}
+  .amostra .dossie::-webkit-scrollbar{display:none}
+  .amostra .dossie__tab{pointer-events:auto;flex:none;max-width:none;height:34px;padding:0 11px 2px 9px;gap:6px;border:2px solid var(--ink);border-top:0;border-radius:0 0 10px 10px;box-shadow:0 4px 0 rgba(27,29,42,.12);font-size:.86rem}
+  .amostra .dossie__t{opacity:1}
+  .amostra .dossie__l,.amostra .dossie__longo{display:none}
+  .amostra .dossie__s{display:inline}
+  .amostra .dossie__n{width:auto;font-size:1.1rem}
+  .amostra .dossie__all{margin:0;max-width:none}
+  .amostra .dossie__tab[aria-current]{background:#fff;box-shadow:0 4px 0 var(--c)}
+  .amostra .actionbar{display:none}
+}
+@media (max-width:760px){.amostra .actionbar{display:flex}}
