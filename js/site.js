@@ -146,7 +146,7 @@ function buildPicker(){
   if(C&&ct&&(C.plastico||C.caricas||C.cortica)){const kg=(+C.plastico||0)+(+C.caricas||0)+(+C.cortica||0),eur=(+C.plastico||0)*.4116+(+C.caricas||0)*.4656+(+C.cortica||0)*.5;
     const nf=(n,d=0)=>n.toLocaleString(EN?'en-GB':'pt-PT',{maximumFractionDigits:d});
     document.getElementById('ct-ano').textContent=(EN?'This year, ':'Em ')+(C.ano||new Date().getFullYear())+(EN?' so far':' já entregámos');
-    document.getElementById('ct-kg').textContent=nf(kg);document.getElementById('ct-eur').textContent=EN?'€'+nf(eur):nf(eur)+' €';document.getElementById('ct-dias').textContent=nf(eur/(6740/30),1);
+    document.getElementById('ct-kg').textContent=nf(kg);document.getElementById('ct-eur').textContent=EN?'€'+nf(eur):nf(eur)+' €';document.getElementById('ct-dias').textContent=nf(eur/(7800/30),1);
     document.getElementById('ct-nota').textContent=C.nota||'';ct.hidden=false}
   /* WhatsApp e escolas */
   const wa=document.getElementById('foot-wa');if(wa&&window.WHATSAPP){wa.href=window.WHATSAPP;wa.hidden=false}

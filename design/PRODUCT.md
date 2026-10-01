@@ -18,7 +18,7 @@ Current site: WordPress 7.x with a purchased Qode theme and Transposh (PT/EN). T
 
 ## Product Purpose
 
-Fund Martim Silva Cruz's intensive rehabilitation treatments (Clínica Kinésio, Espinho; 3–4 a year; 2024 budget 6 740 € each). Martim has cerebral palsy (dystonic tetraparesis) after hypoxic-ischemic injury at birth. Success = more caps correctly separated and delivered, more money donated, more community events, and less manual work for his parents.
+Fund Martim Silva Cruz's intensive rehabilitation treatments (Clínica Kinésio, Espinho; 3 a year; 7 800 € each, 2026 price). Martim has cerebral palsy (dystonic tetraparesis) after hypoxic-ischemic injury at birth. Success = more caps correctly separated and delivered, more money donated, more community events, and less manual work for his parents.
 
 **Primary action (confirmed): collect bottle caps.** Money donation is second; events and partnerships third.
 
@@ -29,7 +29,7 @@ A family-run, community-powered cause where household waste becomes therapy: pla
 ## Operating Context
 
 - "Dê uma Tampa" project, Resialentejo (Beja), process nº 167: 411,60 €/t plastic caps, 465,60 €/t metal caps; Resialentejo pays Kinésio directly.
-- Amorim (Silves): 500 €/t of 100% cork stoppers.
+- Amorim (Vendas Novas; the Silves site closed): 500 €/t of cork stoppers. Plastic-top stoppers are accepted too (the father keeps them in a separate bag); wooden or metal tops are not.
 - BigBags must be single-material and ≥250 kg (~300–350 kg each). Mixed material can void a whole bag: separation is the critical user behaviour.
 - Dad (Mickael) collects jugs from collection points and separates on days off; transport to Beja is the biggest bottleneck.
 - 14 official collection points (CD Boliqueime, EB1 Benfarras, Junta de Freguesia de Boliqueime, Centro Comunitário de Vale Silves, EB 2,3 Prof. Dr. Aníbal Cavaco Silva, Lar da Santa Casa de Boliqueime, Centro de Saúde de Boliqueime, Escuteiros 1174, EB1/JI Vale Pedras, EB 2,3 Profª Diamantina Negrão, EB1 Vale Carro, Symbiosis Pub & Bar Olhos de Água, Centro Paroquial de Paderne, Centro de Saúde de Paderne).
