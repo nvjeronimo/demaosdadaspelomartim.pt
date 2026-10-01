@@ -117,7 +117,9 @@ function buildPicker(){
   const miss=ul=>{const top=gone.filter(e=>inList(ul,e)).map(e=>e.date).sort().pop()||'';return gone.filter(e=>e.date>top&&!inList(ul,e))};
   const past=document.querySelector('.agenda .past');
   if(past){past.insertAdjacentHTML('afterbegin',miss(past).map(e=>{const[d,m]=dd(e),h=link(e);return `<li><span class="d num">${d} ${m}<small>${EN?'done':'já foi'}</small></span><span><b><a class="plain" href="${h}">${esc(T(e.title))}</a></b><br><span class="small">${esc(T(e.where))}</span></span><a class="mini-photo" href="${h}" tabindex="-1" aria-hidden="true"><img src="${thumb(e)}" alt="" loading="lazy"></a></li>`}).join(''));
-    [...past.children].slice(3).forEach(li=>li.remove())}
+    [...past.children].slice(3).forEach(li=>li.remove());
+    /* no carrossel do telemóvel, o browser mantinha a posição depois de inserir à cabeça: volta ao mais recente */
+    past.scrollLeft=0;requestAnimationFrame(()=>{past.scrollLeft=0})}
   const evl=document.querySelector('.evlist');
   if(evl)evl.insertAdjacentHTML('afterbegin',miss(evl).map(e=>{const[d,m,y]=dd(e);return `<li data-evento><a class="evrow" href="${link(e)}"><span class="evdate num"><b>${d}</b>${m} ${y}</span><span class="evtxt"><small>${esc(T(e.kind)||(EN?'Event':'Evento'))}</small><b>${esc(T(e.title))}</b><span>${esc(T(e.where))}</span></span><span class="mini-photo"><img src="${thumb(e)}" alt="" loading="lazy"></span></a></li>`}).join(''));
 })();

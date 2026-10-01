@@ -1850,3 +1850,19 @@ a[href^="tel:"]{white-space:nowrap}
   .compacta #contactos .person .who{grid-row:auto;width:44px;height:44px;font-size:1.15rem;margin-bottom:4px}
   .compacta #contactos .person .tel-nota{grid-column:1}
 }
+
+/* álbum no telemóvel: setas e contador por baixo das fotos */
+@media (max-width:760px){
+  .inner:has(> .album-head){display:flex;flex-direction:column}
+  .inner:has(> .album-head) > .album-head{display:contents}
+  .album-head .filters{order:1;margin:24px 0 16px}
+  .inner:has(> .album-head) > .track{order:2}
+  .album-head .nav-btns{order:3;justify-content:center;margin-top:16px}
+  .inner:has(> .album-head) > .album-note{order:4;margin-top:16px}
+}
+@media (max-width:760px){
+  /* todas as fotos no mesmo formato: o carrossel fica com a altura de uma foto e as setas logo por baixo */
+  .track{align-items:stretch}
+  .slide .media,.slide.p .media,.slide.v .media{aspect-ratio:1/1}
+  .slide video{object-fit:contain}
+}
