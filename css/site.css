@@ -1767,3 +1767,23 @@ a[href^="tel:"]{white-space:nowrap}
   .compacta .rates td.bag::before{content:"1 BigBag ≈ ";font:400 .9rem/1 var(--body);color:var(--pencil)}
   .compacta .mat small{display:flex}
 }
+
+/* amostra 9: acertos dos carrosséis no telemóvel */
+@media (max-width:760px){
+  /* os carrosséis vão de ponta a ponta do ecrã: o cartão anterior sai pela borda, não pela linha da margem */
+  .compacta .news,.compacta .partners,.compacta .agenda .past,.compacta #ajudar .ways,.compacta #contactos .people,.compacta .rates tbody{
+    --lado:calc(var(--margin) + clamp(20px,3vw,48px));
+    margin-left:calc(-1 * var(--lado));padding-left:var(--lado);scroll-padding-left:var(--lado);align-items:flex-start}
+  .compacta .rates{overflow:visible}
+  /* cada cartão com a sua altura (sem espaços vazios por esticar ao mais alto) */
+  .compacta .partner,.compacta #ajudar .way,.compacta .news > *,.compacta .agenda .past li{align-self:flex-start}
+  /* cortiça: não há BigBag de cortiça, a linha "1 BigBag ≈ —" sai */
+  .compacta .rates tbody tr:nth-child(3) td.bag{display:none}
+  /* contacto: círculo e texto juntos, ao centro do cartão */
+  .compacta #contactos .people{align-items:stretch}
+  .compacta #contactos .person{align-content:center;grid-template-rows:auto auto}
+  /* "Quero…": duas colunas em vez de uma opção por linha */
+  .compacta .checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .compacta .checks legend{grid-column:1/-1}
+  .compacta .checks label{font-size:.85rem;padding:.55em .7em;line-height:1.2}
+}
