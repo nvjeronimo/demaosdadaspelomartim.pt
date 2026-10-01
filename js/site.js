@@ -387,7 +387,8 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
   if(!on||!window.HTMLDialogElement)return;
   const sj=document.querySelector('script[src*="js/site.js"]'),R=sj?sj.getAttribute('src').replace(/js\/site\.js.*$/,''):'';
   const home=R+'amostra.html',aqui=/amostra\.html$/.test(location.pathname);
-  const nesta=[['Como ajudar','tampas, donativo ou tempo','#ajudar'],['Onde entregar','14 pontos de recolha','#entregar'],['Para onde vai o dinheiro','a conta dos BigBags','#h-conta'],['A minha história','contada por mim','#historia'],['Parceiros','quem transforma as tampas','#parceiros'],['Eventos','o próximo e os que já foram','#eventos'],['Álbum','a minha equipa em fotos','#album'],['Perguntas','o que é aceite e muito mais','#perguntas'],['Contacto','fala com os meus pais','#contactos']];
+  /* pela ordem das secções da página inicial */
+  const nesta=[['Como ajudar','tampas, donativo ou tempo','#ajudar'],['Para onde vai o dinheiro','a conta dos BigBags','#h-conta'],['O desafio das tampinhas','joga e ganha o diploma','#ficha'],['Onde entregar','14 pontos de recolha','#entregar'],['A minha história','contada por mim','#historia'],['Parceiros','quem transforma as tampas','#parceiros'],['Eventos','o próximo e os que já foram','#eventos'],['Álbum','a minha equipa em fotos','#album'],['Perguntas','o que é aceite e muito mais','#perguntas'],['Contacto','fala com os meus pais','#contactos']];
   const outras=[['Jogos e diploma','jogos.html'],['Novidades','novidades.html'],['Mapa dos pontos','mapa.html'],['Eventos (todos)','eventos/'],['A minha história completa','historia.html'],['Organiza uma recolha','organiza.html'],['Cartaz para imprimir','cartaz.html'],['Brochura','brochura.html']];
   const li=(n,t,s,h,pg)=>`<li><a class="ind__a" href="${h}"${pg?' data-pg':''}><span class="ind__n">${n}</span><span class="ind__t"><b>${t}</b>${s?`<small>${s}</small>`:''}</span><span class="ind__dots" aria-hidden="true"></span><svg class="ind__go" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>`;
   const dlg=document.createElement('dialog');dlg.className='indice-dlg';dlg.setAttribute('aria-labelledby','ind-tit');
@@ -406,8 +407,9 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
   /* computador: separadores de dossiê na margem direita, um por capítulo (e o último abre o índice completo) */
   const cores=['var(--cap1)','var(--cap2)','var(--cap3)','var(--cap4)'];
   const dos=document.createElement('nav');dos.className='dossie';dos.setAttribute('aria-label','Capítulos');
-  dos.innerHTML=nesta.map((c,i)=>`<a class="dossie__tab" href="${(aqui?'':home)+c[2]}" style="--c:${cores[i%4]}"><span class="dossie__n">${i+1}</span><span class="dossie__t">${c[0]}</span></a>`).join('')
-    +'<button class="dossie__tab dossie__all" type="button"><span class="dossie__n"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="dossie__t">Índice completo</span></button>';
+  /* o primeiro separador é o índice (sempre com o nome à vista; "Índice completo" ao passar o rato) */
+  dos.innerHTML='<button class="dossie__tab dossie__all" type="button" aria-label="Abrir o índice completo"><span class="dossie__n"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="dossie__t"><span class="dossie__curto">Índice</span><span class="dossie__longo">Índice completo</span></span></button>'
+    +nesta.map((c,i)=>`<a class="dossie__tab" href="${(aqui?'':home)+c[2]}" style="--c:${cores[i%4]}"><span class="dossie__n">${i+1}</span><span class="dossie__t">${c[0]}</span></a>`).join('');
   document.body.append(dos);
   dos.querySelector('.dossie__all').addEventListener('click',()=>dlg.showModal());
   /* separador do capítulo em que estás: o da última secção cujo topo já passou do meio do ecrã */

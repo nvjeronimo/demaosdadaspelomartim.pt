@@ -1694,6 +1694,11 @@ a[href^="tel:"]{white-space:nowrap}
 .dossie__tab:hover,.dossie__tab:focus-visible,.dossie__tab[aria-current]{max-width:240px}
 .dossie__tab[aria-current]{background:#fff;box-shadow:-4px 4px 0 var(--c)}
 .dossie__tab:focus-visible{outline:3px solid var(--pen);outline-offset:2px}
-.dossie__all{background:#fff}
+.dossie__all{background:#fff;max-width:140px;margin-bottom:6px}
+.dossie__all .dossie__t{opacity:1}
+.dossie__longo{display:none}
+.dossie__all:hover,.dossie__all:focus-visible{max-width:220px}
+.dossie__all:hover .dossie__curto,.dossie__all:focus-visible .dossie__curto{display:none}
+.dossie__all:hover .dossie__longo,.dossie__all:focus-visible .dossie__longo{display:inline}
 @media (prefers-reduced-motion:reduce){.dossie__tab{transition:none}}
 .more-cta{margin:22px 0 0}
