@@ -1591,8 +1591,10 @@ a[href^="tel:"]{white-space:nowrap}
 .loc-por a{font-weight:700;color:var(--ink)}
 
 /* ================= amostra: índice do caderno, secções curtas, folha a virar e fita ================= */
-.ind{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:clamp(22px,4vw,40px) clamp(18px,4vw,44px) clamp(18px,3vw,30px);box-shadow:0 16px 30px -22px rgba(20,30,80,.5);max-width:820px;
-  background-image:repeating-linear-gradient(transparent 0 calc(3.4rem - 1px),var(--rule) calc(3.4rem - 1px) 3.4rem);background-position:0 7.6rem}
+.ind{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:clamp(22px,4vw,40px) clamp(18px,4vw,44px) clamp(18px,3vw,30px);box-shadow:0 16px 30px -22px rgba(20,30,80,.5);max-width:820px}
+/* a linha pautada é de cada capítulo (não um fundo fixo), para nunca desencontrar quando há um título de grupo pelo meio */
+.ind__list > li{border-bottom:1px solid var(--rule)}
+.ind__list{border-top:1px solid var(--rule)}
 .ind__k{font-size:1.4rem;color:var(--pen);margin:0}
 .ind h2{margin:0 0 10px}
 .ind__list,.fita-ind ol{list-style:none;margin:0;padding:0}
@@ -1667,4 +1669,4 @@ a[href^="tel:"]{white-space:nowrap}
 @media (prefers-reduced-motion:reduce){.indice-dlg[open]{animation:none}}
 .ind__x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:#fff;font:400 1.6rem/1 var(--body);cursor:pointer;color:var(--ink)}
 .ind__x:focus-visible{outline:3px solid var(--pen);outline-offset:2px}
-.ind__g{margin:14px 0 2px;font:700 .75rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--pencil)}
+.ind__g{margin:22px 0 8px;font:700 .75rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--pencil)}
