@@ -1733,3 +1733,15 @@ a[href^="tel:"]{white-space:nowrap}
 }
 .carr-dica{display:none}
 @media (max-width:760px){.compacta .carr-dica{display:block;margin:6px 0 0;font:400 1.15rem/1 var(--hand);color:var(--pen)}}
+
+/* amostra 7: esconder o cabeçalho e a barra de baixo ao descer (só telemóvel e tablet) */
+@media (max-width:1099px){
+  .amostra header.nav{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+  .amostra .dossie{transition:top .3s cubic-bezier(.2,.8,.2,1)}
+  .amostra .actionbar{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+  .nav-esc.amostra header.nav{transform:translateY(-100%)}
+  .nav-esc.amostra .dossie{top:env(safe-area-inset-top,0px)}
+  .nav-esc.amostra .actionbar{transform:translateY(calc(100% + 20px))}
+}
+@media (max-width:1099px) and (prefers-reduced-motion:reduce){.amostra header.nav,.amostra .dossie,.amostra .actionbar{transition:none}}
+@media (max-width:760px){.amostra .paleta{transition:bottom .3s cubic-bezier(.2,.8,.2,1)}.nav-esc.amostra .paleta{bottom:14px}}

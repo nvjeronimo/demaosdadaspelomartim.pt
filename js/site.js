@@ -421,6 +421,14 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
       tabs.forEach((t,j)=>{const was=t.hasAttribute('aria-current');t.toggleAttribute('aria-current',j===k);
         if(j===k&&!was&&dos.scrollWidth>dos.clientWidth)dos.scrollTo({left:t.offsetLeft-dos.clientWidth/2+t.offsetWidth/2,behavior:'smooth'})})};
     addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(spy)},{passive:true});spy()}
+  /* telemóvel e tablet: a descer, o cabeçalho e a barra de baixo escondem-se e ficam só as linguetas no topo; a subir, voltam */
+  {let lastY=scrollY,ac=0,raf2=0;const root=document.documentElement,small=matchMedia('(max-width:1099px)');
+    const upd=()=>{raf2=0;const y=scrollY,dy=y-lastY;lastY=y;
+      if(!small.matches||y<120||dlg.open){root.classList.remove('nav-esc');ac=0;return}
+      ac=(ac>0)===(dy>0)?ac+dy:dy;               /* acumula na mesma direção, para não piscar com pequenos movimentos */
+      if(ac>24)root.classList.add('nav-esc');else if(ac<-12)root.classList.remove('nav-esc')};
+    addEventListener('scroll',()=>{if(!raf2)raf2=requestAnimationFrame(upd)},{passive:true});
+    document.addEventListener('focusin',e=>{if(e.target.closest&&e.target.closest('header.nav,.actionbar'))root.classList.remove('nav-esc')})}
   if(right){
     const cta=right.querySelector('.btn-red');if(cta)cta.remove();
     const doar=right.querySelector('.navlink');if(doar){doar.className='btn btn-red nav-doar';doar.innerHTML='<svg aria-hidden="true"><use href="#i-heart"/></svg>Doar';doar.href=(aqui?'':home)+'#doar'}}
