@@ -1732,7 +1732,15 @@ a[href^="tel:"]{white-space:nowrap}
   .compacta .agenda .past .d small{margin:0}
 }
 .carr-dica{display:none}
-@media (max-width:760px){.compacta .carr-dica{display:block;margin:8px 0 16px;font:400 1.15rem/1 var(--hand);color:var(--pen)}}
+/* dica "desliza para o lado": sempre logo antes do carrossel; o espaço de cima é o do bloco, o de baixo é fixo (12px) */
+@media (max-width:760px){
+  .compacta .carr-dica{display:block;margin:32px 0 12px;font:400 1.15rem/1 var(--hand);color:var(--pen)}
+  .compacta .carr-dica + *{margin-top:0 !important}
+  .compacta .carr-dica:first-child{margin-top:0} /* no início de um bloco, o espaço de cima é o do bloco */
+  /* em grelha (row-gap 48px): puxa a dica 16px para cima e o carrossel 36px, para ficar 32 + 12 como no resto */
+  .compacta :is(.where,.contact) > .carr-dica{margin:-16px 0 0}
+  .compacta :is(.where,.contact) > .carr-dica + *{margin-top:-36px !important}
+}
 
 /* amostra 7: esconder o cabeçalho e a barra de baixo ao descer (só telemóvel e tablet) */
 @media (max-width:1099px){
@@ -1832,3 +1840,13 @@ a[href^="tel:"]{white-space:nowrap}
 .volta-mais summary::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
 .volta-mais[open] summary{display:none}
 .volta-mais p{margin-top:4px}
+.rates-tit{font:400 1.35rem/1.2 var(--hand);color:var(--pencil);margin:0}
+.rates-tit + .carr-dica{margin-top:14px}
+
+/* contactos no telemóvel: cada cartão com a altura do seu conteúdo e a bola Pai/Mãe por cima do nome */
+@media (max-width:760px){
+  .compacta #contactos .people{align-items:flex-start}
+  .compacta #contactos .person{grid-template-columns:1fr;grid-template-rows:none;align-content:start;gap:6px;padding:16px}
+  .compacta #contactos .person .who{grid-row:auto;width:44px;height:44px;font-size:1.15rem;margin-bottom:4px}
+  .compacta #contactos .person .tel-nota{grid-column:1}
+}
