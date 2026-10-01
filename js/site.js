@@ -397,7 +397,19 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
   const btn=document.createElement('button');btn.type='button';btn.className='indice-btn';btn.setAttribute('aria-haspopup','dialog');
   btn.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Índice</span>';
   const folha=document.createElement('div');folha.className='folha';folha.setAttribute('aria-hidden','true');
-  document.body.append(btn,dlg,folha);
+  /* o índice passa a ser o menu: botão no cabeçalho (sempre visível), menu do topo mais curto e "Doar" em destaque */
+  document.documentElement.classList.add('amostra');
+  btn.classList.add('indice-btn--nav');
+  const nav=document.querySelector('header.nav'),right=nav&&nav.querySelector('.nav-right');
+  if(right){right.insertBefore(btn,right.firstChild);
+    const cta=right.querySelector('.btn-red');if(cta)cta.remove();
+    const doar=right.querySelector('.navlink');if(doar){doar.className='btn btn-red nav-doar';doar.innerHTML='<svg aria-hidden="true"><use href="#i-heart"/></svg>Doar';doar.href=(aqui?'':home)+'#doar'}}
+  else document.body.append(btn);
+  const tabs=nav&&nav.querySelector('.tabs');
+  if(tabs){tabs.innerHTML=[['Como ajudar','#ajudar','var(--cap1)'],['Onde entregar','#entregar','var(--cap2)'],['Eventos',R+'eventos/','var(--cap4)'],['Jogos',R+'jogos.html','#FF7A1A'],['A minha história',R+'historia.html','var(--cap3)']]
+    .map(([t,h,c])=>`<li><a href="${h.startsWith('#')?(aqui?'':home)+h:h}" style="--tab:${c}"${!h.startsWith('#')&&location.pathname.endsWith(h.replace(R,'').replace(/\/$/,'/index.html'))?' aria-current="page"':''}>${t}</a></li>`).join('')}
+  const brand=nav&&nav.querySelector('.brand');if(brand)brand.href=home;
+  document.body.append(dlg,folha);
   btn.addEventListener('click',()=>dlg.showModal());
   dlg.querySelector('.ind__x').addEventListener('click',()=>dlg.close());
   dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});

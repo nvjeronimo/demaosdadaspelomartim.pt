@@ -1670,3 +1670,10 @@ a[href^="tel:"]{white-space:nowrap}
 .ind__x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:#fff;font:400 1.6rem/1 var(--body);cursor:pointer;color:var(--ink)}
 .ind__x:focus-visible{outline:3px solid var(--pen);outline-offset:2px}
 .ind__g{margin:22px 0 8px;font:700 .75rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--pencil)}
+
+/* amostra 3: o "Índice" vive no cabeçalho (sempre visível no topo) */
+.amostra .indice-btn--nav{position:static;box-shadow:none;padding:.55em .9em .55em .7em;font-size:.92rem}
+.amostra .indice-btn--nav:hover{transform:none;background:var(--hl-soft)}
+.amostra .nav-doar{padding:.7em 1.05em}
+@media (max-width:760px){.amostra .nav-doar{display:none}.amostra .indice-btn--nav{padding:.5em .75em .5em .6em}}
+@media (max-width:380px){.amostra .indice-btn--nav span{display:none}.amostra .indice-btn--nav{padding:.5em}}
