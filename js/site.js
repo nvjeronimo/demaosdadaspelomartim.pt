@@ -45,9 +45,11 @@ function applyPal(id){
   const P=PALETTES[id]||PALETTES.noite,st=root.style,mix=(a,b,w)=>`color-mix(in srgb, ${a} ${w}%, ${b})`;
   const dark=!!P.hoc;
   const LOGO=readable(P.act.length===4?'#'+[...P.act.slice(1)].map(c=>c+c).join(''):P.act,'#fbfcff',3);
+  /* logótipo em cima da capa (brochura, cartaz, selo): nas capas claras usa a cor de ação da paleta, como o logótipo do cabeçalho */
+  const LC=dark?P.hoc:readable(P.act.length===4?'#'+[...P.act.slice(1)].map(c=>c+c).join(''):P.act,P.cover,3);
   const vars={'--cover':P.cover,'--cover-deep':mix(P.cover,'#000',dark?70:80),'--on-cover':P.on,'--on-cover-soft':mix(P.on,P.cover,86),'--cover-ink':mix(P.on,P.cover,86),
    '--hl':P.hl,'--hl-soft':mix(P.hl,'#fff',26),'--hl-on-cover':P.hoc||mix(P.on,'#7A3412',55),'--pen':P.pen,'--grid':mix(P.pen,'transparent',7),'--rule':mix(P.pen,'#fff',13),
-   '--ring':mix(P.pen,'transparent',26),'--tape':'rgba(255,255,255,.6)','--action':P.act,'--action-ink':P.ai,'--logo-1':LOGO,'--logo-2':mix(LOGO,'#000',72),'--logo-3':dark?mix(LOGO,'#000',40):P.pen,'--cap1':P.caps[0],'--cap2':P.caps[1],'--cap3':P.caps[2],'--cap4':P.caps[3]};
+   '--ring':mix(P.pen,'transparent',26),'--tape':'rgba(255,255,255,.6)','--action':P.act,'--action-ink':P.ai,'--logo-1':LOGO,'--logo-2':mix(LOGO,'#000',72),'--logo-3':dark?mix(LOGO,'#000',40):P.pen,'--logo-c1':LC,'--logo-c2':dark?P.on:mix(LC,'#000',72),'--logo-c3':dark?P.on:P.pen,'--cap1':P.caps[0],'--cap2':P.caps[1],'--cap3':P.caps[2],'--cap4':P.caps[3]};
   for(const k in vars)st.setProperty(k,vars[k]);
   setFavicon(P,dark);
   root.dataset.paleta=id;if(dark)root.dataset.dark='';else delete root.dataset.dark;
