@@ -1787,3 +1787,16 @@ a[href^="tel:"]{white-space:nowrap}
   .compacta .checks legend{grid-column:1/-1}
   .compacta .checks label{font-size:.85rem;padding:.55em .7em;line-height:1.2}
 }
+
+/* amostra 10: aviso + resultado e VOLTA + "nenhum ponto perto" também em carrossel; novidades mais pequenas */
+@media (max-width:760px){
+  .compacta .mini-carr{--lado:calc(var(--margin) + clamp(20px,3vw,48px));display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;
+    margin:18px -20px 0 calc(-1 * var(--lado));padding:4px 20px 14px var(--lado);scroll-padding-left:var(--lado);align-items:flex-start}
+  .compacta .mini-carr::-webkit-scrollbar{display:none}
+  .compacta .mini-carr > *{flex:0 0 80%;margin:0!important;scroll-snap-align:start}
+  .compacta .mini-carr > [hidden]{display:none}
+  .compacta .news > *{flex-basis:70%}
+  .compacta .news-card img{aspect-ratio:16/10}
+  .compacta .news-card h3{font-size:1.15rem}
+  .compacta .news-card p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:.95rem}
+}
