@@ -399,9 +399,24 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
   const folha=document.createElement('div');folha.className='folha';folha.setAttribute('aria-hidden','true');
   /* o índice passa a ser o menu: botão no cabeçalho (sempre visível), menu do topo mais curto e "Doar" em destaque */
   document.documentElement.classList.add('amostra');
-  btn.classList.add('indice-btn--nav');
   const nav=document.querySelector('header.nav'),right=nav&&nav.querySelector('.nav-right');
-  if(right){right.insertBefore(btn,right.firstChild);
+  /* telemóvel e tablet: "Índice" é o terceiro botão da barra de baixo */
+  const bar=document.querySelector('.actionbar');
+  if(bar){btn.className='btn ab-ind';bar.appendChild(btn)}else{document.body.append(btn)}
+  /* computador: separadores de dossiê na margem direita, um por capítulo (e o último abre o índice completo) */
+  const cores=['var(--cap1)','var(--cap2)','var(--cap3)','var(--cap4)'];
+  const dos=document.createElement('nav');dos.className='dossie';dos.setAttribute('aria-label','Capítulos');
+  dos.innerHTML=nesta.map((c,i)=>`<a class="dossie__tab" href="${(aqui?'':home)+c[2]}" style="--c:${cores[i%4]}"><span class="dossie__n">${i+1}</span><span class="dossie__t">${c[0]}</span></a>`).join('')
+    +'<button class="dossie__tab dossie__all" type="button"><span class="dossie__n"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="dossie__t">Índice completo</span></button>';
+  document.body.append(dos);
+  dos.querySelector('.dossie__all').addEventListener('click',()=>dlg.showModal());
+  /* separador do capítulo em que estás: o da última secção cujo topo já passou do meio do ecrã */
+  if(aqui){const tabs=[...dos.querySelectorAll('a')];
+    const secs=nesta.map(c=>{const el=document.getElementById(c[2].slice(1));return el?(el.tagName==='SECTION'?el:el.closest('section')):null});
+    let raf=0;const spy=()=>{raf=0;const mid=innerHeight*.45;let k=-1;secs.forEach((sec,j)=>{if(sec&&sec.getBoundingClientRect().top<mid)k=j});
+      tabs.forEach((t,j)=>t.toggleAttribute('aria-current',j===k))};
+    addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(spy)},{passive:true});spy()}
+  if(right){
     const cta=right.querySelector('.btn-red');if(cta)cta.remove();
     const doar=right.querySelector('.navlink');if(doar){doar.className='btn btn-red nav-doar';doar.innerHTML='<svg aria-hidden="true"><use href="#i-heart"/></svg>Doar';doar.href=(aqui?'':home)+'#doar'}}
   else document.body.append(btn);

@@ -21,8 +21,8 @@
 <link rel="apple-touch-icon" href="img/marca/apple-touch-icon.png">
 <link rel="preload" href="fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=202610010132">
-<link rel="stylesheet" href="css/site.css?v=202610010132">
+<link rel="stylesheet" href="css/fonts.css?v=202610010144">
+<link rel="stylesheet" href="css/site.css?v=202610010144">
 </head>
 <body class="compacta">
 
@@ -144,14 +144,14 @@
         <p class="hs-kicker hand">joga e aprende a separar!</p>
         <h2 class="hs-title">Os jogos das tampinhas.</h2>
         <ul class="hs-games">
-          <li><a href="jogos.html#ficha" tabindex="-1"><span aria-hidden="true">🏆</span><b>O desafio das tampinhas</b></a></li>
+          <li><a href="#ficha" tabindex="-1"><span aria-hidden="true">🏆</span><b>O desafio das tampinhas</b></a></li>
           <li><a href="jogos.html#calculadora" tabindex="-1"><span aria-hidden="true">🧮</span><b>Quanto valem as tuas tampas?</b></a></li>
           <li><a href="jogos.html#verdade" tabindex="-1"><span aria-hidden="true">✅</span><b>Tampa ou não tampa?</b></a></li>
           <li><a href="jogos.html#memoria" tabindex="-1"><span aria-hidden="true">🧠</span><b>Jogo de memória</b></a></li>
           <li><a href="jogos.html#peso" tabindex="-1"><span aria-hidden="true">🎯</span><b>Adivinha a resposta</b></a></li>
           <li><a href="jogos.html#semana" tabindex="-1"><span aria-hidden="true">🧐</span><b>A rasteira do dia</b></a></li>
         </ul>
-        <div class="hs-ctas"><a class="btn btn-red" href="jogos.html#ficha" tabindex="-1">Jogar o desafio <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="jogos.html" tabindex="-1"><svg aria-hidden="true"><use href="#i-star"/></svg>Mais jogos</a></div>
+        <div class="hs-ctas"><a class="btn btn-red" href="#ficha" tabindex="-1">Jogar o desafio <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="jogos.html" tabindex="-1"><svg aria-hidden="true"><use href="#i-star"/></svg>Mais jogos</a></div>
       </div>
       <div class="hero-slide" id="hs-1" role="tabpanel" aria-labelledby="ht-1" aria-hidden="true">
     <div class="sum draw" aria-label="Problema: quanto vale um BigBag de tampas de plástico?">
@@ -194,7 +194,7 @@
         </ol>
         <div style="display:flex;flex-wrap:wrap;gap:10px">
           <a class="btn btn-red" href="#entregar">Ver pontos de recolha <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-line" href="jogos.html#ficha"><span aria-hidden="true">🏆</span> Ganha o teu diploma de amigo do Martim</a>
+          <a class="btn btn-line" href="#ficha"><span aria-hidden="true">🏆</span> Ganha o teu diploma de amigo do Martim</a>
           <a class="btn btn-line" href="jogos.html">Mais jogos <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
       </article>
@@ -258,14 +258,64 @@
 <hr class="divider">
 
 <!-- ============ WORKSHEET ============ -->
-<section class="page" id="ficha" aria-labelledby="h-ficha">
+<section class="page" id="ficha" data-path="tampas" aria-labelledby="h-ficha">
   <div class="inner">
-    <div class="jogo-convite">
-      <span class="jogo-convite__ic" aria-hidden="true">🏆</span>
-      <div><h2 id="h-ficha" class="h-sm">O desafio das tampinhas.</h2>
-      <p>Separa 10 peças no saco certo e ganha o teu diploma de amigo do Martim. Há mais 5 jogos para aprender a separar.</p>
-      <p class="jogo-convite__ctas"><a class="btn btn-red" href="jogos.html#ficha">Jogar o desafio <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="jogos.html"><svg aria-hidden="true"><use href="#i-star"/></svg>Mais jogos</a></p></div>
+    <div class="sec-head">
+      <h2 id="h-ficha">O desafio das tampinhas.</h2>
+      <p>Separa como o meu pai: escreve o teu nome, põe cada peça no saco certo e ganha o teu diploma de amigo do Martim. Se te enganares, eu corrijo a vermelho.</p>
     </div>
+    <div class="worksheet game" id="game">
+      <div class="stamp" id="stamp" aria-hidden="true"><div>Muito<br>bem!<small>assinado: Martim</small></div></div>
+      <button class="game-full" type="button" id="game-full" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Ecrã inteiro</span></button>
+      <div class="ws-head">
+        <label class="name-field" for="g-name"><span class="hand">Nome:</span><input id="g-name" type="text" maxlength="24" autocomplete="given-name" placeholder="o teu nome"></label>
+        <div class="levels" role="group" aria-label="Nível do desafio"><span class="hand">Nível:</span><button type="button" data-lv="1" aria-pressed="false">Fácil <small>6 peças</small></button><button type="button" data-lv="2" aria-pressed="true">Normal <small>10 peças</small></button><button type="button" data-lv="3" aria-pressed="false">Difícil <small>com rasteiras</small></button></div>
+      </div>
+      <div class="stage" id="stage">
+        <p class="q hand">Onde vai isto?</p>
+        <div class="card-item" id="card" aria-live="polite"></div>
+        <span class="streak" id="streak" aria-live="polite"></span>
+      </div>
+      <p class="how hand" id="how">Clica na categoria que achas correta:</p>
+      <div class="bins" id="bins" role="group" aria-label="Sacos">
+        <button class="bin" type="button" data-bin="plastico"><svg aria-hidden="true" style="color:var(--cap-plastic)"><use href="#bag"/></svg><b>Plástico</b><small>tampas e pegas</small><span class="count num">0</span></button>
+        <button class="bin" type="button" data-bin="caricas"><svg aria-hidden="true"><use href="#bag"/></svg><b>Caricas</b><small>metal</small><span class="count num">0</span></button>
+        <button class="bin" type="button" data-bin="cortica"><svg aria-hidden="true"><use href="#bag"/></svg><b>Cortiça</b><small>só 100% cortiça</small><span class="count num">0</span></button>
+        <button class="bin bin-no" type="button" data-bin="nao"><svg aria-hidden="true"><use href="#nope"/></svg><b>Não aceite</b><small>vai para o ecoponto</small><span class="count num">0</span></button>
+      </div>
+      <div class="progress"><ol class="dots" id="dots" aria-hidden="true"></ol><div class="score" aria-live="polite">Pontos: <span id="score" class="num">0 / 10</span></div></div>
+      <p class="play-cta"><span aria-hidden="true">🏆</span> Joga, ganha o teu diploma e partilha-o nas redes sociais!</p>
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+      <div class="diploma" id="diploma" hidden>
+        <div class="dip-paper" id="dip-paper">
+          <span class="dip-corner c1" aria-hidden="true"></span><span class="dip-corner c2" aria-hidden="true"></span><span class="dip-corner c3" aria-hidden="true"></span><span class="dip-corner c4" aria-hidden="true"></span>
+          <p class="dip-head"><svg class="dip-mark" viewBox="0 0 318.33 113.92" aria-hidden="true"><use href="#marca"/></svg><span>Processo nº 167 · Boliqueime</span></p>
+          <h3 class="dip-title">Diploma de Amigo do Martim</h3>
+          <p class="dip-certify">Certifica-se que</p>
+          <label class="dip-name-wrap" for="dip-name"><span class="visually-hidden">O teu nome no diploma</span><input class="dip-name" id="dip-name" type="text" maxlength="24" autocomplete="given-name" placeholder="escreve aqui o teu nome"></label>
+          <p class="dip-body" id="dip-body"></p>
+          <p class="dip-stars"><span class="stars" id="stars" aria-hidden="true"></span><span id="dip-text"></span></p>
+          <div class="dip-foot">
+            <div class="dip-sig"><span class="hand">Martim</span><small>Martim Silva Cruz</small></div>
+            <div class="dip-seal" aria-hidden="true"><span>Amigo<br>do Martim</span><b>167</b></div>
+            <div class="dip-sig"><span class="hand" id="dip-date"></span><small id="dip-date-label">Data</small></div>
+          </div>
+        </div>
+        <div class="dip-actions"><button class="btn btn-red" type="button" id="dip-save"><svg aria-hidden="true"><use href="#i-down"/></svg>Guardar diploma</button><button class="btn btn-line" type="button" id="again">Jogar outra vez</button><a class="btn btn-line" href="mural.html">Pôr o diploma no mural <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="jogos.html">Mais jogos <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        <label class="dip-mural"><input type="checkbox" id="dip-mural"> <span>Pôr o meu primeiro nome no <b>top 10 do mural</b> quando guardar ou partilhar o diploma</span></label>
+        <p class="dip-mural-st" id="dip-mural-st" aria-live="polite"></p>
+        <p class="dip-tip hand">Dica: o diploma muda de cor com a capa. <button type="button" class="dip-tip-btn" id="dip-cover">Escolhe outra capa</button> e guarda-o na tua cor preferida.</p>
+        <div class="share" id="game-share" data-share-url="#ficha" data-share-text="">
+          <span class="share-label">Desafia os teus amigos:</span>
+          <button class="btn btn-red share-native" type="button" data-share="native" hidden><svg aria-hidden="true"><use href="#i-share"/></svg>Partilhar</button>
+          <button class="share-btn" type="button" data-share="whatsapp" aria-label="Partilhar no WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</button>
+          <button class="share-btn" type="button" data-share="facebook" aria-label="Partilhar no Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook</button>
+          <button class="share-btn" type="button" data-share="x" aria-label="Partilhar no X"><svg aria-hidden="true"><use href="#i-xs"/></svg>X</button><button class="share-btn" type="button" data-share="tiktok" aria-label="Partilhar no TikTok"><svg aria-hidden="true"><use href="#i-tt"/></svg><span>TikTok</span></button>
+          <button class="share-btn" type="button" data-share="copy"><svg aria-hidden="true"><use href="#i-link"/></svg><span>Copiar link</span></button>
+        </div>
+      </div>
+    </div>
+    <p class="more-cta"><a class="btn btn-red" href="jogos.html"><svg aria-hidden="true"><use href="#i-star"/></svg>Mais jogos <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
   </div>
 </section>
 <hr class="divider">
@@ -597,12 +647,12 @@
   <a class="btn btn-red" href="#doar"><svg aria-hidden="true"><use href="#i-heart"/></svg>Doar</a>
 </nav>
 
-<script src="js/pecas.js?v=202610010132"></script>
-<script src="js/eventos.js?v=202610010132"></script>
-<script src="js/mural-api.js?v=202610010132"></script>
-<script src="js/pontos.js?v=202610010132"></script>
+<script src="js/pecas.js?v=202610010144"></script>
+<script src="js/eventos.js?v=202610010144"></script>
+<script src="js/mural-api.js?v=202610010144"></script>
+<script src="js/pontos.js?v=202610010144"></script>
 <script src="/api/dados.js.php"></script>
-<script src="js/desafio.js?v=202610010132"></script>
+<script src="js/desafio.js?v=202610010144"></script>
 <script>
 /* ---------- "Quero ajudar com": marca o caminho, filtra no telemóvel e leva ao cartão ---------- */
 const LNG=document.documentElement.lang==='en';
@@ -682,6 +732,6 @@ track.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{
 updCount();
 </script>
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=202610010132"></script>
+<script src="js/site.js?v=202610010144"></script>
 </body>
 </html>
