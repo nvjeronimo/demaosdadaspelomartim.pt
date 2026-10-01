@@ -1630,3 +1630,41 @@ a[href^="tel:"]{white-space:nowrap}
 .fita-ind .ind__dots{display:none}
 .fita-ind .ind__a{grid-template-columns:2rem 1fr 20px}
 @media (prefers-reduced-motion:reduce){.folha.vira{animation:none}}
+
+/* ================= amostra 2: página compacta + botão "Índice" flutuante ================= */
+.jogo-convite{display:grid;grid-template-columns:auto 1fr;gap:18px 22px;align-items:start;background:var(--cover);color:var(--on-cover);border:2px solid var(--ink);border-radius:20px;padding:clamp(20px,4vw,34px)}
+.jogo-convite h2{color:var(--on-cover);margin:0 0 8px}
+.jogo-convite p{margin:0;color:var(--on-cover-soft);max-width:52ch}
+.jogo-convite__ic{font-size:2.6rem;line-height:1}
+.jogo-convite__ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px!important}
+.jogo-convite .btn-line{background:transparent;color:var(--on-cover);border-color:var(--on-cover)}
+@media (max-width:520px){.jogo-convite{grid-template-columns:1fr}}
+/* onde entregar: só 5 pontos até carregares em "Ver os 14 pontos" */
+.compacta #entregar .where:not(.tudo) #points tbody tr:nth-child(n+6){display:none}
+.pts-mais{margin-top:12px}
+@media (max-width:760px){
+  /* parceiros: logos, nome e cidade em duas colunas */
+  .compacta .partners{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .compacta .partner{grid-template-columns:1fr;gap:8px;padding:16px 10px}
+  .compacta .partner > div > p:not(.where),.compacta .partner > div > a{display:none}
+  .compacta .partner h3{font-size:1.02rem}
+  /* a minha história: só a primeira foto */
+  .compacta #historia .album .photo:not(.p1){display:none}
+  /* no telemóvel, as fotos decorativas empilhadas alongam a página: ficam só no computador */
+  .compacta #ajudar .team,.compacta .bigbag-photo,.compacta #entregar .photo.school,.compacta #contactos .stack{display:none}
+}
+/* botão flutuante e janela do índice */
+.indice-btn{position:fixed;left:clamp(12px,2vw,24px);bottom:20px;z-index:44;display:inline-flex;align-items:center;gap:8px;padding:.7em 1.05em .7em .85em;border:2px solid var(--ink);border-radius:999px;background:#fff;color:var(--ink);font:700 .95rem/1 var(--body);cursor:pointer;box-shadow:0 10px 22px -10px rgba(10,20,50,.45);transition:transform .2s}
+.indice-btn svg{width:20px;height:20px;color:var(--red-ink)}
+.indice-btn:hover{transform:translateY(-2px)}
+.indice-btn:focus-visible{outline:3px solid var(--pen);outline-offset:3px}
+@media (max-width:760px){.indice-btn{bottom:84px;left:10px}}
+.indice-dlg{border:0;padding:0;background:transparent;width:min(94vw,560px);max-height:88dvh;overflow:auto;margin:auto}
+.indice-dlg::backdrop{background:rgba(20,26,44,.55);backdrop-filter:blur(2px)}
+.indice-dlg .ind{max-width:none;position:relative;padding-top:26px}
+.indice-dlg[open]{animation:indIn .32s cubic-bezier(.2,.9,.3,1.1)}
+@keyframes indIn{from{opacity:0;transform:translateY(24px) scale(.98)}}
+@media (prefers-reduced-motion:reduce){.indice-dlg[open]{animation:none}}
+.ind__x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:#fff;font:400 1.6rem/1 var(--body);cursor:pointer;color:var(--ink)}
+.ind__x:focus-visible{outline:3px solid var(--pen);outline-offset:2px}
+.ind__g{margin:14px 0 2px;font:700 .75rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--pencil)}
