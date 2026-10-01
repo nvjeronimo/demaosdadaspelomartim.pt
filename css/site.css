@@ -1855,14 +1855,15 @@ a[href^="tel:"]{white-space:nowrap}
 @media (max-width:760px){
   .inner:has(> .album-head){display:flex;flex-direction:column}
   .inner:has(> .album-head) > .album-head{display:contents}
-  .album-head .filters{order:1;margin:24px 0 16px}
+  .album-head .filters{order:1;--lado:calc(var(--margin) + clamp(20px,3vw,48px));margin:24px -20px 12px calc(-1 * var(--lado));padding:4px 20px 4px var(--lado);scroll-padding-left:var(--lado)}
   .inner:has(> .album-head) > .track{order:2}
   .album-head .nav-btns{order:3;justify-content:center;margin-top:16px}
   .inner:has(> .album-head) > .album-note{order:4;margin-top:16px}
 }
 @media (max-width:760px){
   /* todas as fotos no mesmo formato: o carrossel fica com a altura de uma foto e as setas logo por baixo */
-  .track{align-items:stretch}
+  .track{align-items:stretch;--lado:calc(var(--margin) + clamp(20px,3vw,48px));margin-left:calc(-1 * var(--lado));padding-left:var(--lado);scroll-padding-inline:var(--lado) 4px;scrollbar-width:none}
+  .track::-webkit-scrollbar{display:none}
   .slide .media,.slide.p .media,.slide.v .media{aspect-ratio:1/1}
   .slide video{object-fit:contain}
 }
