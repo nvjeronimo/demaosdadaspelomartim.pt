@@ -1589,3 +1589,44 @@ a[href^="tel:"]{white-space:nowrap}
 .loc-p{max-width:68ch;font-size:1.08rem;line-height:1.7}
 .loc-cta .note{max-width:720px}
 .loc-por a{font-weight:700;color:var(--ink)}
+
+/* ================= amostra: índice do caderno, secções curtas, folha a virar e fita ================= */
+.ind{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:clamp(22px,4vw,40px) clamp(18px,4vw,44px) clamp(18px,3vw,30px);box-shadow:0 16px 30px -22px rgba(20,30,80,.5);max-width:820px;
+  background-image:repeating-linear-gradient(transparent 0 calc(3.4rem - 1px),var(--rule) calc(3.4rem - 1px) 3.4rem);background-position:0 7.6rem}
+.ind__k{font-size:1.4rem;color:var(--pen);margin:0}
+.ind h2{margin:0 0 10px}
+.ind__list,.fita-ind ol{list-style:none;margin:0;padding:0}
+.ind__a{display:grid;grid-template-columns:2.2rem auto minmax(16px,1fr) 22px;align-items:center;gap:12px;min-height:3.4rem;color:var(--ink);text-decoration:none;border-radius:10px;padding:0 6px;transition:background .2s}
+.ind__a:hover,.ind__a:focus-visible{background:var(--hl-soft)}
+.ind__n{font:400 1.7rem/1 var(--hand);color:var(--red-ink);text-align:center}
+.ind__t{display:flex;flex-direction:column;line-height:1.15}
+.ind__t b{font:800 1.25rem/1.1 var(--display);font-stretch:84%}
+.ind__t small{color:var(--pencil);font-size:.88rem}
+.ind__dots{height:2px;align-self:center;margin-top:10px;background:radial-gradient(circle,var(--pencil) 1px,transparent 1.5px) 0 0/8px 2px repeat-x;opacity:.55}
+.ind__go{width:20px;height:20px;color:var(--ink)}
+@media (max-width:520px){.ind__t small{display:none}.ind__t b{font-size:1.15rem}}
+.cap-n{font-size:1.3rem;color:var(--red-ink);margin:0 0 4px}
+.curto h2{margin-bottom:18px}
+.curto .steps{margin-top:6px}
+.curto__locs{margin-top:10px}
+.curto__doar{margin-top:30px;max-width:620px}
+.curto__res{margin-top:28px;display:grid;gap:16px;max-width:620px}
+.curto .next{max-width:820px}
+/* folha a virar: uma página do caderno roda presa à esquerda e cobre o ecrã antes de abrir o capítulo */
+.folha{position:fixed;inset:0;z-index:400;pointer-events:none;visibility:hidden;transform-origin:left center;
+  background:var(--paper) linear-gradient(90deg,transparent 0 46px,var(--red) 46px 48px,transparent 48px);background-image:linear-gradient(90deg,transparent calc(var(--margin,40px) + 6px),rgba(224,48,30,.55) calc(var(--margin,40px) + 6px) calc(var(--margin,40px) + 8px),transparent calc(var(--margin,40px) + 8px)),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:100% 100%,24px 24px,24px 24px;box-shadow:-30px 0 60px rgba(10,20,50,.25)}
+.folha.vira{visibility:visible;animation:folhaVira .62s cubic-bezier(.55,.05,.35,1) both}
+@keyframes folhaVira{from{transform:perspective(1800px) rotateY(-100deg);opacity:.6}to{transform:perspective(1800px) rotateY(0);opacity:1}}
+/* fita (marcador do caderno): sempre à mão, abre o índice */
+.fita{position:fixed;top:64px;right:clamp(14px,3vw,34px);z-index:45;width:42px;height:74px;border:0;padding:0 0 14px;background:var(--red);color:#fff;cursor:pointer;
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%);display:grid;place-items:center;box-shadow:0 6px 12px rgba(0,0,0,.2);transition:height .25s,transform .35s;transform:translateY(-110%)}
+.fita.on{transform:none}
+.fita:hover,.fita[aria-expanded="true"]{height:84px}
+.fita span{writing-mode:vertical-rl;transform:rotate(180deg);font:700 .78rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase}
+.fita:focus-visible{outline:3px solid var(--pen);outline-offset:3px}
+.fita-ind{position:fixed;top:72px;right:clamp(14px,3vw,34px);z-index:46;width:min(92vw,360px);max-height:calc(100dvh - 100px);overflow:auto;background:#fff;border:2px solid var(--ink);border-radius:16px;padding:14px 12px 10px;box-shadow:0 20px 40px -18px rgba(10,20,50,.5)}
+.fita-ind>p{font-size:1.4rem;color:var(--pen);margin:0 6px 4px}
+.fita-ind .ind__t small{display:none}
+.fita-ind .ind__dots{display:none}
+.fita-ind .ind__a{grid-template-columns:2rem 1fr 20px}
+@media (prefers-reduced-motion:reduce){.folha.vira{animation:none}}

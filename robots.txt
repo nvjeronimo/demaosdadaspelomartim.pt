@@ -5,5 +5,6 @@ Disallow: /proposta/
 Disallow: /design/
 Disallow: /painel/
 Disallow: /evento.html
+Disallow: /amostra.html
 
 Sitemap: https://demaosdadaspelomartim.pt/sitemap.xml
