@@ -383,23 +383,23 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
       else st.textContent=j.why==='limite'?(EN?'Too many attempts, try again later.':'Demasiadas tentativas, tenta mais tarde.'):(EN?'That email did not work. Try again.':'Esse email não funcionou. Tenta outra vez.')}catch(err){st.textContent=EN?'We could not send it now. Try again later.':'Não conseguimos enviar agora. Tenta mais tarde.'}});
 })();
 
-/* ---------- amostra: botão flutuante "Índice" com os capítulos do caderno (só para quem está a ver a amostra) ---------- */
+/* ---------- índice do caderno: separadores de dossiê (capítulos da página inicial), índice completo e cabeçalho que se esconde ao descer ---------- */
 (()=>{
-  let on=/amostra\.html$/.test(location.pathname);try{if(on)localStorage.setItem('amostra-indice','1');else on=localStorage.getItem('amostra-indice')==='1'}catch(e){}
-  if(!on||!window.HTMLDialogElement)return;
-  const sj=document.querySelector('script[src*="js/site.js"]'),R=sj?sj.getAttribute('src').replace(/js\/site\.js.*$/,''):'';
-  const home=R+'amostra.html',aqui=/amostra\.html$/.test(location.pathname);
+  if(!window.HTMLDialogElement||!document.querySelector('header.nav'))return;
+  try{localStorage.removeItem('amostra-indice')}catch(e){}
+  const sj=document.querySelector('script[src*="js/site.js"]'),R0=sj?sj.getAttribute('src').replace(/js\/site\.js.*$/,''):'',R=R0+(EN?'en/':'');
+  const home=R+'index.html',aqui=document.body.classList.contains('compacta');
   /* pela ordem das secções da página inicial */
-  const curtos=['Ajudar','Dinheiro','Desafio','Entregar','História','Parceiros','Eventos','Álbum','Perguntas','Contacto'];
-  const nesta=[['Como ajudar','tampas, donativo ou tempo','#ajudar'],['Para onde vai o dinheiro','a conta dos BigBags','#h-conta'],['O desafio das tampinhas','joga e ganha o diploma','#ficha'],['Onde entregar','14 pontos de recolha','#entregar'],['A minha história','contada por mim','#historia'],['Parceiros','quem transforma as tampas','#parceiros'],['Eventos','o próximo e os que já foram','#eventos'],['Álbum','a minha equipa em fotos','#album'],['Perguntas','o que é aceite e muito mais','#perguntas'],['Contacto','fala com os meus pais','#contactos']];
-  const outras=[['Jogos e diploma','jogos.html'],['Novidades','novidades.html'],['Mapa dos pontos','mapa.html'],['Eventos (todos)','eventos/'],['A minha história completa','historia.html'],['Organiza uma recolha','organiza.html'],['Cartaz para imprimir','cartaz.html'],['Brochura','brochura.html']];
+  const curtos=EN?['Help','Money','Challenge','Drop-off','Story','Partners','Events','Album','Questions','Contact']:['Ajudar','Dinheiro','Desafio','Entregar','História','Parceiros','Eventos','Álbum','Perguntas','Contacto'];
+  const nesta=EN?[['How to help','caps, a donation or your time','#ajudar'],['Where the money goes','the BigBag maths','#h-conta'],['The bottle-cap challenge','play and win the certificate','#ficha'],['Where to drop off','14 collection points','#entregar'],['My story','told by me','#historia'],['Partners','who turns caps into treatment','#parceiros'],['Events','the next one and past ones','#eventos'],['Album','my team in photos','#album'],['Questions','what is accepted and much more','#perguntas'],['Contact','talk to my parents','#contactos']]:[['Como ajudar','tampas, donativo ou tempo','#ajudar'],['Para onde vai o dinheiro','a conta dos BigBags','#h-conta'],['O desafio das tampinhas','joga e ganha o diploma','#ficha'],['Onde entregar','14 pontos de recolha','#entregar'],['A minha história','contada por mim','#historia'],['Parceiros','quem transforma as tampas','#parceiros'],['Eventos','o próximo e os que já foram','#eventos'],['Álbum','a minha equipa em fotos','#album'],['Perguntas','o que é aceite e muito mais','#perguntas'],['Contacto','fala com os meus pais','#contactos']];
+  const outras=EN?[['Games and certificate','jogos.html'],['News','novidades.html'],['Map of points','mapa.html'],['Events (all)','eventos/'],['My full story','historia.html'],['Organise a collection','organiza.html'],['Poster to print','cartaz.html'],['Booklet','brochura.html']]:[['Jogos e diploma','jogos.html'],['Novidades','novidades.html'],['Mapa dos pontos','mapa.html'],['Eventos (todos)','eventos/'],['A minha história completa','historia.html'],['Organiza uma recolha','organiza.html'],['Cartaz para imprimir','cartaz.html'],['Brochura','brochura.html']];
   const li=(n,t,s,h,pg)=>`<li><a class="ind__a" href="${h}"${pg?' data-pg':''}><span class="ind__n">${n}</span><span class="ind__t"><b>${t}</b>${s?`<small>${s}</small>`:''}</span><span class="ind__dots" aria-hidden="true"></span><svg class="ind__go" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>`;
   const dlg=document.createElement('dialog');dlg.className='indice-dlg';dlg.setAttribute('aria-labelledby','ind-tit');
-  dlg.innerHTML=`<div class="ind"><button class="ind__x" type="button" aria-label="Fechar o índice">×</button><p class="hand ind__k">o meu caderno</p><h2 id="ind-tit">Índice.</h2>
-    <p class="ind__g">${aqui?'Nesta página':'Na página inicial'}</p><ol class="ind__list">${nesta.map((c,i)=>li(i+1,c[0],c[1],(aqui?'':home)+c[2],!aqui)).join('')}</ol>
-    <p class="ind__g">Outras páginas</p><ol class="ind__list">${outras.map((c,i)=>li(nesta.length+i+1,c[0],'',R+c[1],true)).join('')}</ol></div>`;
+  dlg.innerHTML=`<div class="ind"><button class="ind__x" type="button" aria-label="${EN?'Close the index':'Fechar o índice'}">×</button><p class="hand ind__k">${EN?'my notebook':'o meu caderno'}</p><h2 id="ind-tit">${EN?'Index.':'Índice.'}</h2>
+    <p class="ind__g">${aqui?(EN?'On this page':'Nesta página'):(EN?'On the home page':'Na página inicial')}</p><ol class="ind__list">${nesta.map((c,i)=>li(i+1,c[0],c[1],(aqui?'':home)+c[2],!aqui)).join('')}</ol>
+    <p class="ind__g">${EN?'Other pages':'Outras páginas'}</p><ol class="ind__list">${outras.map((c,i)=>li(nesta.length+i+1,c[0],'',R+c[1],true)).join('')}</ol></div>`;
   const btn=document.createElement('button');btn.type='button';btn.className='indice-btn';btn.setAttribute('aria-haspopup','dialog');
-  btn.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Índice</span>';
+  btn.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>'+(EN?'Index':'Índice')+'</span>';
   const folha=document.createElement('div');folha.className='folha';folha.setAttribute('aria-hidden','true');
   /* o índice passa a ser o menu: botão no cabeçalho (sempre visível), menu do topo mais curto e "Doar" em destaque */
   document.documentElement.classList.add('amostra');
@@ -409,9 +409,9 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
   /* o índice está na fila de separadores (primeiro separador); a barra de baixo fica só com Onde entregar e Doar */
   /* computador: separadores de dossiê na margem direita, um por capítulo (e o último abre o índice completo) */
   const cores=['var(--cap1)','var(--cap2)','var(--cap3)','var(--cap4)'];
-  const dos=document.createElement('nav');dos.className='dossie';dos.setAttribute('aria-label','Capítulos');
+  const dos=document.createElement('nav');dos.className='dossie';dos.setAttribute('aria-label',EN?'Chapters':'Capítulos');
   /* o primeiro separador é o índice (sempre com o nome à vista; "Índice completo" ao passar o rato) */
-  dos.innerHTML='<button class="dossie__tab dossie__all" type="button" aria-label="Abrir o índice completo"><span class="dossie__n"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="dossie__t"><span class="dossie__curto">Índice</span><span class="dossie__longo">Índice completo</span></span></button>'
+  dos.innerHTML='<button class="dossie__tab dossie__all" type="button" aria-label="'+(EN?'Open the full index':'Abrir o índice completo')+'"><span class="dossie__n"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="dossie__t"><span class="dossie__curto">'+(EN?'Index':'Índice')+'</span><span class="dossie__longo">'+(EN?'Full index':'Índice completo')+'</span></span></button>'
     +nesta.map((c,i)=>`<a class="dossie__tab" href="${(aqui?'':home)+c[2]}" style="--c:${cores[i%4]}"><span class="dossie__n">${i+1}</span><span class="dossie__t"><span class="dossie__l">${c[0]}</span><span class="dossie__s" aria-hidden="true">${curtos[i]}</span></span></a>`).join('');
   const hdr=document.querySelector('header.nav');
   if(hdr){hdr.after(dos);const setH=()=>document.documentElement.style.setProperty('--hdr',hdr.offsetHeight+'px');setH();addEventListener('resize',setH)}else document.body.append(dos);
@@ -431,14 +431,8 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
       if(ac>24)root.classList.add('nav-esc');else if(ac<-12)root.classList.remove('nav-esc')};
     addEventListener('scroll',()=>{if(!raf2)raf2=requestAnimationFrame(upd)},{passive:true});
     document.addEventListener('focusin',e=>{if(e.target.closest&&e.target.closest('header.nav,.actionbar'))root.classList.remove('nav-esc')})}
-  if(right){
-    const cta=right.querySelector('.btn-red');if(cta)cta.remove();
-    const doar=right.querySelector('.navlink');if(doar){doar.className='btn btn-red nav-doar';doar.innerHTML='<svg aria-hidden="true"><use href="#i-heart"/></svg>Doar';doar.href=(aqui?'':home)+'#doar'}}
-  else document.body.append(btn);
-  const tabs=nav&&nav.querySelector('.tabs');
-  if(tabs){tabs.innerHTML=[['Como ajudar','#ajudar','var(--cap1)'],['Onde entregar','#entregar','var(--cap2)'],['Eventos',R+'eventos/','var(--cap4)'],['Jogos',R+'jogos.html','#FF7A1A'],['A minha história',R+'historia.html','var(--cap3)']]
-    .map(([t,h,c])=>`<li><a href="${h.startsWith('#')?(aqui?'':home)+h:h}" style="--tab:${c}"${!h.startsWith('#')&&location.pathname.endsWith(h.replace(R,'').replace(/\/$/,'/index.html'))?' aria-current="page"':''}>${t}</a></li>`).join('')}
-  const brand=nav&&nav.querySelector('.brand');if(brand)brand.href=home;
+  /* separador do topo da página em que estás */
+  if(nav){const norm=u=>u.replace(/index\.html$/,'');nav.querySelectorAll('.tabs a').forEach(a=>{if(!a.hash&&norm(a.pathname)===norm(location.pathname))a.setAttribute('aria-current','page')})}
   document.body.append(dlg,folha);
   btn.addEventListener('click',()=>dlg.showModal());
   dlg.querySelector('.ind__x').addEventListener('click',()=>dlg.close());

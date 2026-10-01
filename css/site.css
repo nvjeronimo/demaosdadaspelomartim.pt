@@ -1867,3 +1867,4 @@ a[href^="tel:"]{white-space:nowrap}
   .slide .media,.slide.p .media,.slide.v .media{aspect-ratio:1/1}
   .slide video{object-fit:contain}
 }
+@media print{.dossie,.indice-dlg,.folha{display:none!important}}
