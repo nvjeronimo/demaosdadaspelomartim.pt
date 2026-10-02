@@ -1888,7 +1888,7 @@ a[href^="tel:"]{white-space:nowrap}
 .volta-check b{display:block;color:var(--on-cover);font-size:1.05rem;line-height:1.25}
 .volta-check small{display:block;color:var(--cover-ink);font-size:.93rem;line-height:1.4;margin-top:2px}
 /* a garrafa e a lata numa folha colada com fita, como as fotos do caderno */
-.volta-fig{position:relative;margin:0;background:#fff;padding:22px 26px 14px;transform:rotate(2deg);box-shadow:0 18px 30px -18px rgba(10,20,50,.55),0 2px 6px rgba(10,20,50,.12);justify-self:center;width:100%;max-width:380px}
+.volta-fig{position:relative;margin:0;background:#fff;padding:12px 12px 14px;transform:rotate(2deg);box-shadow:0 18px 30px -18px rgba(10,20,50,.55),0 2px 6px rgba(10,20,50,.12);justify-self:center;width:100%;max-width:380px}
 .volta-fig .volta-ill{display:block;width:100%;height:auto}
 .volta-fig figcaption{font:400 1.35rem/1.15 var(--hand);color:var(--ink);text-align:center;margin-top:10px}
 .volta-xl .volta-onde{margin:0 0 20px;max-width:60ch}
@@ -1917,3 +1917,4 @@ a[href^="tel:"]{white-space:nowrap}
   .volta-fig{max-width:230px}
   .volta-xl .volta-lista-k{margin-top:16px}
 }
+.volta-xl .volta-mais summary{text-align:left;align-items:flex-start}
