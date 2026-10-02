@@ -611,7 +611,7 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .with-logo .logo-chip{float:right;margin:2px 0 8px 14px}
 .logos-inline{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px!important}
 .label .row{position:relative}
-.label-logo{width:20px;height:20px;margin-left:auto;align-self:center;flex:none}
+.label-logo{width:48px;height:48px;margin:-8px 0 -8px auto;align-self:center;flex:none}
 .volta-logo{float:right;margin:0 0 6px 12px;border-color:transparent}
 .who-logo{background:#fff!important;padding:6px}
 .who-logo img{width:100%;height:100%;object-fit:contain}
@@ -1928,3 +1928,12 @@ a[href^="tel:"]{white-space:nowrap}
 /* sublinhado a marcador (frase a destacar dentro de um texto) */
 .sublinha{text-decoration:underline;text-decoration-color:var(--hl);text-decoration-thickness:.18em;text-underline-offset:.16em;font-weight:700}
 .volta .sublinha{text-decoration-color:var(--hl-on-cover);color:var(--on-cover)}
+/* entre 1181 e 1460px a foto tapava a ponta direita da etiqueta: a etiqueta acaba onde começa a foto, as linhas empilham
+   (rótulo por cima, texto por baixo, como abaixo de 1180px) e o selo "Dê uma Tampa" (48px) fica no canto da última linha */
+@media (min-width:1181px) and (max-width:1460px){
+  .hero .label{width:min(340px,calc(100% - clamp(160px,13.5vw,200px) - 10px))}
+  .hero .label .row{flex-direction:column;gap:0}
+  .hero .label small{width:auto}
+  .hero .label .row:last-child{position:relative;padding-right:56px}
+  .hero .label .label-logo{position:absolute;right:0;bottom:6px;margin:0}
+}
