@@ -26,7 +26,7 @@ window.PONTOS=[
   {n:'Pavilhão da Escola Secundária de Quarteira',t:'escola',l:'Quarteira',lat:37.06825,lng:-8.09175},
   {n:'EB1/JI de Vale Pedras',t:'escola',l:'Albufeira',lat:37.10544,lng:-8.24357},
   {n:'EB1 de Vale Carro',t:'escola',l:'Albufeira',lat:37.10889,lng:-8.18257},
-  {n:'Zeze Bistro Bar',t:'comercio',l:'Olhos de Água',lat:37.09150,lng:-8.18950,aprox:true},
+  {n:'Zé Zé Bistro Bar',t:'comercio',l:'Olhos de Água',lat:37.09297,lng:-8.18827},
   {n:'EB1 de Olhos de Água',t:'escola',l:'Olhos de Água',lat:37.09239,lng:-8.18938},
   {n:'Centro Paroquial de Paderne',t:'comunidade',l:'Paderne',lat:37.17620,lng:-8.20080,aprox:true},
   {n:'Centro de Saúde de Paderne',t:'saude',l:'Paderne',lat:37.17500,lng:-8.20420,aprox:true}
