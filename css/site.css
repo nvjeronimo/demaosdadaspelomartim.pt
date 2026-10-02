@@ -1925,3 +1925,6 @@ a[href^="tel:"]{white-space:nowrap}
 .bk-locs .bk-qr{width:13cqw;height:13cqw;padding:.9cqw}
 .bk-locs .bk-qrrow p{font-size:2cqw!important}
 .bk-locs .bk-qrrow .hand{font-size:2.9cqw;line-height:1.1}
+/* sublinhado a marcador (frase a destacar dentro de um texto) */
+.sublinha{text-decoration:underline;text-decoration-color:var(--hl);text-decoration-thickness:.18em;text-underline-offset:.16em;font-weight:700}
+.volta .sublinha{text-decoration-color:var(--hl-on-cover);color:var(--on-cover)}
