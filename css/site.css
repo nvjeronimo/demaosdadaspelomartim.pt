@@ -1068,11 +1068,13 @@ a.plain:hover{text-decoration:underline;text-decoration-color:var(--action)}
 .bk-rule.no h3{color:var(--red-ink)}
 .bk-tip{display:grid;grid-template-columns:auto 1fr;gap:2.6cqw;align-items:center;background:var(--hl-soft);border-radius:2.4cqw;padding:2cqw 2.6cqw}
 .bk-tip img{width:9cqw;height:auto;background:#fff;border-radius:1.4cqw;padding:.8cqw}
-.bk-locs{display:grid;grid-template-columns:1fr 1fr;gap:3cqw 4cqw}
+/* duas colunas equilibradas: as localidades pequenas empilham-se ao lado da maior, sem deixar buracos */
+.bk-locs{columns:2;column-gap:4cqw}
+.bk-loc{break-inside:avoid;margin-bottom:2.2cqw}
 .bk-loc h3{display:flex;justify-content:space-between;border-bottom:.45cqw solid var(--ink);padding-bottom:1cqw}
 .bk-loc h3 span{font:400 3cqw/1 var(--hand);color:var(--pen)}
 .bk-loc ul{list-style:none;margin:1cqw 0 0;padding:0}
-.bk-loc li{padding:.9cqw 0;border-bottom:.25cqw solid var(--rule)}
+.bk-loc li{padding:.7cqw 0;border-bottom:.25cqw solid var(--rule)}
 .bk-qrrow,.bk-qrbig{display:flex;gap:3cqw;align-items:center}
 .bk-qrrow p,.bk-qrbig p{font:700 2.4cqw/1.35 var(--body)!important}
 .bk-qrrow .hand,.bk-qrbig .hand{display:block;font-size:3.4cqw;color:var(--pen);font-weight:400}
@@ -1918,3 +1920,8 @@ a[href^="tel:"]{white-space:nowrap}
   .volta-xl .volta-lista-k{margin-top:16px}
 }
 .volta-xl .volta-mais summary{text-align:left;align-items:flex-start}
+/* o código QR do mapa vive na coluna mais curta da lista de pontos (poupa altura na página) */
+.bk-locs .bk-qrrow{break-inside:avoid;gap:2cqw;margin-top:1cqw}
+.bk-locs .bk-qr{width:13cqw;height:13cqw;padding:.9cqw}
+.bk-locs .bk-qrrow p{font-size:2cqw!important}
+.bk-locs .bk-qrrow .hand{font-size:2.9cqw;line-height:1.1}
