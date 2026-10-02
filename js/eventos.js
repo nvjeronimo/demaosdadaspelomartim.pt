@@ -1,6 +1,39 @@
 /* Gerado por tools/build_pages.py a partir de EVENTS. Não editar à mão. */
 window.EVENTOS=[
  {
+  "slug": "evento-moto-clube-de-faro-31-outubro-2026",
+  "date": "2026-10-31",
+  "end": "2026-10-31",
+  "title": [
+   "Evento solidário com o Moto Clube de Faro",
+   "Charity event with Moto Clube de Faro"
+  ],
+  "where": [
+   "Faro · hora e local a confirmar",
+   "Faro · time and place to be confirmed"
+  ],
+  "time": "",
+  "fee": [
+   "",
+   ""
+  ],
+  "poster": "cartaz-31-outubro-2026.jpg",
+  "alt": [
+   "Cartaz provisório: 31 de outubro, evento solidário com o Moto Clube de Faro, hora e local a confirmar",
+   "Provisional poster: 31 October, charity event with Moto Clube de Faro, time and place to be confirmed"
+  ],
+  "share": [
+   "Evento solidário com o Moto Clube de Faro",
+   "Charity event with Moto Clube de Faro"
+  ],
+  "kind": [
+   "Evento",
+   "Event"
+  ],
+  "thumb": "cartaz-31-outubro-2026.jpg",
+  "valor": 0
+ },
+ {
   "slug": "caminhada-26-setembro-2026",
   "date": "2026-09-26",
   "end": "2026-09-26",

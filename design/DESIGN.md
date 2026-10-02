@@ -801,3 +801,11 @@ The home page keeps every section but stays short on a phone (760px and below) b
 - **Hint rule:** every carousel has the handwritten "desliza para o lado →" (pen, 1.15rem, `.carr-dica`) immediately above it: 12px between hint and cards, 32px above the hint (or the block's own spacing when the hint opens a block). The build inserts it; a carousel title, if any, goes above the hint.
 - **Shorter blocks:** "Onde entregar" shows five points and a "Ver todos os pontos" button; the "Guardar tampas" card uses 40px step icons and a single "Ver pontos de recolha" button; the VOLTA caveat sits behind "Ver mais" (a `<details>`, all sizes); the story section shows only the first photo; contact cards put the Pai/Mãe disc above the name.
 - **Lists that load late** (past events) reset their scroll to the start, so the most recent comes first.
+
+### VOLTA highlight (`#volta`, home, after "Onde entregar")
+A full-width card in the cover colour (22px radius, `.volta.volta-xl`): handwritten kicker "novidade!" in highlighter-on-cover, the h2 "Garrafas e latas VOLTA também contam.", one lede line, three rule tiles (on-cover at 9% fill, 30% border, 14px radius; three columns, stacked at 760px and below), a "Onde entregar:" line, the highlighter button "Combinar a entrega" plus a ghost button to the map, and a `<details>` "Preferes devolver tu na máquina?" holding the old keep-your-10-cents advice. The VOLTA logo chip floats top right. Whole bottles and jugs are refused only when they do not carry the VOLTA symbol.
+
+A partner that has no logo yet uses `.logo-chip.logo-vazio`: a dashed ink chip with the handwritten "logótipo em breve".
+
+An event announced before its poster exists gets a generated placeholder poster (cover colour, logo, loose caps, "guarda já o dia!", the day on a highlighter block, "cartaz em breve") and "a confirmar" in the fields that are not known yet. `build_events_index()` picks the next event by date at build time; `js/site.js` picks it again in the browser.
+
