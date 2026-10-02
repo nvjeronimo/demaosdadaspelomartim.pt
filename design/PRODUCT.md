@@ -18,7 +18,7 @@ Current site: WordPress 7.x with a purchased Qode theme and Transposh (PT/EN). T
 
 ## Product Purpose
 
-Fund Martim Silva Cruz's intensive rehabilitation treatments (Clínica Kinésio, Espinho; 3 a year; 7 800 € each, 2025 quote). Martim has cerebral palsy (dystonic tetraparesis) after hypoxic-ischemic injury at birth. Success = more caps correctly separated and delivered, more money donated, more community events, and less manual work for his parents.
+Fund Martim Silva Cruz's intensive rehabilitation treatments (Clínica Kinésio, Espinho; 3 a year; 9 075 € each, May 2026 quote). Martim has cerebral palsy (dystonic tetraparesis) after hypoxic-ischemic injury at birth. Success = more caps correctly separated and delivered, more money donated, more community events, and less manual work for his parents.
 
 **Primary action (confirmed): collect bottle caps.** Money donation is second; events and partnerships third.
 
