@@ -1962,3 +1962,9 @@ a[href^="tel:"]{white-space:nowrap}
 .link-capa{font:inherit;font-weight:700;color:var(--red-ink);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
 .link-capa:hover{color:var(--ink)}
 .link-capa:focus-visible{outline:3px solid var(--pen);outline-offset:3px;border-radius:4px}
+/* selos do ponto de recolha: retrato do Martim ao lado do código QR */
+.seal-duo{display:flex;justify-content:center;align-items:center;gap:7%;width:100%}
+.seal-duo .qr{width:40%}
+.seal-foto{width:40%;aspect-ratio:1;border-radius:50%;object-fit:cover;background:#fff;border:.45cqw solid #fff;box-sizing:border-box}
+.selos-small .seal-foto{border-width:.15cqw}
+.seal-in:has(.seal-duo){width:50%}
