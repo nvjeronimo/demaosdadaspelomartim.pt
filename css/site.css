@@ -1958,3 +1958,7 @@ a[href^="tel:"]{white-space:nowrap}
   body.print-seloamigo .selo-amigo{display:block}
   body.print-seloamigo #selo-svg{width:80mm;height:80mm;filter:none;margin:20mm auto 0}
 }
+/* texto que abre o seletor de capas */
+.link-capa{font:inherit;font-weight:700;color:var(--red-ink);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.link-capa:hover{color:var(--ink)}
+.link-capa:focus-visible{outline:3px solid var(--pen);outline-offset:3px;border-radius:4px}
