@@ -1937,3 +1937,12 @@ a[href^="tel:"]{white-space:nowrap}
   .hero .label .row:last-child{position:relative;padding-right:56px}
   .hero .label .label-logo{position:absolute;right:0;bottom:6px;margin:0}
 }
+
+/* selo "Amigo do Martim" para descarregar (página do cartaz) */
+.selo-amigo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,4vw,48px);max-width:860px}
+.selo-amigo figure{margin:0;display:grid;gap:14px;justify-items:center;text-align:center}
+.selo-amigo img{width:min(100%,320px);height:auto;filter:drop-shadow(0 14px 18px rgba(10,20,50,.28))}
+.selo-amigo figcaption{display:grid;gap:10px;justify-items:center}
+.selo-amigo figcaption b{font:400 1.5rem/1 var(--hand);color:var(--pen)}
+.selo-btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+@media (max-width:640px){.selo-amigo{grid-template-columns:1fr}.selo-amigo img{width:min(78%,280px)}}
