@@ -20,8 +20,8 @@
 <link rel="apple-touch-icon" href="img/marca/apple-touch-icon.png">
 <link rel="preload" href="fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=202610061147">
-<link rel="stylesheet" href="css/site.css?v=202610061147">
+<link rel="stylesheet" href="css/fonts.css?v=202610061157">
+<link rel="stylesheet" href="css/site.css?v=202610061157">
 </head>
 <body class="sub">
 
@@ -178,12 +178,28 @@
   <div class="inner">
     <div class="sec-head"><h2 id="h-selo-amigo" class="h-sm">Selo "Amigo do Martim".</h2><p>Para a manga do equipamento do teu clube, para a montra ou para colar onde quiseres. Descarrega e manda imprimir: fica bem a partir de 6 cm.</p></div>
     <div class="selo-amigo">
-      <figure><img src="img/selo-amigo-verde-petroleo.png" alt="Selo redondo verde-petróleo com o retrato do Martim em desenho, o texto Amigo do Martim nº 167 e o endereço demaosdadaspelomartim.pt" width="640" height="640" loading="lazy">
-        <figcaption><b>Verde-petróleo</b><span class="selo-btns"><a class="btn btn-red" href="docs/selo-amigo-do-martim-verde-petroleo.png" download><svg aria-hidden="true"><use href="#i-down"/></svg>Imagem (PNG)</a><a class="btn btn-line" href="docs/selo-amigo-do-martim-verde-petroleo.pdf" download><svg aria-hidden="true"><use href="#i-pdf"/></svg>Para a gráfica (PDF)</a></span></figcaption></figure>
-      <figure><img src="img/selo-amigo-azul-noite.png" alt="Selo redondo azul-noite com o retrato do Martim em desenho, o texto Amigo do Martim nº 167 e o endereço demaosdadaspelomartim.pt" width="640" height="640" loading="lazy">
-        <figcaption><b>Azul-noite</b><span class="selo-btns"><a class="btn btn-red" href="docs/selo-amigo-do-martim-azul-noite.png" download><svg aria-hidden="true"><use href="#i-down"/></svg>Imagem (PNG)</a><a class="btn btn-line" href="docs/selo-amigo-do-martim-azul-noite.pdf" download><svg aria-hidden="true"><use href="#i-pdf"/></svg>Para a gráfica (PDF)</a></span></figcaption></figure>
+      <figure>
+        <svg id="selo-svg" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Selo redondo com o retrato do Martim em desenho, o texto Amigo do Martim nº 167 e o endereço demaosdadaspelomartim.pt">
+          <style>.sa-arco{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;letter-spacing:9px;fill:var(--s-texto)}.sa-num{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-weight:700;letter-spacing:4px;fill:var(--s-texto)}.sa-site{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-weight:700;letter-spacing:2.5px;fill:var(--s-dest)}</style>
+          <defs><path id="sa-cima" d="M 104 500 A 396 396 0 0 1 896 500"/><path id="sa-baixo" d="M 62 500 A 438 438 0 0 0 938 500"/><clipPath id="sa-roda"><circle cx="500" cy="455" r="226"/></clipPath></defs>
+          <circle cx="500" cy="500" r="496" style="fill:#fff"/>
+          <circle cx="500" cy="500" r="482" style="fill:var(--s-fundo);stroke:var(--s-cont);stroke-width:6"/>
+          <text class="sa-arco" font-size="80" text-anchor="middle"><textPath href="#sa-cima" startOffset="50%">AMIGO DO MARTIM</textPath></text>
+          <text class="sa-num" font-size="36" text-anchor="middle" x="500" y="200">•  Nº 167  •</text>
+          <circle cx="500" cy="455" r="236" style="fill:#fff"/>
+          <image id="sa-foto" href="img/selo-retrato.jpg" x="274" y="229" width="452" height="452" clip-path="url(#sa-roda)" preserveAspectRatio="xMidYMid slice"/>
+          <svg id="sa-logo" x="322" y="702" width="356" height="127.4" viewBox="0 0 318.33 113.92"><use href="#marca"/></svg>
+          <text class="sa-site" font-size="45" text-anchor="middle"><textPath href="#sa-baixo" startOffset="50%">demaosdadaspelomartim.pt</textPath></text>
+        </svg>
+        <figcaption><span class="selo-btns"><button class="btn btn-red" type="button" id="sa-png"><svg aria-hidden="true"><use href="#i-down"/></svg>Descarregar imagem (PNG)</button><button class="btn btn-line" type="button" id="sa-print"><svg aria-hidden="true"><use href="#i-print"/></svg>Imprimir ou guardar em PDF</button></span></figcaption>
+      </figure>
+      <div class="selo-amigo-txt">
+        <p class="hand">O selo sai com a cor da capa que escolheste.</p>
+        <p>Queres outra cor? Muda a capa do caderno no botão "Escolhe a capa", ao fundo do ecrã, e o selo muda contigo. Assim combina com o equipamento do teu clube.</p>
+        <p class="small">A imagem tem 2400 px e fundo transparente. Ao imprimir, o selo sai a 8 cm: escolhe "Guardar como PDF" para o mandares para a gráfica, que aumenta ou reduz sem perder qualidade no texto.</p>
+        <p class="small">Precisas de uma cor que não está nas capas? <a href="index.html#contactos" style="font-weight:700">Fala connosco</a>.</p>
+      </div>
     </div>
-    <p class="small" style="margin-top:18px">A imagem tem fundo transparente. O PDF está a 8 cm: a gráfica aumenta ou reduz sem perder qualidade no texto. Precisas de outra cor para o teu equipamento? <a href="index.html#contactos" style="font-weight:700">Fala connosco</a>.</p>
   </div>
 </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" integrity="sha384-mZT2gIty7ZDdOGkxfP6joZcYdMW1Jvj9dRlfpTmaJAKKXTqzygtB22k7FLe+KZC1" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -204,6 +220,32 @@ document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',
 addEventListener('afterprint',()=>{document.body.classList.remove('print-cartaz','print-etiquetas');document.title=T0});
 if(window.qrcode){const q=qrcode(0,'M');q.addData('https://demaosdadaspelomartim.pt/');q.make();document.getElementById('qr1').innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true});document.querySelectorAll('.seal [data-qr]').forEach(el=>{const z=qrcode(0,'M');z.addData(el.dataset.qr);z.make();el.innerHTML=z.createSvgTag({cellSize:4,margin:0,scalable:true})})}
 else{document.getElementById('qr1').innerHTML='<p style="font-size:10px;text-align:center">demaosdadaspelomartim.pt</p>'}
+})();
+</script>
+<script>
+/* selo "Amigo do Martim": o SVG usa as cores da capa escolhida; o PNG é desenhado num canvas com as mesmas cores */
+(()=>{
+const LNG=document.documentElement.lang==='en',svg=document.getElementById('selo-svg');if(!svg)return;
+const b64=async u=>{const r=await fetch(u),buf=new Uint8Array(await r.arrayBuffer());let t='';for(let i=0;i<buf.length;i+=0x8000)t+=String.fromCharCode.apply(null,buf.subarray(i,i+0x8000));return btoa(t)};
+const base=document.querySelector('link[href*="css/fonts.css"]').getAttribute('href').replace(/css\/fonts\.css.*$/,'');
+const load=src=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src});
+document.getElementById('sa-png').addEventListener('click',async e=>{const btn=e.currentTarget;btn.disabled=true;
+  try{await document.fonts.ready;const cs=getComputedStyle(svg),W=2400,k=W/1000;
+    const c=svg.cloneNode(true);c.setAttribute('width',W);c.setAttribute('height',W);c.querySelector('#sa-foto').remove();
+    c.querySelector('#sa-logo').innerHTML=document.getElementById('marca').innerHTML;
+    const [f1,f2]=await Promise.all([b64(base+'fonts/bricolage-grotesque-normal-400-800-latin.woff2'),b64(base+'fonts/atkinson-hyperlegible-normal-700-latin.woff2')]);
+    c.querySelector('style').textContent+=`@font-face{font-family:"Bricolage Grotesque";font-weight:400 800;src:url(data:font/woff2;base64,${f1}) format("woff2")}@font-face{font-family:"Atkinson Hyperlegible";font-weight:700;src:url(data:font/woff2;base64,${f2}) format("woff2")}`;
+    const xml=new XMLSerializer().serializeToString(c).replace(/var\((--[\w-]+)\)/g,(m,n)=>cs.getPropertyValue(n).trim()||'#000');
+    const cv=document.createElement('canvas');cv.width=cv.height=W;const x=cv.getContext('2d');
+    x.drawImage(await load('data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xml)),0,0,W,W);
+    const foto=await load(svg.querySelector('#sa-foto').getAttribute('href'));
+    x.save();x.beginPath();x.arc(500*k,455*k,226*k,0,Math.PI*2);x.clip();x.drawImage(foto,274*k,229*k,452*k,452*k);x.restore();
+    cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=(LNG?'Friend of Martim badge':'Selo Amigo do Martim')+'.png';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);if(window.conta)conta('selo_amigo')},'image/png');
+  }catch(err){alert(LNG?'Could not create the image. Try "Print or save as PDF".':'Não consegui criar a imagem. Experimenta "Imprimir ou guardar em PDF".')}
+  btn.disabled=false});
+const T0=document.title;
+document.getElementById('sa-print').addEventListener('click',()=>{document.body.classList.remove('print-cartaz','print-etiquetas','print-selo');document.body.classList.add('print-seloamigo');document.title=LNG?'Friend of Martim badge':'Selo Amigo do Martim';window.print()});
+addEventListener('afterprint',()=>{document.body.classList.remove('print-seloamigo');document.title=T0});
 })();
 </script>
 
@@ -248,6 +290,6 @@ else{document.getElementById('qr1').innerHTML='<p style="font-size:10px;text-ali
 
 <script src="/api/dados.js.php"></script>
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/site.js?v=202610061147"></script>
+<script src="js/site.js?v=202610061157"></script>
 </body>
 </html>

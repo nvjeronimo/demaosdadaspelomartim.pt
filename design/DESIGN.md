@@ -809,3 +809,6 @@ A partner that has no logo yet uses `.logo-chip.logo-vazio`: a dashed ink chip w
 
 An event announced before its poster exists gets a generated placeholder poster (cover colour, logo, loose caps, "guarda já o dia!", the day on a highlighter block, "cartaz em breve") and "a confirmar" in the fields that are not known yet. `build_events_index()` picks the next event by date at build time; `js/site.js` picks it again in the browser.
 
+### "Amigo do Martim" badge (`cartaz.html#selo-amigo`)
+A round badge for club kit sleeves and stickers, drawn as an inline SVG (`#selo-svg`, 1000×1000): white keyline, a disc in the cover colour with a cover-deep outline, "AMIGO DO MARTIM" on the top arc (Bricolage 800, on-cover), "• Nº 167 •", the drawn portrait in a white-ringed circle (`img/selo-retrato.jpg`, cropped from the family's pin badge), the full-colour mark in the on-cover logo colours and the site address on the bottom arc. It follows the cover the visitor picked, like the poster and the booklet. "Descarregar imagem (PNG)" redraws it on a 2400px canvas with the same colours and the fonts embedded (transparent background); "Imprimir ou guardar em PDF" prints only the badge at 8 cm (`body.print-seloamigo`). Fixed-colour masters and the generator live in `autocolante/`.
+
