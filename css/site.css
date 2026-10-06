@@ -1971,5 +1971,5 @@ a[href^="tel:"]{white-space:nowrap}
 /* anel dos selos do ponto de recolha: o texto ocupa o arco de cima e o endereço do site fica direito no arco de baixo */
 .seal-ring text{font-size:9.6px;letter-spacing:0}
 .selos-small .seal-ring text{font-size:10px}
-.seal-ring .seal-site,.selos-small .seal-ring .seal-site{font:700 8.2px/1 var(--body);letter-spacing:.3px;fill:var(--logo-1)}
+.seal-ring .seal-site,.selos-small .seal-ring .seal-site{font:700 9.8px/1 var(--body);letter-spacing:.3px;fill:var(--logo-1)}
 .ink-saver .seal-ring .seal-site{fill:var(--ink)}
