@@ -42,11 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') responde(['ok' => true, 'top' => top($
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') responde(['ok' => false, 'why' => 'metodo'], 405);
 
 $b = json_decode(file_get_contents('php://input') ?: '{}', true) ?: [];
+$prova = exige_prova($db, $b);   // só as páginas deste site, com prova de browser real (config.php)
 $e = ['id' => substr(preg_replace('/[^a-z0-9]/', '', (string)($b['id'] ?? '')), 0, 20),
       'n' => explode(' ', limpa((string)($b['n'] ?? '')))[0], 'terra' => limpa((string)($b['terra'] ?? '')),
       'lv' => (int)($b['lv'] ?? 0), 'r' => (int)($b['r'] ?? -1), 't' => (int)($b['t'] ?? 0), 's' => (int)round((float)($b['s'] ?? 0))];
 if ($e['id'] === '' || !valido($e)) responde(['ok' => false, 'why' => 'nome'], 422);
 if (!limite($db, 'mural', 12, 600)) responde(['ok' => false, 'why' => 'limite'], 429);
+guarda_gasta($db, $prova);
 $novo = $db->prepare('INSERT OR IGNORE INTO mural(id,n,terra,lv,r,t,s,d,criado) VALUES (?,?,?,?,?,?,?,?,?)');
 $novo->execute([$e['id'], $e['n'], $e['terra'], $e['lv'], $e['r'], $e['t'], $e['s'], date('Y-m-d'), date('c')]);
 $t = top($db);

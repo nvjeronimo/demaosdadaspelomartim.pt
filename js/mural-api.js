@@ -46,8 +46,8 @@ window.MuralAPI = (() => {
     if (sent().includes(entry.id)) return { ok: true, repeat: true };
     if (!API) { markSent(entry.id); return { ok: true, local: true } }
     try {
-      const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(entry) });
-      const j = await r.json();
+      /* com a prova de browser (js/site.js): o servidor só aceita resultados enviados pelas páginas do site */
+      const j = await window.enviaComProva(API, entry);
       if (j && j.ok) { markSent(entry.id); return { ok: true, pos: j.pos } }
       return { ok: false, why: (j && j.why) || 'servidor' };
     } catch (err) { return { ok: false, why: 'rede' } }

@@ -384,6 +384,7 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
       for(let i=0;bits>0&&ok;i++,bits-=8)ok=bits>=8?h[i]===0:h[i]>>(8-bits)===0;
       if(ok)return{c:j.c,a:String(n),at}}})().catch(e=>{p=null;throw e}));
   /* envia com a prova; uma prova que o servidor já não aceita (formulário aberto há horas, envio repetido) é refeita, uma vez */
+  window.preparaProva=()=>{prova().catch(()=>{})};
   window.enviaComProva=async(url,dados)=>{let j={};
     for(let vez=0;vez<2;vez++){const pr=await prova();
       const falta=3400-(Date.now()-pr.at);if(falta>0)await new Promise(r=>setTimeout(r,falta));   /* o servidor quer uns segundos entre o desafio e o uso */
@@ -391,7 +392,7 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
       j=await r.json().catch(()=>({}));p=null;
       if(j.why!=='prova')break}
     return j};
-  if(/(^|\.)demaosdadaspelomartim\.pt$/.test(location.hostname))['focusin','input'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.closest&&e.target.closest('#join,#pedido-ponto,#avisos-form'))prova().catch(()=>{})}));
+  if(/(^|\.)demaosdadaspelomartim\.pt$/.test(location.hostname))['focusin','input'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.closest&&e.target.closest('#join,#pedido-ponto,#avisos-form,#diploma,#m-terra'))prova().catch(()=>{})}));
 })();
 
 /* ---------- avisos por email (rodapé) ---------- */

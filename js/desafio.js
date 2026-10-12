@@ -92,6 +92,7 @@ function finish(){
   saveResult();
   if(!dn.value)setTimeout(()=>dn.focus({preventScroll:true}),600);
   G.dip.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
+  if(window.preparaProva)preparaProva();   /* a prova para o mural começa a ser feita quando o diploma aparece */
 }
 function saveResult(){try{localStorage.setItem('mural-meu',JSON.stringify({id:rid,n:dipName(),r:right,t:ROUND,lv:LEVEL,s:secs,d:new Date().toISOString().slice(0,10),p:document.documentElement.dataset.paleta,pub:document.getElementById('dip-mural').checked}))}catch(e){}}
 /* mural: ao guardar ou partilhar o diploma, entra no top 10 se a pessoa autorizou */

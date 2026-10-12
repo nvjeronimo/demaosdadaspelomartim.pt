@@ -20,8 +20,8 @@
 <link rel="apple-touch-icon" href="../img/marca/apple-touch-icon.png">
 <link rel="preload" href="../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/fonts.css?v=202610121634">
-<link rel="stylesheet" href="../css/site.css?v=202610121634">
+<link rel="stylesheet" href="../css/fonts.css?v=202610121648">
+<link rel="stylesheet" href="../css/site.css?v=202610121648">
 </head>
 <body class="sub">
 
@@ -150,8 +150,8 @@
     </div>
   </div>
 </section>
-<script src="../js/mural.js?v=202610121634"></script>
-<script src="../js/mural-api.js?v=202610121634"></script>
+<script src="../js/mural.js?v=202610121648"></script>
+<script src="../js/mural-api.js?v=202610121648"></script>
 <script src="/api/dados.js.php"></script>
 <script>
 (()=>{
@@ -187,6 +187,7 @@ if(meu&&meu.t){
   document.getElementById('meu-txt').textContent=meu.pub?T('O teu último diploma já está no mural.','Your latest diploma is already on the wall.'):T('O teu último diploma ainda não está no mural. Escreve a tua localidade, se quiseres, e junta-te ao top 10.','Your latest diploma is not on the wall yet. Add your town if you like and join the top 10.');
   acts.innerHTML=(meu.pub?'':`<div class="field" style="flex:1 1 200px;margin:0"><label for="m-terra">${T('A tua localidade (opcional)','Your town (optional)')}</label><input id="m-terra" maxlength="20" autocomplete="address-level2"></div><button class="btn btn-red" type="button" id="m-send">${T('Pôr no mural','Put me on the wall')}</button>`)+`<a class="btn btn-line" href="index.html#ficha">${T('Jogar outra vez','Play again')}</a><a class="btn btn-line" href="jogos.html">${T('Mais jogos','More games')} →</a>`;
   const send=document.getElementById('m-send');
+  if(send)addEventListener('load',()=>{if(window.preparaProva)preparaProva()});   /* a prova para o mural fica pronta antes do clique */
   if(send)send.addEventListener('click',async()=>{
     if(!meu.n){st.textContent=T('O diploma não tem nome. Joga outra vez e escreve o teu nome.','The diploma has no name. Play again and write your name.');return}
     send.disabled=true;meu.pub=true;try{localStorage.setItem('mural-meu',JSON.stringify(meu))}catch(e){}
@@ -244,6 +245,6 @@ if(meu&&meu.t){
 
 
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202610121634"></script>
+<script src="../js/site.js?v=202610121648"></script>
 </body>
 </html>
