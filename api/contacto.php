@@ -16,7 +16,7 @@ if ($nome === '' || $contacto === '' || empty($in['consentimento'])) responde(['
 if (!limite($db, 'contacto', 5, 3600)) responde(['ok' => false, 'why' => 'limite'], 429);
 guarda_gasta($db, $prova);
 /* passou a prova mas tem ar de máquina (todas as opções assinaladas, ou a mensagem cheia de links): chega marcado */
-$duvida = count($quero) >= 6 || muitos_links($msg);
+$duvida = count($quero) >= 5 || muitos_links($msg);   // o formulário tem 5 opções
 $q = $quero ? implode(', ', $quero) : 'outra coisa';
 $texto = "Nova mensagem do site demaosdadaspelomartim.pt\n\n"
        . "Nome: $nome\nContacto: $contacto\nQuer: $q\nIdioma: " . strtoupper($lang) . "\n\n"
