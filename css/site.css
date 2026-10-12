@@ -1973,3 +1973,17 @@ a[href^="tel:"]{white-space:nowrap}
 .selos-small .seal-ring text{font-size:10px}
 .seal-ring .seal-site,.selos-small .seal-ring .seal-site{font:700 9.8px/1 var(--body);letter-spacing:.3px;fill:var(--logo-1)}
 .ink-saver .seal-ring .seal-site{fill:var(--ink)}
+
+/* rodapé: marca e parceiros na coluna da esquerda; atalhos à direita, em duas colunas */
+footer .inner{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);column-gap:clamp(32px,6vw,96px)}
+footer .inner > div:nth-child(1){grid-column:1;grid-row:1}
+footer .inner > div:nth-child(2){grid-column:1;grid-row:2;align-self:start}
+footer .inner > div:nth-child(3){grid-column:2;grid-row:1 / span 2}
+footer .inner > div:nth-child(3) ul{display:block;columns:2;column-gap:clamp(20px,4vw,56px)}
+footer .inner > div:nth-child(3) li{break-inside:avoid;margin-bottom:10px}
+@media (max-width:820px){
+  footer .inner{grid-template-columns:1fr}
+  footer .inner > div:nth-child(1),footer .inner > div:nth-child(2),footer .inner > div:nth-child(3){grid-column:1;grid-row:auto}
+}
+@media (max-width:820px){footer .inner > div:nth-child(3) ul{column-gap:18px;font-size:.95rem}}
+@media (max-width:340px){footer .inner > div:nth-child(3) ul{columns:1}}

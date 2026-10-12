@@ -663,7 +663,7 @@ Rules shared by every A4 sheet (`.a4`):
 - **File names:** the page title becomes the PDF name while printing ("Cartaz tampas Martim - <local>", "Etiquetas garrafões Martim - <local>", "Brochura Martim"), restored afterwards.
 
 ### Footer
-A full-width cover region with three columns (brand, partners, shortcuts; one column below 820px).
+A full-width cover region with two columns: on the left the brand block with the partners row under it; on the right the shortcuts, set in two text columns (items never split). Below 820px everything stacks in one column, with the shortcuts still in two columns down to 340px.
 - **Brand column:** the one-colour logo, "Obrigado por cada tampinha." and "De mãos dadas pelo Martim · Boliqueime, Algarve".
 - **Shortcuts:** Onde entregar, Mapa dos pontos, Organiza uma recolha, Cartaz para imprimir, Novidades do Martim, Jogos das tampinhas, Mural dos amigos, Brochura para descarregar, Doar por IBAN, Todos os eventos, Dúvidas frequentes, Kit de evento, Imprensa. Every public page must be reachable from at least one other page: the footer is where pages without a natural place in the content (kit, press) get their link, so search engines and visitors can find them.
 - **Fine line:** "© <year> De Mãos Dadas pelo Martim. Todos os direitos reservados." then a line break and "By nelsonjeronimo.pt" on the left (the name links to the site root, the credit to https://nelsonjeronimo.pt); "Política de privacidade · Cookies · English" on the right. The year is filled in by `site.js` from the visitor's clock (`[data-year]`), with the build year as the no-JS fallback. English: "Hand in Hand for Martim. All rights reserved."
