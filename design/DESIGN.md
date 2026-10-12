@@ -819,3 +819,11 @@ A phrase that must not be missed inside running text gets `.sublinha`: bold, wit
 ### Content facts that drive numbers
 The treatment price (9 075 € a month, May 2026 quote, three times a year) feeds the hero, the BigBag sum (74), the per-day figures in the games (about 300 €, 735 kg) and `DIA` in `js/jogos.js` and `js/site.js`: change them together. Collection points live in the panel database and in `js/pontos.js` (fallback and build-time lists): the town filter chips, the map, the booklet list and the "N pontos" counts in the copy must agree with both.
 
+### Logo on sports kit (`autocolante/equipamento/`)
+Lockups made for club kit (first use: Clube Desportivo de Boliqueime, roller hockey, October 2026). They live outside the site, in the private source repo.
+- **Compact lockup with address** (the approved one): the icon, "De mãos dadas pelo" and "Martim" as in the mark, with "demaosdadaspelomartim.pt" underneath at the same width (Bricolage 800, 80% width). Mark in orange #F36C21, address in black #111111. A two-line version (icon and name on one line, address below) and an arched version (name in caps on an arc, icon above, address under the arc) also exist, each in orange, black and with the black address.
+- **Knocked-out faces:** on fabric the eyes and mouths of the two dots are real openings, never white shapes, so the garment colour shows through.
+- **One colour per element:** no tab, box or outline behind the logo on white fabric. The club's green may replace orange when the kit maker asks for kit colours only.
+- **Placement on the approved kit:** sponsor (Afriquímica) centred on the front below the chest panel; Martim lockup on the back between collar and number, about 80% of the number's width; the round "Amigo do Martim" badge centred on the outer face of one sleeve, so half shows from the front and half from the back; club crest on the chest and low on the shorts.
+- **Mockups** are built by `autocolante/equipamento/montar.py` on a high-resolution render of the kit: logos are multiplied onto the fabric so folds show through, and the sleeve badge is clipped to the sleeve edge. The print-shop brief is `para-a-grafica/` (two-page PDF plus the files), generated from `doc-grafica.html`.
+
