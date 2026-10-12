@@ -374,13 +374,33 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
     conta({perto:'mapa_perto','dip-save':'diploma_guardar','game-full':'desafio_ecra_inteiro','m-send':'mural_pedido'}[a.id]||a.id)});
 })();
 
+/* ---------- prova de browser dos formulários (api/guarda.php): pedida quando alguém começa a preencher, resolvida em
+   segundo plano e enviada com o pedido. Nada para o visitante fazer. ---------- */
+(()=>{let p=null;
+  const prova=()=>(p=p||(async()=>{const j=await(await fetch('/api/guarda.php',{headers:{Accept:'application/json'}})).json();if(!j.ok)throw new Error('guarda');
+    const enc=new TextEncoder(),at=Date.now();
+    /* o número que, junto com o desafio, dá um SHA-256 a começar por esse número de bits a zero */
+    for(let n=0;;n++){const h=new Uint8Array(await crypto.subtle.digest('SHA-256',enc.encode(j.c+'.'+n)));let bits=j.bits,ok=true;
+      for(let i=0;bits>0&&ok;i++,bits-=8)ok=bits>=8?h[i]===0:h[i]>>(8-bits)===0;
+      if(ok)return{c:j.c,a:String(n),at}}})().catch(e=>{p=null;throw e}));
+  /* envia com a prova; uma prova que o servidor já não aceita (formulário aberto há horas, envio repetido) é refeita, uma vez */
+  window.enviaComProva=async(url,dados)=>{let j={};
+    for(let vez=0;vez<2;vez++){const pr=await prova();
+      const falta=3400-(Date.now()-pr.at);if(falta>0)await new Promise(r=>setTimeout(r,falta));   /* o servidor quer uns segundos entre o desafio e o uso */
+      const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...dados,g:pr.c,ga:pr.a})});
+      j=await r.json().catch(()=>({}));p=null;
+      if(j.why!=='prova')break}
+    return j};
+  if(/(^|\.)demaosdadaspelomartim\.pt$/.test(location.hostname))['focusin','input'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.closest&&e.target.closest('#join,#pedido-ponto,#avisos-form'))prova().catch(()=>{})}));
+})();
+
 /* ---------- avisos por email (rodapé) ---------- */
 (()=>{const f=document.getElementById('avisos-form');if(!f)return;const st=document.getElementById('av-st'),live=/(^|\.)demaosdadaspelomartim\.pt$/.test(location.hostname);
   f.addEventListener('submit',async e=>{e.preventDefault();const em=document.getElementById('av-email');
     if(!em.checkValidity()){st.textContent=EN?'Please write a valid email.':'Escreve um email válido.';em.focus();return}
     if(!live){st.textContent=EN?'Sign-ups work on demaosdadaspelomartim.pt.':'A inscrição funciona em demaosdadaspelomartim.pt.';return}
     st.textContent=EN?'Sending…':'A enviar…';
-    try{const r=await fetch('/api/avisos.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em.value,lang:EN?'en':'pt',site:document.getElementById('av-site').value})});const j=await r.json().catch(()=>({}));
+    try{const j=await enviaComProva('/api/avisos.php',{email:em.value,lang:EN?'en':'pt',site:document.getElementById('av-site').value});
       if(j.ok){f.reset();st.textContent=j.ja?(EN?'You are already signed up. Thank you!':'Já estás inscrito. Obrigado!'):(EN?'Almost there: check your email and confirm.':'Quase! Vai ao teu email e confirma a inscrição.');if(window.conta)conta('avisos_inscricao')}
       else st.textContent=j.why==='limite'?(EN?'Too many attempts, try again later.':'Demasiadas tentativas, tenta mais tarde.'):(EN?'That email did not work. Try again.':'Esse email não funcionou. Tenta outra vez.')}catch(err){st.textContent=EN?'We could not send it now. Try again later.':'Não conseguimos enviar agora. Tenta mais tarde.'}});
 })();

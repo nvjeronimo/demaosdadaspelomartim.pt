@@ -16,10 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && in_array($a, ['confirmar', 'sair'], 
 }
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') responde(['ok' => false], 405);
 $b = json_decode(file_get_contents('php://input') ?: '{}', true) ?: $_POST;
+if (!mesmo_site()) responde(['ok' => false, 'why' => 'origem'], 403);
 if (!empty($b['site'])) responde(['ok' => true]);
+$prova = exige_prova($db, $b);   // prova de browser real (config.php): este formulário envia um email para o endereço indicado
 $email = mb_strtolower(trim((string)($b['email'] ?? '')));
 if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 160) responde(['ok' => false, 'why' => 'email'], 422);
 if (!limite($db, 'avisos', 4, 3600)) responde(['ok' => false, 'why' => 'limite'], 429);
+guarda_gasta($db, $prova);
 $lang = ($b['lang'] ?? 'pt') === 'en' ? 'en' : 'pt';
 $q = $db->prepare('SELECT token, confirmado FROM subscritores WHERE email = ?'); $q->execute([$email]); $r = $q->fetch();
 if ($r && $r['confirmado']) responde(['ok' => true, 'ja' => true]);

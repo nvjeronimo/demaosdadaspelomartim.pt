@@ -20,8 +20,8 @@
 <link rel="apple-touch-icon" href="../img/marca/apple-touch-icon.png">
 <link rel="preload" href="../fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/atkinson-hyperlegible-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/fonts.css?v=202610121621">
-<link rel="stylesheet" href="../css/site.css?v=202610121621">
+<link rel="stylesheet" href="../css/fonts.css?v=202610121633">
+<link rel="stylesheet" href="../css/site.css?v=202610121633">
 </head>
 <body class="sub">
 
@@ -164,7 +164,7 @@ f.addEventListener('submit',async ev=>{ev.preventDefault();
   if(!document.getElementById('pp-ok').checked){st.textContent=T('Falta aceitar a nota de privacidade.','Please accept the privacy note.');return}
   if(!/(^|\.)demaosdadaspelomartim\.pt$/.test(location.hostname)){st.textContent=T('Funciona em demaosdadaspelomartim.pt.','Works on demaosdadaspelomartim.pt.');return}
   const b=f.querySelector('button');b.disabled=true;st.textContent=T('A enviar…','Sending…');
-  try{const r=await fetch('/api/pedido-ponto.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nome:v('pp-nome'),tipo:v('pp-tipo'),localidade:v('pp-local'),morada:v('pp-morada'),contacto:v('pp-contacto'),nota:v('pp-nota'),consentimento:true,site:v('pp-site')})});const j=await r.json();
+  try{const j=await enviaComProva('/api/pedido-ponto.php',{nome:v('pp-nome'),tipo:v('pp-tipo'),localidade:v('pp-local'),morada:v('pp-morada'),contacto:v('pp-contacto'),nota:v('pp-nota'),consentimento:true,site:v('pp-site')});
     if(j.ok){f.reset();st.textContent=T('Pedido enviado. Obrigado! Os meus pais vão falar contigo.','Request sent. Thank you! My parents will get in touch.');if(window.conta)conta('pedido_ponto')}
     else st.textContent=j.why==='limite'?T('Já recebemos pedidos teus há pouco. Tenta mais tarde.','We already got your requests. Try again later.'):T('Falta preencher algum campo.','Some fields are missing.')}
   catch(e){st.textContent=T('Não conseguimos enviar agora. Tenta outra vez ou usa o formulário de contacto.','We could not send it now. Try again or use the contact form.')}
@@ -181,7 +181,7 @@ f.addEventListener('submit',async ev=>{ev.preventDefault();
   </div>
 </section>
 
-<script src="../js/pontos.js?v=202610121621"></script>
+<script src="../js/pontos.js?v=202610121633"></script>
 <script src="/api/dados.js.php"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous" referrerpolicy="no-referrer"><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
@@ -295,6 +295,6 @@ document.getElementById('perto').addEventListener('click',()=>{
 
 
 <script src="../js/vendor/lenis.min.js"></script>
-<script src="../js/site.js?v=202610121621"></script>
+<script src="../js/site.js?v=202610121633"></script>
 </body>
 </html>
