@@ -1987,3 +1987,4 @@ footer .inner > div:nth-child(3) li{break-inside:avoid;margin-bottom:10px}
 }
 @media (max-width:820px){footer .inner > div:nth-child(3) ul{column-gap:18px;font-size:.95rem}}
 @media (max-width:340px){footer .inner > div:nth-child(3) ul{columns:1}}
+footer .fine span a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
