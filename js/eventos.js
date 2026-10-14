@@ -5,32 +5,32 @@ window.EVENTOS=[
   "date": "2026-10-31",
   "end": "2026-10-31",
   "title": [
-   "Evento solidário com o Moto Clube de Faro",
-   "Charity event with Moto Clube de Faro"
+   "Halloween Solidário: Juntos pelo Martim",
+   "Charity Halloween: Together for Martim"
   ],
   "where": [
-   "Faro · hora e local a confirmar",
-   "Faro · time and place to be confirmed"
+   "Sede do Moto Clube de Faro, Faro",
+   "Moto Clube de Faro headquarters, Faro"
   ],
-  "time": "",
+  "time": "16:00",
   "fee": [
-   "",
-   ""
+   "Entrada livre",
+   "Free entry"
   ],
-  "poster": "cartaz-31-outubro-2026.jpg",
+  "poster": "cartaz-halloween-solidario-2026.jpg",
   "alt": [
-   "Cartaz provisório: 31 de outubro, evento solidário com o Moto Clube de Faro, hora e local a confirmar",
-   "Provisional poster: 31 October, charity event with Moto Clube de Faro, time and place to be confirmed"
+   "Cartaz do Halloween Solidário Juntos pelo Martim: 31 de outubro de 2026, a partir das 16h, na sede do Moto Clube de Faro, com Insane, Fora d'Órbita, Motel Albarquel e banda surpresa, entrada livre",
+   "Poster for the Charity Halloween Together for Martim: 31 October 2026, from 4 pm, at the Moto Clube de Faro headquarters, with Insane, Fora d'Órbita, Motel Albarquel and a surprise band, free entry"
   ],
   "share": [
-   "Evento solidário com o Moto Clube de Faro",
-   "Charity event with Moto Clube de Faro"
+   "Halloween Solidário: Juntos pelo Martim",
+   "Charity Halloween: Together for Martim"
   ],
   "kind": [
-   "Evento",
-   "Event"
+   "Concerto",
+   "Concert"
   ],
-  "thumb": "cartaz-31-outubro-2026.jpg",
+  "thumb": "cartaz-halloween-solidario-2026.jpg",
   "valor": 0
  },
  {
@@ -325,7 +325,7 @@ window.EVENTOS=[
   ],
   "kind": [
    "Concerto",
-   "Event"
+   "Concert"
   ],
   "thumb": "cartaz-motorock.jpg",
   "valor": 0
