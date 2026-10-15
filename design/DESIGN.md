@@ -604,7 +604,7 @@ A plain ruled list (max 880px, 2px ink top rule, 1.5px rule rows). Each question
 
 ### Event Page (secondary page)
 - **Layout:** a two-column grid (0.85fr/1.15fr or reversed) with a framed poster, or two posters at -2° and +2.5°.
-- **Fact sheet** (`.ficha`): a definition list with uppercase pencil terms and 1.06rem values on 1.5px rules.
+- **Fact sheet** (`.ficha`): a definition list with uppercase pencil terms and 1.06rem values on 1.5px rules. The term column fits its content but never takes more than a third of the width (`fit-content(34%)`), so a long term such as "Motoclubes juntos pela causa" wraps instead of squeezing the values. At 640px and below the sheet becomes one column: each term sits above its value (12px above the term, 2px between, 12px below the value) and the rule is drawn only under the value.
 - **Timeline:** a 3px action-colour line with ring dots, handwritten times in pen and 1.08rem entries.
 - **How-to box:** a white 18px card with a checklist of 18px ink-outlined boxes filled with the highlighter wash.
 - **Actions:** buttons for add-to-calendar (`.ics` download) and copy link ("Link copiado").
