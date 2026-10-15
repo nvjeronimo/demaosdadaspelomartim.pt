@@ -1995,3 +1995,6 @@ footer .fine span a{text-decoration:underline;text-decoration-thickness:1px;text
   .ficha dt{padding:12px 0 2px;border-bottom:0}
   .ficha dd{padding:0 0 12px}
 }
+/* crédito "By NelsonJeronimo.pt": sem sublinhado por defeito, só ao passar o rato ou com foco */
+footer .fine a[href*="nelsonjeronimo.pt"]{text-decoration:none}
+footer .fine a[href*="nelsonjeronimo.pt"]:hover,footer .fine a[href*="nelsonjeronimo.pt"]:focus-visible{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
