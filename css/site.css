@@ -1988,3 +1988,10 @@ footer .inner > div:nth-child(3) li{break-inside:avoid;margin-bottom:10px}
 @media (max-width:820px){footer .inner > div:nth-child(3) ul{column-gap:18px;font-size:.95rem}}
 @media (max-width:340px){footer .inner > div:nth-child(3) ul{columns:1}}
 footer .fine span a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+/* ficha (dados de um evento, etc.): a coluna dos rótulos nunca passa de um terço; no telemóvel o rótulo fica por cima do valor */
+.ficha{grid-template-columns:fit-content(34%) 1fr}
+@media (max-width:640px){
+  .ficha{grid-template-columns:1fr}
+  .ficha dt{padding:12px 0 2px;border-bottom:0}
+  .ficha dd{padding:0 0 12px}
+}
